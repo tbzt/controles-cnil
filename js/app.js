@@ -13,6 +13,7 @@ import { definitionSource, ID_SOURCE } from "./carte/source.js";
 import { ajouterCouchePoints, actualiserCouleurs, couleursFamilles, gererClusters, ID_POINTS } from "./carte/couches.js";
 import { agregerCommunes, ajouterCouchesCommunes, afficherCommunes, actualiserCouleursCommunes, ID_SOURCE_COMMUNES, ID_CERCLES } from "./carte/communes.js";
 import { creerPastilleCnil } from "./carte/cnil.js";
+import { creerEncarts } from "./carte/encarts.js";
 import { contenuPopup } from "./carte/popup.js";
 import { lireHash, creerMagasin, estVide } from "./etat.js";
 import { preparer, filtrer } from "./filtres.js";
@@ -176,6 +177,7 @@ async function demarrer() {
 
   let clusters = null;
   let pastille = null;
+  let encarts = { rendre() {} };
   let organismePrecedent = magasin.etat.organisme;
 
   function rendrePanneau(etat) {
@@ -208,6 +210,7 @@ async function demarrer() {
       map.getSource(ID_SOURCE_COMMUNES).setData(agregerCommunes(selectionCarte, d.familles));
     }
     if (etat.lieu === "controle") pastille.montrer(aDistance.length); else pastille.cacher();
+    encarts.rendre(selectionCarte);
 
     if (etat.organisme && etat.organisme !== organismePrecedent) recadrer();
     organismePrecedent = etat.organisme;
@@ -224,6 +227,7 @@ async function demarrer() {
     clusters = gererClusters(map, d.familles, () => couleurs);
     pastille = creerPastilleCnil(map, d.stats.lieux.cnil, () => magasin.modifier({ modalite: new Set(MODALITES_CNIL) }));
     appliquer(magasin.etat);
+    creerEncarts(map, $("encarts"), MOUVEMENT_REDUIT).then((e) => { encarts = e; encarts.rendre(selectionCarte); });
 
     const popup = new Popup({ closeButton: true, maxWidth: "320px", offset: 10 });
     map.on("click", ID_POINTS, (e) => {

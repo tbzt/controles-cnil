@@ -30,5 +30,6 @@ Particulier et les trois lignes sans secteur dans Autres.
 Les contours départementaux simplifiés utilisés par la vue Évolution sont
 dans `data/referentiels-source/contours-departements.geojson` (source :
 gregoiredavid/france-geojson, données OpenStreetMap sous ODbL, métropole et
-Corse). `departements.json` porte aussi la population de chaque département,
+Corse) ; ceux des cinq départements d'outre-mer, pour les encarts de la
+carte, dans `contours-outre-mer.geojson`, même source. `departements.json` porte aussi la population de chaque département,
 somme des populations communales du référentiel.

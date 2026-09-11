@@ -92,7 +92,7 @@ vendor/                                                   MapLibre GL JS épingl
 data/raw/                fichiers CNIL bruts, immuables, ajout seul
 data/processed/          données normalisées, localisations, GeoJSON, statistiques
 data/geocoding/          surcouche d'adresses validées, alias, corrections
-data/referentiels-source/ référentiels externes versionnés (communes, contours départementaux)
+data/referentiels-source/ référentiels externes versionnés (communes, contours départementaux et outre-mer)
 data/metadata/           manifeste, schéma, rapport qualité, versions, journal
 pipeline/                scripts Python (bibliothèque standard uniquement) et tests
 outils/                  scripts d'usage ponctuel
@@ -179,6 +179,10 @@ Aucun build : HTML, CSS et modules ES natifs, MapLibre GL JS vendorisé.
 - `js/carte/communes.js` : agrégation de la sélection par commune (point
   moyen des contrôles, famille dominante) et couches de cercles ;
   `js/carte/cnil.js` : la pastille du siège de la CNIL ;
+  `js/carte/encarts.js` : les encarts outre-mer, un contour SVG par
+  territoire avec le nombre de contrôles de la sélection, cliquable pour
+  recadrer la carte principale (pas de mini-cartes WebGL : trop lourd pour
+  une vingtaine de contrôles) ;
   `js/vues/barre-outils.js` : les deux commutateurs ;
   `js/vues/encart-etranger.js` : les organismes étrangers par pays.
 - `js/graphiques/svg.js` : quatre primitives SVG sans bibliothèque (barres
