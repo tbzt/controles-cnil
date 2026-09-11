@@ -1,0 +1,337 @@
+{
+  "homepage": "https://github.com/tbzt/controles-cnil",
+  "licenses": [
+    {
+      "name": "etalab-2.0",
+      "path": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+      "title": "Licence Ouverte / Open Licence 2.0"
+    }
+  ],
+  "name": "controles-cnil",
+  "profile": "tabular-data-package",
+  "resources": [
+    {
+      "description": "Un contrôle par ligne, valeurs brutes conservées dans les colonnes *_source.",
+      "dialect": {
+        "delimiter": ",",
+        "header": true,
+        "lineTerminator": "\n",
+        "quoteChar": "\""
+      },
+      "encoding": "utf-8",
+      "format": "csv",
+      "name": "controles",
+      "path": "../processed/controles.csv",
+      "schema": {
+        "fields": [
+          {
+            "constraints": {
+              "pattern": "^20[0-9]{2}-[0-9a-f]{8}-[0-9]+$",
+              "required": true,
+              "unique": true
+            },
+            "description": "Identifiant stable : année, hachage SHA-1 court du contenu source, rang parmi les lignes identiques.",
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "minimum": 2014,
+              "required": true
+            },
+            "description": "Année du contrôle, déduite du fichier source.",
+            "name": "annee",
+            "type": "integer"
+          },
+          {
+            "constraints": {
+              "enum": [
+                "loi78",
+                "rgpd",
+                "directive_police_justice",
+                "rgpd_ou_directive",
+                "videoprotection"
+              ],
+              "required": true
+            },
+            "description": "Fondement juridique harmonisé.",
+            "name": "fondement",
+            "type": "string"
+          },
+          {
+            "description": "Libellé brut de la colonne type ou catégorie de contrôle.",
+            "name": "fondement_source",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "enum": [
+                "sur_place",
+                "en_ligne",
+                "sur_pieces",
+                "sur_audition",
+                "non_renseignee"
+              ],
+              "required": true
+            },
+            "description": "Modalité harmonisée ; non_renseignee avant 2017 sauf « contrôle en ligne ».",
+            "name": "modalite",
+            "type": "string"
+          },
+          {
+            "description": "Libellé brut de la modalité.",
+            "name": "modalite_source",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "required": true
+            },
+            "description": "Nom de l'organisme contrôlé tel que publié, espaces normalisées.",
+            "name": "organisme",
+            "type": "string"
+          },
+          {
+            "description": "Nom en majuscules sans accents ni ponctuation, pour la recherche et le rapprochement.",
+            "name": "organisme_norm",
+            "type": "string"
+          },
+          {
+            "description": "Ville telle que publiée par la CNIL.",
+            "name": "ville_source",
+            "type": "string"
+          },
+          {
+            "description": "Code département après corrections formelles (zéro initial, valeur multiple) ; 20 et 97 restent à préciser par la ville.",
+            "name": "departement",
+            "type": "string"
+          },
+          {
+            "description": "Code département tel que publié.",
+            "name": "departement_source",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "required": true
+            },
+            "description": "Code ISO 3166-1 alpha-2 ; FR par défaut avant 2021 (drapeau pays_deduit).",
+            "name": "pays",
+            "type": "string"
+          },
+          {
+            "description": "Pays tel que publié (colonne présente depuis 2021).",
+            "name": "pays_source",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "required": true
+            },
+            "description": "Secteur fin harmonisé (orthographe unifiée), voir referentiels/secteurs.csv.",
+            "name": "secteur",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "required": true
+            },
+            "description": "Famille de secteurs comparable sur toute la période, voir referentiels/familles.json.",
+            "name": "famille",
+            "type": "string"
+          },
+          {
+            "description": "Libellé de secteur tel que publié.",
+            "name": "secteur_source",
+            "type": "string"
+          },
+          {
+            "description": "Nom du fichier brut dans data/raw/.",
+            "name": "source_fichier",
+            "type": "string"
+          },
+          {
+            "description": "Numéro de la ligne physique de début de l'enregistrement dans le fichier brut (l'en-tête est la ligne 1).",
+            "name": "source_ligne",
+            "type": "integer"
+          },
+          {
+            "description": "Drapeaux séparés par | : ce qui a été déduit, corrigé ou signalé sur cette ligne.",
+            "name": "qualite",
+            "type": "string"
+          }
+        ],
+        "primaryKey": "id"
+      }
+    },
+    {
+      "description": "Deux localisations par contrôle, lieu de l'organisme et lieu du contrôle, avec précision et méthode.",
+      "dialect": {
+        "delimiter": ",",
+        "header": true,
+        "lineTerminator": "\n",
+        "quoteChar": "\""
+      },
+      "encoding": "utf-8",
+      "format": "csv",
+      "name": "localisations",
+      "path": "../processed/localisations.csv",
+      "schema": {
+        "fields": [
+          {
+            "constraints": {
+              "required": true,
+              "unique": true
+            },
+            "description": "Identifiant du contrôle (clé vers controles.csv).",
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "description": "Pays de l'organisme après alias (ISO 3166-1 alpha-2).",
+            "name": "pays",
+            "type": "string"
+          },
+          {
+            "description": "Commune de l'organisme (code INSEE), vide si non résolue.",
+            "name": "code_insee",
+            "type": "string"
+          },
+          {
+            "description": "Nom officiel de la commune.",
+            "name": "commune",
+            "type": "string"
+          },
+          {
+            "description": "Code département de la commune résolue.",
+            "name": "departement",
+            "type": "string"
+          },
+          {
+            "description": "Code région.",
+            "name": "region",
+            "type": "string"
+          },
+          {
+            "description": "Longitude WGS84 du lieu de l'organisme (4 décimales pour une commune, 6 pour une adresse).",
+            "name": "org_lon",
+            "type": "number"
+          },
+          {
+            "description": "Latitude WGS84 du lieu de l'organisme.",
+            "name": "org_lat",
+            "type": "number"
+          },
+          {
+            "constraints": {
+              "enum": [
+                "adresse",
+                "commune",
+                "departement",
+                "pays",
+                "institution",
+                "aucune"
+              ]
+            },
+            "description": "Précision du lieu de l'organisme.",
+            "name": "org_precision",
+            "type": "string"
+          },
+          {
+            "description": "Comment le lieu de l'organisme a été obtenu (surcouche, alias, referentiel_communes, centroide_departement, centroide_pays, aucune).",
+            "name": "org_methode",
+            "type": "string"
+          },
+          {
+            "description": "Adresse, seulement si la précision est l'adresse.",
+            "name": "org_adresse",
+            "type": "string"
+          },
+          {
+            "description": "Origine de la position (référentiel daté, carte uMap, annuaire des entreprises avec SIREN…).",
+            "name": "org_source",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "enum": [
+                "cnil",
+                "organisme"
+              ]
+            },
+            "description": "Où le contrôle a eu lieu : cnil (en ligne, sur pièces, sur audition) ou organisme.",
+            "name": "ctrl_lieu",
+            "type": "string"
+          },
+          {
+            "description": "Longitude WGS84 du lieu du contrôle.",
+            "name": "ctrl_lon",
+            "type": "number"
+          },
+          {
+            "description": "Latitude WGS84 du lieu du contrôle.",
+            "name": "ctrl_lat",
+            "type": "number"
+          },
+          {
+            "constraints": {
+              "enum": [
+                "adresse",
+                "commune",
+                "departement",
+                "pays",
+                "institution",
+                "aucune"
+              ]
+            },
+            "description": "Précision du lieu du contrôle ; institution pour le siège de la CNIL.",
+            "name": "ctrl_precision",
+            "type": "string"
+          },
+          {
+            "description": "Drapeaux séparés par | (departement_contredit_par_ville, commune_homonyme, ville_non_resolue, lieu_controle_inconnu…).",
+            "name": "drapeaux",
+            "type": "string"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "fields": "id",
+            "reference": {
+              "fields": "id",
+              "resource": "controles"
+            }
+          }
+        ],
+        "primaryKey": "id"
+      }
+    },
+    {
+      "description": "Points au lieu de l'organisme avec les propriétés de filtrage ; voir stats.json pour le siège de la CNIL.",
+      "format": "geojson",
+      "name": "controles-geojson",
+      "path": "../processed/controles.geojson"
+    },
+    {
+      "description": "Agrégats précalculés.",
+      "format": "json",
+      "name": "stats",
+      "path": "../processed/stats.json"
+    }
+  ],
+  "sources": [
+    {
+      "path": "https://www.data.gouv.fr/datasets/controles-realises-par-la-cnil",
+      "title": "CNIL, Contrôles réalisés par la CNIL (data.gouv.fr)"
+    },
+    {
+      "path": "https://geo.api.gouv.fr/",
+      "title": "geo.api.gouv.fr, référentiel des communes"
+    },
+    {
+      "path": "https://recherche-entreprises.api.gouv.fr/",
+      "title": "Annuaire des entreprises (SIRENE)"
+    }
+  ],
+  "title": "Contrôles réalisés par la CNIL, 2014 et suivantes, normalisés et localisés"
+}

@@ -13,9 +13,8 @@ dans cet ordre :
    code de sortie non nul sur règle fatale.
 5. `build.py` : GeoJSON, statistiques, journal des changements.
 
-État : `fetch.py`, `transform.py`, `geocode.py` et `validate.py` sont
-écrits et testés, les référentiels sont en place
-(`data/processed/referentiels/`) ; `build.py` est à venir.
+État : les cinq scripts sont écrits et testés ; le workflow GitHub Actions
+qui les enchaîne est l'étape suivante.
 
 ```bash
 python3 pipeline/fetch.py              # récupère ce qui a changé
@@ -24,6 +23,7 @@ python3 pipeline/fetch.py --hors-ligne # vérifie seulement que data/raw/ corres
 python3 pipeline/transform.py          # data/raw/ → data/processed/controles.csv et .json
 python3 pipeline/geocode.py            # controles.csv → data/processed/localisations.csv (hors ligne)
 python3 pipeline/validate.py           # règles de qualité → data/metadata/quality-report.json ; code 1 si fatal
+python3 pipeline/build.py              # → controles.geojson, stats.json, data/metadata/schema.json
 python3 outils/importer-umap.py <export.umap> --adresse-inverse   # ponctuel : surcouche d'adresses depuis uMap
 python3 outils/proposer-adresses.py    # ponctuel : sièges via l'annuaire des entreprises (score haut appliqué, moyen à valider)
 python3 -m unittest discover -s pipeline/tests -t .

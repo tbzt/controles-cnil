@@ -1,0 +1,5435 @@
+{
+  "annee_x_departement": {
+    "2014": {
+      "03": 2,
+      "06": 1,
+      "08": 1,
+      "12": 1,
+      "13": 9,
+      "14": 3,
+      "16": 1,
+      "17": 1,
+      "18": 1,
+      "21": 3,
+      "22": 2,
+      "25": 2,
+      "26": 4,
+      "29": 1,
+      "2A": 1,
+      "31": 8,
+      "33": 5,
+      "34": 5,
+      "35": 2,
+      "36": 3,
+      "37": 1,
+      "38": 2,
+      "42": 5,
+      "44": 3,
+      "45": 9,
+      "47": 1,
+      "49": 6,
+      "51": 2,
+      "53": 2,
+      "54": 2,
+      "56": 1,
+      "57": 2,
+      "58": 1,
+      "59": 18,
+      "60": 3,
+      "62": 6,
+      "63": 3,
+      "67": 7,
+      "68": 1,
+      "69": 5,
+      "71": 1,
+      "72": 1,
+      "73": 4,
+      "74": 11,
+      "75": 143,
+      "76": 1,
+      "77": 6,
+      "78": 8,
+      "79": 2,
+      "80": 3,
+      "84": 4,
+      "85": 2,
+      "86": 1,
+      "87": 1,
+      "88": 1,
+      "89": 6,
+      "91": 5,
+      "92": 43,
+      "93": 9,
+      "94": 11,
+      "95": 8,
+      "974": 14
+    },
+    "2015": {
+      "01": 1,
+      "06": 1,
+      "08": 1,
+      "13": 13,
+      "14": 3,
+      "19": 3,
+      "24": 2,
+      "25": 2,
+      "26": 3,
+      "28": 3,
+      "2A": 1,
+      "31": 1,
+      "33": 11,
+      "34": 10,
+      "35": 5,
+      "37": 5,
+      "38": 2,
+      "39": 2,
+      "43": 1,
+      "44": 3,
+      "45": 6,
+      "50": 4,
+      "51": 4,
+      "54": 1,
+      "56": 2,
+      "59": 12,
+      "60": 5,
+      "62": 1,
+      "64": 2,
+      "65": 4,
+      "67": 4,
+      "69": 8,
+      "71": 4,
+      "72": 5,
+      "74": 1,
+      "75": 269,
+      "76": 3,
+      "77": 7,
+      "78": 6,
+      "80": 2,
+      "83": 4,
+      "86": 2,
+      "89": 1,
+      "91": 3,
+      "92": 32,
+      "93": 8,
+      "94": 17,
+      "95": 6
+    },
+    "2016": {
+      "02": 2,
+      "13": 12,
+      "21": 1,
+      "22": 1,
+      "26": 2,
+      "27": 5,
+      "2A": 2,
+      "31": 4,
+      "33": 8,
+      "35": 5,
+      "38": 2,
+      "42": 1,
+      "44": 4,
+      "45": 3,
+      "49": 1,
+      "51": 1,
+      "53": 2,
+      "57": 6,
+      "59": 14,
+      "60": 7,
+      "62": 7,
+      "66": 2,
+      "67": 2,
+      "68": 1,
+      "69": 12,
+      "72": 2,
+      "74": 3,
+      "75": 215,
+      "76": 3,
+      "77": 5,
+      "78": 6,
+      "84": 3,
+      "85": 1,
+      "87": 3,
+      "89": 1,
+      "91": 2,
+      "92": 42,
+      "93": 18,
+      "94": 12,
+      "95": 7
+    },
+    "2017": {
+      "06": 6,
+      "13": 8,
+      "14": 2,
+      "23": 2,
+      "27": 2,
+      "2A": 1,
+      "31": 2,
+      "33": 5,
+      "34": 3,
+      "35": 3,
+      "38": 7,
+      "40": 1,
+      "42": 1,
+      "44": 5,
+      "50": 1,
+      "51": 5,
+      "53": 1,
+      "57": 4,
+      "59": 9,
+      "60": 2,
+      "64": 2,
+      "67": 3,
+      "68": 7,
+      "69": 11,
+      "71": 1,
+      "75": 152,
+      "77": 4,
+      "78": 9,
+      "79": 2,
+      "80": 1,
+      "84": 1,
+      "88": 1,
+      "90": 1,
+      "91": 6,
+      "92": 36,
+      "93": 15,
+      "94": 12,
+      "95": 7
+    },
+    "2018": {
+      "02": 2,
+      "06": 1,
+      "11": 1,
+      "13": 10,
+      "14": 1,
+      "16": 1,
+      "17": 2,
+      "21": 1,
+      "22": 1,
+      "24": 1,
+      "31": 5,
+      "33": 3,
+      "34": 2,
+      "35": 3,
+      "38": 4,
+      "44": 1,
+      "52": 1,
+      "54": 1,
+      "56": 2,
+      "57": 1,
+      "59": 13,
+      "60": 1,
+      "61": 1,
+      "62": 1,
+      "63": 1,
+      "64": 4,
+      "67": 3,
+      "68": 1,
+      "69": 9,
+      "74": 1,
+      "75": 154,
+      "76": 1,
+      "77": 2,
+      "78": 7,
+      "86": 1,
+      "89": 1,
+      "91": 4,
+      "92": 31,
+      "93": 16,
+      "94": 12,
+      "95": 2
+    },
+    "2019": {
+      "": 2,
+      "06": 1,
+      "13": 8,
+      "17": 1,
+      "21": 1,
+      "22": 2,
+      "25": 1,
+      "26": 3,
+      "2B": 1,
+      "30": 2,
+      "31": 4,
+      "33": 4,
+      "34": 1,
+      "35": 4,
+      "38": 2,
+      "39": 1,
+      "44": 1,
+      "45": 1,
+      "49": 2,
+      "50": 1,
+      "53": 1,
+      "54": 1,
+      "56": 1,
+      "57": 1,
+      "59": 20,
+      "62": 1,
+      "63": 2,
+      "65": 1,
+      "69": 6,
+      "71": 1,
+      "72": 1,
+      "74": 1,
+      "75": 150,
+      "76": 2,
+      "77": 5,
+      "78": 2,
+      "83": 2,
+      "88": 1,
+      "89": 1,
+      "91": 6,
+      "92": 33,
+      "93": 9,
+      "94": 4,
+      "95": 5,
+      "972": 1
+    },
+    "2020": {
+      "": 10,
+      "08": 1,
+      "13": 6,
+      "14": 2,
+      "21": 2,
+      "24": 2,
+      "26": 1,
+      "31": 4,
+      "33": 2,
+      "35": 2,
+      "37": 2,
+      "41": 1,
+      "42": 2,
+      "44": 5,
+      "45": 1,
+      "49": 1,
+      "54": 2,
+      "57": 3,
+      "59": 7,
+      "60": 2,
+      "69": 1,
+      "75": 130,
+      "76": 1,
+      "77": 1,
+      "78": 2,
+      "91": 2,
+      "92": 38,
+      "93": 11,
+      "94": 2,
+      "95": 1
+    },
+    "2021": {
+      "": 10,
+      "06": 5,
+      "13": 9,
+      "14": 2,
+      "19": 1,
+      "21": 1,
+      "26": 1,
+      "27": 1,
+      "28": 1,
+      "29": 1,
+      "30": 4,
+      "31": 8,
+      "33": 3,
+      "34": 1,
+      "35": 2,
+      "38": 1,
+      "41": 1,
+      "44": 9,
+      "45": 4,
+      "51": 1,
+      "54": 1,
+      "56": 4,
+      "58": 1,
+      "59": 9,
+      "60": 1,
+      "63": 2,
+      "64": 1,
+      "67": 5,
+      "68": 1,
+      "69": 13,
+      "73": 1,
+      "74": 1,
+      "75": 181,
+      "76": 1,
+      "77": 8,
+      "78": 7,
+      "79": 1,
+      "80": 1,
+      "84": 2,
+      "85": 1,
+      "89": 1,
+      "92": 58,
+      "93": 6,
+      "94": 5,
+      "95": 6
+    },
+    "2022": {
+      "": 13,
+      "02": 2,
+      "06": 3,
+      "13": 13,
+      "14": 1,
+      "24": 1,
+      "25": 1,
+      "27": 2,
+      "28": 1,
+      "2B": 1,
+      "30": 3,
+      "31": 7,
+      "33": 10,
+      "34": 5,
+      "35": 5,
+      "37": 2,
+      "38": 3,
+      "39": 1,
+      "44": 8,
+      "45": 1,
+      "52": 2,
+      "57": 1,
+      "59": 16,
+      "62": 1,
+      "63": 1,
+      "67": 2,
+      "68": 1,
+      "69": 11,
+      "71": 1,
+      "73": 1,
+      "75": 139,
+      "76": 1,
+      "77": 2,
+      "78": 9,
+      "79": 1,
+      "83": 1,
+      "84": 2,
+      "87": 2,
+      "91": 2,
+      "92": 32,
+      "93": 16,
+      "94": 13,
+      "95": 4,
+      "976": 1
+    },
+    "2023": {
+      "": 25,
+      "01": 1,
+      "02": 1,
+      "04": 1,
+      "06": 6,
+      "08": 1,
+      "09": 1,
+      "10": 2,
+      "11": 1,
+      "12": 1,
+      "13": 1,
+      "14": 1,
+      "18": 1,
+      "21": 1,
+      "24": 1,
+      "25": 1,
+      "26": 1,
+      "28": 2,
+      "29": 1,
+      "2A": 2,
+      "30": 1,
+      "31": 3,
+      "33": 5,
+      "34": 1,
+      "35": 2,
+      "36": 1,
+      "38": 3,
+      "42": 2,
+      "44": 2,
+      "45": 2,
+      "46": 2,
+      "49": 2,
+      "50": 1,
+      "51": 2,
+      "54": 3,
+      "56": 1,
+      "57": 2,
+      "59": 20,
+      "60": 1,
+      "64": 1,
+      "65": 1,
+      "66": 1,
+      "67": 2,
+      "68": 1,
+      "69": 6,
+      "71": 1,
+      "74": 3,
+      "75": 117,
+      "77": 5,
+      "78": 8,
+      "81": 2,
+      "83": 5,
+      "84": 4,
+      "87": 2,
+      "88": 1,
+      "89": 1,
+      "91": 6,
+      "92": 39,
+      "93": 10,
+      "94": 11,
+      "95": 3,
+      "971": 1,
+      "973": 1,
+      "974": 2
+    }
+  },
+  "annee_x_famille": {
+    "2014": {
+      "assurance": 10,
+      "banque": 17,
+      "collectivites_territoriales": 72,
+      "commerce": 195,
+      "education_culture_sport": 45,
+      "etat_regalien": 22,
+      "immobilier": 2,
+      "sante_social": 42,
+      "telecommunications": 3,
+      "transports": 13
+    },
+    "2015": {
+      "assurance": 3,
+      "banque": 58,
+      "collectivites_territoriales": 57,
+      "commerce": 209,
+      "education_culture_sport": 23,
+      "etat_regalien": 35,
+      "immobilier": 10,
+      "sante_social": 53,
+      "telecommunications": 34,
+      "transports": 14
+    },
+    "2016": {
+      "assurance": 3,
+      "collectivites_territoriales": 61,
+      "commerce": 259,
+      "education_culture_sport": 23,
+      "etat_regalien": 49,
+      "immobilier": 1,
+      "politique": 3,
+      "sante_social": 21,
+      "telecommunications": 3,
+      "transports": 7
+    },
+    "2017": {
+      "assurance": 9,
+      "banque": 4,
+      "collectivites_territoriales": 24,
+      "commerce": 178,
+      "education_culture_sport": 20,
+      "etat_regalien": 46,
+      "immobilier": 4,
+      "politique": 2,
+      "sante_social": 35,
+      "transports": 19
+    },
+    "2018": {
+      "associatif": 2,
+      "assurance": 12,
+      "banque": 1,
+      "collectivites_territoriales": 17,
+      "commerce": 133,
+      "education_culture_sport": 22,
+      "energie_environnement": 1,
+      "etat_regalien": 35,
+      "immobilier": 10,
+      "presse": 2,
+      "sante_social": 38,
+      "telecommunications": 1,
+      "transports": 24,
+      "travail": 12
+    },
+    "2019": {
+      "associatif": 3,
+      "assurance": 10,
+      "banque": 10,
+      "collectivites_territoriales": 21,
+      "commerce": 122,
+      "education_culture_sport": 20,
+      "energie_environnement": 8,
+      "etat_regalien": 19,
+      "immobilier": 3,
+      "politique": 8,
+      "sante_social": 22,
+      "telecommunications": 14,
+      "transports": 12,
+      "travail": 29
+    },
+    "2020": {
+      "associatif": 2,
+      "assurance": 10,
+      "banque": 3,
+      "collectivites_territoriales": 7,
+      "commerce": 87,
+      "education_culture_sport": 5,
+      "energie_environnement": 6,
+      "etat_regalien": 19,
+      "immobilier": 1,
+      "politique": 7,
+      "presse": 1,
+      "sante_social": 44,
+      "telecommunications": 17,
+      "transports": 28,
+      "travail": 10
+    },
+    "2021": {
+      "associatif": 11,
+      "assurance": 4,
+      "autres": 3,
+      "banque": 16,
+      "collectivites_territoriales": 17,
+      "commerce": 142,
+      "education_culture_sport": 21,
+      "energie_environnement": 13,
+      "etat_regalien": 27,
+      "immobilier": 7,
+      "politique": 5,
+      "presse": 5,
+      "sante_social": 74,
+      "telecommunications": 13,
+      "transports": 12,
+      "travail": 14
+    },
+    "2022": {
+      "associatif": 8,
+      "assurance": 7,
+      "autres": 1,
+      "banque": 17,
+      "collectivites_territoriales": 16,
+      "commerce": 157,
+      "education_culture_sport": 22,
+      "energie_environnement": 2,
+      "etat_regalien": 33,
+      "immobilier": 16,
+      "politique": 10,
+      "presse": 3,
+      "sante_social": 29,
+      "telecommunications": 13,
+      "transports": 7,
+      "travail": 4
+    },
+    "2023": {
+      "associatif": 1,
+      "assurance": 1,
+      "autres": 3,
+      "banque": 18,
+      "collectivites_territoriales": 51,
+      "commerce": 129,
+      "education_culture_sport": 22,
+      "energie_environnement": 1,
+      "etat_regalien": 25,
+      "immobilier": 1,
+      "politique": 2,
+      "sante_social": 47,
+      "telecommunications": 15,
+      "transports": 6,
+      "travail": 20
+    }
+  },
+  "annee_x_fondement": {
+    "2014": {
+      "loi78": 333,
+      "videoprotection": 88
+    },
+    "2015": {
+      "loi78": 409,
+      "videoprotection": 87
+    },
+    "2016": {
+      "loi78": 336,
+      "videoprotection": 94
+    },
+    "2017": {
+      "loi78": 294,
+      "videoprotection": 47
+    },
+    "2018": {
+      "loi78": 190,
+      "rgpd_ou_directive": 100,
+      "videoprotection": 20
+    },
+    "2019": {
+      "directive_police_justice": 14,
+      "loi78": 2,
+      "rgpd": 285
+    },
+    "2020": {
+      "rgpd": 247
+    },
+    "2021": {
+      "rgpd": 384
+    },
+    "2022": {
+      "rgpd": 345
+    },
+    "2023": {
+      "rgpd": 329,
+      "videoprotection": 13
+    }
+  },
+  "annee_x_lieu_controle": {
+    "2014": {
+      "cnil": 58,
+      "organisme": 363
+    },
+    "2015": {
+      "cnil": 155,
+      "organisme": 341
+    },
+    "2016": {
+      "cnil": 101,
+      "organisme": 329
+    },
+    "2017": {
+      "cnil": 85,
+      "organisme": 256
+    },
+    "2018": {
+      "cnil": 106,
+      "organisme": 204
+    },
+    "2019": {
+      "cnil": 131,
+      "organisme": 170
+    },
+    "2020": {
+      "cnil": 175,
+      "organisme": 72
+    },
+    "2021": {
+      "cnil": 265,
+      "organisme": 119
+    },
+    "2022": {
+      "cnil": 202,
+      "organisme": 143
+    },
+    "2023": {
+      "cnil": 185,
+      "organisme": 157
+    }
+  },
+  "annee_x_modalite": {
+    "2014": {
+      "en_ligne": 58,
+      "non_renseignee": 363
+    },
+    "2015": {
+      "en_ligne": 155,
+      "non_renseignee": 341
+    },
+    "2016": {
+      "en_ligne": 101,
+      "non_renseignee": 329
+    },
+    "2017": {
+      "en_ligne": 65,
+      "sur_audition": 4,
+      "sur_pieces": 16,
+      "sur_place": 256
+    },
+    "2018": {
+      "en_ligne": 51,
+      "sur_audition": 4,
+      "sur_pieces": 51,
+      "sur_place": 204
+    },
+    "2019": {
+      "en_ligne": 53,
+      "sur_audition": 18,
+      "sur_pieces": 60,
+      "sur_place": 170
+    },
+    "2020": {
+      "en_ligne": 82,
+      "sur_audition": 19,
+      "sur_pieces": 74,
+      "sur_place": 72
+    },
+    "2021": {
+      "en_ligne": 173,
+      "sur_audition": 28,
+      "sur_pieces": 64,
+      "sur_place": 119
+    },
+    "2022": {
+      "en_ligne": 128,
+      "sur_audition": 31,
+      "sur_pieces": 43,
+      "sur_place": 143
+    },
+    "2023": {
+      "en_ligne": 128,
+      "sur_audition": 17,
+      "sur_pieces": 40,
+      "sur_place": 157
+    }
+  },
+  "annee_x_pays": {
+    "2014": {
+      "FR": 421
+    },
+    "2015": {
+      "FR": 496
+    },
+    "2016": {
+      "FR": 430
+    },
+    "2017": {
+      "FR": 341
+    },
+    "2018": {
+      "FR": 310
+    },
+    "2019": {
+      "FR": 301
+    },
+    "2020": {
+      "FR": 237,
+      "GB": 3,
+      "US": 7
+    },
+    "2021": {
+      "BE": 1,
+      "CA": 2,
+      "FR": 375,
+      "GB": 1,
+      "IE": 2,
+      "PL": 1,
+      "US": 2
+    },
+    "2022": {
+      "CN": 2,
+      "FR": 332,
+      "GB": 2,
+      "IE": 2,
+      "US": 7
+    },
+    "2023": {
+      "BZ": 2,
+      "FR": 317,
+      "GB": 2,
+      "IE": 3,
+      "IL": 2,
+      "KR": 1,
+      "MG": 1,
+      "NL": 2,
+      "US": 12
+    }
+  },
+  "annee_x_region": {
+    "2014": {
+      "04": 14,
+      "11": 233,
+      "24": 14,
+      "27": 13,
+      "28": 4,
+      "32": 30,
+      "44": 16,
+      "52": 14,
+      "53": 6,
+      "75": 12,
+      "76": 14,
+      "84": 36,
+      "93": 14,
+      "94": 1
+    },
+    "2015": {
+      "11": 348,
+      "24": 14,
+      "27": 9,
+      "28": 10,
+      "32": 20,
+      "44": 10,
+      "52": 8,
+      "53": 7,
+      "75": 20,
+      "76": 15,
+      "84": 16,
+      "93": 18,
+      "94": 1
+    },
+    "2016": {
+      "11": 307,
+      "24": 3,
+      "27": 2,
+      "28": 8,
+      "32": 30,
+      "44": 10,
+      "52": 10,
+      "53": 6,
+      "75": 11,
+      "76": 6,
+      "84": 20,
+      "93": 15,
+      "94": 2
+    },
+    "2017": {
+      "11": 241,
+      "27": 2,
+      "28": 5,
+      "32": 12,
+      "44": 20,
+      "52": 6,
+      "53": 3,
+      "75": 12,
+      "76": 5,
+      "84": 19,
+      "93": 15,
+      "94": 1
+    },
+    "2018": {
+      "11": 228,
+      "27": 2,
+      "28": 3,
+      "32": 17,
+      "44": 7,
+      "52": 1,
+      "53": 6,
+      "75": 12,
+      "76": 8,
+      "84": 15,
+      "93": 11
+    },
+    "2019": {
+      "": 2,
+      "02": 1,
+      "11": 214,
+      "24": 1,
+      "27": 5,
+      "28": 3,
+      "32": 21,
+      "44": 3,
+      "52": 5,
+      "53": 7,
+      "75": 5,
+      "76": 8,
+      "84": 14,
+      "93": 11,
+      "94": 1
+    },
+    "2020": {
+      "": 10,
+      "11": 187,
+      "24": 4,
+      "27": 2,
+      "28": 3,
+      "32": 9,
+      "44": 6,
+      "52": 6,
+      "53": 2,
+      "75": 4,
+      "76": 4,
+      "84": 4,
+      "93": 6
+    },
+    "2021": {
+      "": 10,
+      "11": 271,
+      "24": 6,
+      "27": 3,
+      "28": 4,
+      "32": 11,
+      "44": 8,
+      "52": 10,
+      "53": 7,
+      "75": 6,
+      "76": 13,
+      "84": 19,
+      "93": 16
+    },
+    "2022": {
+      "": 13,
+      "06": 1,
+      "11": 217,
+      "24": 4,
+      "27": 3,
+      "28": 4,
+      "32": 19,
+      "44": 6,
+      "52": 8,
+      "53": 5,
+      "75": 14,
+      "76": 15,
+      "84": 16,
+      "93": 19,
+      "94": 1
+    },
+    "2023": {
+      "": 25,
+      "01": 1,
+      "03": 1,
+      "04": 2,
+      "11": 199,
+      "24": 6,
+      "27": 4,
+      "28": 2,
+      "32": 22,
+      "44": 14,
+      "52": 4,
+      "53": 4,
+      "75": 9,
+      "76": 14,
+      "84": 16,
+      "93": 17,
+      "94": 2
+    }
+  },
+  "annee_x_secteur": {
+    "2014": {
+      "assurance": 10,
+      "banque": 17,
+      "collectivites_territoriales": 72,
+      "commerce": 195,
+      "education_culture_sport": 45,
+      "immobilier": 2,
+      "police_justice_securite": 22,
+      "sante_social": 42,
+      "telecommunications": 3,
+      "transports": 13
+    },
+    "2015": {
+      "assurance": 3,
+      "banque": 58,
+      "collectivites_territoriales": 57,
+      "commerce": 209,
+      "education_culture_sport": 23,
+      "immobilier": 10,
+      "police_justice_securite": 35,
+      "sante_social": 53,
+      "telecommunications": 34,
+      "transports": 14
+    },
+    "2016": {
+      "assurance": 3,
+      "collectivites_territoriales": 61,
+      "commerce": 258,
+      "economie": 1,
+      "education_culture_sport": 23,
+      "immobilier": 1,
+      "police_justice_securite": 49,
+      "politique": 3,
+      "sante_social": 21,
+      "telecommunications": 3,
+      "transports": 7
+    },
+    "2017": {
+      "assurance": 9,
+      "banque": 4,
+      "collectivites_territoriales": 24,
+      "commerce": 174,
+      "economie": 4,
+      "education_culture_sport": 20,
+      "immobilier": 4,
+      "ministeres": 2,
+      "police_justice_securite": 44,
+      "politique": 2,
+      "sante_social": 35,
+      "transports": 19
+    },
+    "2018": {
+      "associatif": 2,
+      "assurance": 12,
+      "banque": 1,
+      "collectivites_territoriales": 17,
+      "commerce": 125,
+      "culture": 5,
+      "education": 13,
+      "energie": 1,
+      "finances_publiques": 5,
+      "immobilier": 10,
+      "jeux": 1,
+      "police_justice_securite": 1,
+      "presse": 2,
+      "regalien": 29,
+      "sante": 18,
+      "sante_social": 12,
+      "social": 8,
+      "sport": 3,
+      "telecommunications": 1,
+      "tourisme": 8,
+      "transports": 24,
+      "travail": 12
+    },
+    "2019": {
+      "associatif": 3,
+      "assurance": 10,
+      "banque": 10,
+      "collectivites_territoriales": 21,
+      "commerce": 120,
+      "culture": 1,
+      "education": 18,
+      "energie": 6,
+      "environnement": 2,
+      "immobilier": 3,
+      "jeux": 1,
+      "politique": 8,
+      "regalien": 17,
+      "sante": 20,
+      "social": 2,
+      "statistiques_publiques": 2,
+      "telecommunications": 14,
+      "tourisme": 2,
+      "transports": 12,
+      "travail": 29
+    },
+    "2020": {
+      "associatif": 2,
+      "assurance": 10,
+      "banque": 3,
+      "collectivites_territoriales": 7,
+      "commerce": 87,
+      "culture": 2,
+      "energie": 6,
+      "immobilier": 1,
+      "jeux": 1,
+      "politique": 7,
+      "presse": 1,
+      "regalien": 18,
+      "sante": 40,
+      "social": 4,
+      "sport": 2,
+      "statistiques_publiques": 1,
+      "telecommunications": 17,
+      "transports": 28,
+      "travail": 10
+    },
+    "2021": {
+      "associatif": 11,
+      "assurance": 4,
+      "banque": 16,
+      "collectivites_territoriales": 17,
+      "commerce": 139,
+      "culture": 7,
+      "education": 10,
+      "energie": 8,
+      "environnement": 5,
+      "immobilier": 7,
+      "inconnu": 3,
+      "jeux": 3,
+      "nouvelles_technologies": 3,
+      "politique": 4,
+      "presse": 5,
+      "regalien": 26,
+      "sante": 73,
+      "social": 1,
+      "sport": 1,
+      "statistiques_publiques": 1,
+      "telecommunications": 10,
+      "tourisme": 3,
+      "transports": 12,
+      "travail": 14,
+      "vote_electronique": 1
+    },
+    "2022": {
+      "associatif": 8,
+      "assurance": 7,
+      "banque": 17,
+      "collectivites_territoriales": 16,
+      "commerce": 156,
+      "culture": 3,
+      "education": 8,
+      "energie": 2,
+      "immobilier": 16,
+      "jeux": 6,
+      "particulier": 1,
+      "politique": 10,
+      "presse": 3,
+      "regalien": 32,
+      "sante": 24,
+      "social": 5,
+      "sport": 5,
+      "statistiques_publiques": 1,
+      "telecommunications": 13,
+      "tourisme": 1,
+      "transports": 7,
+      "travail": 4
+    },
+    "2023": {
+      "associatif": 1,
+      "assurance": 1,
+      "banque": 18,
+      "collectivites_territoriales": 51,
+      "commerce": 127,
+      "cookies": 1,
+      "culture": 3,
+      "education": 16,
+      "energie": 1,
+      "finances_publiques": 4,
+      "immobilier": 1,
+      "particulier": 3,
+      "politique": 2,
+      "regalien": 21,
+      "sante": 38,
+      "social": 9,
+      "sport": 3,
+      "telecommunications": 15,
+      "tourisme": 1,
+      "transports": 6,
+      "travail": 20
+    }
+  },
+  "couverture": {
+    "annee_max": 2023,
+    "annee_min": 2014,
+    "annees": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "derniere_publication_source": "2024-10-18T08:47:41.745000+00:00",
+    "nb_cartographies": 3614,
+    "nb_controles": 3617,
+    "nb_localises": 3614,
+    "source": "https://www.data.gouv.fr/datasets/controles-realises-par-la-cnil"
+  },
+  "lieux": {
+    "cnil": {
+      "adresse": "3 place de Fontenoy, 75007 Paris",
+      "lat": 48.850654,
+      "lon": 2.307276,
+      "nom": "CNIL"
+    }
+  },
+  "organismes_recurrents": [
+    {
+      "annees": [
+        2014,
+        2015,
+        2018,
+        2019,
+        2020,
+        2021,
+        2023
+      ],
+      "nb_annees": 7,
+      "nb_controles": 29,
+      "organisme": "Ministère de l'Intérieur",
+      "organisme_norm": "MINISTERE DE L INTERIEUR"
+    },
+    {
+      "annees": [
+        2014,
+        2016,
+        2018,
+        2019,
+        2021,
+        2023
+      ],
+      "nb_annees": 6,
+      "nb_controles": 10,
+      "organisme": "Orange",
+      "organisme_norm": "ORANGE"
+    },
+    {
+      "annees": [
+        2014,
+        2016,
+        2019,
+        2022,
+        2023
+      ],
+      "nb_annees": 5,
+      "nb_controles": 15,
+      "organisme": "La Poste",
+      "organisme_norm": "LA POSTE"
+    },
+    {
+      "annees": [
+        2015,
+        2019,
+        2021,
+        2022,
+        2023
+      ],
+      "nb_annees": 5,
+      "nb_controles": 13,
+      "organisme": "MINISTÈRE DE LA JUSTICE",
+      "organisme_norm": "MINISTERE DE LA JUSTICE"
+    },
+    {
+      "annees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "nb_annees": 5,
+      "nb_controles": 10,
+      "organisme": "ASSISTANCE PUBLIQUE HOPITAUX DE PARIS",
+      "organisme_norm": "ASSISTANCE PUBLIQUE HOPITAUX DE PARIS"
+    },
+    {
+      "annees": [
+        2014,
+        2015,
+        2016,
+        2020,
+        2023
+      ],
+      "nb_annees": 5,
+      "nb_controles": 6,
+      "organisme": "Pôle Emploi",
+      "organisme_norm": "POLE EMPLOI"
+    },
+    {
+      "annees": [
+        2014,
+        2015,
+        2017,
+        2019
+      ],
+      "nb_annees": 4,
+      "nb_controles": 8,
+      "organisme": "Optical Center",
+      "organisme_norm": "OPTICAL CENTER"
+    },
+    {
+      "annees": [
+        2016,
+        2018,
+        2020,
+        2022
+      ],
+      "nb_annees": 4,
+      "nb_controles": 7,
+      "organisme": "BOUYGUES TELECOM",
+      "organisme_norm": "BOUYGUES TELECOM"
+    },
+    {
+      "annees": [
+        2016,
+        2017,
+        2021,
+        2023
+      ],
+      "nb_annees": 4,
+      "nb_controles": 6,
+      "organisme": "AIR FRANCE",
+      "organisme_norm": "AIR FRANCE"
+    },
+    {
+      "annees": [
+        2016,
+        2017,
+        2018,
+        2020
+      ],
+      "nb_annees": 4,
+      "nb_controles": 6,
+      "organisme": "SNCF",
+      "organisme_norm": "SNCF"
+    },
+    {
+      "annees": [
+        2014,
+        2017,
+        2019,
+        2020
+      ],
+      "nb_annees": 4,
+      "nb_controles": 5,
+      "organisme": "Accor",
+      "organisme_norm": "ACCOR"
+    },
+    {
+      "annees": [
+        2017,
+        2020,
+        2021,
+        2023
+      ],
+      "nb_annees": 4,
+      "nb_controles": 5,
+      "organisme": "DOCTOLIB",
+      "organisme_norm": "DOCTOLIB"
+    },
+    {
+      "annees": [
+        2016,
+        2018,
+        2020
+      ],
+      "nb_annees": 3,
+      "nb_controles": 7,
+      "organisme": "RATP",
+      "organisme_norm": "RATP"
+    },
+    {
+      "annees": [
+        2014,
+        2015,
+        2022
+      ],
+      "nb_annees": 3,
+      "nb_controles": 6,
+      "organisme": "Bnp Paribas",
+      "organisme_norm": "BNP PARIBAS"
+    },
+    {
+      "annees": [
+        2020,
+        2022,
+        2023
+      ],
+      "nb_annees": 3,
+      "nb_controles": 6,
+      "organisme": "CAISSE NATIONALE DE L'ASSURANCE MALADIE",
+      "organisme_norm": "CAISSE NATIONALE DE L ASSURANCE MALADIE"
+    },
+    {
+      "annees": [
+        2020,
+        2021,
+        2023
+      ],
+      "nb_annees": 3,
+      "nb_controles": 6,
+      "organisme": "DOCTISSIMO",
+      "organisme_norm": "DOCTISSIMO"
+    },
+    {
+      "annees": [
+        2015,
+        2017,
+        2018
+      ],
+      "nb_annees": 3,
+      "nb_controles": 6,
+      "organisme": "FRANCE TÉLEVISIONS",
+      "organisme_norm": "FRANCE TELEVISIONS"
+    },
+    {
+      "annees": [
+        2018,
+        2019,
+        2022
+      ],
+      "nb_annees": 3,
+      "nb_controles": 6,
+      "organisme": "GOOGLE LLC",
+      "organisme_norm": "GOOGLE LLC"
+    },
+    {
+      "annees": [
+        2020,
+        2021,
+        2023
+      ],
+      "nb_annees": 3,
+      "nb_controles": 6,
+      "organisme": "LES PUBLICATIONS CONDE NAST",
+      "organisme_norm": "LES PUBLICATIONS CONDE NAST"
+    },
+    {
+      "annees": [
+        2015,
+        2018,
+        2019
+      ],
+      "nb_annees": 3,
+      "nb_controles": 6,
+      "organisme": "MAIRIE DE PARIS",
+      "organisme_norm": "MAIRIE DE PARIS"
+    },
+    {
+      "annees": [
+        2016,
+        2019,
+        2021
+      ],
+      "nb_annees": 3,
+      "nb_controles": 5,
+      "organisme": "ENGIE",
+      "organisme_norm": "ENGIE"
+    },
+    {
+      "annees": [
+        2016,
+        2020,
+        2021
+      ],
+      "nb_annees": 3,
+      "nb_controles": 5,
+      "organisme": "JEUXVIDEO.COM",
+      "organisme_norm": "JEUXVIDEO COM"
+    },
+    {
+      "annees": [
+        2015,
+        2016,
+        2021
+      ],
+      "nb_annees": 3,
+      "nb_controles": 5,
+      "organisme": "PARTI-SOCIALISTE.FR",
+      "organisme_norm": "PARTI SOCIALISTE FR"
+    },
+    {
+      "annees": [
+        2016,
+        2018,
+        2020
+      ],
+      "nb_annees": 3,
+      "nb_controles": 5,
+      "organisme": "PREFECTURE DE POLICE DE PARIS",
+      "organisme_norm": "PREFECTURE DE POLICE DE PARIS"
+    },
+    {
+      "annees": [
+        2014,
+        2019,
+        2020
+      ],
+      "nb_annees": 3,
+      "nb_controles": 5,
+      "organisme": "Sephora",
+      "organisme_norm": "SEPHORA"
+    },
+    {
+      "annees": [
+        2015,
+        2019,
+        2021
+      ],
+      "nb_annees": 3,
+      "nb_controles": 5,
+      "organisme": "SOCIETE GENERALE",
+      "organisme_norm": "SOCIETE GENERALE"
+    },
+    {
+      "annees": [
+        2015,
+        2018,
+        2022
+      ],
+      "nb_annees": 3,
+      "nb_controles": 5,
+      "organisme": "VENTE-UNIQUE.COM",
+      "organisme_norm": "VENTE UNIQUE COM"
+    },
+    {
+      "annees": [
+        2014,
+        2015,
+        2016
+      ],
+      "nb_annees": 3,
+      "nb_controles": 4,
+      "organisme": "Carrefour Banque",
+      "organisme_norm": "CARREFOUR BANQUE"
+    },
+    {
+      "annees": [
+        2014,
+        2018,
+        2019
+      ],
+      "nb_annees": 3,
+      "nb_controles": 4,
+      "organisme": "Carrefour Hypermarches",
+      "organisme_norm": "CARREFOUR HYPERMARCHES"
+    },
+    {
+      "annees": [
+        2015,
+        2022,
+        2023
+      ],
+      "nb_annees": 3,
+      "nb_controles": 4,
+      "organisme": "LA BANQUE POSTALE",
+      "organisme_norm": "LA BANQUE POSTALE"
+    },
+    {
+      "annees": [
+        2014,
+        2019,
+        2020
+      ],
+      "nb_annees": 3,
+      "nb_controles": 4,
+      "organisme": "Leroy Merlin",
+      "organisme_norm": "LEROY MERLIN"
+    },
+    {
+      "annees": [
+        2018,
+        2019,
+        2022
+      ],
+      "nb_annees": 3,
+      "nb_controles": 4,
+      "organisme": "LGHA AUTO",
+      "organisme_norm": "LGHA AUTO"
+    },
+    {
+      "annees": [
+        2017,
+        2019,
+        2020
+      ],
+      "nb_annees": 3,
+      "nb_controles": 4,
+      "organisme": "NESTOR",
+      "organisme_norm": "NESTOR"
+    },
+    {
+      "annees": [
+        2019,
+        2020,
+        2021
+      ],
+      "nb_annees": 3,
+      "nb_controles": 4,
+      "organisme": "SFK GROUP",
+      "organisme_norm": "SFK GROUP"
+    },
+    {
+      "annees": [
+        2016,
+        2017,
+        2019
+      ],
+      "nb_annees": 3,
+      "nb_controles": 4,
+      "organisme": "WHATSAPP",
+      "organisme_norm": "WHATSAPP"
+    },
+    {
+      "annees": [
+        2014,
+        2021,
+        2022
+      ],
+      "nb_annees": 3,
+      "nb_controles": 3,
+      "organisme": "auchan.fr",
+      "organisme_norm": "AUCHAN FR"
+    },
+    {
+      "annees": [
+        2015,
+        2022,
+        2023
+      ],
+      "nb_annees": 3,
+      "nb_controles": 3,
+      "organisme": "BOURSORAMA BANQUE",
+      "organisme_norm": "BOURSORAMA BANQUE"
+    },
+    {
+      "annees": [
+        2018,
+        2020,
+        2021
+      ],
+      "nb_annees": 3,
+      "nb_controles": 3,
+      "organisme": "BRICO PRIVE",
+      "organisme_norm": "BRICO PRIVE"
+    },
+    {
+      "annees": [
+        2017,
+        2018,
+        2019
+      ],
+      "nb_annees": 3,
+      "nb_controles": 3,
+      "organisme": "FIDZUP",
+      "organisme_norm": "FIDZUP"
+    },
+    {
+      "annees": [
+        2018,
+        2020,
+        2021
+      ],
+      "nb_annees": 3,
+      "nb_controles": 3,
+      "organisme": "GOOGLE",
+      "organisme_norm": "GOOGLE"
+    },
+    {
+      "annees": [
+        2015,
+        2016,
+        2022
+      ],
+      "nb_annees": 3,
+      "nb_controles": 3,
+      "organisme": "NORAUTO.FR",
+      "organisme_norm": "NORAUTO FR"
+    },
+    {
+      "annees": [
+        2014,
+        2021,
+        2022
+      ],
+      "nb_annees": 3,
+      "nb_controles": 3,
+      "organisme": "showroomprive.com",
+      "organisme_norm": "SHOWROOMPRIVE COM"
+    }
+  ],
+  "par_annee": {
+    "2014": 421,
+    "2015": 496,
+    "2016": 430,
+    "2017": 341,
+    "2018": 310,
+    "2019": 301,
+    "2020": 247,
+    "2021": 384,
+    "2022": 345,
+    "2023": 342
+  },
+  "par_commune": [
+    {
+      "code_insee": "75056",
+      "commune": "Paris",
+      "departement": "75",
+      "n": 1650
+    },
+    {
+      "code_insee": "92012",
+      "commune": "Boulogne-Billancourt",
+      "departement": "92",
+      "n": 59
+    },
+    {
+      "code_insee": "69123",
+      "commune": "Lyon",
+      "departement": "69",
+      "n": 53
+    },
+    {
+      "code_insee": "13055",
+      "commune": "Marseille",
+      "departement": "13",
+      "n": 47
+    },
+    {
+      "code_insee": "92044",
+      "commune": "Levallois-Perret",
+      "departement": "92",
+      "n": 45
+    },
+    {
+      "code_insee": "92062",
+      "commune": "Puteaux",
+      "departement": "92",
+      "n": 40
+    },
+    {
+      "code_insee": "92040",
+      "commune": "Issy-les-Moulineaux",
+      "departement": "92",
+      "n": 36
+    },
+    {
+      "code_insee": "33063",
+      "commune": "Bordeaux",
+      "departement": "33",
+      "n": 35
+    },
+    {
+      "code_insee": "92026",
+      "commune": "Courbevoie",
+      "departement": "92",
+      "n": 35
+    },
+    {
+      "code_insee": "92051",
+      "commune": "Neuilly-sur-Seine",
+      "departement": "92",
+      "n": 30
+    },
+    {
+      "code_insee": "59350",
+      "commune": "Lille",
+      "departement": "59",
+      "n": 29
+    },
+    {
+      "code_insee": "44109",
+      "commune": "Nantes",
+      "departement": "44",
+      "n": 28
+    },
+    {
+      "code_insee": "93048",
+      "commune": "Montreuil",
+      "departement": "93",
+      "n": 28
+    },
+    {
+      "code_insee": "31555",
+      "commune": "Toulouse",
+      "departement": "31",
+      "n": 27
+    },
+    {
+      "code_insee": "59512",
+      "commune": "Roubaix",
+      "departement": "59",
+      "n": 26
+    },
+    {
+      "code_insee": "67482",
+      "commune": "Strasbourg",
+      "departement": "67",
+      "n": 23
+    },
+    {
+      "code_insee": "35238",
+      "commune": "Rennes",
+      "departement": "35",
+      "n": 22
+    },
+    {
+      "code_insee": "92050",
+      "commune": "Nanterre",
+      "departement": "92",
+      "n": 21
+    },
+    {
+      "code_insee": "59009",
+      "commune": "Villeneuve-d'Ascq",
+      "departement": "59",
+      "n": 20
+    },
+    {
+      "code_insee": "13001",
+      "commune": "Aix-en-Provence",
+      "departement": "13",
+      "n": 18
+    },
+    {
+      "code_insee": "92024",
+      "commune": "Clichy",
+      "departement": "92",
+      "n": 18
+    },
+    {
+      "code_insee": "93066",
+      "commune": "Saint-Denis",
+      "departement": "93",
+      "n": 17
+    },
+    {
+      "code_insee": "94041",
+      "commune": "Ivry-sur-Seine",
+      "departement": "94",
+      "n": 16
+    },
+    {
+      "code_insee": "34172",
+      "commune": "Montpellier",
+      "departement": "34",
+      "n": 15
+    },
+    {
+      "code_insee": "92063",
+      "commune": "Rueil-Malmaison",
+      "departement": "92",
+      "n": 15
+    },
+    {
+      "code_insee": "06088",
+      "commune": "Nice",
+      "departement": "06",
+      "n": 13
+    },
+    {
+      "code_insee": "45234",
+      "commune": "Orléans",
+      "departement": "45",
+      "n": 12
+    },
+    {
+      "code_insee": "59378",
+      "commune": "Marcq-en-Barœul",
+      "departement": "59",
+      "n": 11
+    },
+    {
+      "code_insee": "69266",
+      "commune": "Villeurbanne",
+      "departement": "69",
+      "n": 11
+    },
+    {
+      "code_insee": "78646",
+      "commune": "Versailles",
+      "departement": "78",
+      "n": 11
+    },
+    {
+      "code_insee": "91377",
+      "commune": "Massy",
+      "departement": "91",
+      "n": 11
+    },
+    {
+      "code_insee": "93073",
+      "commune": "Tremblay-en-France",
+      "departement": "93",
+      "n": 11
+    },
+    {
+      "code_insee": "51454",
+      "commune": "Reims",
+      "departement": "51",
+      "n": 10
+    },
+    {
+      "code_insee": "93070",
+      "commune": "Saint-Ouen-sur-Seine",
+      "departement": "93",
+      "n": 10
+    },
+    {
+      "code_insee": "95527",
+      "commune": "Roissy-en-France",
+      "departement": "95",
+      "n": 10
+    },
+    {
+      "code_insee": "38185",
+      "commune": "Grenoble",
+      "departement": "38",
+      "n": 9
+    },
+    {
+      "code_insee": "49007",
+      "commune": "Angers",
+      "departement": "49",
+      "n": 9
+    },
+    {
+      "code_insee": "57463",
+      "commune": "Metz",
+      "departement": "57",
+      "n": 9
+    },
+    {
+      "code_insee": "72181",
+      "commune": "Le Mans",
+      "departement": "72",
+      "n": 9
+    },
+    {
+      "code_insee": "93008",
+      "commune": "Bobigny",
+      "departement": "93",
+      "n": 9
+    },
+    {
+      "code_insee": "37261",
+      "commune": "Tours",
+      "departement": "37",
+      "n": 8
+    },
+    {
+      "code_insee": "87085",
+      "commune": "Limoges",
+      "departement": "87",
+      "n": 8
+    },
+    {
+      "code_insee": "92036",
+      "commune": "Gennevilliers",
+      "departement": "92",
+      "n": 8
+    },
+    {
+      "code_insee": "92046",
+      "commune": "Malakoff",
+      "departement": "92",
+      "n": 8
+    },
+    {
+      "code_insee": "92073",
+      "commune": "Suresnes",
+      "departement": "92",
+      "n": 8
+    },
+    {
+      "code_insee": "21231",
+      "commune": "Dijon",
+      "departement": "21",
+      "n": 7
+    },
+    {
+      "code_insee": "27229",
+      "commune": "Évreux",
+      "departement": "27",
+      "n": 7
+    },
+    {
+      "code_insee": "2A004",
+      "commune": "Ajaccio",
+      "departement": "2A",
+      "n": 7
+    },
+    {
+      "code_insee": "59163",
+      "commune": "Croix",
+      "departement": "59",
+      "n": 7
+    },
+    {
+      "code_insee": "63113",
+      "commune": "Clermont-Ferrand",
+      "departement": "63",
+      "n": 7
+    },
+    {
+      "code_insee": "68224",
+      "commune": "Mulhouse",
+      "departement": "68",
+      "n": 7
+    },
+    {
+      "code_insee": "74010",
+      "commune": "Annecy",
+      "departement": "74",
+      "n": 7
+    },
+    {
+      "code_insee": "84007",
+      "commune": "Avignon",
+      "departement": "84",
+      "n": 7
+    },
+    {
+      "code_insee": "91228",
+      "commune": "Évry-Courcouronnes",
+      "departement": "91",
+      "n": 7
+    },
+    {
+      "code_insee": "92025",
+      "commune": "Colombes",
+      "departement": "92",
+      "n": 7
+    },
+    {
+      "code_insee": "92048",
+      "commune": "Meudon",
+      "departement": "92",
+      "n": 7
+    },
+    {
+      "code_insee": "92060",
+      "commune": "Le Plessis-Robinson",
+      "departement": "92",
+      "n": 7
+    },
+    {
+      "code_insee": "93006",
+      "commune": "Bagnolet",
+      "departement": "93",
+      "n": 7
+    },
+    {
+      "code_insee": "94018",
+      "commune": "Charenton-le-Pont",
+      "departement": "94",
+      "n": 7
+    },
+    {
+      "code_insee": "06152",
+      "commune": "Valbonne",
+      "departement": "06",
+      "n": 6
+    },
+    {
+      "code_insee": "26362",
+      "commune": "Valence",
+      "departement": "26",
+      "n": 6
+    },
+    {
+      "code_insee": "64445",
+      "commune": "Pau",
+      "departement": "64",
+      "n": 6
+    },
+    {
+      "code_insee": "76540",
+      "commune": "Rouen",
+      "departement": "76",
+      "n": 6
+    },
+    {
+      "code_insee": "78297",
+      "commune": "Guyancourt",
+      "departement": "78",
+      "n": 6
+    },
+    {
+      "code_insee": "83137",
+      "commune": "Toulon",
+      "departement": "83",
+      "n": 6
+    },
+    {
+      "code_insee": "93055",
+      "commune": "Pantin",
+      "departement": "93",
+      "n": 6
+    },
+    {
+      "code_insee": "94003",
+      "commune": "Arcueil",
+      "departement": "94",
+      "n": 6
+    },
+    {
+      "code_insee": "94037",
+      "commune": "Gentilly",
+      "departement": "94",
+      "n": 6
+    },
+    {
+      "code_insee": "94067",
+      "commune": "Saint-Mandé",
+      "departement": "94",
+      "n": 6
+    },
+    {
+      "code_insee": "97411",
+      "commune": "Saint-Denis",
+      "departement": "974",
+      "n": 6
+    },
+    {
+      "code_insee": "14118",
+      "commune": "Caen",
+      "departement": "14",
+      "n": 5
+    },
+    {
+      "code_insee": "28085",
+      "commune": "Chartres",
+      "departement": "28",
+      "n": 5
+    },
+    {
+      "code_insee": "50502",
+      "commune": "Saint-Lô",
+      "departement": "50",
+      "n": 5
+    },
+    {
+      "code_insee": "74112",
+      "commune": "Epagny Metz-Tessy",
+      "departement": "74",
+      "n": 5
+    },
+    {
+      "code_insee": "77288",
+      "commune": "Melun",
+      "departement": "77",
+      "n": 5
+    },
+    {
+      "code_insee": "78423",
+      "commune": "Montigny-le-Bretonneux",
+      "departement": "78",
+      "n": 5
+    },
+    {
+      "code_insee": "79191",
+      "commune": "Niort",
+      "departement": "79",
+      "n": 5
+    },
+    {
+      "code_insee": "89024",
+      "commune": "Auxerre",
+      "departement": "89",
+      "n": 5
+    },
+    {
+      "code_insee": "92004",
+      "commune": "Asnières-sur-Seine",
+      "departement": "92",
+      "n": 5
+    },
+    {
+      "code_insee": "92049",
+      "commune": "Montrouge",
+      "departement": "92",
+      "n": 5
+    },
+    {
+      "code_insee": "93061",
+      "commune": "Le Pré-Saint-Gervais",
+      "departement": "93",
+      "n": 5
+    },
+    {
+      "code_insee": "94028",
+      "commune": "Créteil",
+      "departement": "94",
+      "n": 5
+    },
+    {
+      "code_insee": "94068",
+      "commune": "Saint-Maur-des-Fossés",
+      "departement": "94",
+      "n": 5
+    },
+    {
+      "code_insee": "95127",
+      "commune": "Cergy",
+      "departement": "95",
+      "n": 5
+    },
+    {
+      "code_insee": "25056",
+      "commune": "Besançon",
+      "departement": "25",
+      "n": 4
+    },
+    {
+      "code_insee": "31069",
+      "commune": "Blagnac",
+      "departement": "31",
+      "n": 4
+    },
+    {
+      "code_insee": "33281",
+      "commune": "Mérignac",
+      "departement": "33",
+      "n": 4
+    },
+    {
+      "code_insee": "38151",
+      "commune": "Échirolles",
+      "departement": "38",
+      "n": 4
+    },
+    {
+      "code_insee": "42218",
+      "commune": "Saint-Étienne",
+      "departement": "42",
+      "n": 4
+    },
+    {
+      "code_insee": "53130",
+      "commune": "Laval",
+      "departement": "53",
+      "n": 4
+    },
+    {
+      "code_insee": "54395",
+      "commune": "Nancy",
+      "departement": "54",
+      "n": 4
+    },
+    {
+      "code_insee": "59234",
+      "commune": "Flers-en-Escrebieux",
+      "departement": "59",
+      "n": 4
+    },
+    {
+      "code_insee": "59346",
+      "commune": "Lezennes",
+      "departement": "59",
+      "n": 4
+    },
+    {
+      "code_insee": "60139",
+      "commune": "Chambly",
+      "departement": "60",
+      "n": 4
+    },
+    {
+      "code_insee": "62193",
+      "commune": "Calais",
+      "departement": "62",
+      "n": 4
+    },
+    {
+      "code_insee": "71263",
+      "commune": "Louhans-Châteaurenaud",
+      "departement": "71",
+      "n": 4
+    },
+    {
+      "code_insee": "77251",
+      "commune": "Lieusaint",
+      "departement": "77",
+      "n": 4
+    },
+    {
+      "code_insee": "77258",
+      "commune": "Lognes",
+      "departement": "77",
+      "n": 4
+    },
+    {
+      "code_insee": "89162",
+      "commune": "Évry",
+      "departement": "89",
+      "n": 4
+    },
+    {
+      "code_insee": "92035",
+      "commune": "La Garenne-Colombes",
+      "departement": "92",
+      "n": 4
+    },
+    {
+      "code_insee": "92072",
+      "commune": "Sèvres",
+      "departement": "92",
+      "n": 4
+    },
+    {
+      "code_insee": "92076",
+      "commune": "Vaucresson",
+      "departement": "92",
+      "n": 4
+    },
+    {
+      "code_insee": "93001",
+      "commune": "Aubervilliers",
+      "departement": "93",
+      "n": 4
+    },
+    {
+      "code_insee": "94015",
+      "commune": "Bry-sur-Marne",
+      "departement": "94",
+      "n": 4
+    },
+    {
+      "code_insee": "94034",
+      "commune": "Fresnes",
+      "departement": "94",
+      "n": 4
+    },
+    {
+      "code_insee": "94054",
+      "commune": "Orly",
+      "departement": "94",
+      "n": 4
+    },
+    {
+      "code_insee": "94065",
+      "commune": "Rungis",
+      "departement": "94",
+      "n": 4
+    },
+    {
+      "code_insee": "94080",
+      "commune": "Vincennes",
+      "departement": "94",
+      "n": 4
+    },
+    {
+      "code_insee": "94081",
+      "commune": "Vitry-sur-Seine",
+      "departement": "94",
+      "n": 4
+    },
+    {
+      "code_insee": "95199",
+      "commune": "Domont",
+      "departement": "95",
+      "n": 4
+    },
+    {
+      "code_insee": "02691",
+      "commune": "Saint-Quentin",
+      "departement": "02",
+      "n": 3
+    },
+    {
+      "code_insee": "13002",
+      "commune": "Allauch",
+      "departement": "13",
+      "n": 3
+    },
+    {
+      "code_insee": "13004",
+      "commune": "Arles",
+      "departement": "13",
+      "n": 3
+    },
+    {
+      "code_insee": "13117",
+      "commune": "Vitrolles",
+      "departement": "13",
+      "n": 3
+    },
+    {
+      "code_insee": "14488",
+      "commune": "Ouistreham",
+      "departement": "14",
+      "n": 3
+    },
+    {
+      "code_insee": "24322",
+      "commune": "Périgueux",
+      "departement": "24",
+      "n": 3
+    },
+    {
+      "code_insee": "26281",
+      "commune": "Romans-sur-Isère",
+      "departement": "26",
+      "n": 3
+    },
+    {
+      "code_insee": "30032",
+      "commune": "Beaucaire",
+      "departement": "30",
+      "n": 3
+    },
+    {
+      "code_insee": "30189",
+      "commune": "Nîmes",
+      "departement": "30",
+      "n": 3
+    },
+    {
+      "code_insee": "31044",
+      "commune": "Balma",
+      "departement": "31",
+      "n": 3
+    },
+    {
+      "code_insee": "31149",
+      "commune": "Colomiers",
+      "departement": "31",
+      "n": 3
+    },
+    {
+      "code_insee": "31561",
+      "commune": "L'Union",
+      "departement": "31",
+      "n": 3
+    },
+    {
+      "code_insee": "33005",
+      "commune": "Andernos-les-Bains",
+      "departement": "33",
+      "n": 3
+    },
+    {
+      "code_insee": "33075",
+      "commune": "Bruges",
+      "departement": "33",
+      "n": 3
+    },
+    {
+      "code_insee": "35278",
+      "commune": "Saint-Grégoire",
+      "departement": "35",
+      "n": 3
+    },
+    {
+      "code_insee": "35360",
+      "commune": "Vitré",
+      "departement": "35",
+      "n": 3
+    },
+    {
+      "code_insee": "36044",
+      "commune": "Châteauroux",
+      "departement": "36",
+      "n": 3
+    },
+    {
+      "code_insee": "39300",
+      "commune": "Lons-le-Saunier",
+      "departement": "39",
+      "n": 3
+    },
+    {
+      "code_insee": "44143",
+      "commune": "Rezé",
+      "departement": "44",
+      "n": 3
+    },
+    {
+      "code_insee": "44162",
+      "commune": "Saint-Herblain",
+      "departement": "44",
+      "n": 3
+    },
+    {
+      "code_insee": "44190",
+      "commune": "Saint-Sébastien-sur-Loire",
+      "departement": "44",
+      "n": 3
+    },
+    {
+      "code_insee": "56121",
+      "commune": "Lorient",
+      "departement": "56",
+      "n": 3
+    },
+    {
+      "code_insee": "56260",
+      "commune": "Vannes",
+      "departement": "56",
+      "n": 3
+    },
+    {
+      "code_insee": "57659",
+      "commune": "Spicheren",
+      "departement": "57",
+      "n": 3
+    },
+    {
+      "code_insee": "59328",
+      "commune": "Lambersart",
+      "departement": "59",
+      "n": 3
+    },
+    {
+      "code_insee": "59599",
+      "commune": "Tourcoing",
+      "departement": "59",
+      "n": 3
+    },
+    {
+      "code_insee": "59606",
+      "commune": "Valenciennes",
+      "departement": "59",
+      "n": 3
+    },
+    {
+      "code_insee": "62160",
+      "commune": "Boulogne-sur-Mer",
+      "departement": "62",
+      "n": 3
+    },
+    {
+      "code_insee": "62498",
+      "commune": "Lens",
+      "departement": "62",
+      "n": 3
+    },
+    {
+      "code_insee": "65440",
+      "commune": "Tarbes",
+      "departement": "65",
+      "n": 3
+    },
+    {
+      "code_insee": "66136",
+      "commune": "Perpignan",
+      "departement": "66",
+      "n": 3
+    },
+    {
+      "code_insee": "68066",
+      "commune": "Colmar",
+      "departement": "68",
+      "n": 3
+    },
+    {
+      "code_insee": "69259",
+      "commune": "Vénissieux",
+      "departement": "69",
+      "n": 3
+    },
+    {
+      "code_insee": "74281",
+      "commune": "Thonon-les-Bains",
+      "departement": "74",
+      "n": 3
+    },
+    {
+      "code_insee": "77018",
+      "commune": "Bailly-Romainvilliers",
+      "departement": "77",
+      "n": 3
+    },
+    {
+      "code_insee": "78133",
+      "commune": "Chambourcy",
+      "departement": "78",
+      "n": 3
+    },
+    {
+      "code_insee": "78158",
+      "commune": "Le Chesnay-Rocquencourt",
+      "departement": "78",
+      "n": 3
+    },
+    {
+      "code_insee": "78418",
+      "commune": "Montesson",
+      "departement": "78",
+      "n": 3
+    },
+    {
+      "code_insee": "78490",
+      "commune": "Plaisir",
+      "departement": "78",
+      "n": 3
+    },
+    {
+      "code_insee": "78498",
+      "commune": "Poissy",
+      "departement": "78",
+      "n": 3
+    },
+    {
+      "code_insee": "86194",
+      "commune": "Poitiers",
+      "departement": "86",
+      "n": 3
+    },
+    {
+      "code_insee": "92002",
+      "commune": "Antony",
+      "departement": "92",
+      "n": 3
+    },
+    {
+      "code_insee": "92007",
+      "commune": "Bagneux",
+      "departement": "92",
+      "n": 3
+    },
+    {
+      "code_insee": "92023",
+      "commune": "Clamart",
+      "departement": "92",
+      "n": 3
+    },
+    {
+      "code_insee": "92075",
+      "commune": "Vanves",
+      "departement": "92",
+      "n": 3
+    },
+    {
+      "code_insee": "93051",
+      "commune": "Noisy-le-Grand",
+      "departement": "93",
+      "n": 3
+    },
+    {
+      "code_insee": "94033",
+      "commune": "Fontenay-sous-Bois",
+      "departement": "94",
+      "n": 3
+    },
+    {
+      "code_insee": "94038",
+      "commune": "L'Haÿ-les-Roses",
+      "departement": "94",
+      "n": 3
+    },
+    {
+      "code_insee": "94052",
+      "commune": "Nogent-sur-Marne",
+      "departement": "94",
+      "n": 3
+    },
+    {
+      "code_insee": "95018",
+      "commune": "Argenteuil",
+      "departement": "95",
+      "n": 3
+    },
+    {
+      "code_insee": "95063",
+      "commune": "Bezons",
+      "departement": "95",
+      "n": 3
+    },
+    {
+      "code_insee": "97415",
+      "commune": "Saint-Paul",
+      "departement": "974",
+      "n": 3
+    },
+    {
+      "code_insee": "97418",
+      "commune": "Sainte-Marie",
+      "departement": "974",
+      "n": 3
+    },
+    {
+      "code_insee": "97422",
+      "commune": "Le Tampon",
+      "departement": "974",
+      "n": 3
+    },
+    {
+      "code_insee": "02157",
+      "commune": "Chambry",
+      "departement": "02",
+      "n": 2
+    },
+    {
+      "code_insee": "03310",
+      "commune": "Vichy",
+      "departement": "03",
+      "n": 2
+    },
+    {
+      "code_insee": "08105",
+      "commune": "Charleville-Mézières",
+      "departement": "08",
+      "n": 2
+    },
+    {
+      "code_insee": "10387",
+      "commune": "Troyes",
+      "departement": "10",
+      "n": 2
+    },
+    {
+      "code_insee": "13047",
+      "commune": "Istres",
+      "departement": "13",
+      "n": 2
+    },
+    {
+      "code_insee": "13054",
+      "commune": "Marignane",
+      "departement": "13",
+      "n": 2
+    },
+    {
+      "code_insee": "13060",
+      "commune": "Meyreuil",
+      "departement": "13",
+      "n": 2
+    },
+    {
+      "code_insee": "13087",
+      "commune": "Rousset",
+      "departement": "13",
+      "n": 2
+    },
+    {
+      "code_insee": "13108",
+      "commune": "Tarascon",
+      "departement": "13",
+      "n": 2
+    },
+    {
+      "code_insee": "14117",
+      "commune": "Cabourg",
+      "departement": "14",
+      "n": 2
+    },
+    {
+      "code_insee": "17200",
+      "commune": "Lagord",
+      "departement": "17",
+      "n": 2
+    },
+    {
+      "code_insee": "19272",
+      "commune": "Tulle",
+      "departement": "19",
+      "n": 2
+    },
+    {
+      "code_insee": "22113",
+      "commune": "Lannion",
+      "departement": "22",
+      "n": 2
+    },
+    {
+      "code_insee": "24082",
+      "commune": "Carsac-Aillac",
+      "departement": "24",
+      "n": 2
+    },
+    {
+      "code_insee": "25240",
+      "commune": "Les Fins",
+      "departement": "25",
+      "n": 2
+    },
+    {
+      "code_insee": "31254",
+      "commune": "Labège",
+      "departement": "31",
+      "n": 2
+    },
+    {
+      "code_insee": "33243",
+      "commune": "Libourne",
+      "departement": "33",
+      "n": 2
+    },
+    {
+      "code_insee": "33318",
+      "commune": "Pessac",
+      "departement": "33",
+      "n": 2
+    },
+    {
+      "code_insee": "34003",
+      "commune": "Agde",
+      "departement": "34",
+      "n": 2
+    },
+    {
+      "code_insee": "34255",
+      "commune": "Saint-Gély-du-Fesc",
+      "departement": "34",
+      "n": 2
+    },
+    {
+      "code_insee": "42031",
+      "commune": "Caloire",
+      "departement": "42",
+      "n": 2
+    },
+    {
+      "code_insee": "42094",
+      "commune": "Feurs",
+      "departement": "42",
+      "n": 2
+    },
+    {
+      "code_insee": "45040",
+      "commune": "Bonny-sur-Loire",
+      "departement": "45",
+      "n": 2
+    },
+    {
+      "code_insee": "45115",
+      "commune": "Courtenay",
+      "departement": "45",
+      "n": 2
+    },
+    {
+      "code_insee": "45145",
+      "commune": "Ferrières-en-Gâtinais",
+      "departement": "45",
+      "n": 2
+    },
+    {
+      "code_insee": "45155",
+      "commune": "Gien",
+      "departement": "45",
+      "n": 2
+    },
+    {
+      "code_insee": "46219",
+      "commune": "Peyrilles",
+      "departement": "46",
+      "n": 2
+    },
+    {
+      "code_insee": "54323",
+      "commune": "Longwy",
+      "departement": "54",
+      "n": 2
+    },
+    {
+      "code_insee": "57049",
+      "commune": "Le Ban-Saint-Martin",
+      "departement": "57",
+      "n": 2
+    },
+    {
+      "code_insee": "59178",
+      "commune": "Douai",
+      "departement": "59",
+      "n": 2
+    },
+    {
+      "code_insee": "59183",
+      "commune": "Dunkerque",
+      "departement": "59",
+      "n": 2
+    },
+    {
+      "code_insee": "59205",
+      "commune": "Escaudain",
+      "departement": "59",
+      "n": 2
+    },
+    {
+      "code_insee": "59334",
+      "commune": "Lauwin-Planque",
+      "departement": "59",
+      "n": 2
+    },
+    {
+      "code_insee": "59368",
+      "commune": "La Madeleine",
+      "departement": "59",
+      "n": 2
+    },
+    {
+      "code_insee": "59646",
+      "commune": "Wasquehal",
+      "departement": "59",
+      "n": 2
+    },
+    {
+      "code_insee": "60057",
+      "commune": "Beauvais",
+      "departement": "60",
+      "n": 2
+    },
+    {
+      "code_insee": "60141",
+      "commune": "Chantilly",
+      "departement": "60",
+      "n": 2
+    },
+    {
+      "code_insee": "60159",
+      "commune": "Compiègne",
+      "departement": "60",
+      "n": 2
+    },
+    {
+      "code_insee": "60282",
+      "commune": "Gouvieux",
+      "departement": "60",
+      "n": 2
+    },
+    {
+      "code_insee": "62041",
+      "commune": "Arras",
+      "departement": "62",
+      "n": 2
+    },
+    {
+      "code_insee": "62239",
+      "commune": "Coquelles",
+      "departement": "62",
+      "n": 2
+    },
+    {
+      "code_insee": "64122",
+      "commune": "Biarritz",
+      "departement": "64",
+      "n": 2
+    },
+    {
+      "code_insee": "65127",
+      "commune": "Capvern",
+      "departement": "65",
+      "n": 2
+    },
+    {
+      "code_insee": "67447",
+      "commune": "Schiltigheim",
+      "departement": "67",
+      "n": 2
+    },
+    {
+      "code_insee": "69072",
+      "commune": "Dardilly",
+      "departement": "69",
+      "n": 2
+    },
+    {
+      "code_insee": "69081",
+      "commune": "Écully",
+      "departement": "69",
+      "n": 2
+    },
+    {
+      "code_insee": "69091",
+      "commune": "Givors",
+      "departement": "69",
+      "n": 2
+    },
+    {
+      "code_insee": "69286",
+      "commune": "Rillieux-la-Pape",
+      "departement": "69",
+      "n": 2
+    },
+    {
+      "code_insee": "73065",
+      "commune": "Chambéry",
+      "departement": "73",
+      "n": 2
+    },
+    {
+      "code_insee": "74012",
+      "commune": "Annemasse",
+      "departement": "74",
+      "n": 2
+    },
+    {
+      "code_insee": "76217",
+      "commune": "Dieppe",
+      "departement": "76",
+      "n": 2
+    },
+    {
+      "code_insee": "77014",
+      "commune": "Avon",
+      "departement": "77",
+      "n": 2
+    },
+    {
+      "code_insee": "77083",
+      "commune": "Champs-sur-Marne",
+      "departement": "77",
+      "n": 2
+    },
+    {
+      "code_insee": "77445",
+      "commune": "Savigny-le-Temple",
+      "departement": "77",
+      "n": 2
+    },
+    {
+      "code_insee": "77449",
+      "commune": "Serris",
+      "departement": "77",
+      "n": 2
+    },
+    {
+      "code_insee": "78208",
+      "commune": "Élancourt",
+      "departement": "78",
+      "n": 2
+    },
+    {
+      "code_insee": "78358",
+      "commune": "Maisons-Laffitte",
+      "departement": "78",
+      "n": 2
+    },
+    {
+      "code_insee": "78466",
+      "commune": "Orgeval",
+      "departement": "78",
+      "n": 2
+    },
+    {
+      "code_insee": "78551",
+      "commune": "Saint-Germain-en-Laye",
+      "departement": "78",
+      "n": 2
+    },
+    {
+      "code_insee": "78640",
+      "commune": "Vélizy-Villacoublay",
+      "departement": "78",
+      "n": 2
+    },
+    {
+      "code_insee": "78643",
+      "commune": "Vernouillet",
+      "departement": "78",
+      "n": 2
+    },
+    {
+      "code_insee": "80021",
+      "commune": "Amiens",
+      "departement": "80",
+      "n": 2
+    },
+    {
+      "code_insee": "83115",
+      "commune": "Sainte-Maxime",
+      "departement": "83",
+      "n": 2
+    },
+    {
+      "code_insee": "84133",
+      "commune": "La Tour-d'Aigues",
+      "departement": "84",
+      "n": 2
+    },
+    {
+      "code_insee": "85191",
+      "commune": "La Roche-sur-Yon",
+      "departement": "85",
+      "n": 2
+    },
+    {
+      "code_insee": "88160",
+      "commune": "Épinal",
+      "departement": "88",
+      "n": 2
+    },
+    {
+      "code_insee": "91174",
+      "commune": "Corbeil-Essonnes",
+      "departement": "91",
+      "n": 2
+    },
+    {
+      "code_insee": "91345",
+      "commune": "Longjumeau",
+      "departement": "91",
+      "n": 2
+    },
+    {
+      "code_insee": "91479",
+      "commune": "Paray-Vieille-Poste",
+      "departement": "91",
+      "n": 2
+    },
+    {
+      "code_insee": "92014",
+      "commune": "Bourg-la-Reine",
+      "departement": "92",
+      "n": 2
+    },
+    {
+      "code_insee": "92071",
+      "commune": "Sceaux",
+      "departement": "92",
+      "n": 2
+    },
+    {
+      "code_insee": "93007",
+      "commune": "Le Blanc-Mesnil",
+      "departement": "93",
+      "n": 2
+    },
+    {
+      "code_insee": "93027",
+      "commune": "La Courneuve",
+      "departement": "93",
+      "n": 2
+    },
+    {
+      "code_insee": "93049",
+      "commune": "Neuilly-Plaisance",
+      "departement": "93",
+      "n": 2
+    },
+    {
+      "code_insee": "93064",
+      "commune": "Rosny-sous-Bois",
+      "departement": "93",
+      "n": 2
+    },
+    {
+      "code_insee": "93078",
+      "commune": "Villepinte",
+      "departement": "93",
+      "n": 2
+    },
+    {
+      "code_insee": "94002",
+      "commune": "Alfortville",
+      "departement": "94",
+      "n": 2
+    },
+    {
+      "code_insee": "94011",
+      "commune": "Bonneuil-sur-Marne",
+      "departement": "94",
+      "n": 2
+    },
+    {
+      "code_insee": "94016",
+      "commune": "Cachan",
+      "departement": "94",
+      "n": 2
+    },
+    {
+      "code_insee": "94043",
+      "commune": "Le Kremlin-Bicêtre",
+      "departement": "94",
+      "n": 2
+    },
+    {
+      "code_insee": "94046",
+      "commune": "Maisons-Alfort",
+      "departement": "94",
+      "n": 2
+    },
+    {
+      "code_insee": "95252",
+      "commune": "Franconville",
+      "departement": "95",
+      "n": 2
+    },
+    {
+      "code_insee": "95280",
+      "commune": "Goussainville",
+      "departement": "95",
+      "n": 2
+    },
+    {
+      "code_insee": "95476",
+      "commune": "Osny",
+      "departement": "95",
+      "n": 2
+    },
+    {
+      "code_insee": "95572",
+      "commune": "Saint-Ouen-l'Aumône",
+      "departement": "95",
+      "n": 2
+    },
+    {
+      "code_insee": "95675",
+      "commune": "Villeron",
+      "departement": "95",
+      "n": 2
+    },
+    {
+      "code_insee": "01053",
+      "commune": "Bourg-en-Bresse",
+      "departement": "01",
+      "n": 1
+    },
+    {
+      "code_insee": "01366",
+      "commune": "Sainte-Julie",
+      "departement": "01",
+      "n": 1
+    },
+    {
+      "code_insee": "02095",
+      "commune": "Bohain-en-Vermandois",
+      "departement": "02",
+      "n": 1
+    },
+    {
+      "code_insee": "02168",
+      "commune": "Château-Thierry",
+      "departement": "02",
+      "n": 1
+    },
+    {
+      "code_insee": "04070",
+      "commune": "Digne-les-Bains",
+      "departement": "04",
+      "n": 1
+    },
+    {
+      "code_insee": "06004",
+      "commune": "Antibes",
+      "departement": "06",
+      "n": 1
+    },
+    {
+      "code_insee": "06011",
+      "commune": "Beaulieu-sur-Mer",
+      "departement": "06",
+      "n": 1
+    },
+    {
+      "code_insee": "06029",
+      "commune": "Cannes",
+      "departement": "06",
+      "n": 1
+    },
+    {
+      "code_insee": "06033",
+      "commune": "Carros",
+      "departement": "06",
+      "n": 1
+    },
+    {
+      "code_insee": "06054",
+      "commune": "Drap",
+      "departement": "06",
+      "n": 1
+    },
+    {
+      "code_insee": "08362",
+      "commune": "Rethel",
+      "departement": "08",
+      "n": 1
+    },
+    {
+      "code_insee": "08365",
+      "commune": "Rimogne",
+      "departement": "08",
+      "n": 1
+    },
+    {
+      "code_insee": "09122",
+      "commune": "Foix",
+      "departement": "09",
+      "n": 1
+    },
+    {
+      "code_insee": "11254",
+      "commune": "Montréal",
+      "departement": "11",
+      "n": 1
+    },
+    {
+      "code_insee": "11262",
+      "commune": "Narbonne",
+      "departement": "11",
+      "n": 1
+    },
+    {
+      "code_insee": "12145",
+      "commune": "Millau",
+      "departement": "12",
+      "n": 1
+    },
+    {
+      "code_insee": "12176",
+      "commune": "Onet-le-Château",
+      "departement": "12",
+      "n": 1
+    },
+    {
+      "code_insee": "13019",
+      "commune": "Cabriès",
+      "departement": "13",
+      "n": 1
+    },
+    {
+      "code_insee": "13027",
+      "commune": "Châteaurenard",
+      "departement": "13",
+      "n": 1
+    },
+    {
+      "code_insee": "13103",
+      "commune": "Salon-de-Provence",
+      "departement": "13",
+      "n": 1
+    },
+    {
+      "code_insee": "13110",
+      "commune": "Trets",
+      "departement": "13",
+      "n": 1
+    },
+    {
+      "code_insee": "13113",
+      "commune": "Venelles",
+      "departement": "13",
+      "n": 1
+    },
+    {
+      "code_insee": "14137",
+      "commune": "Carpiquet",
+      "departement": "14",
+      "n": 1
+    },
+    {
+      "code_insee": "14167",
+      "commune": "Colombelles",
+      "departement": "14",
+      "n": 1
+    },
+    {
+      "code_insee": "14228",
+      "commune": "Douvres-la-Délivrande",
+      "departement": "14",
+      "n": 1
+    },
+    {
+      "code_insee": "14437",
+      "commune": "Mondeville",
+      "departement": "14",
+      "n": 1
+    },
+    {
+      "code_insee": "14715",
+      "commune": "Trouville-sur-Mer",
+      "departement": "14",
+      "n": 1
+    },
+    {
+      "code_insee": "16015",
+      "commune": "Angoulême",
+      "departement": "16",
+      "n": 1
+    },
+    {
+      "code_insee": "16192",
+      "commune": "Terres-de-Haute-Charente",
+      "departement": "16",
+      "n": 1
+    },
+    {
+      "code_insee": "17300",
+      "commune": "La Rochelle",
+      "departement": "17",
+      "n": 1
+    },
+    {
+      "code_insee": "17369",
+      "commune": "Saint-Martin-de-Ré",
+      "departement": "17",
+      "n": 1
+    },
+    {
+      "code_insee": "18033",
+      "commune": "Bourges",
+      "departement": "18",
+      "n": 1
+    },
+    {
+      "code_insee": "18150",
+      "commune": "Méry-sur-Cher",
+      "departement": "18",
+      "n": 1
+    },
+    {
+      "code_insee": "19146",
+      "commune": "Naves",
+      "departement": "19",
+      "n": 1
+    },
+    {
+      "code_insee": "19251",
+      "commune": "Sarran",
+      "departement": "19",
+      "n": 1
+    },
+    {
+      "code_insee": "21054",
+      "commune": "Beaune",
+      "departement": "21",
+      "n": 1
+    },
+    {
+      "code_insee": "21223",
+      "commune": "Daix",
+      "departement": "21",
+      "n": 1
+    },
+    {
+      "code_insee": "21617",
+      "commune": "Talant",
+      "departement": "21",
+      "n": 1
+    },
+    {
+      "code_insee": "22093",
+      "commune": "Lamballe-Armor",
+      "departement": "22",
+      "n": 1
+    },
+    {
+      "code_insee": "22136",
+      "commune": "Loudéac",
+      "departement": "22",
+      "n": 1
+    },
+    {
+      "code_insee": "22325",
+      "commune": "Saint-Quay-Portrieux",
+      "departement": "22",
+      "n": 1
+    },
+    {
+      "code_insee": "22379",
+      "commune": "Trévou-Tréguignec",
+      "departement": "22",
+      "n": 1
+    },
+    {
+      "code_insee": "23048",
+      "commune": "Champagnat",
+      "departement": "23",
+      "n": 1
+    },
+    {
+      "code_insee": "23079",
+      "commune": "Felletin",
+      "departement": "23",
+      "n": 1
+    },
+    {
+      "code_insee": "24256",
+      "commune": "Marsac-sur-l'Isle",
+      "departement": "24",
+      "n": 1
+    },
+    {
+      "code_insee": "24294",
+      "commune": "Montpon-Ménestérol",
+      "departement": "24",
+      "n": 1
+    },
+    {
+      "code_insee": "25527",
+      "commune": "Saint-Vit",
+      "departement": "25",
+      "n": 1
+    },
+    {
+      "code_insee": "26006",
+      "commune": "Allex",
+      "departement": "26",
+      "n": 1
+    },
+    {
+      "code_insee": "26057",
+      "commune": "Bourg-de-Péage",
+      "departement": "26",
+      "n": 1
+    },
+    {
+      "code_insee": "26108",
+      "commune": "Crest",
+      "departement": "26",
+      "n": 1
+    },
+    {
+      "code_insee": "26166",
+      "commune": "Loriol-sur-Drôme",
+      "departement": "26",
+      "n": 1
+    },
+    {
+      "code_insee": "26198",
+      "commune": "Montélimar",
+      "departement": "26",
+      "n": 1
+    },
+    {
+      "code_insee": "26347",
+      "commune": "Tain-l'Hermitage",
+      "departement": "26",
+      "n": 1
+    },
+    {
+      "code_insee": "27056",
+      "commune": "Bernay",
+      "departement": "27",
+      "n": 1
+    },
+    {
+      "code_insee": "27365",
+      "commune": "Léry",
+      "departement": "27",
+      "n": 1
+    },
+    {
+      "code_insee": "27681",
+      "commune": "Vernon",
+      "departement": "27",
+      "n": 1
+    },
+    {
+      "code_insee": "28088",
+      "commune": "Châteaudun",
+      "departement": "28",
+      "n": 1
+    },
+    {
+      "code_insee": "28280",
+      "commune": "Nogent-le-Rotrou",
+      "departement": "28",
+      "n": 1
+    },
+    {
+      "code_insee": "29019",
+      "commune": "Brest",
+      "departement": "29",
+      "n": 1
+    },
+    {
+      "code_insee": "29232",
+      "commune": "Quimper",
+      "departement": "29",
+      "n": 1
+    },
+    {
+      "code_insee": "29257",
+      "commune": "Saint-Pabu",
+      "departement": "29",
+      "n": 1
+    },
+    {
+      "code_insee": "2B033",
+      "commune": "Bastia",
+      "departement": "2B",
+      "n": 1
+    },
+    {
+      "code_insee": "2B148",
+      "commune": "Lucciana",
+      "departement": "2B",
+      "n": 1
+    },
+    {
+      "code_insee": "30007",
+      "commune": "Alès",
+      "departement": "30",
+      "n": 1
+    },
+    {
+      "code_insee": "30011",
+      "commune": "Les Angles",
+      "departement": "30",
+      "n": 1
+    },
+    {
+      "code_insee": "30156",
+      "commune": "Marguerittes",
+      "departement": "30",
+      "n": 1
+    },
+    {
+      "code_insee": "30334",
+      "commune": "Uzès",
+      "departement": "30",
+      "n": 1
+    },
+    {
+      "code_insee": "31113",
+      "commune": "Castanet-Tolosan",
+      "departement": "31",
+      "n": 1
+    },
+    {
+      "code_insee": "31212",
+      "commune": "Garidech",
+      "departement": "31",
+      "n": 1
+    },
+    {
+      "code_insee": "31421",
+      "commune": "Pins-Justaret",
+      "departement": "31",
+      "n": 1
+    },
+    {
+      "code_insee": "31483",
+      "commune": "Saint-Gaudens",
+      "departement": "31",
+      "n": 1
+    },
+    {
+      "code_insee": "33004",
+      "commune": "Ambès",
+      "departement": "33",
+      "n": 1
+    },
+    {
+      "code_insee": "33032",
+      "commune": "Bassens",
+      "departement": "33",
+      "n": 1
+    },
+    {
+      "code_insee": "33162",
+      "commune": "Eysines",
+      "departement": "33",
+      "n": 1
+    },
+    {
+      "code_insee": "33214",
+      "commune": "Lacanau",
+      "departement": "33",
+      "n": 1
+    },
+    {
+      "code_insee": "33330",
+      "commune": "Pompignac",
+      "departement": "33",
+      "n": 1
+    },
+    {
+      "code_insee": "33449",
+      "commune": "Saint-Médard-en-Jalles",
+      "departement": "33",
+      "n": 1
+    },
+    {
+      "code_insee": "33522",
+      "commune": "Talence",
+      "departement": "33",
+      "n": 1
+    },
+    {
+      "code_insee": "34032",
+      "commune": "Béziers",
+      "departement": "34",
+      "n": 1
+    },
+    {
+      "code_insee": "34108",
+      "commune": "Frontignan",
+      "departement": "34",
+      "n": 1
+    },
+    {
+      "code_insee": "34145",
+      "commune": "Lunel",
+      "departement": "34",
+      "n": 1
+    },
+    {
+      "code_insee": "34150",
+      "commune": "Marseillan",
+      "departement": "34",
+      "n": 1
+    },
+    {
+      "code_insee": "34154",
+      "commune": "Mauguio",
+      "departement": "34",
+      "n": 1
+    },
+    {
+      "code_insee": "34157",
+      "commune": "Mèze",
+      "departement": "34",
+      "n": 1
+    },
+    {
+      "code_insee": "34192",
+      "commune": "Palavas-les-Flots",
+      "departement": "34",
+      "n": 1
+    },
+    {
+      "code_insee": "34289",
+      "commune": "Saint-Thibéry",
+      "departement": "34",
+      "n": 1
+    },
+    {
+      "code_insee": "34301",
+      "commune": "Sète",
+      "departement": "34",
+      "n": 1
+    },
+    {
+      "code_insee": "35006",
+      "commune": "Argentré-du-Plessis",
+      "departement": "35",
+      "n": 1
+    },
+    {
+      "code_insee": "35047",
+      "commune": "Bruz",
+      "departement": "35",
+      "n": 1
+    },
+    {
+      "code_insee": "35095",
+      "commune": "Dol-de-Bretagne",
+      "departement": "35",
+      "n": 1
+    },
+    {
+      "code_insee": "35236",
+      "commune": "Redon",
+      "departement": "35",
+      "n": 1
+    },
+    {
+      "code_insee": "35288",
+      "commune": "Saint-Malo",
+      "departement": "35",
+      "n": 1
+    },
+    {
+      "code_insee": "36202",
+      "commune": "Saint-Maur",
+      "departement": "36",
+      "n": 1
+    },
+    {
+      "code_insee": "37003",
+      "commune": "Amboise",
+      "departement": "37",
+      "n": 1
+    },
+    {
+      "code_insee": "37050",
+      "commune": "Chambray-lès-Tours",
+      "departement": "37",
+      "n": 1
+    },
+    {
+      "code_insee": "38085",
+      "commune": "Charvieu-Chavagneux",
+      "departement": "38",
+      "n": 1
+    },
+    {
+      "code_insee": "38095",
+      "commune": "Chatte",
+      "departement": "38",
+      "n": 1
+    },
+    {
+      "code_insee": "38111",
+      "commune": "Claix",
+      "departement": "38",
+      "n": 1
+    },
+    {
+      "code_insee": "38158",
+      "commune": "Eybens",
+      "departement": "38",
+      "n": 1
+    },
+    {
+      "code_insee": "38239",
+      "commune": "Moirans",
+      "departement": "38",
+      "n": 1
+    },
+    {
+      "code_insee": "38281",
+      "commune": "Noyarey",
+      "departement": "38",
+      "n": 1
+    },
+    {
+      "code_insee": "38336",
+      "commune": "Reventin-Vaugris",
+      "departement": "38",
+      "n": 1
+    },
+    {
+      "code_insee": "38421",
+      "commune": "Saint-Martin-d'Hères",
+      "departement": "38",
+      "n": 1
+    },
+    {
+      "code_insee": "38423",
+      "commune": "Saint-Martin-le-Vinoux",
+      "departement": "38",
+      "n": 1
+    },
+    {
+      "code_insee": "38474",
+      "commune": "Sassenage",
+      "departement": "38",
+      "n": 1
+    },
+    {
+      "code_insee": "38516",
+      "commune": "La Tronche",
+      "departement": "38",
+      "n": 1
+    },
+    {
+      "code_insee": "38530",
+      "commune": "Vaulx-Milieu",
+      "departement": "38",
+      "n": 1
+    },
+    {
+      "code_insee": "38544",
+      "commune": "Vienne",
+      "departement": "38",
+      "n": 1
+    },
+    {
+      "code_insee": "39478",
+      "commune": "Saint-Claude",
+      "departement": "39",
+      "n": 1
+    },
+    {
+      "code_insee": "40192",
+      "commune": "Mont-de-Marsan",
+      "departement": "40",
+      "n": 1
+    },
+    {
+      "code_insee": "41018",
+      "commune": "Blois",
+      "departement": "41",
+      "n": 1
+    },
+    {
+      "code_insee": "41106",
+      "commune": "Lamotte-Beuvron",
+      "departement": "41",
+      "n": 1
+    },
+    {
+      "code_insee": "42149",
+      "commune": "Montrond-les-Bains",
+      "departement": "42",
+      "n": 1
+    },
+    {
+      "code_insee": "42187",
+      "commune": "Roanne",
+      "departement": "42",
+      "n": 1
+    },
+    {
+      "code_insee": "42207",
+      "commune": "Saint-Chamond",
+      "departement": "42",
+      "n": 1
+    },
+    {
+      "code_insee": "43041",
+      "commune": "Brives-Charensac",
+      "departement": "43",
+      "n": 1
+    },
+    {
+      "code_insee": "44026",
+      "commune": "Carquefou",
+      "departement": "44",
+      "n": 1
+    },
+    {
+      "code_insee": "44035",
+      "commune": "La Chapelle-sur-Erdre",
+      "departement": "44",
+      "n": 1
+    },
+    {
+      "code_insee": "44114",
+      "commune": "Orvault",
+      "departement": "44",
+      "n": 1
+    },
+    {
+      "code_insee": "44131",
+      "commune": "Pornic",
+      "departement": "44",
+      "n": 1
+    },
+    {
+      "code_insee": "45085",
+      "commune": "Châtillon-Coligny",
+      "departement": "45",
+      "n": 1
+    },
+    {
+      "code_insee": "45147",
+      "commune": "Fleury-les-Aubrais",
+      "departement": "45",
+      "n": 1
+    },
+    {
+      "code_insee": "45169",
+      "commune": "Ingré",
+      "departement": "45",
+      "n": 1
+    },
+    {
+      "code_insee": "45208",
+      "commune": "Montargis",
+      "departement": "45",
+      "n": 1
+    },
+    {
+      "code_insee": "45252",
+      "commune": "Pithiviers",
+      "departement": "45",
+      "n": 1
+    },
+    {
+      "code_insee": "45302",
+      "commune": "Saran",
+      "departement": "45",
+      "n": 1
+    },
+    {
+      "code_insee": "45315",
+      "commune": "Sully-sur-Loire",
+      "departement": "45",
+      "n": 1
+    },
+    {
+      "code_insee": "47323",
+      "commune": "Villeneuve-sur-Lot",
+      "departement": "47",
+      "n": 1
+    },
+    {
+      "code_insee": "49015",
+      "commune": "Avrillé",
+      "departement": "49",
+      "n": 1
+    },
+    {
+      "code_insee": "49020",
+      "commune": "Beaucouzé",
+      "departement": "49",
+      "n": 1
+    },
+    {
+      "code_insee": "49328",
+      "commune": "Saumur",
+      "departement": "49",
+      "n": 1
+    },
+    {
+      "code_insee": "50147",
+      "commune": "Coutances",
+      "departement": "50",
+      "n": 1
+    },
+    {
+      "code_insee": "50407",
+      "commune": "Poilley",
+      "departement": "50",
+      "n": 1
+    },
+    {
+      "code_insee": "51058",
+      "commune": "Bezannes",
+      "departement": "51",
+      "n": 1
+    },
+    {
+      "code_insee": "51230",
+      "commune": "Épernay",
+      "departement": "51",
+      "n": 1
+    },
+    {
+      "code_insee": "51391",
+      "commune": "Muizon",
+      "departement": "51",
+      "n": 1
+    },
+    {
+      "code_insee": "51504",
+      "commune": "Saint-Martin-sur-le-Pré",
+      "departement": "51",
+      "n": 1
+    },
+    {
+      "code_insee": "51649",
+      "commune": "Vitry-le-François",
+      "departement": "51",
+      "n": 1
+    },
+    {
+      "code_insee": "52121",
+      "commune": "Chaumont",
+      "departement": "52",
+      "n": 1
+    },
+    {
+      "code_insee": "52269",
+      "commune": "Langres",
+      "departement": "52",
+      "n": 1
+    },
+    {
+      "code_insee": "52448",
+      "commune": "Saint-Dizier",
+      "departement": "52",
+      "n": 1
+    },
+    {
+      "code_insee": "53016",
+      "commune": "Bais",
+      "departement": "53",
+      "n": 1
+    },
+    {
+      "code_insee": "53147",
+      "commune": "Mayenne",
+      "departement": "53",
+      "n": 1
+    },
+    {
+      "code_insee": "54076",
+      "commune": "Blainville-sur-l'Eau",
+      "departement": "54",
+      "n": 1
+    },
+    {
+      "code_insee": "54227",
+      "commune": "Giraumont",
+      "departement": "54",
+      "n": 1
+    },
+    {
+      "code_insee": "54329",
+      "commune": "Lunéville",
+      "departement": "54",
+      "n": 1
+    },
+    {
+      "code_insee": "54547",
+      "commune": "Vandœuvre-lès-Nancy",
+      "departement": "54",
+      "n": 1
+    },
+    {
+      "code_insee": "54578",
+      "commune": "Villers-lès-Nancy",
+      "departement": "54",
+      "n": 1
+    },
+    {
+      "code_insee": "56046",
+      "commune": "Crach",
+      "departement": "56",
+      "n": 1
+    },
+    {
+      "code_insee": "56098",
+      "commune": "Lanester",
+      "departement": "56",
+      "n": 1
+    },
+    {
+      "code_insee": "56162",
+      "commune": "Ploemeur",
+      "departement": "56",
+      "n": 1
+    },
+    {
+      "code_insee": "56178",
+      "commune": "Pontivy",
+      "departement": "56",
+      "n": 1
+    },
+    {
+      "code_insee": "56251",
+      "commune": "Theix-Noyalo",
+      "departement": "56",
+      "n": 1
+    },
+    {
+      "code_insee": "57227",
+      "commune": "Forbach",
+      "departement": "57",
+      "n": 1
+    },
+    {
+      "code_insee": "57260",
+      "commune": "Grosbliederstroff",
+      "departement": "57",
+      "n": 1
+    },
+    {
+      "code_insee": "57433",
+      "commune": "Maizières-lès-Metz",
+      "departement": "57",
+      "n": 1
+    },
+    {
+      "code_insee": "57540",
+      "commune": "Phalsbourg",
+      "departement": "57",
+      "n": 1
+    },
+    {
+      "code_insee": "57606",
+      "commune": "Saint-Avold",
+      "departement": "57",
+      "n": 1
+    },
+    {
+      "code_insee": "57645",
+      "commune": "Semécourt",
+      "departement": "57",
+      "n": 1
+    },
+    {
+      "code_insee": "58194",
+      "commune": "Nevers",
+      "departement": "58",
+      "n": 1
+    },
+    {
+      "code_insee": "58249",
+      "commune": "Saint-Léger-de-Fougeret",
+      "departement": "58",
+      "n": 1
+    },
+    {
+      "code_insee": "59043",
+      "commune": "Bailleul",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59220",
+      "commune": "Faches-Thumesnil",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59256",
+      "commune": "Fretin",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59299",
+      "commune": "Hem",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59316",
+      "commune": "Houplin-Ancoisne",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59339",
+      "commune": "Leers",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59340",
+      "commune": "Leffrinckoucke",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59343",
+      "commune": "Lesquin",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59360",
+      "commune": "Loos",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59392",
+      "commune": "Maubeuge",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59484",
+      "commune": "Quiévrechain",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59507",
+      "commune": "Ronchin",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59526",
+      "commune": "Saint-Amand-les-Eaux",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59544",
+      "commune": "Saint-Saulve",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59585",
+      "commune": "Templemars",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "59636",
+      "commune": "Wambrechies",
+      "departement": "59",
+      "n": 1
+    },
+    {
+      "code_insee": "60033",
+      "commune": "Avilly-Saint-Léonard",
+      "departement": "60",
+      "n": 1
+    },
+    {
+      "code_insee": "60104",
+      "commune": "Breteuil",
+      "departement": "60",
+      "n": 1
+    },
+    {
+      "code_insee": "60157",
+      "commune": "Clermont",
+      "departement": "60",
+      "n": 1
+    },
+    {
+      "code_insee": "60439",
+      "commune": "Mouy",
+      "departement": "60",
+      "n": 1
+    },
+    {
+      "code_insee": "60463",
+      "commune": "Nogent-sur-Oise",
+      "departement": "60",
+      "n": 1
+    },
+    {
+      "code_insee": "60471",
+      "commune": "Noyon",
+      "departement": "60",
+      "n": 1
+    },
+    {
+      "code_insee": "60509",
+      "commune": "Pont-Sainte-Maxence",
+      "departement": "60",
+      "n": 1
+    },
+    {
+      "code_insee": "60513",
+      "commune": "Précy-sur-Oise",
+      "departement": "60",
+      "n": 1
+    },
+    {
+      "code_insee": "60581",
+      "commune": "Saint-Just-en-Chaussée",
+      "departement": "60",
+      "n": 1
+    },
+    {
+      "code_insee": "60612",
+      "commune": "Senlis",
+      "departement": "60",
+      "n": 1
+    },
+    {
+      "code_insee": "61143",
+      "commune": "Damigny",
+      "departement": "61",
+      "n": 1
+    },
+    {
+      "code_insee": "62119",
+      "commune": "Béthune",
+      "departement": "62",
+      "n": 1
+    },
+    {
+      "code_insee": "62427",
+      "commune": "Hénin-Beaumont",
+      "departement": "62",
+      "n": 1
+    },
+    {
+      "code_insee": "62842",
+      "commune": "Vendin-le-Vieil",
+      "departement": "62",
+      "n": 1
+    },
+    {
+      "code_insee": "63146",
+      "commune": "Égliseneuve-près-Billom",
+      "departement": "63",
+      "n": 1
+    },
+    {
+      "code_insee": "63430",
+      "commune": "Thiers",
+      "departement": "63",
+      "n": 1
+    },
+    {
+      "code_insee": "64230",
+      "commune": "Gan",
+      "departement": "64",
+      "n": 1
+    },
+    {
+      "code_insee": "64448",
+      "commune": "Poey-de-Lescar",
+      "departement": "64",
+      "n": 1
+    },
+    {
+      "code_insee": "65417",
+      "commune": "Séméac",
+      "departement": "65",
+      "n": 1
+    },
+    {
+      "code_insee": "67300",
+      "commune": "Molsheim",
+      "departement": "67",
+      "n": 1
+    },
+    {
+      "code_insee": "67313",
+      "commune": "Mutzig",
+      "departement": "67",
+      "n": 1
+    },
+    {
+      "code_insee": "67437",
+      "commune": "Saverne",
+      "departement": "67",
+      "n": 1
+    },
+    {
+      "code_insee": "68093",
+      "commune": "Flaxlanden",
+      "departement": "68",
+      "n": 1
+    },
+    {
+      "code_insee": "68112",
+      "commune": "Guebwiller",
+      "departement": "68",
+      "n": 1
+    },
+    {
+      "code_insee": "68118",
+      "commune": "Habsheim",
+      "departement": "68",
+      "n": 1
+    },
+    {
+      "code_insee": "69116",
+      "commune": "Limonest",
+      "departement": "69",
+      "n": 1
+    },
+    {
+      "code_insee": "69181",
+      "commune": "Saint-Appolinaire",
+      "departement": "69",
+      "n": 1
+    },
+    {
+      "code_insee": "69243",
+      "commune": "Tarare",
+      "departement": "69",
+      "n": 1
+    },
+    {
+      "code_insee": "69244",
+      "commune": "Tassin-la-Demi-Lune",
+      "departement": "69",
+      "n": 1
+    },
+    {
+      "code_insee": "69268",
+      "commune": "Vourles",
+      "departement": "69",
+      "n": 1
+    },
+    {
+      "code_insee": "69290",
+      "commune": "Saint-Priest",
+      "departement": "69",
+      "n": 1
+    },
+    {
+      "code_insee": "69299",
+      "commune": "Colombier-Saugnieu",
+      "departement": "69",
+      "n": 1
+    },
+    {
+      "code_insee": "71073",
+      "commune": "Chagny",
+      "departement": "71",
+      "n": 1
+    },
+    {
+      "code_insee": "71076",
+      "commune": "Chalon-sur-Saône",
+      "departement": "71",
+      "n": 1
+    },
+    {
+      "code_insee": "71105",
+      "commune": "Charnay-lès-Mâcon",
+      "departement": "71",
+      "n": 1
+    },
+    {
+      "code_insee": "71270",
+      "commune": "Mâcon",
+      "departement": "71",
+      "n": 1
+    },
+    {
+      "code_insee": "71445",
+      "commune": "Saint-Marcel",
+      "departement": "71",
+      "n": 1
+    },
+    {
+      "code_insee": "73105",
+      "commune": "Les Échelles",
+      "departement": "73",
+      "n": 1
+    },
+    {
+      "code_insee": "73157",
+      "commune": "Modane",
+      "departement": "73",
+      "n": 1
+    },
+    {
+      "code_insee": "73179",
+      "commune": "La Motte-Servolex",
+      "departement": "73",
+      "n": 1
+    },
+    {
+      "code_insee": "73249",
+      "commune": "Saint-Jeoire-Prieuré",
+      "departement": "73",
+      "n": 1
+    },
+    {
+      "code_insee": "74067",
+      "commune": "Chavanod",
+      "departement": "74",
+      "n": 1
+    },
+    {
+      "code_insee": "74081",
+      "commune": "Cluses",
+      "departement": "74",
+      "n": 1
+    },
+    {
+      "code_insee": "74256",
+      "commune": "Sallanches",
+      "departement": "74",
+      "n": 1
+    },
+    {
+      "code_insee": "74264",
+      "commune": "Scionzier",
+      "departement": "74",
+      "n": 1
+    },
+    {
+      "code_insee": "76108",
+      "commune": "Bois-Guillaume",
+      "departement": "76",
+      "n": 1
+    },
+    {
+      "code_insee": "76259",
+      "commune": "Fécamp",
+      "departement": "76",
+      "n": 1
+    },
+    {
+      "code_insee": "76276",
+      "commune": "Forges-les-Eaux",
+      "departement": "76",
+      "n": 1
+    },
+    {
+      "code_insee": "76312",
+      "commune": "Gournay-en-Bray",
+      "departement": "76",
+      "n": 1
+    },
+    {
+      "code_insee": "76351",
+      "commune": "Le Havre",
+      "departement": "76",
+      "n": 1
+    },
+    {
+      "code_insee": "77030",
+      "commune": "Bellot",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77058",
+      "commune": "Bussy-Saint-Georges",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77079",
+      "commune": "Champagne-sur-Seine",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77096",
+      "commune": "Chartrettes",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77108",
+      "commune": "Chelles",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77111",
+      "commune": "Chessy",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77122",
+      "commune": "Combs-la-Ville",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77169",
+      "commune": "Émerainville",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77186",
+      "commune": "Fontainebleau",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77215",
+      "commune": "Gretz-Armainvilliers",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77226",
+      "commune": "Héricy",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77238",
+      "commune": "Jouarre",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77243",
+      "commune": "Lagny-sur-Marne",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77269",
+      "commune": "Maincy",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77284",
+      "commune": "Meaux",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77291",
+      "commune": "Le Mesnil-Amelot",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77305",
+      "commune": "Montereau-Fault-Yonne",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77333",
+      "commune": "Nemours",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77379",
+      "commune": "Provins",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77514",
+      "commune": "Villeparisis",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "77528",
+      "commune": "Voisenon",
+      "departement": "77",
+      "n": 1
+    },
+    {
+      "code_insee": "78117",
+      "commune": "Buc",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78172",
+      "commune": "Conflans-Sainte-Honorine",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78190",
+      "commune": "Croissy-sur-Seine",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78206",
+      "commune": "Ecquevilly",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78238",
+      "commune": "Flins-sur-Seine",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78267",
+      "commune": "Gargenville",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78367",
+      "commune": "Mareil-Marly",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78431",
+      "commune": "Morainvilliers",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78440",
+      "commune": "Les Mureaux",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78481",
+      "commune": "Le Pecq",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78517",
+      "commune": "Rambouillet",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78586",
+      "commune": "Sartrouville",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78642",
+      "commune": "Verneuil-sur-Seine",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78650",
+      "commune": "Le Vésinet",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "78686",
+      "commune": "Viroflay",
+      "departement": "78",
+      "n": 1
+    },
+    {
+      "code_insee": "79081",
+      "commune": "Chauray",
+      "departement": "79",
+      "n": 1
+    },
+    {
+      "code_insee": "80186",
+      "commune": "Chaulnes",
+      "departement": "80",
+      "n": 1
+    },
+    {
+      "code_insee": "80253",
+      "commune": "Doullens",
+      "departement": "80",
+      "n": 1
+    },
+    {
+      "code_insee": "80261",
+      "commune": "Dury",
+      "departement": "80",
+      "n": 1
+    },
+    {
+      "code_insee": "80620",
+      "commune": "Péronne",
+      "departement": "80",
+      "n": 1
+    },
+    {
+      "code_insee": "80685",
+      "commune": "Roye",
+      "departement": "80",
+      "n": 1
+    },
+    {
+      "code_insee": "81045",
+      "commune": "Les Cabannes",
+      "departement": "81",
+      "n": 1
+    },
+    {
+      "code_insee": "81065",
+      "commune": "Castres",
+      "departement": "81",
+      "n": 1
+    },
+    {
+      "code_insee": "83069",
+      "commune": "Hyères",
+      "departement": "83",
+      "n": 1
+    },
+    {
+      "code_insee": "83086",
+      "commune": "Le Muy",
+      "departement": "83",
+      "n": 1
+    },
+    {
+      "code_insee": "83118",
+      "commune": "Saint-Raphaël",
+      "departement": "83",
+      "n": 1
+    },
+    {
+      "code_insee": "83126",
+      "commune": "La Seyne-sur-Mer",
+      "departement": "83",
+      "n": 1
+    },
+    {
+      "code_insee": "84031",
+      "commune": "Carpentras",
+      "departement": "84",
+      "n": 1
+    },
+    {
+      "code_insee": "84035",
+      "commune": "Cavaillon",
+      "departement": "84",
+      "n": 1
+    },
+    {
+      "code_insee": "84054",
+      "commune": "L'Isle-sur-la-Sorgue",
+      "departement": "84",
+      "n": 1
+    },
+    {
+      "code_insee": "84087",
+      "commune": "Orange",
+      "departement": "84",
+      "n": 1
+    },
+    {
+      "code_insee": "84092",
+      "commune": "Le Pontet",
+      "departement": "84",
+      "n": 1
+    },
+    {
+      "code_insee": "84116",
+      "commune": "Saint-Romain-en-Viennois",
+      "departement": "84",
+      "n": 1
+    },
+    {
+      "code_insee": "84119",
+      "commune": "Saint-Saturnin-lès-Avignon",
+      "departement": "84",
+      "n": 1
+    },
+    {
+      "code_insee": "85026",
+      "commune": "La Boissière-des-Landes",
+      "departement": "85",
+      "n": 1
+    },
+    {
+      "code_insee": "85300",
+      "commune": "Venansault",
+      "departement": "85",
+      "n": 1
+    },
+    {
+      "code_insee": "86068",
+      "commune": "Chaunay",
+      "departement": "86",
+      "n": 1
+    },
+    {
+      "code_insee": "88054",
+      "commune": "Bertrimoutier",
+      "departement": "88",
+      "n": 1
+    },
+    {
+      "code_insee": "88090",
+      "commune": "Charmes",
+      "departement": "88",
+      "n": 1
+    },
+    {
+      "code_insee": "89055",
+      "commune": "Brienon-sur-Armançon",
+      "departement": "89",
+      "n": 1
+    },
+    {
+      "code_insee": "89257",
+      "commune": "Migennes",
+      "departement": "89",
+      "n": 1
+    },
+    {
+      "code_insee": "89387",
+      "commune": "Sens",
+      "departement": "89",
+      "n": 1
+    },
+    {
+      "code_insee": "90010",
+      "commune": "Belfort",
+      "departement": "90",
+      "n": 1
+    },
+    {
+      "code_insee": "91207",
+      "commune": "Égly",
+      "departement": "91",
+      "n": 1
+    },
+    {
+      "code_insee": "91223",
+      "commune": "Étampes",
+      "departement": "91",
+      "n": 1
+    },
+    {
+      "code_insee": "91272",
+      "commune": "Gif-sur-Yvette",
+      "departement": "91",
+      "n": 1
+    },
+    {
+      "code_insee": "91286",
+      "commune": "Grigny",
+      "departement": "91",
+      "n": 1
+    },
+    {
+      "code_insee": "91340",
+      "commune": "Lisses",
+      "departement": "91",
+      "n": 1
+    },
+    {
+      "code_insee": "91386",
+      "commune": "Mennecy",
+      "departement": "91",
+      "n": 1
+    },
+    {
+      "code_insee": "91471",
+      "commune": "Orsay",
+      "departement": "91",
+      "n": 1
+    },
+    {
+      "code_insee": "91477",
+      "commune": "Palaiseau",
+      "departement": "91",
+      "n": 1
+    },
+    {
+      "code_insee": "91521",
+      "commune": "Ris-Orangis",
+      "departement": "91",
+      "n": 1
+    },
+    {
+      "code_insee": "91581",
+      "commune": "Saint-Yon",
+      "departement": "91",
+      "n": 1
+    },
+    {
+      "code_insee": "91687",
+      "commune": "Viry-Châtillon",
+      "departement": "91",
+      "n": 1
+    },
+    {
+      "code_insee": "91689",
+      "commune": "Wissous",
+      "departement": "91",
+      "n": 1
+    },
+    {
+      "code_insee": "92020",
+      "commune": "Châtillon",
+      "departement": "92",
+      "n": 1
+    },
+    {
+      "code_insee": "92064",
+      "commune": "Saint-Cloud",
+      "departement": "92",
+      "n": 1
+    },
+    {
+      "code_insee": "93005",
+      "commune": "Aulnay-sous-Bois",
+      "departement": "93",
+      "n": 1
+    },
+    {
+      "code_insee": "93013",
+      "commune": "Le Bourget",
+      "departement": "93",
+      "n": 1
+    },
+    {
+      "code_insee": "93030",
+      "commune": "Dugny",
+      "departement": "93",
+      "n": 1
+    },
+    {
+      "code_insee": "93045",
+      "commune": "Les Lilas",
+      "departement": "93",
+      "n": 1
+    },
+    {
+      "code_insee": "93063",
+      "commune": "Romainville",
+      "departement": "93",
+      "n": 1
+    },
+    {
+      "code_insee": "93071",
+      "commune": "Sevran",
+      "departement": "93",
+      "n": 1
+    },
+    {
+      "code_insee": "93077",
+      "commune": "Villemomble",
+      "departement": "93",
+      "n": 1
+    },
+    {
+      "code_insee": "93079",
+      "commune": "Villetaneuse",
+      "departement": "93",
+      "n": 1
+    },
+    {
+      "code_insee": "94019",
+      "commune": "Chennevières-sur-Marne",
+      "departement": "94",
+      "n": 1
+    },
+    {
+      "code_insee": "94058",
+      "commune": "Le Perreux-sur-Marne",
+      "departement": "94",
+      "n": 1
+    },
+    {
+      "code_insee": "94069",
+      "commune": "Saint-Maurice",
+      "departement": "94",
+      "n": 1
+    },
+    {
+      "code_insee": "94073",
+      "commune": "Thiais",
+      "departement": "94",
+      "n": 1
+    },
+    {
+      "code_insee": "94077",
+      "commune": "Villeneuve-le-Roi",
+      "departement": "94",
+      "n": 1
+    },
+    {
+      "code_insee": "95091",
+      "commune": "Bouffémont",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "95116",
+      "commune": "Bruyères-sur-Oise",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "95176",
+      "commune": "Cormeilles-en-Parisis",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "95210",
+      "commune": "Enghien-les-Bains",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "95277",
+      "commune": "Gonesse",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "95313",
+      "commune": "L'Isle-Adam",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "95424",
+      "commune": "Montigny-lès-Cormeilles",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "95500",
+      "commune": "Pontoise",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "95510",
+      "commune": "Puiseux-Pontoise",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "95555",
+      "commune": "Saint-Gratien",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "95582",
+      "commune": "Sannois",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "95585",
+      "commune": "Sarcelles",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "95598",
+      "commune": "Soisy-sous-Montmorency",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "95680",
+      "commune": "Villiers-le-Bel",
+      "departement": "95",
+      "n": 1
+    },
+    {
+      "code_insee": "97120",
+      "commune": "Pointe-à-Pitre",
+      "departement": "971",
+      "n": 1
+    },
+    {
+      "code_insee": "97209",
+      "commune": "Fort-de-France",
+      "departement": "972",
+      "n": 1
+    },
+    {
+      "code_insee": "97302",
+      "commune": "Cayenne",
+      "departement": "973",
+      "n": 1
+    },
+    {
+      "code_insee": "97406",
+      "commune": "La Plaine-des-Palmistes",
+      "departement": "974",
+      "n": 1
+    },
+    {
+      "code_insee": "97611",
+      "commune": "Mamoudzou",
+      "departement": "976",
+      "n": 1
+    }
+  ],
+  "par_departement": {
+    "": 60,
+    "01": 2,
+    "02": 7,
+    "03": 2,
+    "04": 1,
+    "06": 24,
+    "08": 4,
+    "09": 1,
+    "10": 2,
+    "11": 2,
+    "12": 2,
+    "13": 89,
+    "14": 15,
+    "16": 2,
+    "17": 4,
+    "18": 2,
+    "19": 4,
+    "21": 10,
+    "22": 6,
+    "23": 2,
+    "24": 7,
+    "25": 7,
+    "26": 15,
+    "27": 10,
+    "28": 7,
+    "29": 3,
+    "2A": 7,
+    "2B": 2,
+    "30": 10,
+    "31": 46,
+    "33": 56,
+    "34": 28,
+    "35": 33,
+    "36": 4,
+    "37": 10,
+    "38": 26,
+    "39": 4,
+    "40": 1,
+    "41": 2,
+    "42": 11,
+    "43": 1,
+    "44": 41,
+    "45": 27,
+    "46": 2,
+    "47": 1,
+    "49": 12,
+    "50": 7,
+    "51": 15,
+    "52": 3,
+    "53": 6,
+    "54": 11,
+    "56": 11,
+    "57": 20,
+    "58": 2,
+    "59": 138,
+    "60": 22,
+    "61": 1,
+    "62": 17,
+    "63": 9,
+    "64": 10,
+    "65": 6,
+    "66": 3,
+    "67": 28,
+    "68": 13,
+    "69": 82,
+    "71": 9,
+    "72": 9,
+    "73": 6,
+    "74": 21,
+    "75": 1650,
+    "76": 13,
+    "77": 45,
+    "78": 64,
+    "79": 6,
+    "80": 7,
+    "81": 2,
+    "83": 12,
+    "84": 16,
+    "85": 4,
+    "86": 4,
+    "87": 8,
+    "88": 4,
+    "89": 12,
+    "90": 1,
+    "91": 36,
+    "92": 384,
+    "93": 118,
+    "94": 99,
+    "95": 49,
+    "971": 1,
+    "972": 1,
+    "973": 1,
+    "974": 16,
+    "976": 1
+  },
+  "par_famille": {
+    "associatif": 27,
+    "assurance": 69,
+    "autres": 7,
+    "banque": 144,
+    "collectivites_territoriales": 343,
+    "commerce": 1611,
+    "education_culture_sport": 223,
+    "energie_environnement": 31,
+    "etat_regalien": 310,
+    "immobilier": 55,
+    "politique": 37,
+    "presse": 11,
+    "sante_social": 405,
+    "telecommunications": 113,
+    "transports": 142,
+    "travail": 89
+  },
+  "par_fondement": {
+    "directive_police_justice": 14,
+    "loi78": 1564,
+    "rgpd": 1590,
+    "rgpd_ou_directive": 100,
+    "videoprotection": 349
+  },
+  "par_lieu_controle": {
+    "cnil": 1463,
+    "organisme": 2154
+  },
+  "par_modalite": {
+    "en_ligne": 994,
+    "non_renseignee": 1033,
+    "sur_audition": 121,
+    "sur_pieces": 348,
+    "sur_place": 1121
+  },
+  "par_pays": {
+    "BE": 1,
+    "BZ": 2,
+    "CA": 2,
+    "CN": 2,
+    "FR": 3560,
+    "GB": 8,
+    "IE": 7,
+    "IL": 2,
+    "KR": 1,
+    "MG": 1,
+    "NL": 2,
+    "PL": 1,
+    "US": 28
+  },
+  "par_precision": {
+    "adresse": 2639,
+    "aucune": 3,
+    "commune": 918,
+    "pays": 57
+  },
+  "par_region": {
+    "": 60,
+    "01": 1,
+    "02": 1,
+    "03": 1,
+    "04": 16,
+    "06": 1,
+    "11": 2445,
+    "24": 52,
+    "27": 45,
+    "28": 46,
+    "32": 191,
+    "44": 100,
+    "52": 72,
+    "53": 53,
+    "75": 105,
+    "76": 102,
+    "84": 175,
+    "93": 142,
+    "94": 9
+  },
+  "par_secteur": {
+    "associatif": 27,
+    "assurance": 69,
+    "banque": 144,
+    "collectivites_territoriales": 343,
+    "commerce": 1590,
+    "cookies": 1,
+    "culture": 21,
+    "economie": 5,
+    "education": 65,
+    "education_culture_sport": 111,
+    "energie": 24,
+    "environnement": 7,
+    "finances_publiques": 9,
+    "immobilier": 55,
+    "inconnu": 3,
+    "jeux": 12,
+    "ministeres": 2,
+    "nouvelles_technologies": 3,
+    "particulier": 4,
+    "police_justice_securite": 151,
+    "politique": 36,
+    "presse": 11,
+    "regalien": 143,
+    "sante": 213,
+    "sante_social": 163,
+    "social": 29,
+    "sport": 14,
+    "statistiques_publiques": 5,
+    "telecommunications": 110,
+    "tourisme": 15,
+    "transports": 142,
+    "travail": 89,
+    "vote_electronique": 1
+  }
+}
