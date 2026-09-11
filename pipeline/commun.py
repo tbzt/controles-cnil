@@ -71,3 +71,34 @@ def erreur_fatale(message: str, code: int = 1) -> None:
     produirait une transformation douteuse."""
     print(f"[pipeline] ERREUR FATALE : {message}", file=sys.stderr, flush=True)
     sys.exit(code)
+
+
+# ------------------------------------------------------------ texte ---
+
+import re as _re
+import unicodedata as _unicodedata
+
+_ESPACES = _re.compile(r"[\s ]+")
+_NON_ALNUM = _re.compile(r"[^A-Z0-9]+")
+
+
+def nettoyer_espaces(texte: str) -> str:
+    """Remplace toute suite d'espaces, tabulations, retours à la ligne et
+    espaces insécables par une espace simple ; retire les bords."""
+    return _ESPACES.sub(" ", texte or "").strip()
+
+
+def sans_accents(texte: str) -> str:
+    return _unicodedata.normalize("NFKD", texte or "").encode("ascii", "ignore").decode("ascii")
+
+
+def cle_normalisee(texte: str) -> str:
+    """Forme de comparaison : sans accents, minuscules, espaces réduites.
+    Sert aux en-têtes et aux libellés de nomenclature."""
+    return nettoyer_espaces(sans_accents(texte).lower())
+
+
+def normaliser_nom(texte: str) -> str:
+    """Forme de recherche et de rapprochement : sans accents, majuscules,
+    tout ce qui n'est pas lettre ou chiffre devient une espace."""
+    return _NON_ALNUM.sub(" ", sans_accents(texte).upper()).strip()

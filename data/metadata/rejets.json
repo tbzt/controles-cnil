@@ -1,0 +1,28 @@
+[
+  {
+    "contenu": [
+      "341",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "motif": "ligne parasite (total ou compteur)",
+    "source_fichier": "068c80f5__OpenCnil_liste_controles_2017.csv",
+    "source_ligne": 379
+  },
+  {
+    "contenu": [
+      "Nombre total de contrôles : 310",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "motif": "ligne parasite (total ou compteur)",
+    "source_fichier": "4959b379__opencnil-liste-controles-2018.csv",
+    "source_ligne": 416
+  }
+]

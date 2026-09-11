@@ -13,14 +13,42 @@ dans cet ordre :
    code de sortie non nul sur règle fatale.
 5. `build.py` : GeoJSON, statistiques, journal des changements.
 
-État : `fetch.py` est écrit et testé ; les autres scripts sont à venir.
+État : `fetch.py` et `transform.py` sont écrits et testés ; les autres
+scripts sont à venir.
 
 ```bash
 python3 pipeline/fetch.py              # récupère ce qui a changé
 python3 pipeline/fetch.py --forcer     # retélécharge tout, sans dupliquer un contenu identique
 python3 pipeline/fetch.py --hors-ligne # vérifie seulement que data/raw/ correspond au manifeste
+python3 pipeline/transform.py          # data/raw/ → data/processed/controles.csv et .json
 python3 -m unittest discover -s pipeline/tests -t .
 ```
+
+## Comment transform.py lit un fichier
+
+1. Décodage : UTF-8 (avec ou sans BOM), sinon Windows-1252.
+2. Séparateur point-virgule obligatoire ; en-têtes et valeurs sur plusieurs
+   lignes acceptés (vrai parseur CSV) ; colonnes vides d'export Excel
+   retirées ; lignes vides ignorées.
+3. Chaque en-tête est normalisé (sans accents, minuscules, espaces réduites)
+   et cherché dans `mappings/entetes.json`. Un en-tête inconnu arrête tout,
+   avec la clé exacte à ajouter. L'ordre des colonnes n'a aucune importance.
+4. Les libellés de fondement, de modalité et de pays passent par
+   `mappings/fondements.json`, `modalites.json`, `pays.json` ; un libellé
+   inconnu arrête tout. Le libellé source est toujours conservé dans une
+   colonne `*_source`.
+5. Une ligne dont seule la première colonne est remplie est une ligne de
+   total : rejetée et listée dans `data/metadata/rejets.json`.
+6. Identifiant : `annee-hash8-rang`, où le hachage SHA-1 porte sur le contenu
+   source de la ligne et le rang distingue les lignes strictement identiques
+   (contrôles multiples d'un même organisme, conservés).
+
+Les drapeaux de la colonne `qualite` disent ce qui a été déduit ou corrigé :
+`annee_source_absente`, `modalite_deduite_du_type`, `modalite_non_renseignee`,
+`departement_corrige`, `departement_multiple`, `departement_a_preciser`,
+`departement_vide`, `departement_invalide`, `pays_deduit`, `pays_vide`,
+`organisme_vide`, `organisme_multiligne`, `ville_vide`, `secteur_vide`,
+`ligne_dupliquee`.
 
 `fetch.py` ne touche jamais à un fichier existant de `data/raw/` : une
 ressource modifiée côté CNIL donne une version de plus dans le manifeste et

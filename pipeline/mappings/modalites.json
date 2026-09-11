@@ -1,0 +1,16 @@
+{
+  "_commentaire": "Libellé normalisé de la modalité → valeur canonique.",
+  "libelles": {
+    "en_ligne": "En ligne",
+    "non_renseignee": "Non renseignée",
+    "sur_audition": "Sur audition",
+    "sur_pieces": "Sur pièces",
+    "sur_place": "Sur place"
+  },
+  "modalites": {
+    "en ligne": "en_ligne",
+    "sur audition": "sur_audition",
+    "sur pieces": "sur_pieces",
+    "sur place": "sur_place"
+  }
+}

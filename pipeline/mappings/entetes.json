@@ -1,0 +1,23 @@
+{
+  "_commentaire": "En-tête normalisé (sans accents, minuscules, espaces réduites) → champ canonique. Un en-tête absent d'ici arrête transform.py : l'ajouter après vérification du fichier source.",
+  "entetes": {
+    "activite de l'organisme": "secteur",
+    "annee": "annee",
+    "categorie de controle": "type",
+    "dep.": "departement",
+    "departement": "departement",
+    "dept.": "departement",
+    "lieu": "ville",
+    "lieu de controle": "ville",
+    "modalite de controle": "modalite",
+    "modalites de controle": "modalite",
+    "nom de l'organisme controle ou nom de domaine": "organisme",
+    "organismes": "organisme",
+    "organismes controles": "organisme",
+    "pays": "pays",
+    "secteur d'activite": "secteur",
+    "secteur d'activite de l'organisme": "secteur",
+    "type de controle": "type",
+    "ville": "ville"
+  }
+}

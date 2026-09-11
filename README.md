@@ -11,10 +11,12 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 1 sur 18 : le dépôt est initialisé et la récupération des données
-fonctionne. `pipeline/fetch.py` archive les onze fichiers CSV de la CNIL dans
-`data/raw/` avec leur empreinte, et ne modifie rien quand data.gouv.fr n'a
-rien publié de nouveau. Pas encore de transformation ni de site. Chaque
+Étape 2 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
+CNIL dans `data/raw/` avec leur empreinte ; `pipeline/transform.py` les
+normalise en une table unique de 3 617 contrôles
+(`data/processed/controles.csv` et `.json`), avec identifiants stables,
+valeurs brutes conservées et drapeaux de qualité. Les secteurs harmonisés
+(étape 3), la localisation (étape 4) et le site restent à faire. Chaque
 étape du plan est une livraison autonome.
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas

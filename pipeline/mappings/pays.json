@@ -1,0 +1,33 @@
+{
+  "_commentaire": "Libellé normalisé de la colonne Pays → code ISO 3166-1 alpha-2. Colonne absente avant 2021 : FR par défaut, signalé par le drapeau pays_deduit.",
+  "libelles": {
+    "BZ": "Belize",
+    "CA": "Canada",
+    "CN": "Chine",
+    "FR": "France",
+    "GB": "Royaume-Uni",
+    "IE": "Irlande",
+    "IL": "Israël",
+    "KR": "Corée du Sud",
+    "MG": "Madagascar",
+    "NL": "Pays-Bas",
+    "PL": "Pologne",
+    "US": "États-Unis"
+  },
+  "pays": {
+    "belize": "BZ",
+    "canada": "CA",
+    "chine": "CN",
+    "coree du sud": "KR",
+    "etats-unis": "US",
+    "france": "FR",
+    "ireland": "IE",
+    "irlande": "IE",
+    "israel": "IL",
+    "madagascar": "MG",
+    "pays-bas": "NL",
+    "pologne": "PL",
+    "royaume - uni": "GB",
+    "royaume-uni": "GB"
+  }
+}

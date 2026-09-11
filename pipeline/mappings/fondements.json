@@ -1,0 +1,41 @@
+{
+  "_commentaire": "Libellé normalisé de la colonne type/catégorie de contrôle → fondement juridique. `modalite_implicite` : quand le libellé source décrit en réalité une modalité (2014-2016).",
+  "fondements": {
+    "controle en ligne": {
+      "fondement": "loi78",
+      "modalite_implicite": "en_ligne"
+    },
+    "controles en ligne": {
+      "fondement": "loi78",
+      "modalite_implicite": "en_ligne"
+    },
+    "directive": {
+      "fondement": "directive_police_justice"
+    },
+    "loi 1978": {
+      "fondement": "loi78"
+    },
+    "loi 78": {
+      "fondement": "loi78"
+    },
+    "rgpd": {
+      "fondement": "rgpd"
+    },
+    "rgpd/ directive police justice": {
+      "fondement": "rgpd_ou_directive"
+    },
+    "video": {
+      "fondement": "videoprotection"
+    },
+    "videoprotection": {
+      "fondement": "videoprotection"
+    }
+  },
+  "libelles": {
+    "directive_police_justice": "Directive police-justice",
+    "loi78": "Loi Informatique et Libertés",
+    "rgpd": "RGPD",
+    "rgpd_ou_directive": "RGPD ou directive police-justice (non distingués par la CNIL en 2018)",
+    "videoprotection": "Vidéoprotection (LOPPSI 2)"
+  }
+}
