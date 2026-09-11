@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contrôles de la CNIL</title>
+  <meta name="description" content="Carte des contrôles réalisés par la CNIL depuis 2014, à partir des données ouvertes publiées sur data.gouv.fr.">
+  <link rel="stylesheet" href="vendor/maplibre-gl.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/composants.css">
+  <link rel="stylesheet" href="css/carte.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="panneau" id="panneau" data-replie="false" aria-label="Informations et légende">
+      <header class="panneau__entete">
+        <div class="bandeau">
+          <div class="bandeau__titre">
+            <h1>Contrôles de la CNIL</h1>
+            <button class="bouton-replier" id="bouton-replier" type="button" aria-expanded="true" aria-controls="panneau-corps" aria-label="Replier le panneau">
+              <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 12.5 10 6.5l6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p class="bandeau__couverture" id="couverture" aria-live="polite">
+            <span>Chargement des données…</span>
+          </p>
+        </div>
+      </header>
+      <div class="panneau__corps" id="panneau-corps">
+        <section class="section" aria-labelledby="titre-familles">
+          <div class="section__titre">
+            <h2 id="titre-familles">Secteurs d'activité</h2>
+            <span class="etiquette">familles</span>
+          </div>
+          <ul class="legende" id="legende-familles"></ul>
+        </section>
+        <section class="section" aria-labelledby="titre-precision">
+          <h2 id="titre-precision">Précision des points</h2>
+          <div class="precision">
+            <div class="precision__item"><span class="precision__point" style="--contour:2px"></span><span>À l'adresse (siège ou établissement identifié)</span></div>
+            <div class="precision__item"><span class="precision__point" style="--contour:1px"></span><span>À la commune indiquée par la CNIL</span></div>
+            <div class="precision__item"><span class="precision__point" style="--contour:0.5px"></span><span>Au département ou au pays</span></div>
+          </div>
+          <p class="discret" style="font-size: var(--t-2)">Les points sont situés chez l'organisme contrôlé. Les contrôles en ligne, sur pièces et sur audition se déroulent dans les locaux de la CNIL ; la popup le précise.</p>
+        </section>
+        <section class="section">
+          <p class="discret" style="font-size: var(--t-2)">
+            Source : <a href="https://www.data.gouv.fr/datasets/controles-realises-par-la-cnil" id="lien-source">CNIL, data.gouv.fr</a>, Licence Ouverte.
+            Code et données : <a href="https://github.com/tbzt/controles-cnil">github.com/tbzt/controles-cnil</a>.
+          </p>
+        </section>
+      </div>
+    </aside>
+    <main class="carte">
+      <div class="carte__conteneur" id="carte" role="region" aria-label="Carte des contrôles"></div>
+      <div class="message" id="message" hidden></div>
+    </main>
+  </div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

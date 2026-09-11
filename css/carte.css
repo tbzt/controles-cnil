@@ -1,0 +1,47 @@
+/* Carte : conteneur MapLibre, clusters en anneau, contrôles natifs. */
+
+.carte { position: relative; min-width: 0; min-height: 0; }
+.carte__conteneur { position: absolute; inset: 0; }
+
+/* Cluster en anneau : un SVG par cluster, posé en marqueur HTML. Les arcs
+   sont proportionnels au nombre de contrôles de chaque famille ; le disque
+   central porte le total. La taille croît avec la racine du total, pour que
+   l'aire reste lisible sans écraser les voisins. */
+.cluster {
+  display: grid; place-items: center;
+  cursor: pointer;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / .25));
+  transition: transform var(--duree) var(--courbe);
+}
+.cluster:hover { transform: scale(1.06); }
+.cluster svg { display: block; overflow: visible; }
+.cluster__fond { fill: var(--cluster-fond); }
+.cluster__total {
+  font-family: var(--police); font-weight: 600; fill: var(--encre);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Contrôles MapLibre accordés aux tokens. */
+.maplibregl-ctrl-group {
+  background: var(--surface); box-shadow: var(--ombre); border-radius: var(--rayon);
+}
+.maplibregl-ctrl-group button { width: 36px; height: 36px; }
+.maplibregl-ctrl-group button + button { border-top: 1px solid var(--filet); }
+.maplibregl-ctrl-attrib {
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  color: var(--encre-2); font-size: var(--t-1); font-family: var(--police);
+}
+.maplibregl-ctrl-attrib a { color: var(--encre-2); }
+.maplibregl-ctrl-scale {
+  background: color-mix(in srgb, var(--surface) 75%, transparent);
+  border-color: var(--encre-2); color: var(--encre-2); font-family: var(--police); font-size: var(--t-1);
+}
+
+/* Le thème sombre assombrit le fond de carte clair plutôt que de charger un
+   second style : moins de dépendances, et les couleurs de données restent
+   identiques d'un thème à l'autre. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .carte__conteneur .maplibregl-canvas { filter: invert(1) hue-rotate(180deg) brightness(.9) contrast(.9); }
+  :root:not([data-theme="light"]) .maplibregl-marker, :root:not([data-theme="light"]) .maplibregl-popup { filter: none; }
+}
+:root[data-theme="dark"] .carte__conteneur .maplibregl-canvas { filter: invert(1) hue-rotate(180deg) brightness(.9) contrast(.9); }

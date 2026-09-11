@@ -11,7 +11,7 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 8 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
+Étape 9 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
 CNIL dans `data/raw/` avec leur empreinte ; `pipeline/transform.py` les
 normalise en une table unique de 3 617 contrôles
 (`data/processed/controles.csv` et `.json`), avec identifiants stables,
@@ -30,7 +30,11 @@ réutilisateurs (`controles.geojson`, `stats.json`) et le schéma des tables
 (`data/metadata/schema.json`). Le workflow `.github/workflows/actualiser-donnees.yml`
 enchaîne le tout chaque lundi et à la demande, ne commite que si les données
 ont changé, tague chaque publication (`donnees-AAAA-MM-JJ`) et joint les
-fichiers à une Release. Le site (étapes 9 à 16) reste à faire.
+fichiers à une Release. Le site est en ligne dans une première version
+(carte, clusters en anneau par famille, points stylés selon leur précision,
+popup, bandeau de couverture) sur https://tbzt.github.io/controles-cnil/ ;
+filtres, recherche, vues d'analyse et d'évolution, page Données restent à
+faire (étapes 10 à 16).
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 
@@ -118,6 +122,27 @@ python3 -m http.server 8000
 Le site se sert ensuite depuis http://localhost:8000/ (il lit
 `data/processed/` par `fetch()`, donc un serveur local est nécessaire, pas
 l'ouverture directe du fichier).
+
+## Comment le site est construit
+
+Aucun build : HTML, CSS et modules ES natifs, MapLibre GL JS vendorisé.
+
+- `css/tokens.css` est la seule source des couleurs (dont les seize couleurs
+  de famille, lues aussi par le JavaScript), des tailles et des rythmes ;
+  `base.css`, `composants.css` et `carte.css` ne contiennent aucune valeur
+  brute. Thème clair et sombre ; mouvement annulé si l'utilisateur le demande.
+- `js/donnees.js` charge `data/processed/` ; avec `?version=donnees-AAAA-MM-JJ`
+  il lit la même arborescence à ce tag, servie par raw.githubusercontent.com.
+- `js/carte/fond.js` : style vectoriel OpenFreeMap « positron », repli sur les
+  tuiles raster OpenStreetMap si le style ne répond pas. Le thème sombre
+  inverse le fond clair plutôt que de charger un second style.
+- `js/carte/source.js` : un GeoJSON, clustering natif avec sous-totaux par
+  famille. C'est le seul module à changer pour passer à PMTiles.
+- `js/carte/couches.js` : points (couleur de famille, contour selon la
+  précision) et clusters en anneau (un SVG par cluster, arcs proportionnels
+  aux familles, taille en racine du total).
+- `js/carte/popup.js`, `js/app.js` : fiche d'un contrôle, bandeau de
+  couverture, légende, panneau repliable sur mobile.
 
 ## Licences
 

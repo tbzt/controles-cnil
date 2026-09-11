@@ -1,0 +1,43 @@
+{
+  "fondements": {
+    "directive_police_justice": "Directive police-justice",
+    "loi78": "Loi Informatique et Libertés",
+    "rgpd": "RGPD",
+    "rgpd_ou_directive": "RGPD ou directive police-justice (non distingués par la CNIL en 2018)",
+    "videoprotection": "Vidéoprotection (LOPPSI 2)"
+  },
+  "lieux_controle": {
+    "cnil": "dans les locaux de la CNIL",
+    "organisme": "chez l'organisme"
+  },
+  "modalites": {
+    "en_ligne": "En ligne",
+    "non_renseignee": "Non renseignée",
+    "sur_audition": "Sur audition",
+    "sur_pieces": "Sur pièces",
+    "sur_place": "Sur place"
+  },
+  "pays": {
+    "BE": "Belgique",
+    "BZ": "Belize",
+    "CA": "Canada",
+    "CN": "Chine",
+    "FR": "France",
+    "GB": "Royaume-Uni",
+    "IE": "Irlande",
+    "IL": "Israël",
+    "KR": "Corée du Sud",
+    "MG": "Madagascar",
+    "NL": "Pays-Bas",
+    "PL": "Pologne",
+    "US": "États-Unis"
+  },
+  "precisions": {
+    "adresse": "à l'adresse",
+    "aucune": "non localisé",
+    "commune": "à la commune",
+    "departement": "au département",
+    "institution": "au siège de la CNIL",
+    "pays": "au pays"
+  }
+}

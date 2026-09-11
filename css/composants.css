@@ -1,0 +1,139 @@
+/* Composants : panneau latéral, bandeau de couverture, légende, popup, boutons. */
+
+/* -------------------------------------------------------- disposition -- */
+
+.app {
+  display: grid;
+  grid-template-columns: var(--largeur-panneau) minmax(0, 1fr);
+  height: 100dvh;
+}
+
+.panneau {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--filet);
+  z-index: 2;
+}
+
+.panneau__entete {
+  padding: var(--e-4) var(--e-5) var(--e-3);
+  border-bottom: 1px solid var(--filet);
+}
+
+.panneau__corps {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--e-3) var(--e-5) var(--e-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-5);
+}
+
+.section { display: flex; flex-direction: column; gap: var(--e-2); }
+.section__titre { display: flex; align-items: baseline; justify-content: space-between; gap: var(--e-2); }
+
+/* Sur mobile, le panneau devient une feuille en bas de l'écran : repliée sur
+   son en-tête, dépliée au toucher. La carte garde tout l'écran. */
+@media (max-width: 767px) {
+  .app { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; }
+  .panneau {
+    grid-row: 2;
+    border-right: 0;
+    border-top: 1px solid var(--filet);
+    border-radius: var(--rayon-grand) var(--rayon-grand) 0 0;
+    box-shadow: var(--ombre);
+    max-height: 45dvh;
+  }
+  .panneau[data-replie="true"] .panneau__corps { display: none; }
+  .panneau__entete { padding-top: var(--e-3); }
+  .carte { grid-row: 1; }
+}
+
+/* -------------------------------------------------------- bandeau ----- */
+
+.bandeau { display: flex; flex-direction: column; gap: var(--e-1); }
+.bandeau__titre { display: flex; align-items: center; justify-content: space-between; gap: var(--e-2); }
+.bandeau__couverture {
+  display: flex; flex-wrap: wrap; gap: var(--e-1) var(--e-3);
+  font-size: var(--t-2); color: var(--encre-2);
+}
+.bandeau__couverture b { color: var(--encre); font-weight: 600; }
+
+.bouton-replier {
+  display: none;
+  width: var(--cible-tactile); height: var(--cible-tactile);
+  margin: calc(-1 * var(--e-2)) calc(-1 * var(--e-2)) calc(-1 * var(--e-2)) 0;
+  border: 0; background: transparent; border-radius: var(--rayon);
+  color: var(--encre-2);
+}
+@media (max-width: 767px) { .bouton-replier { display: inline-grid; place-items: center; } }
+.bouton-replier svg { transition: transform var(--duree) var(--courbe); }
+.panneau[data-replie="true"] .bouton-replier svg { transform: rotate(180deg); }
+
+/* -------------------------------------------------------- légende ----- */
+
+.legende { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.legende__item {
+  display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; align-items: center; gap: var(--e-2);
+  min-height: 28px; font-size: var(--t-2);
+}
+.legende__pastille {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--couleur); box-shadow: 0 0 0 1.5px var(--point-contour);
+}
+.legende__nom { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.legende__n { color: var(--encre-2); }
+
+.precision { display: flex; flex-direction: column; gap: var(--e-1); font-size: var(--t-2); color: var(--encre-2); }
+.precision__item { display: grid; grid-template-columns: 14px 1fr; align-items: center; gap: var(--e-2); }
+.precision__point {
+  width: 11px; height: 11px; border-radius: 50%; background: var(--encre-3);
+  box-shadow: 0 0 0 var(--contour, 1px) var(--point-contour), 0 0 0 calc(var(--contour, 1px) + 1px) var(--encre-3);
+}
+
+/* -------------------------------------------------------- popup ------- */
+
+.maplibregl-popup { max-width: 320px !important; font-family: var(--police); }
+.maplibregl-popup-content {
+  padding: var(--e-3) var(--e-4) var(--e-4);
+  border-radius: var(--rayon);
+  background: var(--surface);
+  color: var(--encre);
+  box-shadow: var(--ombre);
+}
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip { border-top-color: var(--surface); }
+.maplibregl-popup-anchor-top .maplibregl-popup-tip { border-bottom-color: var(--surface); }
+.maplibregl-popup-anchor-left .maplibregl-popup-tip { border-right-color: var(--surface); }
+.maplibregl-popup-anchor-right .maplibregl-popup-tip { border-left-color: var(--surface); }
+.maplibregl-popup-close-button {
+  width: 32px; height: 32px; font-size: 20px; color: var(--encre-2); border-radius: var(--rayon);
+}
+.maplibregl-popup-close-button:hover { background: var(--surface-2); color: var(--encre); }
+
+.fiche { display: flex; flex-direction: column; gap: var(--e-2); padding-right: var(--e-4); }
+.fiche__organisme { font-size: var(--t-3); font-weight: 600; line-height: 1.3; }
+.fiche__ligne { font-size: var(--t-2); color: var(--encre-2); }
+.fiche__ligne b { color: var(--encre); font-weight: 600; }
+.fiche__famille {
+  display: inline-flex; align-items: center; gap: var(--e-2); font-size: var(--t-2);
+}
+.fiche__famille::before {
+  content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--couleur);
+}
+.fiche__note {
+  font-size: var(--t-1); color: var(--encre-3); border-top: 1px solid var(--filet); padding-top: var(--e-2);
+}
+
+/* -------------------------------------------------------- message ----- */
+
+.message {
+  position: absolute; inset: auto 50% var(--e-5) auto; transform: translateX(50%);
+  background: var(--surface); color: var(--encre); border: 1px solid var(--filet);
+  border-radius: var(--rayon); box-shadow: var(--ombre); padding: var(--e-2) var(--e-4);
+  font-size: var(--t-2); z-index: 3;
+}
+.message[hidden] { display: none; }
+.message--alerte { border-color: var(--alerte); background: var(--alerte-doux); }

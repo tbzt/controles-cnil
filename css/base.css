@@ -1,0 +1,37 @@
+/* Base : remise à zéro minimale et typographie. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--encre);
+  font-family: var(--police);
+  font-size: var(--t-3);
+  line-height: var(--interligne);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden; /* la carte occupe l'écran ; le panneau défile seul */
+}
+
+h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.2; text-wrap: balance; }
+h1 { font-size: var(--t-5); letter-spacing: -.01em; }
+h2 { font-size: var(--t-4); }
+h3 { font-size: var(--t-3); }
+p { margin: 0; }
+a { color: var(--accent); }
+button { font: inherit; color: inherit; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.visuellement-cache {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.num { font-variant-numeric: tabular-nums; }
+.discret { color: var(--encre-2); }
+.etiquette {
+  font-size: var(--t-1); letter-spacing: .06em; text-transform: uppercase; color: var(--encre-2);
+}

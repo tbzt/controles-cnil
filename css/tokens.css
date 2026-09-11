@@ -1,0 +1,129 @@
+/* Tokens de design : la seule source des couleurs, tailles et rythmes.
+   Les composants ne contiennent aucune valeur brute, ils lisent ces variables.
+   Le JavaScript de la carte lit aussi les couleurs de famille ici
+   (getComputedStyle), pour qu'une couleur ne soit définie qu'une fois. */
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces et texte. Gris légèrement froids, accordés au fond de carte
+     « positron » (gris clair) pour que les panneaux semblent en faire partie. */
+  --fond: #f4f5f2;
+  --surface: #ffffff;
+  --surface-2: #eceeea;
+  --encre: #1b2430;
+  --encre-2: #5c6773;
+  --encre-3: #8a949e;
+  --filet: #d5dbe1;
+  --accent: #1d4f91;
+  --accent-encre: #ffffff;
+  --accent-doux: #e7eef8;
+  --alerte: #b4531d;
+  --alerte-doux: #fbeee4;
+  --ombre: 0 1px 2px rgb(27 36 48 / .08), 0 8px 24px rgb(27 36 48 / .10);
+
+  /* Couleurs de famille de secteur. Elles reprennent les associations de la
+     carte uMap d'origine (commerce bleu, santé cramoisi, banque or, éducation
+     orange, immobilier sarcelle, télécommunications violet…), ajustées pour
+     tenir le contraste sur un fond clair et sur le thème sombre. */
+  --fam-commerce: #2d6fd6;
+  --fam-sante_social: #c8323e;
+  --fam-collectivites_territoriales: #6b7280;
+  --fam-etat_regalien: #2f3a4a;
+  --fam-banque: #d9a400;
+  --fam-assurance: #e27fa0;
+  --fam-transports: #b94e8e;
+  --fam-telecommunications: #7b3fbf;
+  --fam-travail: #5c6bc0;
+  --fam-education_culture_sport: #e8731a;
+  --fam-immobilier: #1e8c86;
+  --fam-politique: #111111;
+  --fam-associatif: #2fa86b;
+  --fam-energie_environnement: #7cb518;
+  --fam-presse: #8a6bdb;
+  --fam-autres: #a8adb5;
+
+  /* Contour des points : blanc sur fond clair, pour détacher les disques. */
+  --point-contour: #ffffff;
+  --cluster-fond: #ffffff;
+
+  /* Typographie : pile système, tailles sur une échelle 1,2. */
+  --police: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --police-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --t-1: 12px;
+  --t-2: 13.5px;
+  --t-3: 15px;
+  --t-4: 18px;
+  --t-5: 22px;
+  --t-6: 27px;
+  --interligne: 1.45;
+
+  /* Espacements sur base 4. */
+  --e-1: 4px;
+  --e-2: 8px;
+  --e-3: 12px;
+  --e-4: 16px;
+  --e-5: 24px;
+  --e-6: 32px;
+
+  --rayon: 6px;
+  --rayon-grand: 10px;
+  --largeur-panneau: 360px;
+  --cible-tactile: 44px;
+
+  /* Mouvement : une seule durée, annulée si l'utilisateur le demande. */
+  --duree: 180ms;
+  --courbe: cubic-bezier(.2, .7, .3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --duree: 0ms; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --fond: #12181f;
+    --surface: #1a2129;
+    --surface-2: #232b34;
+    --encre: #e4e9ee;
+    --encre-2: #a3adb8;
+    --encre-3: #7a8591;
+    --filet: #2b3540;
+    --accent: #86ace6;
+    --accent-encre: #0f1b2c;
+    --accent-doux: #1c2a3c;
+    --alerte: #e3925f;
+    --alerte-doux: #3a2618;
+    --ombre: 0 1px 2px rgb(0 0 0 / .4), 0 8px 24px rgb(0 0 0 / .4);
+    --fam-etat_regalien: #9aa7b8;
+    --fam-politique: #e5e7eb;
+    --fam-collectivites_territoriales: #9096a0;
+    --fam-autres: #6d737c;
+    --point-contour: #12181f;
+    --cluster-fond: #1a2129;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --fond: #12181f;
+  --surface: #1a2129;
+  --surface-2: #232b34;
+  --encre: #e4e9ee;
+  --encre-2: #a3adb8;
+  --encre-3: #7a8591;
+  --filet: #2b3540;
+  --accent: #86ace6;
+  --accent-encre: #0f1b2c;
+  --accent-doux: #1c2a3c;
+  --alerte: #e3925f;
+  --alerte-doux: #3a2618;
+  --ombre: 0 1px 2px rgb(0 0 0 / .4), 0 8px 24px rgb(0 0 0 / .4);
+  --fam-etat_regalien: #9aa7b8;
+  --fam-politique: #e5e7eb;
+  --fam-collectivites_territoriales: #9096a0;
+  --fam-autres: #6d737c;
+  --point-contour: #12181f;
+  --cluster-fond: #1a2129;
+}

@@ -15,6 +15,7 @@ from pipeline.commun import METADATA, PROCESSED
 FICHIERS = [
     PROCESSED / "controles.csv", PROCESSED / "controles.json",
     PROCESSED / "localisations.csv", PROCESSED / "controles.geojson", PROCESSED / "stats.json",
+    PROCESSED / "referentiels" / "libelles.json",
     METADATA / "rejets.json", METADATA / "geocodage-rapport.json", METADATA / "quality-report.json", METADATA / "schema.json",
 ]
 

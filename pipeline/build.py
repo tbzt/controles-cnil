@@ -35,6 +35,8 @@ from pipeline.commun import GEOCODING, METADATA, PROCESSED, RACINE, ecrire_json,
 GEOJSON = PROCESSED / "controles.geojson"
 STATS = PROCESSED / "stats.json"
 SCHEMA = METADATA / "schema.json"
+LIBELLES = PROCESSED / "referentiels" / "libelles.json"
+MAPPINGS = RACINE / "pipeline" / "mappings"
 
 PROPRIETES = ("id", "annee", "fondement", "modalite", "famille", "secteur", "organisme",
               "commune", "code_insee", "departement", "region", "pays", "precision", "lieu_controle")
@@ -214,6 +216,21 @@ def schema() -> dict:
     }
 
 
+# ----------------------------------------------------------- libellés ---
+
+def libelles() -> dict:
+    """Libellés d'affichage des valeurs codées, pour le site et les
+    réutilisateurs : le site n'a ainsi rien à connaître de pipeline/."""
+    return {
+        "fondements": lire_json(MAPPINGS / "fondements.json")["libelles"],
+        "modalites": lire_json(MAPPINGS / "modalites.json")["libelles"],
+        "pays": lire_json(MAPPINGS / "pays.json")["libelles"],
+        "precisions": {"adresse": "à l'adresse", "commune": "à la commune", "departement": "au département",
+                       "pays": "au pays", "institution": "au siège de la CNIL", "aucune": "non localisé"},
+        "lieux_controle": {"cnil": "dans les locaux de la CNIL", "organisme": "chez l'organisme"},
+    }
+
+
 # ---------------------------------------------------------- exécution ---
 
 def main(argv=None) -> int:
@@ -230,6 +247,7 @@ def main(argv=None) -> int:
     stats = construire_stats(controles, loc, manifeste, lieux)
     change = ecrire_json(STATS, stats) or change
     change = ecrire_json(SCHEMA, schema()) or change
+    change = ecrire_json(LIBELLES, libelles()) or change
     journal(f"{len(features)} features GeoJSON ({GEOJSON.stat().st_size // 1024} Ko), {len(stats['par_commune'])} communes, "
             f"{len(stats['organismes_recurrents'])} organismes récurrents")
     journal(("mis à jour" if change else "inchangés") + f" : {GEOJSON.name}, {STATS.name}, {SCHEMA.relative_to(RACINE)}")
