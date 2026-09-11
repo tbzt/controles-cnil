@@ -2,6 +2,15 @@
 
 Généré par `pipeline/report.py` à chaque publication.
 
+## 2026-09-11 — `donnees-2026-09-11-1305`
+
+- Contrôles : 3617 → 3617 (0 ajoutés, 0 retirés).
+- Localisation de l'organisme, par précision : adresse 2640, aucune 3, commune 917, pays 57
+- Qualité : alerte (0 fatal, 3 alerte).
+  - secteur_source vide sur 3 lignes
+  - écarts minimes avec les totaux officiels : {2015: {'lignes': 496, 'officiel': 510}}
+  - 291 lignes strictement identiques à une autre de la même année (conservées, rang > 1)
+
 ## 2026-09-11 — `donnees-2026-09-11`
 
 - Contrôles : 0 → 3617 (3617 ajoutés, 0 retirés).

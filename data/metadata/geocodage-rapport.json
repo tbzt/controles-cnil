@@ -17,13 +17,13 @@
     "alias": 11,
     "aucune": 3,
     "centroide_pays": 57,
-    "referentiel_communes": 907,
-    "surcouche": 2639
+    "referentiel_communes": 906,
+    "surcouche": 2640
   },
   "par_precision_organisme": {
-    "adresse": 2639,
+    "adresse": 2640,
     "aucune": 3,
-    "commune": 918,
+    "commune": 917,
     "pays": 57
   },
   "taux_france": 0.9992,
