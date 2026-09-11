@@ -17,7 +17,7 @@ def lire_csv(chemin):
 class TestFonctions(unittest.TestCase):
     def test_feature_sans_coordonnees(self):
         c = {"id": "2023-0123abcd-1", "annee": "2023", "fondement": "rgpd", "modalite": "sur_place", "famille": "commerce",
-             "secteur": "commerce", "organisme": "X"}
+             "secteur": "commerce", "organisme": "X", "organisme_cle": "X"}
         l = {"org_lon": "", "org_lat": "", "commune": "", "code_insee": "", "departement": "", "region": "", "pays": "FR",
              "org_precision": "aucune", "ctrl_lieu": "organisme"}
         self.assertIsNone(build.feature(c, l))
@@ -28,11 +28,13 @@ class TestFonctions(unittest.TestCase):
         self.assertEqual(set(f["properties"]), set(build.PROPRIETES))
 
     def test_organismes_recurrents(self):
-        rows = [{"organisme": "X", "organisme_norm": "X", "annee": a} for a in ("2019", "2020", "2021")]
-        rows += [{"organisme": "Y", "organisme_norm": "Y", "annee": "2019"}]
+        rows = [{"organisme": "X", "organisme_norm": "X", "organisme_cle": "X", "annee": a} for a in ("2019", "2020", "2021")]
+        rows += [{"organisme": "X Ireland", "organisme_norm": "X IRELAND", "organisme_cle": "X", "annee": "2022"}] * 5
+        rows += [{"organisme": "Y", "organisme_norm": "Y", "organisme_cle": "Y", "annee": "2019"}]
         r = build.organismes_recurrents(rows, minimum=3)
-        self.assertEqual([x["organisme"] for x in r], ["X"])
-        self.assertEqual(r[0]["annees"], [2019, 2020, 2021])
+        self.assertEqual([x["organisme"] for x in r], ["X"], "la graphie qui porte la clé prime sur l'alias plus fréquent")
+        self.assertEqual(r[0]["annees"], [2019, 2020, 2021, 2022])
+        self.assertEqual(r[0]["nb_controles"], 8)
 
 
 class TestDonneesReelles(unittest.TestCase):

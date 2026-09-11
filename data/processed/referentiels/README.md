@@ -6,6 +6,7 @@
 | `familles.json` | les 16 familles comparables sur 2014-2023, leur libellé et leur ordre d'affichage | décision éditoriale du 11 septembre 2026 | rarement |
 | `departements.json` | 101 départements : code, nom, région | geo.api.gouv.fr, extrait du 11 septembre 2026 | rarement |
 | `regions.json` | 18 régions : code, nom | geo.api.gouv.fr, extrait du 11 septembre 2026 | rarement |
+| `organismes-alias.csv` | variante de nom normalisé → clé de rapprochement, avec la raison (intitulé de ministère, filiale, ancien nom, graphie) ; s'ajoute aux règles automatiques de `transform.py` (formes juridiques et suffixes de domaine retirés) | à la main, quand la liste des organismes récurrents montre un doublon |
 
 Le référentiel des communes (35 014 lignes, 2,6 Mo) est dans
 `data/referentiels-source/communes.json` et se régénère avec

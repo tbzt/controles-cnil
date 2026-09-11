@@ -45,6 +45,18 @@ class TestSecteurs(unittest.TestCase):
             self.assertIn(r["secteur_source"], connus)
 
 
+class TestOrganismesAlias(unittest.TestCase):
+    def test_alias_bien_formes(self):
+        alias = lire_csv(REF / "organismes-alias.csv")
+        variantes = [a["organisme_norm"] for a in alias]
+        self.assertEqual(len(variantes), len(set(variantes)), "chaque variante n'apparaît qu'une fois")
+        cles = {a["organisme_cle"] for a in alias}
+        for a in alias:
+            self.assertNotEqual(a["organisme_norm"], a["organisme_cle"], a)
+            self.assertNotIn(a["organisme_norm"], cles, f"{a['organisme_norm']} est à la fois variante et clé")
+            self.assertEqual(a["organisme_norm"], a["organisme_norm"].upper())
+
+
 class TestTerritoires(unittest.TestCase):
     def test_departements_pointent_vers_des_regions(self):
         regions = {r["code"] for r in lire_json(REF / "regions.json")["regions"]}

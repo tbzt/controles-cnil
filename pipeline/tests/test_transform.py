@@ -101,6 +101,14 @@ class TestLecture(unittest.TestCase):
         enr2, _ = transform.transformer_fichier(csv_2014("2014;Loi 1978;AUTRE;Lyon;69;Commerce"), "t.csv", 2014, TABLES)
         self.assertEqual(enr2[0]["id"], enr[2]["id"])
 
+    def test_cle_organisme(self):
+        alias = {"FACEBOOK IRELAND": "FACEBOOK"}
+        for brut, attendu in (("CDISCOUNT FR", "CDISCOUNT"), ("CDISCOUNT COM", "CDISCOUNT"), ("ACCOR SA", "ACCOR"),
+                              ("SARL MORGANE", "MORGANE"), ("BOUYGUES TELECOM S A", "BOUYGUES TELECOM"),
+                              ("WWW REDON FR", "REDON"), ("FACEBOOK IRELAND", "FACEBOOK"), ("SOCIETE GENERALE", "SOCIETE GENERALE"),
+                              ("FR", "FR"), ("UNSA ORG", "UNSA")):
+            self.assertEqual(transform.cle_organisme(brut, alias), attendu, brut)
+
     def test_entete_inconnu_est_fatal(self):
         octets = "Année;Type de contrôle;Organisme;Ville;Département;Secteur\r\n2014;Loi 1978;X;Paris;75;Commerce\r\n".encode("utf-8")
         with self.assertRaises(SystemExit):

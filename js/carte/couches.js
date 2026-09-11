@@ -52,8 +52,8 @@ export function actualiserCouleurs(map, couleurs) {
 /* ------------------------------------------------------ clusters --- */
 
 function diametre(total) {
-  /* 30 px pour 2 contrôles, ~72 px pour 1 600 : croissance en racine. */
-  return Math.round(Math.min(72, 26 + 1.2 * Math.sqrt(total)));
+  /* 30 px pour 2 contrôles, 76 px pour 1 600 : croissance en racine. */
+  return Math.round(Math.min(76, 28 + 1.2 * Math.sqrt(total)));
 }
 
 function arc(cx, cy, r, debut, fin) {
@@ -67,7 +67,8 @@ function svgAnneau(proprietes, familles, couleurs) {
   const total = proprietes.point_count;
   const d = diametre(total);
   const r = d / 2 - 3;
-  const epaisseur = Math.max(4, Math.round(d / 9));
+  /* Anneau fin : les parts se lisent, le fond reste aéré. */
+  const epaisseur = Math.max(3.5, Math.round(d / 12));
   let cumul = 0;
   const arcs = [];
   for (const f of familles) {
@@ -82,7 +83,7 @@ function svgAnneau(proprietes, familles, couleurs) {
       arcs.push(`<path d="${arc(d / 2, d / 2, r, debut, fin)}" fill="none" stroke="${couleurs[f.code]}" stroke-width="${epaisseur}"/>`);
     }
   }
-  const taillePolice = d >= 56 ? 14 : d >= 40 ? 13 : 12;
+  const taillePolice = d >= 64 ? 15 : d >= 48 ? 13.5 : 12;
   return `<svg width="${d}" height="${d}" viewBox="0 0 ${d} ${d}" aria-hidden="true">`
     + `<circle class="cluster__fond" cx="${d / 2}" cy="${d / 2}" r="${r - epaisseur / 2}"/>`
     + arcs.join("")

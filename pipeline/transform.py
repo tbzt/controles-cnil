@@ -46,6 +46,7 @@ from pipeline.commun import (  # noqa: E402
 
 MAPPINGS = RACINE / "pipeline" / "mappings"
 SECTEURS_CSV = PROCESSED / "referentiels" / "secteurs.csv"
+ORGANISMES_ALIAS_CSV = PROCESSED / "referentiels" / "organismes-alias.csv"
 SORTIE_CSV = PROCESSED / "controles.csv"
 SORTIE_JSON = PROCESSED / "controles.json"
 
@@ -56,7 +57,7 @@ COLONNES = [
     "id", "annee",
     "fondement", "fondement_source",
     "modalite", "modalite_source",
-    "organisme", "organisme_norm",
+    "organisme", "organisme_norm", "organisme_cle",
     "ville_source",
     "departement", "departement_source",
     "pays", "pays_source",
@@ -66,6 +67,30 @@ COLONNES = [
 ]
 
 DEPARTEMENT_VALIDE = re.compile(r"^(0[1-9]|[1-8]\d|9[0-5]|2A|2B|97[1-6])$")
+
+# Clé de rapprochement des organismes : formes juridiques et suffixes de
+# domaine retirés, puis table d'alias écrite à la main.
+FORMES_JURIDIQUES = re.compile(r"\b(SAS|SA|SARL|SASU|EURL|SNC|SCI|SE|GIE|SCOP|SEM|SCA|SCS|SELARL|SELAS|SAEM|EPIC|GIP|S A S U|S A S|S A R L|S A)\b")
+DOMAINE_FIN = re.compile(r"\s(FR|COM|ORG|NET|EU|IO|CO|INFO|GOUV FR)$")
+DOMAINE_DEBUT = re.compile(r"^(HTTPS?\s)?(WWW\s)+")
+
+
+def cle_organisme(organisme_norm: str, alias: dict | None = None) -> str:
+    """Clé de rapprochement : nom normalisé sans forme juridique ni suffixe de
+    domaine, puis alias manuel. « CDISCOUNT FR », « CDISCOUNT COM » et
+    « CDISCOUNT » partagent la clé CDISCOUNT ; « FACEBOOK IRELAND » rejoint
+    FACEBOOK par la table d'alias."""
+    n = DOMAINE_DEBUT.sub("", organisme_norm)
+    n = FORMES_JURIDIQUES.sub(" ", n)
+    n = re.sub(r"\s+", " ", n).strip()
+    while True:
+        m = DOMAINE_FIN.search(n)
+        if not m or " " not in n:
+            break
+        n = n[:m.start()].strip()
+    if alias and n in alias:
+        n = alias[n]
+    return n or organisme_norm
 
 
 # ------------------------------------------------------------ lecture ---
@@ -231,8 +256,12 @@ def transformer_fichier(octets: bytes, nom: str, annee: int, tables: dict) -> tu
             drapeaux.append("modalite_non_renseignee")
 
         organisme = ligne["organisme"]
+        organisme_norm = normaliser_nom(organisme)
+        organisme_cle = cle_organisme(organisme_norm, tables.get("organismes_alias"))
         if not organisme:
             drapeaux.append("organisme_vide")
+        if organisme_cle != organisme_norm:
+            drapeaux.append("organisme_rapproche")
         if "\n" in brutes[champs.index("organisme")]:
             drapeaux.append("organisme_multiligne")
 
@@ -277,7 +306,7 @@ def transformer_fichier(octets: bytes, nom: str, annee: int, tables: dict) -> tu
             "annee": annee,
             "fondement": fondement, "fondement_source": ligne["type"],
             "modalite": modalite, "modalite_source": modalite_source,
-            "organisme": organisme, "organisme_norm": normaliser_nom(organisme),
+            "organisme": organisme, "organisme_norm": organisme_norm, "organisme_cle": organisme_cle,
             "ville_source": ligne["ville"],
             "departement": departement, "departement_source": ligne["departement"],
             "pays": pays, "pays_source": pays_source,
@@ -297,7 +326,11 @@ def charger_tables() -> dict:
         "modalites": lire_json(MAPPINGS / "modalites.json")["modalites"],
         "pays": lire_json(MAPPINGS / "pays.json")["pays"],
         "secteurs": None,
+        "organismes_alias": {},
     }
+    if ORGANISMES_ALIAS_CSV.exists():
+        with open(ORGANISMES_ALIAS_CSV, encoding="utf-8", newline="") as f:
+            tables["organismes_alias"] = {r["organisme_norm"]: r["organisme_cle"] for r in csv.DictReader(f)}
     if SECTEURS_CSV.exists():
         with open(SECTEURS_CSV, encoding="utf-8", newline="") as f:
             tables["secteurs"] = {cle_normalisee(r["secteur_source"]): (r["secteur"], r["famille"])

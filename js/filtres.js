@@ -15,8 +15,10 @@ export function normaliser(texte) {
 export function preparer(features) {
   for (const f of features) {
     const p = f.properties;
-    p._on = normaliser(p.organisme);
-    p._n = `${p._on} ${normaliser(p.commune)}`;
+    /* Clé de rapprochement calculée par le pipeline (formes juridiques,
+       domaines et alias retirés) ; repli sur la normalisation locale. */
+    p._on = p.organisme_cle || normaliser(p.organisme);
+    p._n = `${normaliser(p.organisme)} ${p._on} ${normaliser(p.commune)}`;
   }
   return features;
 }

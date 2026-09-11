@@ -8,13 +8,14 @@
    central porte le total. La taille croît avec la racine du total, pour que
    l'aire reste lisible sans écraser les voisins. */
 .cluster {
-  display: grid; place-items: center;
-  cursor: pointer;
-  filter: drop-shadow(0 1px 2px rgb(0 0 0 / .25));
+  /* Un <button> nu : ni fond, ni bordure, ni marge intérieure, seul le SVG se voit. */
+  display: grid; place-items: center; padding: 0; margin: 0; border: 0; background: transparent;
+  line-height: 0; cursor: pointer; border-radius: 50%;
   transition: transform var(--duree) var(--courbe);
 }
-.cluster:hover { transform: scale(1.06); }
-.cluster svg { display: block; overflow: visible; }
+.cluster:hover { transform: scale(1.08); }
+.cluster:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.cluster svg { display: block; overflow: visible; filter: drop-shadow(0 1px 1.5px rgb(0 0 0 / .18)); }
 .cluster__fond { fill: var(--cluster-fond); }
 .cluster__total {
   font-family: var(--police); font-weight: 600; fill: var(--encre);

@@ -38,7 +38,7 @@ SCHEMA = METADATA / "schema.json"
 LIBELLES = PROCESSED / "referentiels" / "libelles.json"
 MAPPINGS = RACINE / "pipeline" / "mappings"
 
-PROPRIETES = ("id", "annee", "fondement", "modalite", "famille", "secteur", "organisme",
+PROPRIETES = ("id", "annee", "fondement", "modalite", "famille", "secteur", "organisme", "organisme_cle",
               "commune", "code_insee", "departement", "region", "pays", "precision", "lieu_controle")
 
 
@@ -54,7 +54,7 @@ def feature(c: dict, l: dict) -> dict | None:
         return None
     props = {
         "id": c["id"], "annee": int(c["annee"]), "fondement": c["fondement"], "modalite": c["modalite"],
-        "famille": c["famille"], "secteur": c["secteur"], "organisme": c["organisme"],
+        "famille": c["famille"], "secteur": c["secteur"], "organisme": c["organisme"], "organisme_cle": c["organisme_cle"],
         "commune": l["commune"], "code_insee": l["code_insee"], "departement": l["departement"],
         "region": l["region"], "pays": l["pays"], "precision": l["org_precision"], "lieu_controle": l["ctrl_lieu"],
     }
@@ -89,17 +89,20 @@ def organismes_recurrents(controles: list[dict], minimum: int = 3) -> list[dict]
     (rapprochement par nom normalisé : approximatif, assumé)."""
     annees: dict = defaultdict(set)
     n: Counter = Counter()
-    libelle: dict = {}
+    graphies: dict = defaultdict(Counter)
     for c in controles:
-        cle = c["organisme_norm"]
+        cle = c["organisme_cle"]
         if not cle:
             continue
         annees[cle].add(int(c["annee"]))
         n[cle] += 1
-        libelle.setdefault(cle, c["organisme"])
-    rows = [{"organisme": libelle[k], "organisme_norm": k, "annees": sorted(a), "nb_annees": len(a), "nb_controles": n[k]}
+        # Libellé affiché : la graphie la plus fréquente, en privilégiant celles
+        # qui portent la clé elle-même plutôt qu'un alias (« Google » avant
+        # « Google Ireland Limited »).
+        graphies[cle][c["organisme"]] += 1000 if c["organisme_norm"] == cle else 1
+    rows = [{"organisme": graphies[k].most_common(1)[0][0], "organisme_cle": k, "annees": sorted(a), "nb_annees": len(a), "nb_controles": n[k]}
             for k, a in annees.items() if len(a) >= minimum]
-    return sorted(rows, key=lambda r: (-r["nb_annees"], -r["nb_controles"], r["organisme_norm"]))
+    return sorted(rows, key=lambda r: (-r["nb_annees"], -r["nb_controles"], r["organisme_cle"]))
 
 
 def construire_stats(controles: list[dict], loc: dict, manifeste: dict, lieux: dict) -> dict:
@@ -161,7 +164,8 @@ def schema() -> dict:
         champ("modalite", "string", "Modalité harmonisée ; non_renseignee avant 2017 sauf « contrôle en ligne ».", constraints={"required": True, "enum": enum_mod}),
         champ("modalite_source", "string", "Libellé brut de la modalité."),
         champ("organisme", "string", "Nom de l'organisme contrôlé tel que publié, espaces normalisées.", constraints={"required": True}),
-        champ("organisme_norm", "string", "Nom en majuscules sans accents ni ponctuation, pour la recherche et le rapprochement."),
+        champ("organisme_norm", "string", "Nom en majuscules sans accents ni ponctuation."),
+        champ("organisme_cle", "string", "Clé de rapprochement : nom normalisé sans forme juridique ni suffixe de domaine, puis table d'alias referentiels/organismes-alias.csv. Deux contrôles d'un même organisme partagent cette clé."),
         champ("ville_source", "string", "Ville telle que publiée par la CNIL."),
         champ("departement", "string", "Code département après corrections formelles (zéro initial, valeur multiple) ; 20 et 97 restent à préciser par la ville."),
         champ("departement_source", "string", "Code département tel que publié."),

@@ -92,8 +92,13 @@
             "type": "string"
           },
           {
-            "description": "Nom en majuscules sans accents ni ponctuation, pour la recherche et le rapprochement.",
+            "description": "Nom en majuscules sans accents ni ponctuation.",
             "name": "organisme_norm",
+            "type": "string"
+          },
+          {
+            "description": "Clé de rapprochement : nom normalisé sans forme juridique ni suffixe de domaine, puis table d'alias referentiels/organismes-alias.csv. Deux contrôles d'un même organisme partagent cette clé.",
+            "name": "organisme_cle",
             "type": "string"
           },
           {

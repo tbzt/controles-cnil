@@ -64,6 +64,21 @@ version normalisée documentée, et sépare les données de la CNIL de la
 localisation qui en est déduite, avec pour chaque point sa précision et sa
 méthode.
 
+## Noms d'organismes : une clé de rapprochement
+
+La CNIL n'harmonise pas les noms : « Ministère de l'Intérieur », « MINISTÈRE
+DE L'INTÉRIEUR ET DES OUTRE-MERS », « cdiscount.fr » et « CDISCOUNT ». Chaque
+contrôle reçoit donc, en plus du nom publié, une clé `organisme_cle` :
+majuscules sans accents ni ponctuation, formes juridiques (SAS, SA, SARL…)
+et suffixes de domaine (.fr, .com) retirés, puis table d'alias écrite à la
+main (`data/processed/referentiels/organismes-alias.csv`) pour les
+synonymes qu'aucune règle ne devine : intitulés successifs d'un ministère,
+filiales d'un même groupe, anciens noms, sigles ajoutés. Le nom publié reste
+tel quel ; la clé sert à la recherche, au lien « voir les contrôles de cet
+organisme » et à la liste des organismes récurrents. Les sous-directions et
+les filiales à activité distincte (Carrefour Banque, Orange Bank) gardent
+leur propre clé.
+
 ## Localisation : deux lieux par contrôle
 
 - **Lieu du contrôle** : dérivé de la modalité. Les contrôles en ligne, sur
