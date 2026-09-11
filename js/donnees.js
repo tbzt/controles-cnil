@@ -43,6 +43,12 @@ export function nombre(n) {
   return formatEntier.format(n);
 }
 
+/* Les noms d'organismes sont publiés dans des casses variables selon
+   l'année ; ils sont affichés en majuscules partout, sans toucher aux données. */
+export function majuscules(texte) {
+  return String(texte ?? "").toLocaleUpperCase("fr-FR");
+}
+
 export function date(iso) {
   if (!iso) return "";
   return formatDate.format(new Date(iso));

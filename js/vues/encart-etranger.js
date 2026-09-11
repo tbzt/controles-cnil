@@ -2,7 +2,7 @@
    listés par pays. Sur la carte ils sont placés au centroïde de leur pays,
    précision « pays » ; la liste est plus utile qu'un point perdu. */
 
-import { nombre } from "../donnees.js";
+import { nombre, majuscules } from "../donnees.js";
 
 const $ = (id) => document.getElementById(id);
 
@@ -33,7 +33,7 @@ export function creerEncartEtranger(libelles) {
         <details class="details etranger">
           <summary><span class="etranger__pays">${echapper(libelles.pays[e.pays] || e.pays)}</span><span class="etranger__n num">${nombre(e.n)}</span></summary>
           <ul class="etranger__liste">${e.organismes.sort((a, b) => b.annee - a.annee || a.organisme.localeCompare(b.organisme, "fr"))
-            .map((o) => `<li><span class="num">${o.annee}</span> · ${echapper(o.organisme)}${o.commune ? ` <span class="discret">(${echapper(o.commune)})</span>` : ""}</li>`).join("")}</ul>
+            .map((o) => `<li><span class="num">${o.annee}</span> · ${echapper(majuscules(o.organisme))}${o.commune ? ` <span class="discret">(${echapper(o.commune)})</span>` : ""}</li>`).join("")}</ul>
         </details>`).join("");
     },
   };

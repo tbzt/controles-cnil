@@ -148,6 +148,12 @@ des changements dans le résumé du job, et :
 Chaque tag est un instantané complet : `git checkout donnees-2026-09-11`
 reproduit les données et le site de cette date.
 
+Le même workflow se relance aussi à chaque commit qui modifie une table
+éditée à la main (`data/geocoding/`, référentiels, mappings) : valider une
+adresse ou ajouter un alias se fait dans un CSV, et les fichiers publiés
+suivent sans rien lancer en local. La marche à suivre est dans
+`data/geocoding/README.md`.
+
 ## Exécuter localement
 
 ```bash

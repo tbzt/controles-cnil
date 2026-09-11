@@ -2,7 +2,7 @@
    l'état, et publie les changements dans le magasin. */
 
 import { compterFacette, suggestions } from "../filtres.js";
-import { nombre } from "../donnees.js";
+import { nombre, majuscules } from "../donnees.js";
 
 const $ = (id) => document.getElementById(id);
 
@@ -162,7 +162,7 @@ export function creerPanneauFiltres({ magasin, features, annees, familles, libel
     jeton.hidden = !etat.organisme;
     if (etat.organisme) {
       const nom = features.find((f) => f.properties._on === etat.organisme)?.properties.organisme || etat.organisme;
-      $("jeton-organisme-nom").textContent = nom;
+      $("jeton-organisme-nom").textContent = majuscules(nom);
     }
     rendrePeriode(etat);
     rendreFamilles(etat);
@@ -228,7 +228,7 @@ export function creerPanneauFiltres({ magasin, features, annees, familles, libel
     const s = suggestions(features, magasin.etat, q);
     if (!s.organismes.length && !s.communes.length) return fermerSuggestions();
     const items = [
-      ...s.organismes.map((o) => ({ type: "organisme", cle: o.cle, libelle: o.nom, n: o.n })),
+      ...s.organismes.map((o) => ({ type: "organisme", cle: o.cle, libelle: majuscules(o.nom), n: o.n })),
       ...s.communes.map((c) => ({ type: "commune", cle: c.code_insee, departement: c.departement, libelle: `${c.commune} (${c.departement})`, n: c.n })),
     ];
     liste.innerHTML = items.map((it, i) => `<li id="sugg-${i}" role="option" class="suggestion" data-index="${i}"

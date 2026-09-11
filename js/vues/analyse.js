@@ -7,6 +7,7 @@
    graphiques par famille plutôt que cachée. */
 
 import { barresVerticales, barresHorizontales, barresEmpilees, legende, nombre, pourcentage } from "../graphiques/svg.js";
+import { majuscules } from "../donnees.js";
 
 const $ = (id) => document.getElementById(id);
 
@@ -180,7 +181,7 @@ export function creerVueAnalyse({ features, annees, familles, libelles, magasin,
       parOrganisme.set(p._on, o);
     }
     const top = [...parOrganisme.values()].filter((o) => o.valeur > 1).sort((a, b) => b.valeur - a.valeur || b.annees.size - a.annees.size).slice(0, 15)
-      .map((o) => ({ ...o, libelle: `${o.libelle} (${o.annees.size} an${o.annees.size > 1 ? "s" : ""})` }));
+      .map((o) => ({ ...o, libelle: `${majuscules(o.libelle)} (${o.annees.size} an${o.annees.size > 1 ? "s" : ""})` }));
     $("g-organismes-svg").innerHTML = top.length
       ? barresHorizontales({ items: top, total: n, largeur: 900, dataCle: "organisme" })
       : `<p class="discret">Aucun organisme contrôlé plus d'une fois dans la sélection.</p>`;

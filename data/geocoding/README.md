@@ -78,3 +78,39 @@ proposition, mettre `statut = valide` dans `propositions.csv` :
 `proposition_validee_etablissement`. Pour la refuser, `statut = refusee` ;
 elle ne sera pas reproposée tant que la ligne existe. Rapport :
 `data/metadata/propositions-rapport.json`.
+
+## Valider ou corriger une localisation, pas à pas
+
+Tout se fait en éditant un CSV, sur GitHub directement (bouton « Edit ») ou
+en local ; le workflow « Actualiser les données » se relance seul à chaque
+commit qui touche ce dossier, relance le géocodage, la validation et la
+construction, et publie. Aucun script à lancer.
+
+1. **Repérer la ligne.** Dans la carte, la popup d'un contrôle affiche son
+   identifiant (`2023-7f3a9c1e-2`) en bas à droite ; c'est la clé de toutes
+   les tables. Dans un tableur, `data/processed/localisations.csv` donne
+   pour chaque identifiant la précision et la méthode actuelles.
+2. **Proposition à score moyen** (`propositions.csv`, 208 lignes en attente) :
+   chaque ligne donne l'organisme, la ville CNIL, le nom trouvé dans
+   l'annuaire, le SIREN, l'adresse et le score. Mettre `statut` à `valide`
+   pour appliquer l'adresse, à `refusee` pour l'écarter ; laisser
+   `a_verifier` sinon. Une ligne validée s'applique avec la méthode
+   `proposition_validee_siege` ou `proposition_validee_etablissement`.
+3. **Point hérité de la carte uMap à plus de 30 km** (`surcouche.csv`,
+   statut `a_verifier`, 215 lignes) : le commentaire donne la distance et la
+   commune CNIL. Si le point est juste, passer `statut` à `valide` et
+   renseigner `code_insee` ; sinon `refusee`.
+4. **Aucune proposition, précision commune** : ajouter une ligne dans
+   `surcouche.csv` avec l'identifiant, l'adresse, `lon`, `lat` (WGS84, six
+   décimales, par exemple depuis la fiche de l'annuaire des entreprises ou
+   l'API Adresse), `code_insee`, `precision` = `adresse`, `methode` =
+   `manuel`, `source` (d'où vient l'adresse), `statut` = `valide`.
+5. **Ville non résolue** (alerte `geocodage` dans le rapport qualité) :
+   ajouter une ligne dans `alias-villes.csv` avec le département et la ville
+   tels qu'écrits par la CNIL et le code INSEE cible.
+
+En local, la même chose se vérifie avec `python3 pipeline/geocode.py &&
+python3 pipeline/validate.py && python3 pipeline/build.py`, puis un commit
+qui inclut les fichiers régénérés. Le rapport du job (onglet Actions)
+résume ce qui a changé ; la page Données affiche la nouvelle répartition
+par précision.

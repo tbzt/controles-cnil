@@ -123,6 +123,7 @@
 .fiche__famille::before {
   content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--couleur);
 }
+.fiche__id { font-family: var(--police-mono); font-size: 10.5px; color: var(--encre-3); user-select: all; }
 .fiche__note {
   font-size: var(--t-1); color: var(--encre-3); border-top: 1px solid var(--filet); padding-top: var(--e-2);
 }

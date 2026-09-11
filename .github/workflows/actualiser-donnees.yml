@@ -7,6 +7,16 @@ name: Actualiser les données
 on:
   schedule:
     - cron: "0 6 * * 1"
+  # Une table éditée à la main (validation d'adresses, alias, secteurs) doit
+  # se répercuter dans les fichiers publiés sans rien lancer en local.
+  push:
+    branches: [main]
+    paths:
+      - "data/geocoding/**"
+      - "data/processed/referentiels/*.csv"
+      - "data/processed/referentiels/*.json"
+      - "data/referentiels-source/communes.json"
+      - "pipeline/mappings/**"
   workflow_dispatch:
     inputs:
       forcer:
