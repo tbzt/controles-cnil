@@ -59,6 +59,7 @@ RAPPORT = METADATA / "geocodage-rapport.json"
 COMMUNES = REFERENTIELS_SOURCE / "communes.json"
 SURCOUCHE = GEOCODING / "surcouche.csv"
 ALIAS = GEOCODING / "alias-villes.csv"
+PROPOSITIONS = GEOCODING / "propositions.csv"
 LIEUX = GEOCODING / "lieux-institution.json"
 PAYS_CENTROIDES = GEOCODING / "pays-centroides.json"
 
@@ -156,7 +157,16 @@ def charger_tables() -> dict:
     lieux = lire_json(LIEUX) or {}
     if "cnil" not in lieux:
         erreur_fatale(f"{LIEUX.relative_to(RACINE)} doit définir le lieu « cnil »")
-    surcouche = {r["id"]: r for r in lire_csv(SURCOUCHE) if r.get("statut", "valide") == "valide"}
+    surcouche = {}
+    # Une proposition automatique validée à la main (statut passé à `valide`
+    # dans propositions.csv) vaut surcouche ; la surcouche elle-même prime.
+    for r in lire_csv(PROPOSITIONS):
+        if r.get("statut") == "valide":
+            surcouche[r["id"]] = dict(r, methode=f"proposition_validee_{r.get('methode', '')}",
+                                     source=f"annuaire-entreprises SIREN {r.get('siren', '')}, validée à la main")
+    for r in lire_csv(SURCOUCHE):
+        if r.get("statut", "valide") == "valide":
+            surcouche[r["id"]] = r
     alias = {}
     for r in lire_csv(ALIAS):
         alias[(r["departement_source"].strip(), cle_ville(r["ville_source"]))] = r

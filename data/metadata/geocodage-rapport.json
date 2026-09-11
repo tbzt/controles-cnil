@@ -14,16 +14,16 @@
     "organisme": 2154
   },
   "par_methode_organisme": {
-    "alias": 15,
+    "alias": 11,
     "aucune": 3,
     "centroide_pays": 57,
-    "referentiel_communes": 1254,
-    "surcouche": 2288
+    "referentiel_communes": 907,
+    "surcouche": 2639
   },
   "par_precision_organisme": {
-    "adresse": 2288,
+    "adresse": 2639,
     "aucune": 3,
-    "commune": 1269,
+    "commune": 918,
     "pays": 57
   },
   "taux_france": 0.9992,

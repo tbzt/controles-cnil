@@ -24,6 +24,7 @@ python3 pipeline/fetch.py --hors-ligne # vérifie seulement que data/raw/ corres
 python3 pipeline/transform.py          # data/raw/ → data/processed/controles.csv et .json
 python3 pipeline/geocode.py            # controles.csv → data/processed/localisations.csv (hors ligne)
 python3 outils/importer-umap.py <export.umap> --adresse-inverse   # ponctuel : surcouche d'adresses depuis uMap
+python3 outils/proposer-adresses.py    # ponctuel : sièges via l'annuaire des entreprises (score haut appliqué, moyen à valider)
 python3 -m unittest discover -s pipeline/tests -t .
 ```
 

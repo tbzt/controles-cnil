@@ -7,7 +7,8 @@ le réseau.
 | Fichier | Rôle | Qui l'édite |
 |---|---|---|
 | `alias-villes.csv` | ville telle qu'écrite par la CNIL → code INSEE (ou pays). Clé : `departement_source` + ville normalisée ; `*` en département vaut pour tous | à la main, quand `geocodage-rapport.json` liste une ville non résolue |
-| `surcouche.csv` | adresse précise d'un organisme, par identifiant de contrôle ; seules les lignes `statut = valide` sont prises | à la main, ou par import de la carte uMap (étape 5) |
+| `surcouche.csv` | adresse précise d'un organisme, par identifiant de contrôle ; seules les lignes `statut = valide` sont prises | import de la carte uMap, propositions à score haut (`siege_auto`), ou à la main |
+| `propositions.csv` | adresses trouvées automatiquement à score moyen, en attente ; passer `statut` à `valide` pour qu'une ligne s'applique | `outils/proposer-adresses.py` écrit, l'humain valide |
 | `lieux-institution.json` | le siège de la CNIL, lieu des contrôles en ligne, sur pièces et sur audition | rarement |
 | `pays-centroides.json` | un point par pays pour les organismes hors de France | quand un nouveau pays apparaît dans `pipeline/mappings/pays.json` |
 
@@ -52,3 +53,28 @@ Rapport dans `data/metadata/import-umap-rapport.json` : objets écartés (au
 siège de la CNIL), appariés, non appariés, contrôles restés sans adresse par
 année. Une ligne validée à la main (source autre que la carte uMap) n'est
 jamais écrasée par une relance de l'import.
+
+## Propositions automatiques (annuaire des entreprises)
+
+```bash
+python3 outils/proposer-adresses.py                 # tous les contrôles France sans adresse validée
+python3 outils/proposer-adresses.py --seulement-annee 2024
+```
+
+Pour chaque contrôle sans adresse validée, l'outil cherche le nom dans le
+département sur `recherche-entreprises.api.gouv.fr` (données SIRENE, sans
+clé) et classe la meilleure réponse :
+
+| Niveau | Condition | Effet |
+|---|---|---|
+| haut | nom quasi identique (≥ 0,97), siège dans la commune indiquée par la CNIL, une seule entité | écrit dans `surcouche.csv`, `valide`, méthode `siege_auto`, SIREN en source |
+| moyen | nom proche (≥ 0,80) avec siège dans la commune, ou nom identique avec un simple établissement dans la commune, ou plusieurs homonymes | écrit dans `propositions.csv`, `a_verifier`, la ligne reste à la commune |
+| rien | aucun candidat crédible | rien |
+
+Ne sont pas interrogés : noms de domaine, particuliers, noms anonymisés,
+organismes hors de France ou sans commune résolue. Pour valider une
+proposition, mettre `statut = valide` dans `propositions.csv` :
+`geocode.py` l'applique alors avec la méthode `proposition_validee_siege` ou
+`proposition_validee_etablissement`. Pour la refuser, `statut = refusee` ;
+elle ne sera pas reproposée tant que la ligne existe. Rapport :
+`data/metadata/propositions-rapport.json`.

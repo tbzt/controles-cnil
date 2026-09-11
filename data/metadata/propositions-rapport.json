@@ -1,0 +1,23 @@
+{
+  "cibles": 893,
+  "date": "2026-09-11",
+  "ignores": {
+    "deja_adresse_validee": 2288,
+    "hors_france_ou_sans_commune": 60,
+    "non_interrogeable": 376
+  },
+  "propositions_en_attente": 212,
+  "requetes": 687,
+  "resultats": {
+    "haut": 351,
+    "moyen": 212,
+    "rien": 330
+  },
+  "seuil_haut": 0.97,
+  "surcouche_par_methode": {
+    "siege_auto": 351,
+    "umap_adresse": 790,
+    "umap_coordonnees": 7,
+    "umap_coordonnees+adresse_inverse": 1491
+  }
+}
