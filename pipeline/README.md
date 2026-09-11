@@ -13,9 +13,9 @@ dans cet ordre :
    code de sortie non nul sur règle fatale.
 5. `build.py` : GeoJSON, statistiques, journal des changements.
 
-État : `fetch.py`, `transform.py` et `geocode.py` sont écrits et testés,
-les référentiels sont en place (`data/processed/referentiels/`) ;
-`validate.py` et `build.py` sont à venir.
+État : `fetch.py`, `transform.py`, `geocode.py` et `validate.py` sont
+écrits et testés, les référentiels sont en place
+(`data/processed/referentiels/`) ; `build.py` est à venir.
 
 ```bash
 python3 pipeline/fetch.py              # récupère ce qui a changé
@@ -23,6 +23,7 @@ python3 pipeline/fetch.py --forcer     # retélécharge tout, sans dupliquer un 
 python3 pipeline/fetch.py --hors-ligne # vérifie seulement que data/raw/ correspond au manifeste
 python3 pipeline/transform.py          # data/raw/ → data/processed/controles.csv et .json
 python3 pipeline/geocode.py            # controles.csv → data/processed/localisations.csv (hors ligne)
+python3 pipeline/validate.py           # règles de qualité → data/metadata/quality-report.json ; code 1 si fatal
 python3 outils/importer-umap.py <export.umap> --adresse-inverse   # ponctuel : surcouche d'adresses depuis uMap
 python3 outils/proposer-adresses.py    # ponctuel : sièges via l'annuaire des entreprises (score haut appliqué, moyen à valider)
 python3 -m unittest discover -s pipeline/tests -t .
@@ -76,3 +77,28 @@ Précisions possibles : `adresse`, `commune`, `departement`, `pays`,
 `institution`, `aucune`. Coordonnées à 4 décimales pour une commune, 6 pour
 une adresse. Le rapport `data/metadata/geocodage-rapport.json` compte tout
 et liste les villes non résolues.
+
+## Ce que vérifie validate.py
+
+| Règle | Fatal si | Alerte si |
+|---|---|---|
+| manifeste | un fichier archivé manque dans `data/raw/` | une ressource a disparu de data.gouv.fr |
+| structure_source | un fichier brut courant ne se lit pas avec les en-têtes connus | |
+| couverture_annees | aucun fichier annuel | une année manque entre la première et la dernière |
+| identifiants | doublon ou identifiant mal formé | |
+| champs_obligatoires | année, organisme ou secteur vide sur plus de 1 % des lignes | vide sur quelques lignes |
+| volume | moins de 100 ou plus de 1 000 contrôles dans une année | écart avec le total officiel CNIL (tableau « depuis 1990 ») |
+| annees | année hors de [2014, année courante] | |
+| enumerations | fondement, modalité, secteur ou famille hors des valeurs connues | |
+| doublons | | lignes strictement identiques (conservées) |
+| departements | | code hors référentiel après localisation |
+| localisations | pas exactement une localisation par contrôle ; lieu « cnil » avec une modalité sur place | |
+| coordonnees | hors bornes, (0, 0), ou point « France » hors de l'emprise de son territoire | |
+| geocodage | moins de 95 % des contrôles en France à la commune ou à l'adresse | villes non résolues |
+| coherence_temporelle | | RGPD avant 2018, Loi 78 après 2019, directive avant 2018 |
+| surcouche | | adresse ou proposition dont l'identifiant n'existe plus |
+
+Le rapport `data/metadata/quality-report.json` ne contient pas
+d'horodatage : il ne change que si les constats changent. Le test
+`pipeline/tests/test_idempotence.py` relance transformation, localisation et
+validation et vérifie qu'aucun fichier produit ne bouge.

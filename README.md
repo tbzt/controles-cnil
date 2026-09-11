@@ -11,7 +11,7 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 4 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
+Étape 6 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
 CNIL dans `data/raw/` avec leur empreinte ; `pipeline/transform.py` les
 normalise en une table unique de 3 617 contrôles
 (`data/processed/controles.csv` et `.json`), avec identifiants stables,
@@ -22,8 +22,11 @@ avec deux lieux par contrôle : à l'adresse pour 2639 contrôles (2 288
 hérités de la carte uMap, 351 sièges trouvés automatiquement dans
 l'annuaire des entreprises avec un score haut), à la commune pour le reste
 des contrôles en France ; 212 propositions à score moyen attendent une
-validation dans `data/geocoding/propositions.csv`. La validation (étape 6),
-la génération du GeoJSON (étape 7) et le site restent à faire.
+validation dans `data/geocoding/propositions.csv` ; `pipeline/validate.py`
+applique quinze règles de qualité (structure, volumes, énumérations,
+coordonnées, cohérence temporelle…) et arrête tout sur un constat fatal.
+La génération du GeoJSON et des statistiques (étape 7), le workflow GitHub
+Actions (étape 8) et le site restent à faire.
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 

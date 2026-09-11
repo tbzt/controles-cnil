@@ -1,0 +1,103 @@
+{
+  "constats": [
+    {
+      "message": "toutes les versions archivées sont présentes",
+      "niveau": "ok",
+      "regle": "manifeste"
+    },
+    {
+      "message": "10 fichiers bruts reconnus",
+      "niveau": "ok",
+      "regle": "structure_source"
+    },
+    {
+      "message": "2014 → 2023 sans trou",
+      "mesure": [
+        2014,
+        2023
+      ],
+      "niveau": "ok",
+      "regle": "couverture_annees"
+    },
+    {
+      "message": "3617 identifiants uniques et bien formés",
+      "mesure": 3617,
+      "niveau": "ok",
+      "regle": "identifiants"
+    },
+    {
+      "message": "secteur_source vide sur 3 lignes",
+      "mesure": 3,
+      "niveau": "alerte",
+      "regle": "champs_obligatoires"
+    },
+    {
+      "message": "écarts minimes avec les totaux officiels : {2015: {'lignes': 496, 'officiel': 510}}",
+      "mesure": {
+        "2015": {
+          "lignes": 496,
+          "officiel": 510
+        }
+      },
+      "niveau": "alerte",
+      "regle": "volume"
+    },
+    {
+      "message": "toutes les années dans [2014, 2026]",
+      "niveau": "ok",
+      "regle": "annees"
+    },
+    {
+      "message": "fondements, modalités, secteurs et familles dans les valeurs connues",
+      "niveau": "ok",
+      "regle": "enumerations"
+    },
+    {
+      "message": "291 lignes strictement identiques à une autre de la même année (conservées, rang > 1)",
+      "mesure": 291,
+      "niveau": "alerte",
+      "regle": "doublons"
+    },
+    {
+      "message": "29 codes 20/97 précisés par la ville",
+      "mesure": 29,
+      "niveau": "ok",
+      "regle": "departements"
+    },
+    {
+      "message": "une localisation par contrôle, lieux du contrôle cohérents avec les modalités",
+      "niveau": "ok",
+      "regle": "localisations"
+    },
+    {
+      "message": "toutes les coordonnées dans les bornes et dans l'emprise de leur territoire",
+      "niveau": "ok",
+      "regle": "coordonnees"
+    },
+    {
+      "message": "99.9% des contrôles en France à la commune ou à l'adresse",
+      "mesure": {
+        "adresse": 2639,
+        "aucune": 3,
+        "commune": 918,
+        "pays": 57
+      },
+      "niveau": "ok",
+      "regle": "geocodage"
+    },
+    {
+      "message": "fondements cohérents avec les années",
+      "niveau": "ok",
+      "regle": "coherence_temporelle"
+    },
+    {
+      "message": "surcouche et propositions rattachées à des contrôles existants",
+      "niveau": "ok",
+      "regle": "surcouche"
+    }
+  ],
+  "nb_alerte": 3,
+  "nb_fatal": 0,
+  "nb_ok": 12,
+  "resultat": "alerte"
+}
