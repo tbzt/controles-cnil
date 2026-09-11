@@ -32,14 +32,23 @@
         <div class="filtres" id="filtres" aria-label="Filtres">
           <ul class="legende" id="legende-familles"></ul>
         </div>
-        <section class="section" aria-labelledby="titre-precision">
+        <section class="section" id="section-etranger" aria-labelledby="titre-etranger" hidden>
+          <div class="section__titre"><h2 id="titre-etranger">Hors de France</h2><span class="etiquette num" id="nb-etranger"></span></div>
+          <p class="discret" style="font-size: var(--t-2)">Organismes établis à l'étranger, placés sur la carte au centre de leur pays.</p>
+          <div id="liste-etranger"></div>
+        </section>
+        <section class="section" id="section-precision" aria-labelledby="titre-precision">
           <h2 id="titre-precision">Précision des points</h2>
           <div class="precision">
             <div class="precision__item"><span class="precision__point" style="--contour:2px"></span><span>À l'adresse (siège ou établissement identifié)</span></div>
             <div class="precision__item"><span class="precision__point" style="--contour:1px"></span><span>À la commune indiquée par la CNIL</span></div>
             <div class="precision__item"><span class="precision__point" style="--contour:0.5px"></span><span>Au département ou au pays</span></div>
           </div>
-          <p class="discret" style="font-size: var(--t-2)">Les points sont situés chez l'organisme contrôlé. Les contrôles en ligne, sur pièces et sur audition se déroulent dans les locaux de la CNIL ; la popup le précise.</p>
+          <p class="discret" style="font-size: var(--t-2)" id="note-lieu">Les points sont situés chez l'organisme contrôlé. Les contrôles en ligne, sur pièces et sur audition se déroulent dans les locaux de la CNIL ; la popup le précise.</p>
+        </section>
+        <section class="section" id="section-communes" aria-labelledby="titre-communes" hidden>
+          <h2 id="titre-communes">Cercles par commune</h2>
+          <p class="discret" style="font-size: var(--t-2)">L'aire de chaque cercle est proportionnelle au nombre de contrôles dans la commune ; la couleur est celle de la famille la plus fréquente. Cliquer un cercle donne le détail.</p>
         </section>
         <section class="section">
           <p class="discret" style="font-size: var(--t-2)">
@@ -51,6 +60,7 @@
     </aside>
     <main class="carte">
       <div class="carte__conteneur" id="carte" role="region" aria-label="Carte des contrôles"></div>
+      <div class="barre-outils" id="barre-outils"></div>
       <div class="message" id="message" hidden></div>
     </main>
   </div>

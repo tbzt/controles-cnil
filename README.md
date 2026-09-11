@@ -11,7 +11,7 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 11 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
+Étape 12 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
 CNIL dans `data/raw/` avec leur empreinte ; `pipeline/transform.py` les
 normalise en une table unique de 3 617 contrôles
 (`data/processed/controles.csv` et `.json`), avec identifiants stables,
@@ -37,8 +37,10 @@ et filtres combinables (période, familles et secteurs fins, fondement,
 modalité, région, département, commune, recherche) avec compteur en temps
 réel et état dans l'URL, suggestions d'organismes et de communes, filtre
 « organisme exact » avec recadrage automatique de la carte, lien « voir les
-contrôles de cet organisme » dans la popup. Mode communes, vues d'analyse et
-d'évolution, page Données restent à faire (étapes 12 à 16).
+contrôles de cet organisme » dans la popup, deux commutateurs sur la carte
+(« Points / Communes » et « Organisme contrôlé / Lieu du contrôle ») et un
+encart « Hors de France ». Vues d'analyse et d'évolution, page Données et
+finition restent à faire (étapes 13 à 16).
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 
@@ -64,7 +66,13 @@ méthode.
   validée.
 
 Aucune position n'est inventée : un point situé à la commune est rendu comme
-tel.
+tel. Sur la carte, le commutateur « Organisme contrôlé / Lieu du contrôle »
+choisit lequel des deux lieux est dessiné ; en mode « Lieu du contrôle », les
+contrôles à distance sortent du clustering et forment une pastille fixe sur le
+siège de la CNIL avec leur nombre, cliquable. Le commutateur « Points /
+Communes » remplace les points par un cercle par commune, d'aire
+proportionnelle au nombre de contrôles et de la couleur de la famille
+dominante : c'est le mode honnête quand la précision est la commune.
 
 ## Arborescence
 
@@ -159,6 +167,11 @@ Aucun build : HTML, CSS et modules ES natifs, MapLibre GL JS vendorisé.
   distincts : `q`, recherche libre où tous les mots doivent apparaître, et
   `organisme`, nom exact normalisé posé par une suggestion ou depuis une
   popup, qui recadre la carte sur ses contrôles.
+- `js/carte/communes.js` : agrégation de la sélection par commune (point
+  moyen des contrôles, famille dominante) et couches de cercles ;
+  `js/carte/cnil.js` : la pastille du siège de la CNIL ;
+  `js/vues/barre-outils.js` : les deux commutateurs ;
+  `js/vues/encart-etranger.js` : les organismes étrangers par pays.
 - `js/carte/popup.js`, `js/app.js` : fiche d'un contrôle, bandeau de
   couverture, panneau repliable sur mobile, branchement de l'état.
 

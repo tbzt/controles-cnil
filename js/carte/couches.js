@@ -17,8 +17,8 @@ export function couleursFamilles(familles) {
   return couleurs;
 }
 
-function expressionCouleur(couleurs) {
-  const expression = ["match", ["get", "famille"]];
+export function expressionCouleur(couleurs, propriete = "famille") {
+  const expression = ["match", ["get", propriete]];
   for (const [code, couleur] of Object.entries(couleurs)) expression.push(code, couleur);
   expression.push(couleurs.autres || "#a8adb5");
   return expression;
@@ -95,9 +95,10 @@ function svgAnneau(proprietes, familles, couleurs) {
 export function gererClusters(map, familles, obtenirCouleurs) {
   const marqueurs = new Map();
   let visibles = new Set();
+  let actifs = true;
 
   function actualiser() {
-    if (!map.getSource(ID_SOURCE) || !map.isSourceLoaded(ID_SOURCE)) return;
+    if (!actifs || !map.getSource(ID_SOURCE) || !map.isSourceLoaded(ID_SOURCE)) return;
     const couleurs = obtenirCouleurs();
     const features = map.querySourceFeatures(ID_SOURCE, { filter: ["has", "point_count"] });
     const nouveaux = new Set();
@@ -140,7 +141,18 @@ export function gererClusters(map, familles, obtenirCouleurs) {
     actualiser();
   }
 
+  function activer(valeur) {
+    actifs = valeur;
+    if (!actifs) {
+      for (const m of marqueurs.values()) m.remove();
+      marqueurs.clear();
+      visibles = new Set();
+    } else {
+      actualiser();
+    }
+  }
+
   map.on("render", actualiser);
   map.on("sourcedata", (e) => { if (e.sourceId === ID_SOURCE && e.isSourceLoaded) actualiser(); });
-  return { actualiser, toutRedessiner };
+  return { actualiser, toutRedessiner, activer };
 }

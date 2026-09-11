@@ -9,12 +9,16 @@
 
 const CLES_MULTIPLES = ["famille", "secteur", "fondement", "modalite"];
 const CLES_SIMPLES = ["region", "departement", "commune", "organisme", "q"];
+/* Réglages d'affichage, dans l'URL seulement quand ils diffèrent du défaut. */
+const DEFAUTS_AFFICHAGE = { mode: "points", lieu: "organisme" };
+const VALEURS_AFFICHAGE = { mode: ["points", "communes"], lieu: ["organisme", "controle"] };
 
 export function etatVide(annees) {
   return {
     annees: [annees[0], annees[annees.length - 1]],
     famille: new Set(), secteur: new Set(), fondement: new Set(), modalite: new Set(),
     region: "", departement: "", commune: "", organisme: "", q: "",
+    ...DEFAUTS_AFFICHAGE,
   };
 }
 
@@ -38,6 +42,10 @@ export function lireHash(annees) {
   for (const k of CLES_SIMPLES) {
     etat[k] = params.get(k) || "";
   }
+  for (const k of Object.keys(DEFAUTS_AFFICHAGE)) {
+    const v = params.get(k);
+    if (v && VALEURS_AFFICHAGE[k].includes(v)) etat[k] = v;
+  }
   return etat;
 }
 
@@ -48,6 +56,7 @@ export function ecrireHash(etat, annees) {
   }
   for (const k of CLES_MULTIPLES) if (etat[k].size) params.set(k, [...etat[k]].sort().join(","));
   for (const k of CLES_SIMPLES) if (etat[k]) params.set(k, etat[k]);
+  for (const k of Object.keys(DEFAUTS_AFFICHAGE)) if (etat[k] !== DEFAUTS_AFFICHAGE[k]) params.set(k, etat[k]);
   const hash = params.toString().replace(/%2C/g, ",");
   const cible = hash ? `#${hash}` : location.pathname + location.search;
   if ((hash ? `#${hash}` : "") !== location.hash) history.replaceState(null, "", cible);
@@ -64,7 +73,7 @@ export function creerMagasin(etatInitial, annees) {
       ecrireHash(etat, annees);
       for (const fn of abonnes) fn(etat);
     },
-    reinitialiser() { this.modifier(etatVide(annees)); },
+    reinitialiser() { this.modifier({ ...etatVide(annees), mode: etat.mode, lieu: etat.lieu }); },
     abonner(fn) { abonnes.add(fn); return () => abonnes.delete(fn); },
   };
 }

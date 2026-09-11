@@ -137,3 +137,7 @@
 }
 .message[hidden] { display: none; }
 .message--alerte { border-color: var(--alerte); background: var(--alerte-doux); }
+
+/* Répartition par famille dans la popup d'une commune. */
+.fiche__repartition { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.fiche__repartition li { display: flex; justify-content: space-between; gap: var(--e-2); font-size: var(--t-2); }
