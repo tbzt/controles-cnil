@@ -221,7 +221,12 @@ def schema() -> dict:
 def libelles() -> dict:
     """Libellés d'affichage des valeurs codées, pour le site et les
     réutilisateurs : le site n'a ainsi rien à connaître de pipeline/."""
+    secteurs = {}
+    with open(PROCESSED / "referentiels" / "secteurs.csv", encoding="utf-8", newline="") as f:
+        for r in csv.DictReader(f):
+            secteurs.setdefault(r["secteur"], {"libelle": r["secteur_libelle"], "famille": r["famille"]})
     return {
+        "secteurs": dict(sorted(secteurs.items())),
         "fondements": lire_json(MAPPINGS / "fondements.json")["libelles"],
         "modalites": lire_json(MAPPINGS / "modalites.json")["libelles"],
         "pays": lire_json(MAPPINGS / "pays.json")["libelles"],

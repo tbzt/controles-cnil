@@ -11,7 +11,7 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 9 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
+Étape 10 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
 CNIL dans `data/raw/` avec leur empreinte ; `pipeline/transform.py` les
 normalise en une table unique de 3 617 contrôles
 (`data/processed/controles.csv` et `.json`), avec identifiants stables,
@@ -30,11 +30,13 @@ réutilisateurs (`controles.geojson`, `stats.json`) et le schéma des tables
 (`data/metadata/schema.json`). Le workflow `.github/workflows/actualiser-donnees.yml`
 enchaîne le tout chaque lundi et à la demande, ne commite que si les données
 ont changé, tague chaque publication (`donnees-AAAA-MM-JJ`) et joint les
-fichiers à une Release. Le site est en ligne dans une première version
-(carte, clusters en anneau par famille, points stylés selon leur précision,
-popup, bandeau de couverture) sur https://tbzt.github.io/controles-cnil/ ;
-filtres, recherche, vues d'analyse et d'évolution, page Données restent à
-faire (étapes 10 à 16).
+fichiers à une Release. Le site est en ligne sur
+https://tbzt.github.io/controles-cnil/ : carte, clusters en anneau par
+famille, points stylés selon leur précision, popup, bandeau de couverture,
+et filtres combinables (période, familles et secteurs fins, fondement,
+modalité, région, département, commune, recherche) avec compteur en temps
+réel et état dans l'URL. Recherche avec zoom, mode communes, vues d'analyse
+et d'évolution, page Données restent à faire (étapes 11 à 16).
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 
@@ -141,8 +143,18 @@ Aucun build : HTML, CSS et modules ES natifs, MapLibre GL JS vendorisé.
 - `js/carte/couches.js` : points (couleur de famille, contour selon la
   précision) et clusters en anneau (un SVG par cluster, arcs proportionnels
   aux familles, taille en racine du total).
+- `js/etat.js` : l'état des filtres, sérialisé dans le hash de l'URL
+  (`#annees=2019-2023&famille=sante_social&modalite=en_ligne&region=11&q=carrefour`),
+  et un magasin minimal auquel les vues s'abonnent.
+- `js/filtres.js` : fonctions pures ; `filtrer(contrôles, état)` et les
+  effectifs de chaque facette sous les autres filtres. Tout se recalcule à
+  chaque changement, sans index : quelques millisecondes pour 3 600 lignes.
+- `js/vues/panneau-filtres.js` : les contrôles du panneau (double curseur,
+  familles cliquables, secteurs fins, puces, sélecteurs en cascade,
+  recherche). La carte reçoit le tableau filtré par `setData`, ce qui
+  reclusterise ; les compteurs et les facettes se mettent à jour en même temps.
 - `js/carte/popup.js`, `js/app.js` : fiche d'un contrôle, bandeau de
-  couverture, légende, panneau repliable sur mobile.
+  couverture, panneau repliable sur mobile, branchement de l'état.
 
 ## Licences
 

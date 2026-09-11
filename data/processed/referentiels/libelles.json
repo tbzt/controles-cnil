@@ -39,5 +39,139 @@
     "departement": "au département",
     "institution": "au siège de la CNIL",
     "pays": "au pays"
+  },
+  "secteurs": {
+    "associatif": {
+      "famille": "associatif",
+      "libelle": "Associatif"
+    },
+    "assurance": {
+      "famille": "assurance",
+      "libelle": "Assurance"
+    },
+    "banque": {
+      "famille": "banque",
+      "libelle": "Banque"
+    },
+    "collectivites_territoriales": {
+      "famille": "collectivites_territoriales",
+      "libelle": "Collectivités territoriales"
+    },
+    "commerce": {
+      "famille": "commerce",
+      "libelle": "Commerce"
+    },
+    "cookies": {
+      "famille": "commerce",
+      "libelle": "Cookies"
+    },
+    "culture": {
+      "famille": "education_culture_sport",
+      "libelle": "Culture"
+    },
+    "economie": {
+      "famille": "commerce",
+      "libelle": "Économie"
+    },
+    "education": {
+      "famille": "education_culture_sport",
+      "libelle": "Éducation"
+    },
+    "education_culture_sport": {
+      "famille": "education_culture_sport",
+      "libelle": "Éducation / culture / sport (nomenclature 2014-2017)"
+    },
+    "energie": {
+      "famille": "energie_environnement",
+      "libelle": "Énergie"
+    },
+    "environnement": {
+      "famille": "energie_environnement",
+      "libelle": "Environnement"
+    },
+    "finances_publiques": {
+      "famille": "etat_regalien",
+      "libelle": "Finances publiques"
+    },
+    "immobilier": {
+      "famille": "immobilier",
+      "libelle": "Immobilier"
+    },
+    "inconnu": {
+      "famille": "autres",
+      "libelle": "Non renseigné"
+    },
+    "jeux": {
+      "famille": "education_culture_sport",
+      "libelle": "Jeux"
+    },
+    "ministeres": {
+      "famille": "etat_regalien",
+      "libelle": "Ministères"
+    },
+    "nouvelles_technologies": {
+      "famille": "telecommunications",
+      "libelle": "Nouvelles technologies"
+    },
+    "particulier": {
+      "famille": "autres",
+      "libelle": "Particulier"
+    },
+    "police_justice_securite": {
+      "famille": "etat_regalien",
+      "libelle": "Police / justice / sécurité (nomenclature 2014-2018)"
+    },
+    "politique": {
+      "famille": "politique",
+      "libelle": "Politique"
+    },
+    "presse": {
+      "famille": "presse",
+      "libelle": "Presse"
+    },
+    "regalien": {
+      "famille": "etat_regalien",
+      "libelle": "Régalien"
+    },
+    "sante": {
+      "famille": "sante_social",
+      "libelle": "Santé"
+    },
+    "sante_social": {
+      "famille": "sante_social",
+      "libelle": "Santé / social (nomenclature 2014-2018)"
+    },
+    "social": {
+      "famille": "sante_social",
+      "libelle": "Social"
+    },
+    "sport": {
+      "famille": "education_culture_sport",
+      "libelle": "Sport"
+    },
+    "statistiques_publiques": {
+      "famille": "etat_regalien",
+      "libelle": "Statistiques et enquêtes publiques"
+    },
+    "telecommunications": {
+      "famille": "telecommunications",
+      "libelle": "Télécommunications"
+    },
+    "tourisme": {
+      "famille": "commerce",
+      "libelle": "Tourisme"
+    },
+    "transports": {
+      "famille": "transports",
+      "libelle": "Transports"
+    },
+    "travail": {
+      "famille": "travail",
+      "libelle": "Travail"
+    },
+    "vote_electronique": {
+      "famille": "politique",
+      "libelle": "Vote électronique"
+    }
   }
 }
