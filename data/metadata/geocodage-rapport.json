@@ -8,24 +8,25 @@
     "ville_non_resolue": 3
   },
   "france": 3560,
-  "france_resolus_commune_ou_adresse": 3554,
+  "france_resolus_commune_ou_adresse": 3557,
   "par_lieu_controle": {
     "cnil": 1463,
     "organisme": 2154
   },
   "par_methode_organisme": {
-    "alias": 109,
+    "alias": 15,
     "aucune": 3,
     "centroide_pays": 57,
-    "referentiel_communes": 3448
+    "referentiel_communes": 1254,
+    "surcouche": 2288
   },
   "par_precision_organisme": {
+    "adresse": 2288,
     "aucune": 3,
-    "commune": 3554,
-    "departement": 3,
+    "commune": 1269,
     "pays": 57
   },
-  "taux_france": 0.9983,
+  "taux_france": 0.9992,
   "total": 3617,
   "villes_non_resolues": [
     {

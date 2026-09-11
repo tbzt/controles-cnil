@@ -23,6 +23,7 @@ python3 pipeline/fetch.py --forcer     # retélécharge tout, sans dupliquer un 
 python3 pipeline/fetch.py --hors-ligne # vérifie seulement que data/raw/ correspond au manifeste
 python3 pipeline/transform.py          # data/raw/ → data/processed/controles.csv et .json
 python3 pipeline/geocode.py            # controles.csv → data/processed/localisations.csv (hors ligne)
+python3 outils/importer-umap.py <export.umap> --adresse-inverse   # ponctuel : surcouche d'adresses depuis uMap
 python3 -m unittest discover -s pipeline/tests -t .
 ```
 

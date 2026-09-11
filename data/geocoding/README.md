@@ -28,6 +28,27 @@ le réseau.
 ## Colonnes de `surcouche.csv`
 
 `id` (identifiant du contrôle), `adresse`, `lon`, `lat` (WGS84, 6 décimales),
-`code_insee`, `precision` (`adresse`), `methode` (`siege`, `etablissement`,
-`manuel`), `source` (d'où vient l'adresse), `statut` (`valide`, `a_verifier`,
-`impossible`), `commentaire`.
+`code_insee`, `precision` (`adresse`), `methode`, `source` (d'où vient
+l'adresse), `statut` (`valide`, `a_verifier`, `impossible`), `commentaire`.
+
+Méthodes : `umap_adresse` (adresse et point issus de la carte uMap),
+`umap_coordonnees` (point uMap sans libellé), `umap_coordonnees+adresse_inverse`
+(point uMap, libellé retrouvé par géocodage inverse BAN à l'import),
+`siege_auto` (siège trouvé automatiquement dans l'annuaire des entreprises,
+score haut), `manuel` (saisie à la main).
+
+Seules les lignes `valide` sont appliquées par `geocode.py`. L'import uMap
+marque `a_verifier` tout point situé à plus de 30 km de la commune indiquée
+par la CNIL : le commentaire donne la distance et la commune. Pour valider
+une telle ligne, passer son statut à `valide` et renseigner `code_insee`.
+
+## Import depuis la carte uMap
+
+```bash
+python3 outils/importer-umap.py data/referentiels-source/umap-export-2026-09-11.umap --adresse-inverse
+```
+
+Rapport dans `data/metadata/import-umap-rapport.json` : objets écartés (au
+siège de la CNIL), appariés, non appariés, contrôles restés sans adresse par
+année. Une ligne validée à la main (source autre que la carte uMap) n'est
+jamais écrasée par une relance de l'import.

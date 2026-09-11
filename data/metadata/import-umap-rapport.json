@@ -1,0 +1,375 @@
+{
+  "apparies": 2503,
+  "au_siege_cnil_ecartes": 1048,
+  "controles_sans_adresse_par_annee": {
+    "2014": 26,
+    "2015": 6,
+    "2016": 97,
+    "2017": 25,
+    "2018": 71,
+    "2019": 71,
+    "2020": 174,
+    "2021": 255,
+    "2022": 203,
+    "2023": 186
+  },
+  "dont_par_nom_approche": 36,
+  "export": "umap-export-2026-09-11.umap",
+  "methodes": {
+    "umap_adresse": 798,
+    "umap_coordonnees": 13,
+    "umap_coordonnees+adresse_inverse": 1692
+  },
+  "objets": 3643,
+  "objets_non_apparies": [
+    {
+      "annee": 2014,
+      "couche": "2014 - Santé / Social",
+      "nom": "ASSOCIATION \" LES MAISONS DE L'ARIA\"",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Télécommunications",
+      "nom": "ASSOCIATION WIKIMEDIA FRANCE - PARIS (75)",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Collectivités territoriales",
+      "nom": "BREST-METROPOLE-OCEANE.FR",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Télécommunications",
+      "nom": "CGI FRANCE - COURBEVOIE (92)",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Santé / Social",
+      "nom": "F2F -  ROUBAIX (59)",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Santé / Social",
+      "nom": "GHAZLI.COM",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Collectivités territoriales",
+      "nom": "MAIRIE-DEAUVILLE.FR",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Collectivités territoriales",
+      "nom": "MARSEILLESERVICES.FR",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Collectivités territoriales",
+      "nom": "METZ.FR",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Collectivités territoriales",
+      "nom": "NEUILLYSURSEINE.FR",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Santé / Social",
+      "nom": "SIDA-INFO-SERVICE.ORG",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Santé / Social",
+      "nom": "SOCIETE DU CENTRE CHIRURGICAL AMBROISE PARE DE NEUILLY (92)",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Télécommunications",
+      "nom": "TELEVISION FRANCAISE 1- BOULOGNE BILLANCOURT (92)",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Collectivités territoriales",
+      "nom": "VILLE-EVIAN.FR",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Collectivités territoriales",
+      "nom": "VILLECOURBEVOIE.FR",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Collectivités territoriales",
+      "nom": "VILLEDELENS.FR",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Collectivités territoriales",
+      "nom": "VITRY94.FR",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Collectivités territoriales",
+      "nom": "WWW.REDON.FR",
+      "proches": []
+    },
+    {
+      "annee": 2014,
+      "couche": "2014 - Collectivités territoriales",
+      "nom": "WWW.SERVICES.VILLE-NEVERS.FR ",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": " MAGASIN INCOGNITO 44",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": " THOMAS BOSC",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "ABDSF ARVATO BUSINESS DEVELOPPEMENT SERVICES FRANCE- VENDIN-LE-VIEIL (62)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "AM DIFF AUDITION",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Immobilier",
+      "nom": "BOURSE DE L'IMMOBILIER - BORDEAUX (33)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "BRANDALLEY - PARIS (75)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "CWI DISTRIBUTION -  AIX EN PROVENCE (13)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "DECATHLON FRANCE - VILLENEUVE D'ASCQ (59)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "EUROPE RESEAUX",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "HORYZON MEDIA (SOLOCAL GROUP) - ISSY LES MOULINEAUX (92)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "HOTEL ALBE BASTILLE - PARIS (75)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "MAGASIN INCOGNITO 37",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Banques",
+      "nom": "MINISTERE DES FINANCES  ET DES COMPTES PUBLICS - SITE HEBERGEMENT BUSSY SAINT-GEORGES (77)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "ONEY TECH - CROIX (59)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Santé / Social",
+      "nom": "PHARMACIE PORTE",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "PRICEMINISTER - PARIS (75)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "RESTO IN - PARIS (75)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "SOCIETE BOULANGER  - FRETIN (59)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "SPORTSDIRECT.COM FRANCE - FRESNES (94)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Transports",
+      "nom": "TRANSDEV IDF - SITE D'ECQUEVILLY (78)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Transports",
+      "nom": "TRANSDEV IDF - SITE NANTERRE  (92)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Transports",
+      "nom": "TRANSDEV IDF - SITE VILLESAINT (77)",
+      "proches": []
+    },
+    {
+      "annee": 2015,
+      "couche": "2015 - Commerce",
+      "nom": "VIAPRESSE - PARIS (75)",
+      "proches": []
+    },
+    {
+      "annee": 2017,
+      "couche": "2017 - Assurances",
+      "nom": "ALLIANZ FRANCE",
+      "proches": []
+    },
+    {
+      "annee": 2018,
+      "couche": "2018 - Culture",
+      "nom": "ACCOR HOTEL ARENA  (SAE POPB)",
+      "proches": []
+    },
+    {
+      "annee": 2018,
+      "couche": "2018 - Santé",
+      "nom": "ATIH (ATIH.SANTE.FR)",
+      "proches": []
+    },
+    {
+      "annee": 2018,
+      "couche": "2018 - Commerce",
+      "nom": "DEVEDIS/CENTRE LECLERC",
+      "proches": []
+    },
+    {
+      "annee": 2018,
+      "couche": "2018 - Régalien",
+      "nom": "DIRECTION DE LA S�CURIT� DE PROXIMIT� DE L�AGGLOM�RATION PARISIENNE (DSPAP)",
+      "proches": [
+        "DIRECTION DE LA SECURITE DE PROXIMITE DE LAGGLOMERATION PARISIENNE",
+        "DIRECTION DE LA SECURITE DE PROXIMITE DE L AGGLOMERATION PARISIENNE"
+      ]
+    },
+    {
+      "annee": 2018,
+      "couche": "2018 - Commerce",
+      "nom": "EL-TECHNOLOGIES FRANCE (GROUPE CRITERES)",
+      "proches": []
+    },
+    {
+      "annee": 2018,
+      "couche": "2018 - Commerce",
+      "nom": "EQUANUM  (LA RUCHE QUI DIT OUI)",
+      "proches": []
+    },
+    {
+      "annee": 2018,
+      "couche": "2018 - Commerce",
+      "nom": "EQUANUM (LA RUCHE QUI DIT OUI)",
+      "proches": []
+    },
+    {
+      "annee": 2018,
+      "couche": "2018 - Commerce",
+      "nom": "ITM ALIMENTAIRE INTERNATIONAL (INTERMARCHE)",
+      "proches": []
+    },
+    {
+      "annee": 2018,
+      "couche": "2018 - Commerce",
+      "nom": "LGHA AUTO (KYUMP.COM)",
+      "proches": []
+    },
+    {
+      "annee": 2018,
+      "couche": "2018 - Assurances",
+      "nom": "MAAF (AGENCE)",
+      "proches": []
+    },
+    {
+      "annee": 2018,
+      "couche": "2018 - Commerce",
+      "nom": "SOCIETE ALIMENTAIRE VERSAILLES YVELINES (ENSEIGNE : FRANPRIX)",
+      "proches": []
+    },
+    {
+      "annee": 2018,
+      "couche": "2018 - Commerce",
+      "nom": "SODICHAR (INTERMARCHE)",
+      "proches": []
+    },
+    {
+      "annee": 2018,
+      "couche": "2018 - Commerce",
+      "nom": "WINNER (INTERMARCHE)",
+      "proches": []
+    },
+    {
+      "annee": 2019,
+      "couche": "2019 - Collectivités territoriales",
+      "nom": "METROPOLE DE DIJON",
+      "proches": []
+    }
+  ],
+  "statuts": {
+    "a_verifier": 215,
+    "valide": 2288
+  }
+}

@@ -18,9 +18,11 @@ normalise en une table unique de 3 617 contrôles
 valeurs brutes conservées, drapeaux de qualité, et secteurs harmonisés en
 seize familles comparables sur toute la période ; `pipeline/geocode.py`
 localise chaque contrôle hors ligne (`data/processed/localisations.csv`),
-à la commune pour 99,8 % des contrôles en France, avec deux lieux par
-contrôle. Les adresses précises (étape 5), la validation (étape 6), la
-génération du GeoJSON (étape 7) et le site restent à faire.
+avec deux lieux par contrôle : à l'adresse pour 2 288 contrôles (surcouche
+héritée de la carte uMap, `outils/importer-umap.py`), à la commune pour le
+reste des contrôles en France. Les propositions automatiques d'adresses
+(étape 5b), la validation (étape 6), la génération du GeoJSON (étape 7) et
+le site restent à faire.
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 
