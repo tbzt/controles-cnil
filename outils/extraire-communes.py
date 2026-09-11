@@ -25,7 +25,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from pipeline.commun import REFERENTIELS_SOURCE, ecrire_texte, journal  # noqa: E402
+from pipeline.commun import PROCESSED, REFERENTIELS_SOURCE, ecrire_texte, journal, lire_json  # noqa: E402
 
 BASE = "https://geo.api.gouv.fr/communes"
 CHAMPS = "code,nom,codeDepartement,codeRegion,centre,population"
@@ -64,6 +64,21 @@ def main() -> int:
         + "\n  ]\n}\n")
     change = ecrire_texte(SORTIE, texte)
     journal(("mis à jour" if change else "inchangé") + f" : {SORTIE} ({len(texte.encode('utf-8')) // 1024} Ko)")
+
+    # Population par département, somme des communes : sert à la lecture
+    # « pour 100 000 habitants » du site.
+    chemin_dep = PROCESSED / "referentiels" / "departements.json"
+    dep = lire_json(chemin_dep)
+    if dep:
+        population = {}
+        for l in lignes:
+            if l[7] == "commune" and l[6]:
+                population[l[2]] = population.get(l[2], 0) + int(l[6])
+        for d in dep["departements"]:
+            d["population"] = population.get(d["code"])
+        dep["_note"] = "population : somme des populations communales de communes.json (geo.api.gouv.fr), même date d'extraction"
+        texte_dep = json.dumps(dep, ensure_ascii=False, indent=1) + "\n"
+        journal(("mis à jour" if ecrire_texte(chemin_dep, texte_dep) else "inchangé") + f" : {chemin_dep}")
     return 0
 
 

@@ -11,7 +11,7 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 13 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
+Étape 14 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
 CNIL dans `data/raw/` avec leur empreinte ; `pipeline/transform.py` les
 normalise en une table unique de 3 617 contrôles
 (`data/processed/controles.csv` et `.json`), avec identifiants stables,
@@ -39,9 +39,12 @@ réel et état dans l'URL, suggestions d'organismes et de communes, filtre
 « organisme exact » avec recadrage automatique de la carte, lien « voir les
 contrôles de cet organisme » dans la popup, deux commutateurs sur la carte
 (« Points / Communes » et « Organisme contrôlé / Lieu du contrôle »), un
-encart « Hors de France », et un onglet Analyse dont les graphiques suivent
-les filtres et posent eux-mêmes des filtres au clic. Vue d'évolution, page
-Données et finition restent à faire (étapes 14 à 16).
+encart « Hors de France », un onglet Analyse dont les graphiques suivent
+les filtres et posent eux-mêmes des filtres au clic, et un onglet Évolution
+(courbes, familles dans le temps, petits multiples cartographiques par
+année, comparaison de deux périodes par choroplèthe divergent, lecture en
+effectifs ou pour 100 000 habitants). Page Données et finition restent à
+faire (étapes 15 et 16).
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 
@@ -85,7 +88,7 @@ vendor/                                                   MapLibre GL JS épingl
 data/raw/                fichiers CNIL bruts, immuables, ajout seul
 data/processed/          données normalisées, localisations, GeoJSON, statistiques
 data/geocoding/          surcouche d'adresses validées, alias, corrections
-data/referentiels-source/ référentiels externes versionnés (communes…)
+data/referentiels-source/ référentiels externes versionnés (communes, contours départementaux)
 data/metadata/           manifeste, schéma, rapport qualité, versions, journal
 pipeline/                scripts Python (bibliothèque standard uniquement) et tests
 outils/                  scripts d'usage ponctuel
@@ -180,6 +183,12 @@ Aucun build : HTML, CSS et modules ES natifs, MapLibre GL JS vendorisé.
   avec la rupture de nomenclature 2018 dessinée sur les graphiques par
   famille. Les vues sont des onglets d'une seule page (`#vue=analyse`),
   pour partager les filtres et l'URL.
+- `js/graphiques/carte-svg.js` : choroplèthes par département en SVG
+  (contours simplifiés projetés une fois, échelles séquentielle et
+  divergente en racine) ; `js/vues/evolution.js` : la vue Évolution. Pas
+  d'animation : la source n'a que l'année, donc petits multiples (une carte
+  par année, même échelle) et comparaison de deux périodes en moyenne
+  annuelle. La période du panneau sert de période B.
 - `js/carte/popup.js`, `js/app.js` : fiche d'un contrôle, bandeau de
   couverture, panneau repliable sur mobile, branchement de l'état.
 

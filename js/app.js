@@ -20,6 +20,7 @@ import { creerPanneauFiltres } from "./vues/panneau-filtres.js";
 import { creerBarreOutils } from "./vues/barre-outils.js";
 import { creerEncartEtranger } from "./vues/encart-etranger.js";
 import { creerVueAnalyse } from "./vues/analyse.js";
+import { creerVueEvolution } from "./vues/evolution.js";
 
 const VUE_FRANCE = { center: [2.6, 46.6], zoom: 5.3 };
 const MODALITES_CNIL = ["en_ligne", "sur_pieces", "sur_audition"];
@@ -120,6 +121,7 @@ async function demarrer() {
   const barre = creerBarreOutils(magasin);
   const encart = creerEncartEtranger(d.libelles);
   const analyse = creerVueAnalyse({ features, annees, familles: d.familles, libelles: d.libelles, magasin, obtenirCouleurs: () => couleurs });
+  const evolution = creerVueEvolution({ features, annees, familles: d.familles, magasin, obtenirCouleurs: () => couleurs, departements: ref.departements });
   $("onglets").addEventListener("click", (e) => {
     const b = e.target.closest("[data-vue]");
     if (b && !b.disabled) magasin.modifier({ vue: b.dataset.vue });
@@ -129,7 +131,10 @@ async function demarrer() {
     for (const b of $("onglets").querySelectorAll("[data-vue]")) b.setAttribute("aria-selected", String(b.dataset.vue === etat.vue));
     $("vue-carte").hidden = etat.vue !== "carte";
     $("vue-analyse").hidden = etat.vue !== "analyse";
+    $("vue-evolution").hidden = etat.vue !== "evolution";
     if (etat.vue === "analyse") analyse.rendre(selection, etat, estVide(etat, annees));
+    /* La vue Évolution lit toutes les années : la période du panneau y devient la période B. */
+    if (etat.vue === "evolution") evolution.rendre(filtrer(features, etat, "annees"), etat, estVide(etat, annees));
     if (etat.vue === "carte" && vuePrecedente !== "carte") map?.resize();
     vuePrecedente = etat.vue;
   }

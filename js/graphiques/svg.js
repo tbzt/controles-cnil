@@ -140,3 +140,42 @@ export function barresEmpilees({ colonnes, categories, parts = false, largeur = 
 export function legende(categories, dataCle) {
   return `<ul class="graphique__legende">${categories.map((c) => `<li class="graphique__legende-item ${dataCle ? "graphique__cliquable" : ""}" ${dataCle ? `data-${dataCle}="${echapper(c.code)}"` : ""}><span class="graphique__pastille" style="background:${c.couleur}"></span>${echapper(c.libelle)}</li>`).join("")}</ul>`;
 }
+
+/* ---------------------------------------------------- courbes ------------ */
+
+/* series : [{cle, libelle, couleur, valeurs: [n par année]}] ; annees : [..]. */
+export function courbes({ series, annees, largeur = 900, hauteur = 260, rupture = null, dataCle = "annee", parts = false }) {
+  const marge = { haut: 14, droite: 16, bas: 28, gauche: 44 };
+  const w = largeur - marge.gauche - marge.droite;
+  const h = hauteur - marge.haut - marge.bas;
+  const max = parts ? 1 : Math.max(1, ...series.flatMap((s) => s.valeurs));
+  const p = parts ? 0.25 : pas(max);
+  const plafond = parts ? Math.min(1, Math.ceil(Math.max(...series.flatMap((s) => s.valeurs), 0.01) / p) * p) : Math.ceil(max / p) * p;
+  const x = (i) => marge.gauche + (annees.length > 1 ? (i / (annees.length - 1)) * w : w / 2);
+  const y = (v) => marge.haut + h - (v / plafond) * h;
+
+  let s = `<svg class="graphique" viewBox="0 0 ${largeur} ${hauteur}" role="img" aria-hidden="true">`;
+  for (let v = 0; v <= plafond + 1e-9; v += p) {
+    s += `<line class="graphique__grille" x1="${marge.gauche}" x2="${largeur - marge.droite}" y1="${y(v)}" y2="${y(v)}"/>`;
+    s += `<text class="graphique__axe" x="${marge.gauche - 6}" y="${y(v)}" text-anchor="end" dominant-baseline="middle">${parts ? pourcentage(v) : nombre(v)}</text>`;
+  }
+  annees.forEach((a, i) => {
+    s += `<text class="graphique__axe" x="${x(i)}" y="${hauteur - 8}" text-anchor="middle">${a}</text>`;
+    s += `<rect class="graphique__colonne graphique__cliquable" data-${dataCle}="${a}" x="${x(i) - (w / Math.max(1, annees.length - 1)) / 2}" y="${marge.haut}" width="${w / Math.max(1, annees.length - 1)}" height="${h}" fill="transparent"/>`;
+  });
+  if (rupture != null) {
+    const i = annees.indexOf(rupture);
+    if (i > 0) s += `<line class="graphique__rupture" x1="${x(i) - (w / (annees.length - 1)) / 2}" x2="${x(i) - (w / (annees.length - 1)) / 2}" y1="${marge.haut}" y2="${marge.haut + h}"/>`;
+  }
+  for (const serie of series) {
+    const pts = serie.valeurs.map((v, i) => `${x(i)},${y(v)}`);
+    if (serie.aire) {
+      s += `<path class="graphique__aire" d="M${x(0)},${y(0)}L${pts.join("L")}L${x(annees.length - 1)},${y(0)}Z" fill="${serie.couleur}"/>`;
+    }
+    s += `<polyline class="graphique__courbe" points="${pts.join(" ")}" fill="none" stroke="${serie.couleur}" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>`;
+    serie.valeurs.forEach((v, i) => {
+      s += `<circle class="graphique__point" cx="${x(i)}" cy="${y(v)}" r="3.2" fill="${serie.couleur}"><title>${echapper(serie.libelle)} · ${annees[i]} : ${parts ? pourcentage(v) : nombre(v)}</title></circle>`;
+    });
+  }
+  return s + "</svg>";
+}

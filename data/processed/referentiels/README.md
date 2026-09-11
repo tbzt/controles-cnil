@@ -26,3 +26,9 @@ Choix discutables, assumés : Tourisme est rangé dans Commerce ; Jeux dans
 Télécommunications ; Statistiques et enquêtes publiques et Finances
 publiques dans État et régalien ; Économie et Cookies dans Commerce ;
 Particulier et les trois lignes sans secteur dans Autres.
+
+Les contours départementaux simplifiés utilisés par la vue Évolution sont
+dans `data/referentiels-source/contours-departements.geojson` (source :
+gregoiredavid/france-geojson, données OpenStreetMap sous ODbL, métropole et
+Corse). `departements.json` porte aussi la population de chaque département,
+somme des populations communales du référentiel.
