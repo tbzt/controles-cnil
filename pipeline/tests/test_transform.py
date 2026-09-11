@@ -12,7 +12,6 @@ from pipeline import transform
 from pipeline.commun import METADATA, lire_json
 
 TABLES = transform.charger_tables()
-TABLES = dict(TABLES, secteurs=None)  # les secteurs sont testés à l'étape 3
 
 
 def csv_2014(*lignes):
@@ -107,6 +106,10 @@ class TestLecture(unittest.TestCase):
         with self.assertRaises(SystemExit):
             transform.transformer_fichier(octets, "t.csv", 2014, TABLES)
 
+    def test_secteur_inconnu_est_fatal(self):
+        with self.assertRaises(SystemExit):
+            transform.transformer_fichier(csv_2014("2014;Loi 1978;X;Paris;75;Secteur jamais vu"), "t.csv", 2014, TABLES)
+
     def test_type_inconnu_est_fatal(self):
         with self.assertRaises(SystemExit):
             transform.transformer_fichier(csv_2014("2014;NOUVEAU TYPE;X;Paris;75;Commerce"), "t.csv", 2014, TABLES)
@@ -157,6 +160,11 @@ class TestDonneesReelles(unittest.TestCase):
                 self.assertEqual(manquantes, 0, annee)
             else:
                 self.assertGreater(manquantes, 0, annee)
+
+    def test_secteur_et_famille_toujours_renseignes(self):
+        for enr in self.resultats.values():
+            for e in enr:
+                self.assertTrue(e["secteur"] and e["famille"], e["id"])
 
     def test_pays_hors_france_depuis_2021(self):
         hors = Counter(e["annee"] for enr in self.resultats.values() for e in enr if e["pays"] != "FR")

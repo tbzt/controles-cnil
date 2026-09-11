@@ -1,0 +1,44 @@
+secteur_source,secteur,secteur_libelle,famille,occurrences_2014_2023
+Associatif,associatif,Associatif,associatif,27
+Assurance,assurance,Assurance,assurance,45
+Assurances,assurance,Assurance,assurance,24
+Cookies,cookies,Cookies,autres,1
+Economie,economie,Économie,autres,5
+,inconnu,Non renseigné,autres,3
+Particulier,particulier,Particulier,autres,4
+Banque,banque,Banque,banque,64
+Banques,banque,Banque,banque,63
+Banques-Finance,banque,Banque,banque,17
+Collectivités locales,collectivites_territoriales,Collectivités territoriales,collectivites_territoriales,214
+Collectivités territoriales,collectivites_territoriales,Collectivités territoriales,collectivites_territoriales,129
+Commerce,commerce,Commerce,commerce,1590
+Tourisme,tourisme,Tourisme,commerce,15
+Culture,culture,Culture,education_culture_sport,21
+Education,education,Éducation,education_culture_sport,56
+Éducation,education,Éducation,education_culture_sport,9
+Education/culture/sport,education_culture_sport,Éducation / culture / sport (nomenclature 2014-2017),education_culture_sport,111
+Jeux,jeux,Jeux,education_culture_sport,12
+Sport,sport,Sport,education_culture_sport,14
+Energie,energie,Énergie,energie_environnement,22
+Énergie,energie,Énergie,energie_environnement,2
+Environnement,environnement,Environnement,energie_environnement,7
+Finances publiques,finances_publiques,Finances publiques,etat_regalien,9
+Ministères,ministeres,Ministères,etat_regalien,2
+Police/ justice/ sécurité,police_justice_securite,Police / justice / sécurité (nomenclature 2014-2018),etat_regalien,57
+Police/justice/sécurité,police_justice_securite,Police / justice / sécurité (nomenclature 2014-2018),etat_regalien,94
+Régalien,regalien,Régalien,etat_regalien,143
+Statistiques et enquêtes publiques,statistiques_publiques,Statistiques et enquêtes publiques,etat_regalien,5
+Immobilier,immobilier,Immobilier,immobilier,55
+Activités politiques,politique,Politique,politique,31
+Politique,politique,Politique,politique,5
+Vote électronique,vote_electronique,Vote électronique,politique,1
+Presse,presse,Presse,presse,11
+Santé,sante,Santé,sante_social,213
+Santé/ social,sante_social,Santé / social (nomenclature 2014-2018),sante_social,95
+Santé/social,sante_social,Santé / social (nomenclature 2014-2018),sante_social,68
+Social,social,Social,sante_social,29
+Nouvelles technologies,nouvelles_technologies,Nouvelles technologies,telecommunications,3
+Télécommunications,telecommunications,Télécommunications,telecommunications,110
+Transport,transports,Transports,transports,53
+Transports,transports,Transports,transports,89
+Travail,travail,Travail,travail,89

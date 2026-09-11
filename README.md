@@ -11,13 +11,15 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 2 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
+Étape 3 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
 CNIL dans `data/raw/` avec leur empreinte ; `pipeline/transform.py` les
 normalise en une table unique de 3 617 contrôles
 (`data/processed/controles.csv` et `.json`), avec identifiants stables,
-valeurs brutes conservées et drapeaux de qualité. Les secteurs harmonisés
-(étape 3), la localisation (étape 4) et le site restent à faire. Chaque
-étape du plan est une livraison autonome.
+valeurs brutes conservées, drapeaux de qualité, et secteurs harmonisés en
+seize familles comparables sur toute la période. Les référentiels
+(secteurs, départements, régions, communes) sont versionnés et datés. La
+localisation (étape 4) et le site restent à faire. Chaque étape du plan est
+une livraison autonome.
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 

@@ -1,0 +1,101 @@
+{
+  "_commentaire": "Familles harmonisées, comparables sur 2014-2023 malgré le changement de nomenclature CNIL de 2018. Liste validée le 11 septembre 2026. L'ordre est celui d'affichage.",
+  "familles": [
+    {
+      "code": "commerce",
+      "libelle": "Commerce",
+      "ordre": 1,
+      "occurrences_2014_2023": 1605
+    },
+    {
+      "code": "sante_social",
+      "libelle": "Santé et social",
+      "ordre": 2,
+      "occurrences_2014_2023": 405
+    },
+    {
+      "code": "collectivites_territoriales",
+      "libelle": "Collectivités territoriales",
+      "ordre": 3,
+      "occurrences_2014_2023": 343
+    },
+    {
+      "code": "etat_regalien",
+      "libelle": "État et régalien",
+      "ordre": 4,
+      "occurrences_2014_2023": 310
+    },
+    {
+      "code": "banque",
+      "libelle": "Banque",
+      "ordre": 5,
+      "occurrences_2014_2023": 144
+    },
+    {
+      "code": "assurance",
+      "libelle": "Assurance",
+      "ordre": 6,
+      "occurrences_2014_2023": 69
+    },
+    {
+      "code": "transports",
+      "libelle": "Transports",
+      "ordre": 7,
+      "occurrences_2014_2023": 142
+    },
+    {
+      "code": "telecommunications",
+      "libelle": "Télécommunications",
+      "ordre": 8,
+      "occurrences_2014_2023": 113
+    },
+    {
+      "code": "travail",
+      "libelle": "Travail",
+      "ordre": 9,
+      "occurrences_2014_2023": 89
+    },
+    {
+      "code": "education_culture_sport",
+      "libelle": "Éducation, culture et sport",
+      "ordre": 10,
+      "occurrences_2014_2023": 223
+    },
+    {
+      "code": "immobilier",
+      "libelle": "Immobilier",
+      "ordre": 11,
+      "occurrences_2014_2023": 55
+    },
+    {
+      "code": "politique",
+      "libelle": "Politique",
+      "ordre": 12,
+      "occurrences_2014_2023": 37
+    },
+    {
+      "code": "associatif",
+      "libelle": "Associatif",
+      "ordre": 13,
+      "occurrences_2014_2023": 27
+    },
+    {
+      "code": "energie_environnement",
+      "libelle": "Énergie et environnement",
+      "ordre": 14,
+      "occurrences_2014_2023": 31
+    },
+    {
+      "code": "presse",
+      "libelle": "Presse",
+      "ordre": 15,
+      "occurrences_2014_2023": 11
+    },
+    {
+      "code": "autres",
+      "libelle": "Autres",
+      "ordre": 16,
+      "occurrences_2014_2023": 13
+    }
+  ]
+}

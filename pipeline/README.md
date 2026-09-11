@@ -13,8 +13,9 @@ dans cet ordre :
    code de sortie non nul sur règle fatale.
 5. `build.py` : GeoJSON, statistiques, journal des changements.
 
-État : `fetch.py` et `transform.py` sont écrits et testés ; les autres
-scripts sont à venir.
+État : `fetch.py` et `transform.py` sont écrits et testés, les référentiels
+sont en place (`data/processed/referentiels/`) ; `geocode.py`, `validate.py`
+et `build.py` sont à venir.
 
 ```bash
 python3 pipeline/fetch.py              # récupère ce qui a changé
