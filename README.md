@@ -11,7 +11,7 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 15 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
+Étape 17 sur 18, la dernière. `pipeline/fetch.py` archive les onze fichiers CSV de la
 CNIL dans `data/raw/` avec leur empreinte ; `pipeline/transform.py` les
 normalise en une table unique de 3 617 contrôles
 (`data/processed/controles.csv` et `.json`), avec identifiants stables,
@@ -46,7 +46,9 @@ année, comparaison de deux périodes par choroplèthe divergent, lecture en
 effectifs ou pour 100 000 habitants), et une page « Données et méthode »
 (`donnees.html`) alimentée par les métadonnées du pipeline : source, dates,
 transformations, limites de la localisation, constats de qualité,
-téléchargements, versions. La finition (étape 16) reste à faire.
+téléchargements, versions. Finition faite (mobile, clavier, mouvement
+réduit, libellés français des contrôles de carte, favicon) et migration
+PMTiles documentée. Les 18 étapes du plan initial sont livrées.
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 
@@ -197,6 +199,31 @@ Aucun build : HTML, CSS et modules ES natifs, MapLibre GL JS vendorisé.
   dont chaque date et chaque chiffre vient de `data/metadata/` (manifeste,
   rapport qualité, rapport de géocodage, versions, dernière vérification)
   pour qu'elle ne puisse pas se désynchroniser des données.
+
+## Performance et migration vers PMTiles
+
+Mesures au 11 septembre 2026, compressées comme les sert GitHub Pages :
+GeoJSON des contrôles 151 Ko, statistiques 14 Ko, contours départementaux
+68 Ko, référentiels 4 Ko, MapLibre GL JS 300 Ko, JavaScript applicatif
+environ 25 Ko (107 Ko non compressé), CSS 36 Ko non compressé. Le
+filtrage recalcule tout à chaque changement en quelques millisecondes ;
+aucune indexation, aucun worker.
+
+Un GeoJSON unique avec le clustering natif de MapLibre est donc le bon
+choix, et le restera longtemps : le volume croît d'environ 350 contrôles par
+an. Seuils au-delà desquels passer aux tuiles PMTiles : GeoJSON de plus de
+5 Mo, plus de 50 000 points, ou `setData` au-delà de 100 ms sur un mobile
+courant. Le chemin est balisé :
+
+1. `pipeline/build_tiles.py` produit `controles.pmtiles` avec tippecanoe
+   (paquet Ubuntu disponible sur les runners), clusters précalculés par
+   niveau de zoom ; à brancher dans le workflow après `build.py`.
+2. `js/carte/source.js` est le seul module du site à changer : une source
+   `vector` lue par le protocole `pmtiles.js` (jsDelivr), des couches sur
+   `source-layer: "controles"`. GitHub Pages sert les requêtes HTTP Range
+   dont PMTiles a besoin.
+3. Les anneaux de cluster lisent alors les attributs accumulés par
+   tippecanoe au lieu des `clusterProperties` de MapLibre.
 
 ## Licences
 

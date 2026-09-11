@@ -107,6 +107,12 @@ export function creerVueEvolution({ features, annees, familles, magasin, obtenir
       magasin.modifier({ annees: [d, f] });
     }
   });
+  conteneur.addEventListener("keydown", (e) => {
+    if ((e.key === "Enter" || e.key === " ") && e.target.classList.contains("multiple")) {
+      e.preventDefault();
+      e.target.click();
+    }
+  });
   conteneur.addEventListener("click", (e) => {
     const norm = e.target.closest("[data-norm]");
     if (norm) { normaliser = norm.dataset.norm === "1"; if (dernier) rendre(...dernier); return; }

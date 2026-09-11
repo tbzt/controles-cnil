@@ -11,8 +11,8 @@ export function creerBarreOutils(magasin) {
       <button type="button" class="segment" data-mode="communes" aria-pressed="false">Communes</button>
     </div>
     <div class="segments" role="group" aria-label="Lieu cartographié">
-      <button type="button" class="segment" data-lieu="organisme" aria-pressed="true" title="Chaque contrôle est placé chez l'organisme contrôlé">Organisme contrôlé</button>
-      <button type="button" class="segment" data-lieu="controle" aria-pressed="false" title="Les contrôles à distance sont regroupés au siège de la CNIL">Lieu du contrôle</button>
+      <button type="button" class="segment" data-lieu="organisme" aria-pressed="true" title="Chaque contrôle est placé chez l'organisme contrôlé"><span class="segment__long">Organisme contrôlé</span><span class="segment__court">Organisme</span></button>
+      <button type="button" class="segment" data-lieu="controle" aria-pressed="false" title="Les contrôles à distance sont regroupés au siège de la CNIL"><span class="segment__long">Lieu du contrôle</span><span class="segment__court">Lieu du contrôle</span></button>
     </div>`;
   conteneur.addEventListener("click", (e) => {
     const b = e.target.closest(".segment");

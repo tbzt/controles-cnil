@@ -63,9 +63,13 @@
 }
 .segment:hover { color: var(--encre); }
 .segment[aria-pressed="true"] { background: var(--accent); color: var(--accent-encre); }
+.segment__court { display: none; }
 @media (max-width: 767px) {
-  .barre-outils { top: var(--e-2); left: var(--e-2); right: 56px; }
-  .segment { padding: 0 var(--e-2); font-size: var(--t-1); }
+  /* Une seule ligne, à gauche des boutons de zoom : libellés courts, groupes compacts. */
+  .barre-outils { top: var(--e-2); left: var(--e-2); right: 52px; gap: var(--e-1); }
+  .segment { padding: 0 var(--e-2); font-size: var(--t-1); min-height: 28px; }
+  .segment__long { display: none; }
+  .segment__court { display: inline; }
 }
 
 /* ------------------------------------------------------ pastille CNIL */

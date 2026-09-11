@@ -30,6 +30,12 @@ button { font: inherit; color: inherit; }
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
+.evitement {
+  position: absolute; left: var(--e-3); top: -100px; z-index: 10;
+  padding: var(--e-2) var(--e-3); background: var(--accent); color: var(--accent-encre); border-radius: var(--rayon);
+}
+.evitement:focus { top: var(--e-3); }
+
 .num { font-variant-numeric: tabular-nums; }
 .discret { color: var(--encre-2); }
 .etiquette {

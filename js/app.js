@@ -23,6 +23,17 @@ import { creerVueAnalyse } from "./vues/analyse.js";
 import { creerVueEvolution } from "./vues/evolution.js";
 
 const VUE_FRANCE = { center: [2.6, 46.6], zoom: 5.3 };
+const MOUVEMENT_REDUIT = matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* Libellés des contrôles natifs de MapLibre. */
+const LOCALE = {
+  "NavigationControl.ZoomIn": "Zoom avant",
+  "NavigationControl.ZoomOut": "Zoom arrière",
+  "AttributionControl.ToggleAttribution": "Afficher les attributions",
+  "ScaleControl.Meters": "m",
+  "ScaleControl.Kilometers": "km",
+  "Popup.Close": "Fermer",
+  "Marker.Title": "Marqueur",
+};
 const MODALITES_CNIL = ["en_ligne", "sur_pieces", "sur_audition"];
 
 const $ = (id) => document.getElementById(id);
@@ -110,7 +121,7 @@ async function demarrer() {
     if (!map || !selectionCarte.length) return;
     const bornes = new LngLatBounds();
     for (const f of selectionCarte) bornes.extend(f.geometry.coordinates);
-    map.fitBounds(bornes, { padding: 60, maxZoom: 15, duration: 600 });
+    map.fitBounds(bornes, { padding: 60, maxZoom: 15, duration: MOUVEMENT_REDUIT ? 0 : 600 });
   };
   const magasin = creerMagasin(lireHash(annees), annees);
   const panneau = creerPanneauFiltres({
@@ -125,6 +136,16 @@ async function demarrer() {
   $("onglets").addEventListener("click", (e) => {
     const b = e.target.closest("[data-vue]");
     if (b && !b.disabled) magasin.modifier({ vue: b.dataset.vue });
+  });
+  /* Flèches gauche et droite entre les onglets, comme un tablist. */
+  $("onglets").addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    const onglets = [...$("onglets").querySelectorAll("[data-vue]")];
+    const i = onglets.indexOf(document.activeElement);
+    if (i < 0) return;
+    const suivant = onglets[(i + (e.key === "ArrowRight" ? 1 : -1) + onglets.length) % onglets.length];
+    suivant.focus();
+    magasin.modifier({ vue: suivant.dataset.vue });
   });
   let vuePrecedente = null;
   function afficherVue(etat) {
@@ -143,7 +164,9 @@ async function demarrer() {
   const { style, repli } = await choisirStyle();
   map = new CarteMapLibre({
     container: "carte", style, ...VUE_FRANCE, minZoom: 3, maxZoom: 19,
-    attributionControl: false, cooperativeGestures: matchMedia("(max-width: 767px)").matches,
+    attributionControl: false, locale: LOCALE,
+    /* La carte occupe l'écran, rien ne défile derrière : pas besoin de gestes à deux doigts. */
+    cooperativeGestures: false,
   });
   map.addControl(new NavigationControl({ showCompass: false }), "top-right");
   map.addControl(new ScaleControl({ unit: "metric" }), "bottom-right");

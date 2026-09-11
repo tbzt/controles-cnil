@@ -116,7 +116,7 @@ export function gererClusters(map, familles, obtenirCouleurs) {
         element.innerHTML = svgAnneau(feature.properties, familles, couleurs);
         element.addEventListener("click", () => {
           map.getSource(ID_SOURCE).getClusterExpansionZoom(id).then((zoom) => {
-            map.easeTo({ center: coords, zoom: Math.min(zoom, 17) });
+            map.easeTo({ center: coords, zoom: Math.min(zoom, 17), duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 500 });
           });
         });
         marqueur = new Marker({ element }).setLngLat(coords).addTo(map);
