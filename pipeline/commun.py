@@ -89,7 +89,10 @@ def nettoyer_espaces(texte: str) -> str:
 
 
 def sans_accents(texte: str) -> str:
-    return _unicodedata.normalize("NFKD", texte or "").encode("ascii", "ignore").decode("ascii")
+    """Retire les accents ; les ligatures œ et æ, que la décomposition Unicode
+    ne sait pas réduire, deviennent oe et ae (Marcq-en-Barœul, Vandœuvre)."""
+    texte = (texte or "").replace("œ", "oe").replace("Œ", "OE").replace("æ", "ae").replace("Æ", "AE")
+    return _unicodedata.normalize("NFKD", texte).encode("ascii", "ignore").decode("ascii")
 
 
 def cle_normalisee(texte: str) -> str:

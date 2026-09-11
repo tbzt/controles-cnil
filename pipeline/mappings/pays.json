@@ -1,6 +1,7 @@
 {
   "_commentaire": "Libellé normalisé de la colonne Pays → code ISO 3166-1 alpha-2. Colonne absente avant 2021 : FR par défaut, signalé par le drapeau pays_deduit.",
   "libelles": {
+    "BE": "Belgique",
     "BZ": "Belize",
     "CA": "Canada",
     "CN": "Chine",
@@ -15,6 +16,7 @@
     "US": "États-Unis"
   },
   "pays": {
+    "belgique": "BE",
     "belize": "BZ",
     "canada": "CA",
     "chine": "CN",

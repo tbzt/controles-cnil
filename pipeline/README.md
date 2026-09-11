@@ -13,15 +13,16 @@ dans cet ordre :
    code de sortie non nul sur règle fatale.
 5. `build.py` : GeoJSON, statistiques, journal des changements.
 
-État : `fetch.py` et `transform.py` sont écrits et testés, les référentiels
-sont en place (`data/processed/referentiels/`) ; `geocode.py`, `validate.py`
-et `build.py` sont à venir.
+État : `fetch.py`, `transform.py` et `geocode.py` sont écrits et testés,
+les référentiels sont en place (`data/processed/referentiels/`) ;
+`validate.py` et `build.py` sont à venir.
 
 ```bash
 python3 pipeline/fetch.py              # récupère ce qui a changé
 python3 pipeline/fetch.py --forcer     # retélécharge tout, sans dupliquer un contenu identique
 python3 pipeline/fetch.py --hors-ligne # vérifie seulement que data/raw/ correspond au manifeste
 python3 pipeline/transform.py          # data/raw/ → data/processed/controles.csv et .json
+python3 pipeline/geocode.py            # controles.csv → data/processed/localisations.csv (hors ligne)
 python3 -m unittest discover -s pipeline/tests -t .
 ```
 
@@ -54,3 +55,22 @@ Les drapeaux de la colonne `qualite` disent ce qui a été déduit ou corrigé :
 `fetch.py` ne touche jamais à un fichier existant de `data/raw/` : une
 ressource modifiée côté CNIL donne une version de plus dans le manifeste et
 un fichier de plus, l'ancien restant en place.
+
+## Comment geocode.py localise un contrôle
+
+Deux localisations par ligne, voir `data/geocoding/README.md` pour les
+tables. Le **lieu de l'organisme** est cherché dans l'ordre : alias écrit à
+la main, référentiel des communes (département + nom normalisé ; pour les
+départements ambigus 20 et 97, tous les départements possibles ; si le
+département de la source contredit une ville unique en France, la ville
+prime et la ligne reçoit `departement_contredit_par_ville`), surcouche
+d'adresses validées, puis centroïde du département, du pays, ou rien. Le
+**lieu du contrôle** dépend de la modalité : en ligne, sur pièces et sur
+audition se déroulent au siège de la CNIL (précision `institution`) ; sur
+place chez l'organisme ; modalité non renseignée (2014-2016) chez
+l'organisme avec `lieu_controle_inconnu`.
+
+Précisions possibles : `adresse`, `commune`, `departement`, `pays`,
+`institution`, `aucune`. Coordonnées à 4 décimales pour une commune, 6 pour
+une adresse. Le rapport `data/metadata/geocodage-rapport.json` compte tout
+et liste les villes non résolues.

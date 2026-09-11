@@ -5,7 +5,7 @@
       "code": "commerce",
       "libelle": "Commerce",
       "ordre": 1,
-      "occurrences_2014_2023": 1605
+      "occurrences_2014_2023": 1611
     },
     {
       "code": "sante_social",
@@ -95,7 +95,7 @@
       "code": "autres",
       "libelle": "Autres",
       "ordre": 16,
-      "occurrences_2014_2023": 13
+      "occurrences_2014_2023": 7
     }
   ]
 }

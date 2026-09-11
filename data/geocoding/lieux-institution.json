@@ -1,0 +1,11 @@
+{
+  "_commentaire": "Lieux fixes où se déroulent les contrôles à distance. Coordonnées WGS84.",
+  "cnil": {
+    "nom": "CNIL",
+    "adresse": "3 place de Fontenoy, 75007 Paris",
+    "code_insee": "75056",
+    "lon": 2.307276,
+    "lat": 48.850654,
+    "source": "api-adresse.data.gouv.fr (géocodage de l'adresse du siège)"
+  }
+}

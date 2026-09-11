@@ -1,0 +1,54 @@
+{
+  "_commentaire": "Centroïde géographique par pays (ISO 3166-1 alpha-2), utilisé quand un organisme est hors de France. Précision déclarée : pays.",
+  "_source": "centroïdes usuels (jeu de données Google Developers « countries.csv »), arrondis",
+  "pays": {
+    "US": {
+      "lon": -95.7129,
+      "lat": 37.0902
+    },
+    "IE": {
+      "lon": -8.2439,
+      "lat": 53.4129
+    },
+    "GB": {
+      "lon": -3.436,
+      "lat": 55.3781
+    },
+    "CN": {
+      "lon": 104.1954,
+      "lat": 35.8617
+    },
+    "CA": {
+      "lon": -106.3468,
+      "lat": 56.1304
+    },
+    "NL": {
+      "lon": 5.2913,
+      "lat": 52.1326
+    },
+    "BZ": {
+      "lon": -88.4976,
+      "lat": 17.1899
+    },
+    "IL": {
+      "lon": 34.8516,
+      "lat": 31.0461
+    },
+    "KR": {
+      "lon": 127.7669,
+      "lat": 35.9078
+    },
+    "MG": {
+      "lon": 46.8691,
+      "lat": -18.7669
+    },
+    "PL": {
+      "lon": 19.1451,
+      "lat": 51.9194
+    },
+    "BE": {
+      "lon": 4.4699,
+      "lat": 50.5039
+    }
+  }
+}

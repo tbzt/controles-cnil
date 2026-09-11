@@ -11,15 +11,16 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 3 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
+Étape 4 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
 CNIL dans `data/raw/` avec leur empreinte ; `pipeline/transform.py` les
 normalise en une table unique de 3 617 contrôles
 (`data/processed/controles.csv` et `.json`), avec identifiants stables,
 valeurs brutes conservées, drapeaux de qualité, et secteurs harmonisés en
-seize familles comparables sur toute la période. Les référentiels
-(secteurs, départements, régions, communes) sont versionnés et datés. La
-localisation (étape 4) et le site restent à faire. Chaque étape du plan est
-une livraison autonome.
+seize familles comparables sur toute la période ; `pipeline/geocode.py`
+localise chaque contrôle hors ligne (`data/processed/localisations.csv`),
+à la commune pour 99,8 % des contrôles en France, avec deux lieux par
+contrôle. Les adresses précises (étape 5), la validation (étape 6), la
+génération du GeoJSON (étape 7) et le site restent à faire.
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 

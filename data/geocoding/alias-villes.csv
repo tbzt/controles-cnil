@@ -1,0 +1,73 @@
+departement_source,ville_source,code_insee,pays,precision,commentaire
+,BELGIQUE,,BE,pays,pays dans la colonne ville
+,LONDRES,,GB,pays,ville étrangère sans colonne pays (avant 2021)
+,NEW YORK (USA),,US,pays,ville étrangère sans colonne pays (avant 2021)
+,SAN FRANCISCO (USA),,US,pays,ville étrangère sans colonne pays (avant 2021)
+,SUNNYVALE (USA),,US,pays,ville étrangère sans colonne pays (avant 2021)
+,WICHITA (USA),,US,pays,ville étrangère sans colonne pays (avant 2021)
+14,DOUVRES LE DELIVRANDE,14228,,commune,faute de frappe
+14,MONDREVILLE,14437,,commune,faute de frappe probable
+17,Roumazieres-Loubert,16192,,commune,commune fusionnée en 2019 ; département erroné à la source
+20,Mezzavia,2A004,,commune,quartier d’Ajaccio
+22,MORIEUX,22093,,commune,commune fusionnée en 2019
+31,Vennelles,13113,,commune,orthographe et département incertains à la source
+38,CHARVIEU-CHAVAGNEU,38085,,commune,faute de frappe
+44,Louhans,71263,,commune,Louhans-Châteaurenaud ; département erroné à la source
+54,VANDOEUVRE,54547,,commune,nom abrégé
+56,Theix,56251,,commune,commune fusionnée en 2016
+57,SPICHEREN ET GROSBLIEDERSTROFF,57659,,commune,deux communes à la source ; la première retenue
+59,LOMME,59350,,commune,commune associée à Lille
+59,MARCQ-EN-BAROEUIL,59378,,commune,faute de frappe
+59,Sambre Avesnois,59392,,departement,"territoire, pas une commune ; chef-lieu retenu, précision département"
+69,Luyon,69123,,commune,faute de frappe
+69,Rilleux la Rape,69286,,commune,faute de frappe
+69,Rillieux-la-rapée,69286,,commune,faute de frappe
+71,CHALONS SUR SAONE,71076,,commune,faute de frappe
+71,Louhans,71263,,commune,Louhans-Châteaurenaud
+74,CHANAVOD,74067,,commune,faute de frappe
+74,Metz-Tessy,74112,,commune,commune fusionnée en 2016
+75,Metz-Tessy,74112,,commune,commune fusionnée en 2016 ; département erroné à la source
+75,Paris (audition locaux CNIL),75056,,commune,mention de modalité dans la ville
+75-92,Paris et La Défense,92062,,commune,deux lieux à la source ; La Défense retenue
+76,Neuville les Dieppe,76217,,commune,ancienne commune rattachée à Dieppe
+77,ARMAINVILLIERS,77215,,commune,nom abrégé
+78,Commune de Croissy sur Seine,78190,,commune,
+78,LE CHENAY,78158,,commune,faute de frappe ; commune fusionnée en 2019
+78,Le Chesnay,78158,,commune,commune fusionnée en 2019
+78,MUREAUX,78440,,commune,article manquant
+78,Maison Laffitte,78358,,commune,faute de frappe
+78,Yvelines,78646,,departement,"département, pas une commune ; chef-lieu retenu, précision département"
+84,Isle sur la sorgue,84054,,commune,article manquant
+87,LIMOGE,87085,,commune,faute de frappe
+88,BERTRIMOUTHIER,88054,,commune,faute de frappe
+91,COURCOURONNES,91228,,commune,commune fusionnée en 2019
+91,Essonnes,91174,,commune,nom tronqué
+91,SaintYon,91581,,commune,faute de frappe
+92,Anthony,92002,,commune,faute de frappe
+92,CLICHY LA GARENNE,92024,,commune,nom d’usage
+92,Courbeboie,92026,,commune,faute de frappe
+92,LA DEFENSE,92062,,commune,"quartier d’affaires à cheval sur Puteaux, Courbevoie et Nanterre ; Puteaux par convention"
+92,LEVALOIS-PERRET,92044,,commune,faute de frappe
+92,La Défense Puteaux,92062,,commune,idem La Défense
+92,MASSY,91377,,commune,département erroné à la source ; homonyme en Seine-Maritime
+92,MEUDON LA FORET,92048,,commune,quartier de Meudon
+92,Neuilly,92051,,commune,nom abrégé
+92,PARIS LA DEFENSE,92062,,commune,idem La Défense
+92,PLESSIS-ROBINSON,92060,,commune,article manquant
+93,LA PLAINE SAINT DENIS,93066,,commune,quartier de Saint-Denis
+93,MONTRIEUIL,93048,,commune,faute de frappe
+93,Montreuil-sous-Bois,93048,,commune,ancien nom
+93,PIERREFITTE SUR SEINE,93066,,commune,commune fusionnée avec Saint-Denis en 2025
+93,SAINT-OUEN,93070,,commune,commune renommée en 2018
+94,CHENNEVIERE SUR MARNE,94019,,commune,faute de frappe
+94,Orly Ouest,94054,,commune,aérogare
+94,Orly Sud,94054,,commune,aérogare
+95,CERGY PONTOISE,95127,,commune,agglomération ; Cergy retenue
+95,ROISSY CDG,95527,,commune,aéroport
+95,Roissy,95527,,commune,
+95,Roissy Charles de Gaulle,95527,,commune,aéroport
+97,Ile-de-la-Réunion,97411,,departement,"île entière ; chef-lieu retenu, précision département"
+97,Plaine-des-Palmistes,97406,,commune,article manquant
+97,Saint-Denis-de-la-Réunion,97411,,commune,
+97,Saint-Gilles-les-Bains,97415,,commune,station balnéaire de la commune de Saint-Paul
+97,Tampon,97422,,commune,article manquant

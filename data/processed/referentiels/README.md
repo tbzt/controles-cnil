@@ -24,5 +24,5 @@ Les libellés fins issus de l'ancienne nomenclature sont suffixés
 Choix discutables, assumés : Tourisme est rangé dans Commerce ; Jeux dans
 Éducation, culture et sport ; Nouvelles technologies dans
 Télécommunications ; Statistiques et enquêtes publiques et Finances
-publiques dans État et régalien ; Économie, Particulier, Cookies et les
-trois lignes sans secteur dans Autres.
+publiques dans État et régalien ; Économie et Cookies dans Commerce ;
+Particulier et les trois lignes sans secteur dans Autres.
