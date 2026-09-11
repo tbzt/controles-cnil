@@ -1,0 +1,66 @@
+/* Vue Analyse : tuiles, cartes de graphiques, SVG. */
+
+.vue { position: absolute; inset: 0; overflow: auto; background: var(--fond); }
+.vue--carte { overflow: hidden; }
+.vue[hidden] { display: none; }
+
+.analyse {
+  max-width: 1100px; margin: 0 auto; padding: var(--e-5) var(--e-5) var(--e-6);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--e-4);
+}
+.analyse__entete { grid-column: 1 / -1; display: flex; flex-direction: column; gap: var(--e-1); }
+.analyse__note { grid-column: 1 / -1; font-size: var(--t-2); }
+@media (max-width: 1000px) { .analyse { grid-template-columns: 1fr; } }
+
+/* ------------------------------------------------------ tuiles ------- */
+
+.tuiles { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--e-3); }
+.tuile {
+  display: flex; flex-direction: column; gap: 2px; padding: var(--e-3) var(--e-4);
+  background: var(--surface); border: 1px solid var(--filet); border-radius: var(--rayon);
+}
+.tuile__valeur { font-size: var(--t-6); font-weight: 600; line-height: 1.1; letter-spacing: -.01em; }
+.tuile__libelle { font-size: var(--t-2); color: var(--encre-2); }
+
+/* ------------------------------------------------------ cartes ------- */
+
+.carte-graphique {
+  display: flex; flex-direction: column; gap: var(--e-3); min-width: 0;
+  padding: var(--e-4); background: var(--surface); border: 1px solid var(--filet); border-radius: var(--rayon);
+}
+.carte-graphique--large { grid-column: 1 / -1; }
+.carte-graphique__titre { display: flex; flex-direction: column; gap: 2px; }
+.carte-graphique__titre .discret { font-size: var(--t-2); }
+
+/* ------------------------------------------------------ SVG ---------- */
+
+.graphique { width: 100%; height: auto; display: block; font-family: var(--police); }
+.graphique__grille { stroke: var(--filet); stroke-width: 1; }
+.graphique__axe { fill: var(--encre-2); font-size: 11px; font-variant-numeric: tabular-nums; }
+.graphique__libelle { fill: var(--encre); font-size: 12px; }
+.graphique__valeur { fill: var(--encre); font-size: 11px; font-variant-numeric: tabular-nums; }
+.graphique__part { fill: var(--encre-3); }
+.graphique__fond { fill: var(--surface-2); }
+.graphique__zone { fill: transparent; }
+.graphique__cliquable { cursor: pointer; }
+.graphique__cliquable:hover .graphique__zone { fill: var(--accent-doux); }
+.graphique__barre:hover, .graphique__segment:hover { filter: brightness(.88); }
+.graphique__segment { stroke: var(--surface); stroke-width: 1; }
+.graphique__rupture { stroke: var(--encre-2); stroke-width: 1.5; stroke-dasharray: 4 4; }
+
+.graphique__legende { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--e-1) var(--e-4); font-size: var(--t-2); color: var(--encre-2); }
+.graphique__legende-item { display: inline-flex; align-items: center; gap: var(--e-2); min-height: 24px; }
+.graphique__legende-item.graphique__cliquable:hover { color: var(--encre); }
+.graphique__pastille { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+/* ------------------------------------------------------ onglets ------ */
+
+.onglets { display: flex; gap: 2px; padding: 3px; background: var(--surface-2); border-radius: var(--rayon); margin-top: var(--e-3); }
+.onglet {
+  flex: 1; min-height: 34px; border: 0; border-radius: calc(var(--rayon) - 2px); background: transparent;
+  color: var(--encre-2); font-size: var(--t-2); font-weight: 600; cursor: pointer;
+  transition: background var(--duree), color var(--duree);
+}
+.onglet:hover { color: var(--encre); }
+.onglet[aria-selected="true"] { background: var(--surface); color: var(--encre); box-shadow: 0 1px 2px rgb(0 0 0 / .08); }
+.onglet:disabled { color: var(--encre-3); cursor: default; }

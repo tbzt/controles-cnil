@@ -10,8 +10,8 @@
 const CLES_MULTIPLES = ["famille", "secteur", "fondement", "modalite"];
 const CLES_SIMPLES = ["region", "departement", "commune", "organisme", "q"];
 /* Réglages d'affichage, dans l'URL seulement quand ils diffèrent du défaut. */
-const DEFAUTS_AFFICHAGE = { mode: "points", lieu: "organisme" };
-const VALEURS_AFFICHAGE = { mode: ["points", "communes"], lieu: ["organisme", "controle"] };
+const DEFAUTS_AFFICHAGE = { vue: "carte", mode: "points", lieu: "organisme" };
+const VALEURS_AFFICHAGE = { vue: ["carte", "analyse", "evolution"], mode: ["points", "communes"], lieu: ["organisme", "controle"] };
 
 export function etatVide(annees) {
   return {
@@ -73,7 +73,7 @@ export function creerMagasin(etatInitial, annees) {
       ecrireHash(etat, annees);
       for (const fn of abonnes) fn(etat);
     },
-    reinitialiser() { this.modifier({ ...etatVide(annees), mode: etat.mode, lieu: etat.lieu }); },
+    reinitialiser() { this.modifier({ ...etatVide(annees), vue: etat.vue, mode: etat.mode, lieu: etat.lieu }); },
     abonner(fn) { abonnes.add(fn); return () => abonnes.delete(fn); },
   };
 }

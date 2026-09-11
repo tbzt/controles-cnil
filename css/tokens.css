@@ -43,6 +43,20 @@
   --fam-presse: #8a6bdb;
   --fam-autres: #a8adb5;
 
+  /* Séries des graphiques (modalités, fondements) et zones géographiques :
+     une rampe sobre, distincte de la palette des familles. */
+  --serie-1: #1d4f91;
+  --serie-2: #4f8fd6;
+  --serie-3: #9dbde6;
+  --serie-4: #d98c3f;
+  --serie-5: #6b7280;
+  --serie-vide: #d5dbe1;
+  --zone-paris: #1d4f91;
+  --zone-92: #4f8fd6;
+  --zone-idf: #9dbde6;
+  --zone-france: #d9a400;
+  --zone-etranger: #6b7280;
+
   /* Contour des points : blanc sur fond clair, pour détacher les disques. */
   --point-contour: #ffffff;
   --cluster-fond: #ffffff;
@@ -102,6 +116,17 @@
     --fam-autres: #6d737c;
     --point-contour: #12181f;
     --cluster-fond: #1a2129;
+    --serie-1: #86ace6;
+    --serie-2: #4f8fd6;
+    --serie-3: #2f5d9c;
+    --serie-4: #e3925f;
+    --serie-5: #9aa7b8;
+    --serie-vide: #2b3540;
+    --zone-paris: #86ace6;
+    --zone-92: #4f8fd6;
+    --zone-idf: #2f5d9c;
+    --zone-france: #d9a400;
+    --zone-etranger: #9aa7b8;
   }
 }
 
@@ -126,4 +151,15 @@
   --fam-autres: #6d737c;
   --point-contour: #12181f;
   --cluster-fond: #1a2129;
+  --serie-1: #86ace6;
+  --serie-2: #4f8fd6;
+  --serie-3: #2f5d9c;
+  --serie-4: #e3925f;
+  --serie-5: #9aa7b8;
+  --serie-vide: #2b3540;
+  --zone-paris: #86ace6;
+  --zone-92: #4f8fd6;
+  --zone-idf: #2f5d9c;
+  --zone-france: #d9a400;
+  --zone-etranger: #9aa7b8;
 }

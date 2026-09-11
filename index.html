@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/composants.css">
   <link rel="stylesheet" href="css/carte.css">
   <link rel="stylesheet" href="css/filtres.css">
+  <link rel="stylesheet" href="css/graphiques.css">
 </head>
 <body>
   <div class="app">
@@ -27,6 +28,11 @@
             <span>Chargement des données…</span>
           </p>
         </div>
+        <nav class="onglets" id="onglets" aria-label="Vues">
+          <button type="button" class="onglet" role="tab" data-vue="carte" aria-selected="true">Carte</button>
+          <button type="button" class="onglet" role="tab" data-vue="analyse" aria-selected="false">Analyse</button>
+          <button type="button" class="onglet" role="tab" data-vue="evolution" aria-selected="false" disabled title="Bientôt">Évolution</button>
+        </nav>
       </header>
       <div class="panneau__corps" id="panneau-corps">
         <div class="filtres" id="filtres" aria-label="Filtres">
@@ -59,9 +65,12 @@
       </div>
     </aside>
     <main class="carte">
-      <div class="carte__conteneur" id="carte" role="region" aria-label="Carte des contrôles"></div>
-      <div class="barre-outils" id="barre-outils"></div>
-      <div class="message" id="message" hidden></div>
+      <div class="vue vue--carte" id="vue-carte">
+        <div class="carte__conteneur" id="carte" role="region" aria-label="Carte des contrôles"></div>
+        <div class="barre-outils" id="barre-outils"></div>
+        <div class="message" id="message" hidden></div>
+      </div>
+      <div class="vue" id="vue-analyse" role="region" aria-label="Analyse" hidden></div>
     </main>
   </div>
   <script type="module" src="js/app.js"></script>

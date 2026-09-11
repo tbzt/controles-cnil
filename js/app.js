@@ -19,6 +19,7 @@ import { preparer, filtrer } from "./filtres.js";
 import { creerPanneauFiltres } from "./vues/panneau-filtres.js";
 import { creerBarreOutils } from "./vues/barre-outils.js";
 import { creerEncartEtranger } from "./vues/encart-etranger.js";
+import { creerVueAnalyse } from "./vues/analyse.js";
 
 const VUE_FRANCE = { center: [2.6, 46.6], zoom: 5.3 };
 const MODALITES_CNIL = ["en_ligne", "sur_pieces", "sur_audition"];
@@ -118,6 +119,20 @@ async function demarrer() {
   });
   const barre = creerBarreOutils(magasin);
   const encart = creerEncartEtranger(d.libelles);
+  const analyse = creerVueAnalyse({ features, annees, familles: d.familles, libelles: d.libelles, magasin, obtenirCouleurs: () => couleurs });
+  $("onglets").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-vue]");
+    if (b && !b.disabled) magasin.modifier({ vue: b.dataset.vue });
+  });
+  let vuePrecedente = null;
+  function afficherVue(etat) {
+    for (const b of $("onglets").querySelectorAll("[data-vue]")) b.setAttribute("aria-selected", String(b.dataset.vue === etat.vue));
+    $("vue-carte").hidden = etat.vue !== "carte";
+    $("vue-analyse").hidden = etat.vue !== "analyse";
+    if (etat.vue === "analyse") analyse.rendre(selection, etat, estVide(etat, annees));
+    if (etat.vue === "carte" && vuePrecedente !== "carte") map?.resize();
+    vuePrecedente = etat.vue;
+  }
 
   /* Carte. */
   const { style, repli } = await choisirStyle();
@@ -139,6 +154,7 @@ async function demarrer() {
     panneau.rendre(etat, selection.length, features.length, estVide(etat, annees));
     barre.rendre(etat);
     encart.rendre(selection);
+    afficherVue(etat);
     $("section-precision").hidden = etat.mode !== "points";
     $("section-communes").hidden = etat.mode !== "communes";
     $("note-lieu").textContent = etat.lieu === "controle"

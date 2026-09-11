@@ -11,7 +11,7 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 12 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
+Étape 13 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
 CNIL dans `data/raw/` avec leur empreinte ; `pipeline/transform.py` les
 normalise en une table unique de 3 617 contrôles
 (`data/processed/controles.csv` et `.json`), avec identifiants stables,
@@ -38,9 +38,10 @@ modalité, région, département, commune, recherche) avec compteur en temps
 réel et état dans l'URL, suggestions d'organismes et de communes, filtre
 « organisme exact » avec recadrage automatique de la carte, lien « voir les
 contrôles de cet organisme » dans la popup, deux commutateurs sur la carte
-(« Points / Communes » et « Organisme contrôlé / Lieu du contrôle ») et un
-encart « Hors de France ». Vues d'analyse et d'évolution, page Données et
-finition restent à faire (étapes 13 à 16).
+(« Points / Communes » et « Organisme contrôlé / Lieu du contrôle »), un
+encart « Hors de France », et un onglet Analyse dont les graphiques suivent
+les filtres et posent eux-mêmes des filtres au clic. Vue d'évolution, page
+Données et finition restent à faire (étapes 14 à 16).
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 
@@ -77,7 +78,8 @@ dominante : c'est le mode honnête quand la précision est la commune.
 ## Arborescence
 
 ```
-index.html  analyse.html  evolution.html  donnees.html   pages du site (à venir)
+index.html                                                l'application : carte, analyse, évolution (onglets)
+donnees.html                                              sources, licence, méthode, téléchargements (à venir)
 css/  js/                                                 interface, vanilla, sans build
 vendor/                                                   MapLibre GL JS épinglé, modules ES (voir vendor/VERSIONS.md)
 data/raw/                fichiers CNIL bruts, immuables, ajout seul
@@ -172,6 +174,12 @@ Aucun build : HTML, CSS et modules ES natifs, MapLibre GL JS vendorisé.
   `js/carte/cnil.js` : la pastille du siège de la CNIL ;
   `js/vues/barre-outils.js` : les deux commutateurs ;
   `js/vues/encart-etranger.js` : les organismes étrangers par pays.
+- `js/graphiques/svg.js` : quatre primitives SVG sans bibliothèque (barres
+  verticales, horizontales, empilées, légende) ; `js/vues/analyse.js` : la
+  vue Analyse, recalculée depuis la sélection à chaque changement d'état,
+  avec la rupture de nomenclature 2018 dessinée sur les graphiques par
+  famille. Les vues sont des onglets d'une seule page (`#vue=analyse`),
+  pour partager les filtres et l'URL.
 - `js/carte/popup.js`, `js/app.js` : fiche d'un contrôle, bandeau de
   couverture, panneau repliable sur mobile, branchement de l'état.
 
