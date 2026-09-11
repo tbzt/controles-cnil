@@ -1,0 +1,99 @@
+name: Actualiser les données
+
+# Récupère le jeu de données CNIL sur data.gouv.fr, le transforme, le
+# localise, le vérifie, et ne commite que si quelque chose a changé.
+# Chaque lundi à 06:00 UTC, et à la demande.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      forcer:
+        description: "Retélécharger toutes les ressources même sans changement signalé par data.gouv.fr"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actualisation-donnees
+  cancel-in-progress: false
+
+jobs:
+  actualiser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Mémoriser l'état précédent
+        run: |
+          mkdir -p /tmp/avant
+          for f in data/processed/controles.csv data/processed/localisations.csv data/metadata/manifest.json data/metadata/quality-report.json; do
+            [ -f "$f" ] && cp "$f" /tmp/avant/ || true
+          done
+
+      - name: 1. Récupérer les ressources CSV
+        run: python3 pipeline/fetch.py ${{ inputs.forcer && '--forcer' || '' }}
+
+      - name: 2. Transformer
+        run: python3 pipeline/transform.py
+
+      - name: 3. Localiser
+        run: python3 pipeline/geocode.py
+
+      - name: 4. Valider (échec fatal = rien n'est commité)
+        run: python3 pipeline/validate.py
+
+      - name: 5. Construire les fichiers publiés
+        run: python3 pipeline/build.py
+
+      - name: Tests
+        run: python3 -m unittest discover -s pipeline/tests -t .
+
+      - name: Rapport des changements
+        id: rapport
+        run: |
+          TAG="donnees-$(date -u +%Y-%m-%d)"
+          if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then TAG="$TAG-$(date -u +%H%M)"; fi
+          python3 pipeline/report.py --avant /tmp/avant --resume "$GITHUB_STEP_SUMMARY" --tag "$TAG" | tee /tmp/rapport.txt
+          echo "changement=$(grep -o 'CHANGEMENT=[a-z]*' /tmp/rapport.txt | cut -d= -f2)" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          sed -n '1,/^CHANGEMENT=/p' /tmp/rapport.txt | grep -v '^CHANGEMENT=' > /tmp/notes.md
+
+      - name: Trace de vérification (au plus une fois par mois)
+        run: python3 pipeline/verification.py --changement "${{ steps.rapport.outputs.changement }}"
+
+      - name: Commiter, taguer, publier
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "Rien à commiter."
+            exit 0
+          fi
+          DATE=$(date -u +%Y-%m-%d)
+          if [ "${{ steps.rapport.outputs.changement }}" = "oui" ]; then
+            git commit -m "Données : $DATE — $(sed -n 's/^- Contrôles : //p' /tmp/notes.md | head -1)"
+            git tag -a "${{ steps.rapport.outputs.tag }}" -m "Publication des données du $DATE"
+            git push origin HEAD:main --follow-tags
+            gh release create "${{ steps.rapport.outputs.tag }}" \
+              data/processed/controles.csv data/processed/localisations.csv \
+              data/processed/controles.geojson data/processed/stats.json data/metadata/schema.json \
+              --title "Données du $DATE" --notes-file /tmp/notes.md
+          else
+            git commit -m "Vérification de la source : $DATE, aucun changement"
+            git push origin HEAD:main
+          fi

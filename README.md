@@ -11,7 +11,7 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 7 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
+Étape 8 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
 CNIL dans `data/raw/` avec leur empreinte ; `pipeline/transform.py` les
 normalise en une table unique de 3 617 contrôles
 (`data/processed/controles.csv` et `.json`), avec identifiants stables,
@@ -27,8 +27,10 @@ applique quinze règles de qualité (structure, volumes, énumérations,
 coordonnées, cohérence temporelle…) et arrête tout sur un constat fatal ;
 `pipeline/build.py` produit les fichiers lus par le site et par les
 réutilisateurs (`controles.geojson`, `stats.json`) et le schéma des tables
-(`data/metadata/schema.json`). Le workflow GitHub Actions (étape 8) et le
-site restent à faire.
+(`data/metadata/schema.json`). Le workflow `.github/workflows/actualiser-donnees.yml`
+enchaîne le tout chaque lundi et à la demande, ne commite que si les données
+ont changé, tague chaque publication (`donnees-AAAA-MM-JJ`) et joint les
+fichiers à une Release. Le site (étapes 9 à 16) reste à faire.
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 
@@ -84,6 +86,27 @@ outils/                  scripts d'usage ponctuel
 4. Le site ne calcule rien qui ne soit reproductible hors navigateur.
 5. Aucune dépendance à installer : Python 3 standard côté pipeline, HTML,
    CSS et JavaScript natifs côté site.
+
+## Actualisation automatique
+
+Le workflow « Actualiser les données » tourne chaque lundi à 06:00 UTC et se
+lance aussi à la main depuis l'onglet Actions (case « forcer » pour tout
+retélécharger). Il exécute les cinq scripts puis les tests, écrit un rapport
+des changements dans le résumé du job, et :
+
+- si les données ont changé : commit « Données : date — résumé », tag
+  `donnees-AAAA-MM-JJ`, Release avec les CSV, le GeoJSON, les statistiques et
+  le schéma, entrée dans `data/metadata/CHANGELOG-DATA.md` et `releases.json` ;
+- sinon : rien, sauf une trace mensuelle dans
+  `data/metadata/derniere-verification.json` (un commit par mois au plus,
+  pour que GitHub ne désactive pas le planning et pour afficher la date de
+  dernière vérification) ;
+- en cas de constat fatal de la validation ou de test en échec : le job
+  échoue, rien n'est commité, le site continue de servir la version
+  précédente.
+
+Chaque tag est un instantané complet : `git checkout donnees-2026-09-11`
+reproduit les données et le site de cette date.
 
 ## Exécuter localement
 

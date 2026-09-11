@@ -16,7 +16,10 @@ inconnue. Voici la marche à suivre, en cinq étapes.
    `pipeline/mappings/`, avec sa famille harmonisée.
 4. Ajouter un extrait du nouveau fichier dans `pipeline/tests/fixtures/` et
    relancer `python3 -m unittest discover -s pipeline/tests -t .`.
-5. Relancer le workflow « Actualiser les données » manuellement.
+5. Relancer le workflow « Actualiser les données » manuellement (onglet
+   Actions, « Run workflow »). Le rapport des changements apparaît dans le
+   résumé du job ; les fichiers modifiés sont commités et tagués
+   automatiquement si la validation passe.
 
 ## Règles
 
