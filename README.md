@@ -11,7 +11,7 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 10 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
+Étape 11 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
 CNIL dans `data/raw/` avec leur empreinte ; `pipeline/transform.py` les
 normalise en une table unique de 3 617 contrôles
 (`data/processed/controles.csv` et `.json`), avec identifiants stables,
@@ -35,8 +35,10 @@ https://tbzt.github.io/controles-cnil/ : carte, clusters en anneau par
 famille, points stylés selon leur précision, popup, bandeau de couverture,
 et filtres combinables (période, familles et secteurs fins, fondement,
 modalité, région, département, commune, recherche) avec compteur en temps
-réel et état dans l'URL. Recherche avec zoom, mode communes, vues d'analyse
-et d'évolution, page Données restent à faire (étapes 11 à 16).
+réel et état dans l'URL, suggestions d'organismes et de communes, filtre
+« organisme exact » avec recadrage automatique de la carte, lien « voir les
+contrôles de cet organisme » dans la popup. Mode communes, vues d'analyse et
+d'évolution, page Données restent à faire (étapes 12 à 16).
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 
@@ -151,8 +153,12 @@ Aucun build : HTML, CSS et modules ES natifs, MapLibre GL JS vendorisé.
   chaque changement, sans index : quelques millisecondes pour 3 600 lignes.
 - `js/vues/panneau-filtres.js` : les contrôles du panneau (double curseur,
   familles cliquables, secteurs fins, puces, sélecteurs en cascade,
-  recherche). La carte reçoit le tableau filtré par `setData`, ce qui
-  reclusterise ; les compteurs et les facettes se mettent à jour en même temps.
+  recherche avec suggestions au clavier et à la souris). La carte reçoit le
+  tableau filtré par `setData`, ce qui reclusterise ; les compteurs et les
+  facettes se mettent à jour en même temps. Deux filtres textuels
+  distincts : `q`, recherche libre où tous les mots doivent apparaître, et
+  `organisme`, nom exact normalisé posé par une suggestion ou depuis une
+  popup, qui recadre la carte sur ses contrôles.
 - `js/carte/popup.js`, `js/app.js` : fiche d'un contrôle, bandeau de
   couverture, panneau repliable sur mobile, branchement de l'état.
 

@@ -13,6 +13,7 @@
   font-size: var(--t-2); text-decoration: underline; text-underline-offset: 2px;
 }
 .lien[hidden] { display: none; }
+.filtres__actions { display: inline-flex; gap: var(--e-3); }
 
 /* ------------------------------------------------------ recherche --- */
 
@@ -117,3 +118,37 @@
 }
 .selects select:disabled { color: var(--encre-3); }
 .selects select:focus-visible { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-doux); outline: none; }
+
+/* ------------------------------------------------------ suggestions - */
+
+.recherche { position: relative; display: flex; flex-direction: column; gap: var(--e-2); }
+.suggestions {
+  position: absolute; top: calc(var(--cible-tactile) + 4px); left: 0; right: 0; z-index: 5;
+  list-style: none; margin: 0; padding: var(--e-1);
+  background: var(--surface); border: 1px solid var(--filet); border-radius: var(--rayon); box-shadow: var(--ombre);
+  max-height: 320px; overflow: auto;
+}
+.suggestions[hidden] { display: none; }
+.suggestion {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--e-2);
+  min-height: 36px; padding: 0 var(--e-2); border-radius: var(--rayon); cursor: pointer; font-size: var(--t-2);
+}
+.suggestion:hover, .suggestion[aria-selected="true"] { background: var(--accent-doux); }
+.suggestion__type {
+  font-size: var(--t-1); letter-spacing: .04em; text-transform: uppercase; color: var(--encre-3); width: 68px;
+}
+.suggestion__nom { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.suggestion__n { color: var(--encre-2); }
+
+.jeton {
+  display: inline-grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--e-2);
+  padding: 0 0 0 var(--e-3); min-height: 34px; border-radius: 999px;
+  background: var(--accent); color: var(--accent-encre); font-size: var(--t-2); max-width: 100%;
+}
+.jeton[hidden] { display: none; }
+.jeton__etiquette { font-size: var(--t-1); letter-spacing: .04em; text-transform: uppercase; opacity: .8; }
+.jeton__valeur { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.jeton__retirer {
+  width: 34px; height: 34px; border: 0; background: none; color: inherit; font-size: 18px; cursor: pointer; border-radius: 999px;
+}
+.jeton__retirer:hover { background: rgb(255 255 255 / .15); }

@@ -3,7 +3,7 @@
    Flux : état (hash de l'URL) → filtrer(contrôles) → un tableau filtré →
    la carte (setData, qui reclusterise), le compteur et les facettes. */
 
-import { Map as CarteMapLibre, NavigationControl, ScaleControl, AttributionControl, Popup } from "../vendor/maplibre-gl.mjs";
+import { Map as CarteMapLibre, NavigationControl, ScaleControl, AttributionControl, Popup, LngLatBounds } from "../vendor/maplibre-gl.mjs";
 import { chargerDonnees, baseDonnees, nombre, date } from "./donnees.js";
 import { choisirStyle, ATTRIBUTION } from "./carte/fond.js";
 import { definitionSource, ID_SOURCE } from "./carte/source.js";
@@ -74,16 +74,29 @@ async function demarrer() {
   let couleurs = couleursFamilles(d.familles);
   remplirCouverture(d);
 
+  /* Effectif par organisme (nom normalisé), pour le lien de la popup. */
+  const nbParOrganisme = new Map();
+  for (const f of features) nbParOrganisme.set(f.properties._on, (nbParOrganisme.get(f.properties._on) || 0) + 1);
+
   /* État et panneau. */
+  let map = null;
+  let selection = [];
+  const recadrer = () => {
+    if (!map || !selection.length) return;
+    const bornes = new LngLatBounds();
+    for (const f of selection) bornes.extend(f.geometry.coordinates);
+    map.fitBounds(bornes, { padding: 60, maxZoom: 15, duration: 600 });
+  };
   const magasin = creerMagasin(lireHash(annees), annees);
   const panneau = creerPanneauFiltres({
     magasin, features, annees, familles: d.familles, libelles: d.libelles,
     departements: ref.departements, regions: ref.regions, communes: d.stats.par_commune, couleurs,
+    surRecadrer: recadrer,
   });
 
   /* Carte. */
   const { style, repli } = await choisirStyle();
-  const map = new CarteMapLibre({
+  map = new CarteMapLibre({
     container: "carte", style, ...VUE_FRANCE, minZoom: 3, maxZoom: 19,
     attributionControl: false, cooperativeGestures: matchMedia("(max-width: 767px)").matches,
   });
@@ -94,7 +107,8 @@ async function demarrer() {
   document.querySelector(".maplibregl-ctrl-attrib")?.removeAttribute("open");
 
   let clusters = null;
-  let selection = filtrer(features, magasin.etat);
+  selection = filtrer(features, magasin.etat);
+  let organismePrecedent = magasin.etat.organisme;
 
   function appliquer(etat) {
     selection = filtrer(features, etat);
@@ -103,6 +117,9 @@ async function demarrer() {
       clusters?.toutRedessiner();
       map.getSource(ID_SOURCE).setData({ type: "FeatureCollection", features: selection });
     }
+    /* Choisir un organisme recadre la carte sur ses contrôles. */
+    if (etat.organisme && etat.organisme !== organismePrecedent) recadrer();
+    organismePrecedent = etat.organisme;
   }
   magasin.abonner(appliquer);
   panneau.rendre(magasin.etat, selection.length, features.length, estVide(magasin.etat, annees));
@@ -115,8 +132,18 @@ async function demarrer() {
     const popup = new Popup({ closeButton: true, maxWidth: "320px", offset: 10 });
     map.on("click", ID_POINTS, (e) => {
       const f = e.features[0];
-      popup.setLngLat(f.geometry.coordinates).setHTML(contenuPopup(f.properties, d.libelles, d.familles, couleurs, nomsDepartements)).addTo(map);
+      popup.setLngLat(f.geometry.coordinates)
+        .setHTML(contenuPopup(f.properties, d.libelles, d.familles, couleurs, nomsDepartements, nbParOrganisme.get(f.properties._on) || 1))
+        .addTo(map);
     });
+    /* Lien « voir les contrôles de cet organisme » dans la popup. */
+    $("carte").addEventListener("click", (e) => {
+      const bouton = e.target.closest("[data-organisme]");
+      if (!bouton) return;
+      popup.remove();
+      magasin.modifier({ organisme: bouton.dataset.organisme, q: "" });
+    });
+    if (magasin.etat.organisme) recadrer();
     map.on("mouseenter", ID_POINTS, () => { map.getCanvas().style.cursor = "pointer"; });
     map.on("mouseleave", ID_POINTS, () => { map.getCanvas().style.cursor = ""; });
 

@@ -1,7 +1,7 @@
 /* Panneau des filtres : construit les contrôles, les tient à jour depuis
    l'état, et publie les changements dans le magasin. */
 
-import { compterFacette } from "../filtres.js";
+import { compterFacette, suggestions } from "../filtres.js";
 import { nombre } from "../donnees.js";
 
 const $ = (id) => document.getElementById(id);
@@ -10,7 +10,7 @@ function echapper(texte) {
   return String(texte ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
-export function creerPanneauFiltres({ magasin, features, annees, familles, libelles, departements, regions, communes, couleurs }) {
+export function creerPanneauFiltres({ magasin, features, annees, familles, libelles, departements, regions, communes, couleurs, surRecadrer }) {
   const conteneur = $("filtres");
   const communesParDepartement = {};
   for (const c of communes) (communesParDepartement[c.departement] ||= []).push(c);
@@ -23,14 +23,26 @@ export function creerPanneauFiltres({ magasin, features, annees, familles, libel
   conteneur.innerHTML = `
     <div class="filtres__compteur" aria-live="polite">
       <span id="compteur"></span>
-      <button type="button" class="lien" id="reinitialiser" hidden>Tout réinitialiser</button>
+      <span class="filtres__actions">
+        <button type="button" class="lien" id="recadrer" hidden>Recadrer</button>
+        <button type="button" class="lien" id="reinitialiser" hidden>Tout réinitialiser</button>
+      </span>
     </div>
 
     <section class="section" aria-labelledby="t-recherche">
       <label class="visuellement-cache" id="t-recherche" for="recherche">Rechercher un organisme ou une commune</label>
-      <div class="champ-recherche">
-        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        <input id="recherche" type="search" placeholder="Organisme ou commune…" autocomplete="off" spellcheck="false">
+      <div class="recherche">
+        <div class="champ-recherche">
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <input id="recherche" type="search" placeholder="Organisme ou commune…" autocomplete="off" spellcheck="false"
+                 role="combobox" aria-expanded="false" aria-controls="suggestions" aria-autocomplete="list">
+        </div>
+        <ul class="suggestions" id="suggestions" role="listbox" hidden></ul>
+        <div class="jeton" id="jeton-organisme" hidden>
+          <span class="jeton__etiquette">Organisme</span>
+          <span class="jeton__valeur" id="jeton-organisme-nom"></span>
+          <button type="button" class="jeton__retirer" id="jeton-organisme-retirer" aria-label="Retirer le filtre organisme">×</button>
+        </div>
       </div>
     </section>
 
@@ -144,7 +156,14 @@ export function creerPanneauFiltres({ magasin, features, annees, familles, libel
       ? `<b class="num">${nombre(nbTotal)}</b> contrôles localisés`
       : `<b class="num">${nombre(nbAffiches)}</b> contrôles sur ${nombre(nbTotal)}`;
     $("reinitialiser").hidden = vide;
+    $("recadrer").hidden = vide || nbAffiches === 0;
     if (document.activeElement !== $("recherche") || !etat.q) $("recherche").value = etat.q;
+    const jeton = $("jeton-organisme");
+    jeton.hidden = !etat.organisme;
+    if (etat.organisme) {
+      const nom = features.find((f) => f.properties._on === etat.organisme)?.properties.organisme || etat.organisme;
+      $("jeton-organisme-nom").textContent = nom;
+    }
     rendrePeriode(etat);
     rendreFamilles(etat);
     rendreSecteurs(etat);
@@ -181,6 +200,7 @@ export function creerPanneauFiltres({ magasin, features, annees, familles, libel
       if (puce.dataset.modalite) basculer("modalite", puce.dataset.modalite);
     }
     if (e.target.id === "reinitialiser") magasin.reinitialiser();
+    if (e.target.id === "recadrer") surRecadrer?.();
   });
   conteneur.addEventListener("input", (e) => {
     const t = e.target;
@@ -190,12 +210,80 @@ export function creerPanneauFiltres({ magasin, features, annees, familles, libel
       magasin.modifier({ annees: [d, f] });
     }
   });
+  /* ---------------------------------------------------- suggestions */
+
+  const champ = $("recherche");
+  const liste = $("suggestions");
+  let actif = -1;
+
+  function fermerSuggestions() {
+    liste.hidden = true;
+    liste.innerHTML = "";
+    champ.setAttribute("aria-expanded", "false");
+    champ.removeAttribute("aria-activedescendant");
+    actif = -1;
+  }
+
+  function montrerSuggestions(q) {
+    const s = suggestions(features, magasin.etat, q);
+    if (!s.organismes.length && !s.communes.length) return fermerSuggestions();
+    const items = [
+      ...s.organismes.map((o) => ({ type: "organisme", cle: o.cle, libelle: o.nom, n: o.n })),
+      ...s.communes.map((c) => ({ type: "commune", cle: c.code_insee, departement: c.departement, libelle: `${c.commune} (${c.departement})`, n: c.n })),
+    ];
+    liste.innerHTML = items.map((it, i) => `<li id="sugg-${i}" role="option" class="suggestion" data-index="${i}"
+        data-type="${it.type}" data-cle="${it.cle}" data-departement="${it.departement || ""}" aria-selected="false">
+        <span class="suggestion__type">${it.type === "organisme" ? "Organisme" : "Commune"}</span>
+        <span class="suggestion__nom">${echapper(it.libelle)}</span>
+        <span class="suggestion__n num">${nombre(it.n)}</span>
+      </li>`).join("");
+    liste.hidden = false;
+    champ.setAttribute("aria-expanded", "true");
+    actif = -1;
+  }
+
+  function choisir(li) {
+    if (!li) return;
+    if (li.dataset.type === "organisme") {
+      magasin.modifier({ organisme: li.dataset.cle, q: "" });
+    } else {
+      magasin.modifier({ departement: li.dataset.departement, commune: li.dataset.cle, region: "", q: "" });
+    }
+    fermerSuggestions();
+    surRecadrer?.();
+  }
+
+  function surligner(delta) {
+    const items = liste.querySelectorAll(".suggestion");
+    if (!items.length) return;
+    actif = (actif + delta + items.length) % items.length;
+    items.forEach((el, i) => el.setAttribute("aria-selected", String(i === actif)));
+    champ.setAttribute("aria-activedescendant", `sugg-${actif}`);
+    items[actif].scrollIntoView({ block: "nearest" });
+  }
+
   let minuterie;
-  $("recherche").addEventListener("input", (e) => {
+  champ.addEventListener("input", (e) => {
     clearTimeout(minuterie);
-    minuterie = setTimeout(() => magasin.modifier({ q: e.target.value.trim() }), 120);
+    const q = e.target.value.trim();
+    minuterie = setTimeout(() => {
+      magasin.modifier({ q });
+      q.length >= 2 ? montrerSuggestions(q) : fermerSuggestions();
+    }, 120);
   });
-  $("recherche").addEventListener("keydown", (e) => { if (e.key === "Escape") { e.target.value = ""; magasin.modifier({ q: "" }); } });
+  champ.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown") { e.preventDefault(); surligner(1); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); surligner(-1); }
+    else if ((e.key === "Enter" || e.keyCode === 13) && !liste.hidden) {
+      e.preventDefault();
+      /* Entrée sans surlignage : la première suggestion. */
+      choisir(liste.querySelector(`[data-index="${Math.max(actif, 0)}"]`));
+    }
+    else if (e.key === "Escape") { fermerSuggestions(); if (!e.target.value) return; e.target.value = ""; magasin.modifier({ q: "" }); }
+  });
+  champ.addEventListener("blur", () => setTimeout(fermerSuggestions, 150));
+  liste.addEventListener("mousedown", (e) => { e.preventDefault(); choisir(e.target.closest(".suggestion")); });
+  $("jeton-organisme-retirer").addEventListener("click", () => magasin.modifier({ organisme: "" }));
 
   return { rendre };
 }

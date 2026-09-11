@@ -3,16 +3,18 @@
    L'état vit dans le hash de l'URL, ce qui rend toute vue partageable et
    revient au même écran après rechargement. Forme :
    #annees=2019-2023&famille=sante_social,commerce&modalite=en_ligne&region=11&q=carrefour
+   `q` est une recherche libre (tous les mots doivent apparaître) ; `organisme`
+   est un nom exact normalisé, posé par une suggestion ou depuis une popup.
    Un état vide donne un hash vide. */
 
 const CLES_MULTIPLES = ["famille", "secteur", "fondement", "modalite"];
-const CLES_SIMPLES = ["region", "departement", "commune", "q"];
+const CLES_SIMPLES = ["region", "departement", "commune", "organisme", "q"];
 
 export function etatVide(annees) {
   return {
     annees: [annees[0], annees[annees.length - 1]],
     famille: new Set(), secteur: new Set(), fondement: new Set(), modalite: new Set(),
-    region: "", departement: "", commune: "", q: "",
+    region: "", departement: "", commune: "", organisme: "", q: "",
   };
 }
 

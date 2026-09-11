@@ -4,7 +4,7 @@ function echapper(texte) {
   return String(texte ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
-export function contenuPopup(p, libelles, familles, couleurs, departements) {
+export function contenuPopup(p, libelles, familles, couleurs, departements, nbMemeOrganisme = 1) {
   const famille = familles.find((f) => f.code === p.famille);
   const fondement = libelles.fondements[p.fondement] || p.fondement;
   const modalite = p.modalite === "non_renseignee" ? "modalité non publiée" : (libelles.modalites[p.modalite] || p.modalite).toLowerCase();
@@ -20,6 +20,7 @@ export function contenuPopup(p, libelles, familles, couleurs, departements) {
     <p class="fiche__ligne"><b class="num">${p.annee}</b> · ${echapper(fondement)} · ${echapper(modalite)}</p>
     <p class="fiche__famille" style="--couleur:${couleurs[p.famille] || couleurs.autres}">${echapper(famille?.libelle || p.famille)}</p>
     <p class="fiche__ligne">${lieu}</p>
+    ${nbMemeOrganisme > 1 ? `<p class="fiche__ligne"><button type="button" class="lien" data-organisme="${echapper(p._on)}">Voir les ${nbMemeOrganisme} contrôles de cet organisme</button></p>` : ""}
     <p class="fiche__note">Organisme situé ${echapper(precision)}.${aDistance ? " Contrôle réalisé dans les locaux de la CNIL." : ""}</p>
   </article>`;
 }
