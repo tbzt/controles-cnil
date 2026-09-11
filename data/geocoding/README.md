@@ -74,8 +74,8 @@ clé) et classe la meilleure réponse :
 Ne sont pas interrogés : noms de domaine, particuliers, noms anonymisés,
 organismes hors de France ou sans commune résolue. Pour valider une
 proposition, mettre `statut = valide` dans `propositions.csv` :
-`geocode.py` l'applique alors avec la méthode `proposition_validee_siege` ou
-`proposition_validee_etablissement`. Pour la refuser, `statut = refusee` ;
+`geocode.py` l'applique alors comme une adresse de surcouche, avec la
+mention « validée à la main » dans `org_source`. Pour la refuser, `statut = refusee` ;
 elle ne sera pas reproposée tant que la ligne existe. Rapport :
 `data/metadata/propositions-rapport.json`.
 
@@ -94,8 +94,9 @@ construction, et publie. Aucun script à lancer.
    chaque ligne donne l'organisme, la ville CNIL, le nom trouvé dans
    l'annuaire, le SIREN, l'adresse et le score. Mettre `statut` à `valide`
    pour appliquer l'adresse, à `refusee` pour l'écarter ; laisser
-   `a_verifier` sinon. Une ligne validée s'applique avec la méthode
-   `proposition_validee_siege` ou `proposition_validee_etablissement`.
+   `a_verifier` sinon. Une ligne validée s'applique comme une adresse de
+   surcouche ; dans `localisations.csv`, `org_source` indique alors
+   « annuaire-entreprises SIREN …, validée à la main ».
 3. **Point hérité de la carte uMap à plus de 30 km** (`surcouche.csv`,
    statut `a_verifier`, 215 lignes) : le commentaire donne la distance et la
    commune CNIL. Si le point est juste, passer `statut` à `valide` et
