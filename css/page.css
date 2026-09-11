@@ -1,0 +1,53 @@
+/* Page-document (Données et méthode) : une colonne lisible, tableaux, constats. */
+
+body.page { overflow: auto; }
+
+.page__entete, .page__corps, .page__pied { max-width: 78ch; margin: 0 auto; padding: 0 var(--e-5); }
+.page__entete { padding-top: var(--e-6); display: flex; flex-direction: column; gap: var(--e-3); }
+.page__nav { display: flex; justify-content: space-between; gap: var(--e-3); font-size: var(--t-2); }
+.page__retour { text-decoration: none; font-weight: 600; }
+.page__lede { font-size: var(--t-4); color: var(--encre-2); max-width: 60ch; }
+.page__corps { display: flex; flex-direction: column; gap: var(--e-6); padding-top: var(--e-6); padding-bottom: var(--e-6); }
+.page__corps section { display: flex; flex-direction: column; gap: var(--e-3); }
+.page__corps h2 { font-size: var(--t-5); padding-top: var(--e-4); border-top: 1px solid var(--filet); }
+.page__corps h3 { margin-top: var(--e-2); }
+.page__corps p, .page__corps li { max-width: 70ch; }
+.page__corps ol, .page__corps ul { padding-left: 22px; margin: 0; display: flex; flex-direction: column; gap: var(--e-2); }
+.page__pied { padding: var(--e-5) var(--e-5) var(--e-6); border-top: 1px solid var(--filet); font-size: var(--t-2); color: var(--encre-2); }
+code { font-family: var(--police-mono); font-size: .9em; background: var(--surface-2); padding: 1px 5px; border-radius: 3px; }
+
+/* Dates clés. */
+.dates { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: var(--e-3); margin: var(--e-2) 0 0; }
+.dates div { display: flex; flex-direction: column; gap: 2px; padding: var(--e-3) var(--e-4); background: var(--surface); border: 1px solid var(--filet); border-radius: var(--rayon); }
+.dates dt { font-size: var(--t-1); letter-spacing: .04em; text-transform: uppercase; color: var(--encre-2); }
+.dates dd { margin: 0; font-weight: 600; }
+
+/* Tableaux. */
+.tableau { overflow-x: auto; border: 1px solid var(--filet); border-radius: var(--rayon); background: var(--surface); }
+.tableau table { border-collapse: collapse; width: 100%; font-size: var(--t-2); }
+.tableau caption { text-align: left; padding: var(--e-2) var(--e-3); font-weight: 600; border-bottom: 1px solid var(--filet); caption-side: top; }
+.tableau th, .tableau td { text-align: left; padding: var(--e-2) var(--e-3); border-bottom: 1px solid var(--filet); vertical-align: top; }
+.tableau th { font-size: var(--t-1); letter-spacing: .04em; text-transform: uppercase; color: var(--encre-2); font-weight: 500; }
+.tableau tr:last-child td { border-bottom: 0; }
+.tableau td.num { text-align: right; white-space: nowrap; }
+.deux-colonnes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--e-3); }
+
+/* Constats qualité. */
+.badge { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: var(--t-1); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.badge--ok { background: var(--accent-doux); color: var(--accent); }
+.badge--alerte { background: var(--alerte-doux); color: var(--alerte); }
+.badge--fatal { background: var(--alerte); color: #fff; }
+.constats { list-style: none; padding: 0 !important; }
+.constat { display: grid; grid-template-columns: 20px 150px minmax(0, 1fr); gap: var(--e-2); align-items: baseline; font-size: var(--t-2); max-width: none !important; }
+.constat__icone { font-weight: 700; text-align: center; }
+.constat--ok .constat__icone { color: var(--accent); }
+.constat--alerte .constat__icone { color: var(--alerte); }
+.constat--fatal .constat__icone { color: var(--alerte); }
+.constat__regle { font-family: var(--police-mono); font-size: var(--t-1); color: var(--encre-2); }
+@media (max-width: 600px) { .constat { grid-template-columns: 20px minmax(0, 1fr); } .constat__regle { grid-column: 2; } }
+
+/* Fichiers. */
+.fichiers { list-style: none; padding: 0 !important; }
+.fichiers li { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: var(--e-3); align-items: baseline; max-width: none !important; }
+.fichiers span { color: var(--encre-2); font-size: var(--t-2); }
+@media (max-width: 600px) { .fichiers li { grid-template-columns: 1fr; gap: 0; } }

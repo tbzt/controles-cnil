@@ -11,7 +11,7 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 14 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
+Étape 15 sur 18. `pipeline/fetch.py` archive les onze fichiers CSV de la
 CNIL dans `data/raw/` avec leur empreinte ; `pipeline/transform.py` les
 normalise en une table unique de 3 617 contrôles
 (`data/processed/controles.csv` et `.json`), avec identifiants stables,
@@ -43,8 +43,10 @@ encart « Hors de France », un onglet Analyse dont les graphiques suivent
 les filtres et posent eux-mêmes des filtres au clic, et un onglet Évolution
 (courbes, familles dans le temps, petits multiples cartographiques par
 année, comparaison de deux périodes par choroplèthe divergent, lecture en
-effectifs ou pour 100 000 habitants). Page Données et finition restent à
-faire (étapes 15 et 16).
+effectifs ou pour 100 000 habitants), et une page « Données et méthode »
+(`donnees.html`) alimentée par les métadonnées du pipeline : source, dates,
+transformations, limites de la localisation, constats de qualité,
+téléchargements, versions. La finition (étape 16) reste à faire.
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 
@@ -82,7 +84,7 @@ dominante : c'est le mode honnête quand la précision est la commune.
 
 ```
 index.html                                                l'application : carte, analyse, évolution (onglets)
-donnees.html                                              sources, licence, méthode, téléchargements (à venir)
+donnees.html                                              sources, licence, méthode, limites, téléchargements, versions
 css/  js/                                                 interface, vanilla, sans build
 vendor/                                                   MapLibre GL JS épinglé, modules ES (voir vendor/VERSIONS.md)
 data/raw/                fichiers CNIL bruts, immuables, ajout seul
@@ -191,6 +193,10 @@ Aucun build : HTML, CSS et modules ES natifs, MapLibre GL JS vendorisé.
   annuelle. La période du panneau sert de période B.
 - `js/carte/popup.js`, `js/app.js` : fiche d'un contrôle, bandeau de
   couverture, panneau repliable sur mobile, branchement de l'état.
+- `donnees.html`, `js/page-donnees.js`, `css/page.css` : la page Données,
+  dont chaque date et chaque chiffre vient de `data/metadata/` (manifeste,
+  rapport qualité, rapport de géocodage, versions, dernière vérification)
+  pour qu'elle ne puisse pas se désynchroniser des données.
 
 ## Licences
 

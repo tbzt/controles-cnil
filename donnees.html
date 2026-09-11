@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Données et méthode · Contrôles de la CNIL</title>
+  <meta name="description" content="Source, licence, transformations, géocodage, limites, qualité, téléchargements et versions des données de la carte des contrôles de la CNIL.">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/page.css">
+</head>
+<body class="page">
+  <header class="page__entete">
+    <nav class="page__nav" aria-label="Navigation">
+      <a href="index.html" class="page__retour">← Carte</a>
+      <a href="https://github.com/tbzt/controles-cnil">Code et données sur GitHub</a>
+    </nav>
+    <h1>Données et méthode</h1>
+    <p class="page__lede">D'où viennent les données, ce qui leur a été fait, ce qu'elles ne disent pas, et comment les réutiliser.</p>
+    <dl class="dates" id="dates" aria-live="polite">
+      <div><dt>Dernière publication par la CNIL</dt><dd id="d-publication">…</dd></div>
+      <div><dt>Dernière récupération</dt><dd id="d-recuperation">…</dd></div>
+      <div><dt>Dernière mise à jour des données</dt><dd id="d-maj">…</dd></div>
+      <div><dt>Dernière vérification de la source</dt><dd id="d-verification">…</dd></div>
+    </dl>
+  </header>
+
+  <main class="page__corps">
+    <section id="source">
+      <h2>Source</h2>
+      <p>Le jeu de données <a href="https://www.data.gouv.fr/datasets/controles-realises-par-la-cnil">« Contrôles réalisés par la CNIL »</a> publié par la CNIL sur data.gouv.fr, sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence">Licence Ouverte / Open Licence 2.0</a>. La CNIL y dépose une liste par année depuis 2014, chacune sous la forme d'un fichier CSV et d'un fichier tableur, ainsi qu'un tableau du nombre de contrôles par an depuis 1990.</p>
+      <p>Chaque liste donne, pour chaque contrôle : le fondement juridique (Loi Informatique et Libertés, RGPD, directive police-justice, vidéoprotection), la modalité depuis 2017 (sur place, en ligne, sur pièces, sur audition), le nom de l'organisme, la ville et le département, le pays depuis 2021, et le secteur d'activité. <strong>Ni adresse, ni date dans l'année, ni identifiant.</strong></p>
+      <div id="ressources"></div>
+    </section>
+
+    <section id="transformations">
+      <h2>Transformations</h2>
+      <p>Les fichiers de la CNIL sont conservés tels quels dans <code>data/raw/</code>, avec leur empreinte, et jamais modifiés. Un pipeline en Python (bibliothèque standard uniquement) les lit et produit les tables publiées. Il est déterministe : mêmes fichiers en entrée, mêmes octets en sortie.</p>
+      <ol>
+        <li><strong>Lecture.</strong> Trois encodages, des en-têtes sur plusieurs lignes, des colonnes vides d'export tableur : chaque colonne est reconnue par son en-tête, jamais par sa position. Un en-tête inconnu arrête le pipeline.</li>
+        <li><strong>Normalisation.</strong> Fondement, modalité et pays sont ramenés à des valeurs codées ; le libellé publié est toujours conservé dans une colonne <code>*_source</code>. Les deux lignes de total présentes dans les fichiers 2017 et 2018 sont écartées.</li>
+        <li><strong>Secteurs.</strong> La CNIL a changé de nomenclature en 2018. Les 43 libellés publiés sont rattachés à un secteur fin harmonisé et à l'une de seize <em>familles</em> comparables sur toute la période. Le rattachement est une table lisible, <code>secteurs.csv</code>.</li>
+        <li><strong>Identifiants.</strong> Chaque contrôle reçoit un identifiant stable dérivé de son contenu (année, hachage court, rang parmi les lignes identiques). Les lignes strictement identiques d'une même année sont des contrôles distincts d'un même organisme : elles sont conservées.</li>
+        <li><strong>Drapeaux.</strong> Tout ce qui a été déduit ou corrigé sur une ligne est signalé : modalité déduite, département corrigé, pays déduit, doublon, etc.</li>
+      </ol>
+      <p>Le détail est dans le <a href="https://github.com/tbzt/controles-cnil/blob/main/pipeline/README.md">README du pipeline</a> et le schéma des tables dans <a href="data/metadata/schema.json"><code>schema.json</code></a> (Data Package).</p>
+    </section>
+
+    <section id="geocodage">
+      <h2>Localisation et ses limites</h2>
+      <p>La source ne donne qu'une commune et un département. La carte distingue donc <strong>deux lieux</strong> pour chaque contrôle :</p>
+      <ul>
+        <li><strong>Le lieu du contrôle.</strong> Les contrôles en ligne, sur pièces et sur audition se déroulent dans les locaux de la CNIL, 3 place de Fontenoy à Paris ; les contrôles sur place se déroulent chez l'organisme. Cette convention est appliquée par le pipeline à partir de la modalité.</li>
+        <li><strong>Le lieu de l'organisme.</strong> La commune indiquée par la CNIL, résolue dans le référentiel des communes de geo.api.gouv.fr ; précisée à l'adresse quand celle-ci a pu être établie.</li>
+      </ul>
+      <div id="precision"></div>
+      <p>Les adresses viennent de trois sources, toutes tracées ligne par ligne : la carte uMap précédente, géocodée à la main pendant dix ans (siège social dans la ville, sinon un établissement, sinon la ville) ; l'annuaire des entreprises (données SIRENE), quand le nom correspond exactement à une entité unique dont le siège est dans la commune indiquée ; et des corrections manuelles.</p>
+      <h3>Ce que la carte ne dit pas</h3>
+      <ul>
+        <li>Un point placé <em>à la commune</em> est au centre de la commune, pas à une adresse. Paris compte 1 640 contrôles : à la commune, ils partagent un seul point. Le mode « Communes » et l'onglet Analyse sont plus honnêtes que les points pour ce cas.</li>
+        <li>Le référentiel des communes décrit les communes d'aujourd'hui : un contrôle de 2015 à Courcouronnes est rattaché à Évry-Courcouronnes.</li>
+        <li>Une adresse de siège trouvée dans l'annuaire des entreprises est celle d'aujourd'hui ; le siège a pu déménager depuis le contrôle.</li>
+        <li>Les organismes hors de France sont placés au centre de leur pays.</li>
+        <li>Le nom d'un organisme n'est pas normalisé par la CNIL : « Ministère de l'Intérieur » et « MINISTÈRE DE L'INTÉRIEUR ET DES OUTRE-MERS » sont deux noms. Le rapprochement des organismes récurrents est approximatif.</li>
+      </ul>
+      <div id="non-resolues"></div>
+    </section>
+
+    <section id="qualite">
+      <h2>Qualité</h2>
+      <p>À chaque actualisation, quinze règles sont vérifiées. Un constat fatal empêche toute publication ; une alerte est publiée avec les données et affichée ici.</p>
+      <div id="constats"></div>
+    </section>
+
+    <section id="telechargements">
+      <h2>Téléchargements</h2>
+      <p>Licence Ouverte / Open Licence 2.0. Mentionner « CNIL, Contrôles réalisés par la CNIL (data.gouv.fr), normalisation et localisation par le projet controles-cnil ».</p>
+      <ul class="fichiers">
+        <li><a href="data/processed/controles.csv" download>controles.csv</a><span>un contrôle par ligne, valeurs publiées et valeurs harmonisées</span></li>
+        <li><a href="data/processed/controles.json" download>controles.json</a><span>même contenu, en JSON</span></li>
+        <li><a href="data/processed/localisations.csv" download>localisations.csv</a><span>les deux lieux par contrôle, coordonnées, précision et méthode</span></li>
+        <li><a href="data/processed/controles.geojson" download>controles.geojson</a><span>points au lieu de l'organisme, avec les propriétés de filtrage</span></li>
+        <li><a href="data/processed/stats.json" download>stats.json</a><span>effectifs et croisements précalculés</span></li>
+        <li><a href="data/metadata/schema.json" download>schema.json</a><span>description des colonnes (Data Package)</span></li>
+        <li><a href="data/processed/referentiels/secteurs.csv" download>secteurs.csv</a><span>libellés CNIL → secteur fin → famille</span></li>
+        <li><a href="https://github.com/tbzt/controles-cnil/releases">Releases GitHub</a><span>chaque publication avec ses fichiers joints</span></li>
+      </ul>
+    </section>
+
+    <section id="versions">
+      <h2>Versions</h2>
+      <p>Chaque publication de données est un tag git. Une ancienne version de la carte se reproduit sans copie de fichier : le site lit alors les données à ce tag.</p>
+      <div id="releases"></div>
+    </section>
+
+    <section id="actualisation">
+      <h2>Actualisation</h2>
+      <p>Un workflow GitHub Actions interroge data.gouv.fr chaque lundi. Si une ressource a changé ou est apparue, il la récupère, relance le pipeline, vérifie la qualité et publie ; sinon il ne modifie rien, hormis une trace mensuelle de vérification. Le <a href="data/metadata/CHANGELOG-DATA.md">journal des changements</a> décrit chaque publication.</p>
+      <p class="discret">Aucune liste 2024 ni 2025 n'a été publiée par la CNIL à ce jour : la couverture s'arrête à 2023 tant que la source ne bouge pas.</p>
+    </section>
+  </main>
+
+  <footer class="page__pied">
+    <p>Réalisation : Thomas Bizet · code sous licence MIT · fond de carte © contributeurs OpenStreetMap, OpenFreeMap · contours départementaux d'après OpenStreetMap (ODbL)</p>
+  </footer>
+  <script type="module" src="js/page-donnees.js"></script>
+</body>
+</html>
