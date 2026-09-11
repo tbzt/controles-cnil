@@ -11,10 +11,11 @@ elles sont versionnées dans ce dépôt et réutilisables sans le site.
 
 ## État du projet
 
-Étape 0 : dépôt initialisé, arborescence, licence, bibliothèque
-cartographique vendorisée. Ni pipeline ni site pour l'instant. Le plan
-d'implémentation compte 18 étapes courtes ; chacune est une livraison
-autonome.
+Étape 1 sur 18 : le dépôt est initialisé et la récupération des données
+fonctionne. `pipeline/fetch.py` archive les onze fichiers CSV de la CNIL dans
+`data/raw/` avec leur empreinte, et ne modifie rien quand data.gouv.fr n'a
+rien publié de nouveau. Pas encore de transformation ni de site. Chaque
+étape du plan est une livraison autonome.
 
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 

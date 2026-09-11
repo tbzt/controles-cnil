@@ -1,0 +1,244 @@
+{
+  "dataset": {
+    "id": "555c431bc751df5800190c78",
+    "last_modified_source": "2024-10-18T08:47:41.745000+00:00",
+    "licence": "fr-lo",
+    "organisation": "CNIL",
+    "page": "https://www.data.gouv.fr/datasets/controles-realises-par-la-cnil",
+    "titre": "Contrôles réalisés par la CNIL"
+  },
+  "ressources": {
+    "2991aafd-7e53-437f-808f-5058ae00cded": {
+      "dossier": "2023",
+      "format": "csv",
+      "signature_source": {
+        "checksum_type": "sha1",
+        "checksum_value": "17e17f526a9cfa96159e8a81806062142f65d6c6",
+        "filesize": 41543,
+        "last_modified": "2024-10-18T08:47:41.721000+00:00"
+      },
+      "titre": "open-data-controles-cnil-2023.csv",
+      "url": "https://static.data.gouv.fr/resources/controles-realises-par-la-cnil/20241018-084737/open-data-controles-cnil-2023.csv",
+      "versions": [
+        {
+          "fichier": "2023/458235ea__open-data-controles-cnil-2023.csv",
+          "last_modified_source": "2024-10-18T08:47:41.721000+00:00",
+          "recupere_le": "2026-09-11",
+          "sha256": "458235ea43483983706b42bb8b8997a2fc6d3b8a8b4ac63f1d9e3e5353c713d8",
+          "taille": 41543
+        }
+      ]
+    },
+    "3f43b14a-c403-4235-b0bd-91d6a84cc949": {
+      "dossier": "nombre-controles-1990",
+      "format": "csv",
+      "signature_source": {
+        "checksum_type": "sha1",
+        "checksum_value": "4fac9d01fc47b339f9033c10077e66391ce663e9",
+        "filesize": 627,
+        "last_modified": "2024-10-17T10:07:42.818000+00:00"
+      },
+      "titre": "opencnil-nombre-controles-depuis-1990-maj-oct-2024.csv",
+      "url": "https://static.data.gouv.fr/resources/controles-realises-par-la-cnil/20241017-100737/opencnil-nombre-controles-depuis-1990-maj-oct-2024.csv",
+      "versions": [
+        {
+          "fichier": "nombre-controles-1990/f55ceafe__opencnil-nombre-controles-depuis-1990-maj-oct-2024.csv",
+          "last_modified_source": "2024-10-17T10:07:42.818000+00:00",
+          "recupere_le": "2026-09-11",
+          "sha256": "f55ceafef9ee92d0a0ee13b04d85b725b06ad686f0680bb0087be3b96d9183d3",
+          "taille": 627
+        }
+      ]
+    },
+    "40f96c85-5d8c-4865-814a-5466b37208e3": {
+      "dossier": "2020",
+      "format": "csv",
+      "signature_source": {
+        "checksum_type": "sha1",
+        "checksum_value": "81681187e14e651b7c056aa55def1682da29d851",
+        "filesize": 14533,
+        "last_modified": "2021-06-03T12:20:05.878000+00:00"
+      },
+      "titre": "open-data-controles-2020-vd-20210603.csv",
+      "url": "https://static.data.gouv.fr/resources/controles-realises-par-la-cnil/20210603-121859/open-data-controles-2020-vd-20210603.csv",
+      "versions": [
+        {
+          "fichier": "2020/eef24aed__open-data-controles-2020-vd-20210603.csv",
+          "last_modified_source": "2021-06-03T12:20:05.878000+00:00",
+          "recupere_le": "2026-09-11",
+          "sha256": "eef24aeda9732e6e6a338d6962cfba2fa4c5c30508104bc459fb8eb5e8c946d4",
+          "taille": 14533
+        }
+      ]
+    },
+    "440172f8-46b9-435c-a222-1b7c43c35c41": {
+      "dossier": "2014",
+      "format": "csv",
+      "signature_source": {
+        "checksum_type": "sha1",
+        "checksum_value": "438659c16d712369c1e75df0bb1cd510eae5cc72",
+        "filesize": 30195,
+        "last_modified": "2015-06-15T17:43:41.063000+00:00"
+      },
+      "titre": "Liste des contrôles réalisés par la CNIL en 2014",
+      "url": "https://static.data.gouv.fr/resources/controles-realises-par-la-cnil/community/20150615-174337/OpenCNIL_Liste_controles_2014_VD_20150604.csv",
+      "versions": [
+        {
+          "fichier": "2014/19313b89__OpenCNIL_Liste_controles_2014_VD_20150604.csv",
+          "last_modified_source": "2015-06-15T17:43:41.063000+00:00",
+          "recupere_le": "2026-09-11",
+          "sha256": "19313b89fc3bcc7fe3d2cb67b259d0dc475030368d60eac0ba503b4f519718a1",
+          "taille": 30195
+        }
+      ]
+    },
+    "4a5883cd-7499-4b2f-a0fe-64c4f3088856": {
+      "dossier": "2015",
+      "format": "csv",
+      "signature_source": {
+        "checksum_type": "sha1",
+        "checksum_value": "9b4b8289536f7fec9172b450d7a52f779c5762e7",
+        "filesize": 156815,
+        "last_modified": "2016-05-03T16:38:44.760000+00:00"
+      },
+      "titre": "Liste des contrôles réalisés par la CNIL en 2015",
+      "url": "https://static.data.gouv.fr/resources/controles-realises-par-la-cnil/20160503-163839/OpenCNIL_liste_controles_2015.csv",
+      "versions": [
+        {
+          "fichier": "2015/f0173389__OpenCNIL_liste_controles_2015.csv",
+          "last_modified_source": "2016-05-03T16:38:44.760000+00:00",
+          "recupere_le": "2026-09-11",
+          "sha256": "f0173389e408a6d74f23e7d31136defafab88ed1c651150c18a0be99c77997ab",
+          "taille": 156815
+        }
+      ]
+    },
+    "4cf98e07-b37f-44a3-b8f1-b36e35a3d6d1": {
+      "dossier": "2018",
+      "format": "csv",
+      "signature_source": {
+        "checksum_type": "sha1",
+        "checksum_value": "855eb39c710dac9ba2d004b17cc65051c8c84974",
+        "filesize": 21819,
+        "last_modified": "2019-05-16T12:05:14.591000+00:00"
+      },
+      "titre": "opencnil-liste-controles-2018.csv",
+      "url": "https://static.data.gouv.fr/resources/controles-realises-par-la-cnil/20190516-120506/opencnil-liste-controles-2018.csv",
+      "versions": [
+        {
+          "fichier": "2018/4959b379__opencnil-liste-controles-2018.csv",
+          "last_modified_source": "2019-05-16T12:05:14.591000+00:00",
+          "recupere_le": "2026-09-11",
+          "sha256": "4959b37952666b4063904accbc626695921b189b31cdfcc3f07c0daed7e37c05",
+          "taille": 21819
+        }
+      ]
+    },
+    "a98f65fa-a4e7-465e-8ab0-9bd8548fdf21": {
+      "dossier": "2021",
+      "format": "csv",
+      "signature_source": {
+        "checksum_type": "sha1",
+        "checksum_value": "f1e2dd2b6d12850f2fa57685917c63b26f399876",
+        "filesize": 26936,
+        "last_modified": "2022-10-25T11:17:20.715000+00:00"
+      },
+      "titre": "open-data-controles-2021-v20220921.csv",
+      "url": "https://static.data.gouv.fr/resources/controles-realises-par-la-cnil/20221025-111715/open-data-controles-2021-v20220921.csv",
+      "versions": [
+        {
+          "fichier": "2021/e0815411__open-data-controles-2021-v20220921.csv",
+          "last_modified_source": "2022-10-25T11:17:20.715000+00:00",
+          "recupere_le": "2026-09-11",
+          "sha256": "e0815411491588c745ef65e6a7c6731efe2b031eb76c36c0b8265391c6c742cc",
+          "taille": 26936
+        }
+      ]
+    },
+    "c6023aa0-4e62-4855-acec-2cff5dfabc8e": {
+      "dossier": "2019",
+      "format": "csv",
+      "signature_source": {
+        "checksum_type": "sha1",
+        "checksum_value": "8eb8712c572d4732f46f0ef5958add9135d6c013",
+        "filesize": 17957,
+        "last_modified": "2020-07-03T15:40:47.050000+00:00"
+      },
+      "titre": "opencnil-liste-controles-2019.csv",
+      "url": "https://static.data.gouv.fr/resources/controles-realises-par-la-cnil/20200703-154030/opencnil-liste-controles-2019.csv",
+      "versions": [
+        {
+          "fichier": "2019/f35215af__opencnil-liste-controles-2019.csv",
+          "last_modified_source": "2020-07-03T15:40:47.050000+00:00",
+          "recupere_le": "2026-09-11",
+          "sha256": "f35215af8bc9b02544110d4105d8408d4406f29f80d311522cd0db9f1f8b02d1",
+          "taille": 17957
+        }
+      ]
+    },
+    "e1e5ab3b-301f-431d-8cfc-dd73c05a52f8": {
+      "dossier": "2016",
+      "format": "csv",
+      "signature_source": {
+        "checksum_type": "sha1",
+        "checksum_value": "1cbd069888bf82c1c65f78713e73ed380257b68b",
+        "filesize": 135300,
+        "last_modified": "2017-03-30T17:05:21.543000+00:00"
+      },
+      "titre": "Liste des contrôles réalisés par la CNIL en 2016",
+      "url": "https://static.data.gouv.fr/resources/controles-realises-par-la-cnil/20170330-170209/OpenCNIL_liste_controles_2016.csv",
+      "versions": [
+        {
+          "fichier": "2016/8491f743__OpenCNIL_liste_controles_2016.csv",
+          "last_modified_source": "2017-03-30T17:05:21.543000+00:00",
+          "recupere_le": "2026-09-11",
+          "sha256": "8491f743e91bc5d7980904b0c94c619a869c6a402467ced20905d7b626202f89",
+          "taille": 135300
+        }
+      ]
+    },
+    "ec84ec1d-93eb-4d35-99dc-ae496a34d3e4": {
+      "dossier": "2017",
+      "format": "csv",
+      "signature_source": {
+        "checksum_type": "sha1",
+        "checksum_value": "b5b9f98d757b3ea085dfb9f9a3cb6d708cbd6002",
+        "filesize": 24497,
+        "last_modified": "2018-06-20T16:13:44.012000+00:00"
+      },
+      "titre": "Liste des contrôles réalisés par la CNIL en 2017",
+      "url": "https://static.data.gouv.fr/resources/controles-realises-par-la-cnil/20180620-161327/OpenCnil_liste_controles_2017.csv",
+      "versions": [
+        {
+          "fichier": "2017/068c80f5__OpenCnil_liste_controles_2017.csv",
+          "last_modified_source": "2018-06-20T16:13:44.012000+00:00",
+          "recupere_le": "2026-09-11",
+          "sha256": "068c80f5db6fadde6712c31b2843ecadadbd021bd33a7e0eaa460ea4e710d119",
+          "taille": 24497
+        }
+      ]
+    },
+    "ff243a18-37c3-484f-b065-807282a7fc96": {
+      "dossier": "2022",
+      "format": "csv",
+      "signature_source": {
+        "checksum_type": "sha1",
+        "checksum_value": "d4b8be818c706ba2410d022cffd9f861c2d61707",
+        "filesize": 22718,
+        "last_modified": "2023-10-03T08:31:20.664000+00:00"
+      },
+      "titre": "open-data-controles-cnil-2022-v20231003.csv",
+      "url": "https://static.data.gouv.fr/resources/controles-realises-par-la-cnil/20231003-083117/open-data-controles-cnil-2022-v20231003.csv",
+      "versions": [
+        {
+          "fichier": "2022/c2bdd9d5__open-data-controles-cnil-2022-v20231003.csv",
+          "last_modified_source": "2023-10-03T08:31:20.664000+00:00",
+          "recupere_le": "2026-09-11",
+          "sha256": "c2bdd9d562e5917f9bfcaba2735201181eee03ddc52b0e350b380d663148ff38",
+          "taille": 22718
+        }
+      ]
+    }
+  },
+  "source_api": "https://www.data.gouv.fr/api/1/datasets/555c431bc751df5800190c78/"
+}

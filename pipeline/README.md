@@ -13,5 +13,15 @@ dans cet ordre :
    code de sortie non nul sur règle fatale.
 5. `build.py` : GeoJSON, statistiques, journal des changements.
 
-Les scripts sont à écrire (étapes 1 à 7 du plan). Tests :
-`python3 -m unittest discover -s pipeline/tests -t .`
+État : `fetch.py` est écrit et testé ; les autres scripts sont à venir.
+
+```bash
+python3 pipeline/fetch.py              # récupère ce qui a changé
+python3 pipeline/fetch.py --forcer     # retélécharge tout, sans dupliquer un contenu identique
+python3 pipeline/fetch.py --hors-ligne # vérifie seulement que data/raw/ correspond au manifeste
+python3 -m unittest discover -s pipeline/tests -t .
+```
+
+`fetch.py` ne touche jamais à un fichier existant de `data/raw/` : une
+ressource modifiée côté CNIL donne une version de plus dans le manifeste et
+un fichier de plus, l'ancien restant en place.
