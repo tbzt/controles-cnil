@@ -1,0 +1,48 @@
+name: Agréger le stock SIRENE
+
+# Dénominateur du taux de désignation de DPO : sièges actifs de personnes
+# morales par commune et section NAF, depuis les stocks mensuels de l'INSEE
+# (~4 Go zippés, lus en flux, jamais commités). Trimestriel et à la demande ;
+# le résultat (quelques Mo) est commité et le workflow d'actualisation
+# reconstruit les agrégats du site.
+
+on:
+  schedule:
+    - cron: "0 5 3 1,4,7,10 *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: agregation-sirene
+  cancel-in-progress: false
+
+jobs:
+  agreger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Télécharger et agréger (StockUniteLegale puis StockEtablissement)
+        run: python3 outils/agreger-sirene.py --dossier-temporaire "$RUNNER_TEMP/sirene"
+
+      - name: Commiter l'agrégat
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/referentiels-source/sirene-sieges-par-commune.csv data/referentiels-source/sirene-sieges-par-commune.meta.json
+          if git diff --cached --quiet; then
+            echo "Agrégat SIRENE inchangé."
+            exit 0
+          fi
+          DATE=$(python3 -c "import json;print(json.load(open('data/referentiels-source/sirene-sieges-par-commune.meta.json'))['date_stock'])")
+          git commit -m "Référentiel SIRENE : sièges par commune et section, stock du $DATE"
+          git push origin HEAD:main
