@@ -1,0 +1,27 @@
+{
+  "_commentaire": "Sections de la NAF rév. 2 (INSEE) : lettre → libellé court pour l'affichage, et divisions couvertes. Le jeu DPO code le secteur de l'organisme par cette lettre.",
+  "_source": "https://www.insee.fr/fr/information/2120875",
+  "sections": {
+    "A": {"libelle": "Agriculture, sylviculture et pêche", "divisions": "01-03"},
+    "B": {"libelle": "Industries extractives", "divisions": "05-09"},
+    "C": {"libelle": "Industrie manufacturière", "divisions": "10-33"},
+    "D": {"libelle": "Électricité, gaz, vapeur et air conditionné", "divisions": "35"},
+    "E": {"libelle": "Eau, assainissement, déchets", "divisions": "36-39"},
+    "F": {"libelle": "Construction", "divisions": "41-43"},
+    "G": {"libelle": "Commerce, réparation d'automobiles", "divisions": "45-47"},
+    "H": {"libelle": "Transports et entreposage", "divisions": "49-53"},
+    "I": {"libelle": "Hébergement et restauration", "divisions": "55-56"},
+    "J": {"libelle": "Information et communication", "divisions": "58-63"},
+    "K": {"libelle": "Activités financières et d'assurance", "divisions": "64-66"},
+    "L": {"libelle": "Activités immobilières", "divisions": "68"},
+    "M": {"libelle": "Activités spécialisées, scientifiques et techniques", "divisions": "69-75"},
+    "N": {"libelle": "Services administratifs et de soutien", "divisions": "77-82"},
+    "O": {"libelle": "Administration publique", "divisions": "84"},
+    "P": {"libelle": "Enseignement", "divisions": "85"},
+    "Q": {"libelle": "Santé humaine et action sociale", "divisions": "86-88"},
+    "R": {"libelle": "Arts, spectacles et activités récréatives", "divisions": "90-93"},
+    "S": {"libelle": "Autres activités de services", "divisions": "94-96"},
+    "T": {"libelle": "Activités des ménages employeurs", "divisions": "97-98"},
+    "U": {"libelle": "Activités extra-territoriales", "divisions": "99"}
+  }
+}
