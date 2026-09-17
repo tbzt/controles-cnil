@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Délégués à la protection des données · CNIL</title>
+  <meta name="description" content="Où sont les organismes qui ont désigné un délégué à la protection des données (DPO) auprès de la CNIL : taux de désignation par département et secteur, rythme des désignations, structures mutualisées, couverture des communes.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%231d4f91' stroke-width='5' stroke-dasharray='38 12 20 12'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%231d4f91'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#f4f5f2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12181f" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="vendor/maplibre-gl.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/page.css">
+  <link rel="stylesheet" href="css/graphiques.css">
+  <link rel="stylesheet" href="css/dpo.css">
+</head>
+<body class="page page--large">
+  <header class="page__entete">
+    <nav class="page__nav" aria-label="Navigation">
+      <a href="index.html" class="page__retour">← Carte des contrôles</a>
+      <span><a href="donnees.html">Données et méthode</a> · <a href="https://github.com/tbzt/controles-cnil">GitHub</a></span>
+    </nav>
+    <h1>Délégués à la protection des données</h1>
+    <p class="page__lede">Qui a désigné un DPO auprès de la CNIL, où, dans quel secteur, et à quel rythme. D'après le jeu de données ouvert <a href="https://www.data.gouv.fr/datasets/organismes-ayant-designe-un-e-delegue-e-a-la-protection-des-donnees-dpd-dpo">« Organismes ayant désigné un(e) délégué(e) à la protection des données »</a>, rapporté au stock d'organismes du répertoire SIRENE.</p>
+    <dl class="dates" id="dates" aria-live="polite">
+      <div><dt>Publication CNIL analysée</dt><dd id="d-snapshot">…</dd></div>
+      <div><dt>Désignations en vigueur</dt><dd id="d-total">…</dd></div>
+      <div><dt>Stock SIRENE (dénominateur)</dt><dd id="d-sirene">…</dd></div>
+      <div><dt>Publications archivées</dt><dd id="d-snapshots">…</dd></div>
+    </dl>
+  </header>
+
+  <main class="page__corps dpo" id="dpo">
+    <div class="message" id="message" hidden></div>
+
+    <div class="tuiles" id="tuiles"></div>
+
+    <section class="carte-graphique carte-graphique--large" id="s-taux" aria-labelledby="t-taux">
+      <div class="carte-graphique__titre">
+        <h2 id="t-taux">Taux de désignation par département</h2>
+        <span class="discret">désignations en vigueur rapportées aux sièges actifs de personnes morales du département (SIRENE, hors entrepreneurs individuels) ; cliquer un département donne le détail</span>
+      </div>
+      <div class="periodes">
+        <div class="periode"><span class="etiquette">Secteur (section NAF)</span><select id="c-section" aria-label="Section NAF"></select></div>
+        <div class="periode"><span class="etiquette">DPO</span>
+          <div class="commutateur" role="group" aria-label="Type de DPO">
+            <button type="button" data-type="tous" aria-pressed="true">Tous</button>
+            <button type="button" data-type="personne_physique" aria-pressed="false">Interne</button>
+            <button type="button" data-type="personne_morale" aria-pressed="false">Externe</button>
+          </div>
+        </div>
+        <div class="periode"><span class="etiquette">Lecture</span>
+          <div class="commutateur" role="group" aria-label="Lecture">
+            <button type="button" data-lecture="taux" aria-pressed="true">Pour 1 000 sièges</button>
+            <button type="button" data-lecture="population" aria-pressed="false">Pour 100 000 hab.</button>
+            <button type="button" data-lecture="effectifs" aria-pressed="false">Effectifs</button>
+          </div>
+        </div>
+      </div>
+      <div class="dpo__carte-et-detail">
+        <div>
+          <div id="c-carte"></div>
+          <div class="echelle" id="c-echelle"></div>
+        </div>
+        <aside class="dpo__detail" id="c-detail" aria-live="polite"></aside>
+      </div>
+      <details class="dpo__details">
+        <summary>Tous les départements, dont l'outre-mer</summary>
+        <div id="c-tableau"></div>
+      </details>
+    </section>
+
+    <section class="carte-graphique carte-graphique--large" id="s-communes" aria-labelledby="t-communes">
+      <div class="carte-graphique__titre">
+        <h2 id="t-communes">Par commune</h2>
+        <span class="discret">un cercle par commune ayant au moins une désignation, aire proportionnelle au nombre ; couleur : désignations pour 1 000 sièges de personnes morales ; toutes sections confondues</span>
+      </div>
+      <div class="dpo__maplibre" id="m-carte" role="region" aria-label="Carte des communes"></div>
+      <div class="echelle" id="m-echelle"></div>
+    </section>
+
+    <section class="carte-graphique carte-graphique--large" id="s-rythme" aria-labelledby="t-rythme">
+      <div class="carte-graphique__titre">
+        <h2 id="t-rythme">Rythme des désignations</h2>
+        <span class="discret" id="r-note">dates des désignations en vigueur à la publication analysée ; une désignation retirée n'est plus comptée, une re-désignation porte sa nouvelle date</span>
+      </div>
+      <div class="periodes">
+        <div class="commutateur" role="group" aria-label="Période">
+          <button type="button" data-depuis="2018-05" aria-pressed="true">Depuis mai 2018</button>
+          <button type="button" data-depuis="2020-01" aria-pressed="false">Depuis 2020</button>
+        </div>
+      </div>
+      <div id="r-svg"></div>
+      <div id="r-legende"></div>
+    </section>
+
+    <section class="carte-graphique carte-graphique--large" id="s-flux" aria-labelledby="t-flux">
+      <div class="carte-graphique__titre">
+        <h2 id="t-flux">Nouvelles, retirées, remplacées</h2>
+        <span class="discret">différence entre deux publications successives archivées par ce projet ; la CNIL ne publie que les désignations en vigueur et ne conserve pas d'historique</span>
+      </div>
+      <div id="f-contenu"></div>
+    </section>
+
+    <section class="carte-graphique carte-graphique--large" id="s-mutualisation" aria-labelledby="t-mutualisation">
+      <div class="carte-graphique__titre">
+        <h2 id="t-mutualisation">La mutualisation</h2>
+        <span class="discret" id="mu-note"></span>
+      </div>
+      <div class="dpo__deux">
+        <div>
+          <h3>Structure externe la plus désignée, par département</h3>
+          <div id="mu-carte"></div>
+          <div id="mu-legende"></div>
+        </div>
+        <div>
+          <h3>Les structures les plus désignées</h3>
+          <div id="mu-tableau"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="carte-graphique" id="s-couverture" aria-labelledby="t-couverture">
+      <div class="carte-graphique__titre">
+        <h2 id="t-couverture">Communes ayant déclaré un DPO</h2>
+        <span class="discret">part des communes du département dont la mairie apparaît dans le fichier (administration publique générale et nom commençant par commune, mairie ou ville : approximation)</span>
+      </div>
+      <div id="cc-carte"></div>
+      <div class="echelle" id="cc-echelle"></div>
+      <p class="discret" id="cc-note"></p>
+    </section>
+
+    <section class="carte-graphique" id="s-interne" aria-labelledby="t-interne">
+      <div class="carte-graphique__titre">
+        <h2 id="t-interne">Interne ou externe, par secteur</h2>
+        <span class="discret">part des DPO externes (personnes morales : cabinets, structures mutualisées) dans chaque section NAF, sections triées par nombre de désignations</span>
+      </div>
+      <div id="ie-svg"></div>
+      <div id="ie-legende"></div>
+      <h3>Par année de désignation</h3>
+      <div id="ie-annees-svg"></div>
+    </section>
+
+    <section class="carte-graphique carte-graphique--large" id="s-sections" aria-labelledby="t-sections">
+      <div class="carte-graphique__titre">
+        <h2 id="t-sections">Taux de désignation par secteur</h2>
+        <span class="discret">France entière ; les 10 % de lignes sans SIREN n'ont pas de section et n'entrent pas dans ces taux</span>
+      </div>
+      <div id="se-svg"></div>
+    </section>
+
+    <section class="carte-graphique" id="s-etranger" aria-labelledby="t-etranger">
+      <div class="carte-graphique__titre">
+        <h2 id="t-etranger">Hors de France</h2>
+        <span class="discret" id="et-note"></span>
+      </div>
+      <div id="et-liste"></div>
+    </section>
+
+    <section class="carte-graphique carte-graphique--large" id="s-limites" aria-labelledby="t-limites">
+      <div class="carte-graphique__titre"><h2 id="t-limites">Ce que ces données ne disent pas</h2></div>
+      <ul class="dpo__limites" id="limites">
+        <li><strong>Une photographie, pas un historique.</strong> Le fichier de la CNIL contient les désignations valides à sa date de publication. Une désignation retirée disparaît ; une re-désignation remplace la date. Ce projet archive chaque publication mensuelle : les flux ci-dessus ne commencent qu'à partir de la deuxième.</li>
+        <li><strong>Un organisme absent n'est pas en infraction.</strong> La désignation est obligatoire pour le secteur public et, sous conditions, pour le privé. Le taux de désignation compare des organismes qui ont déclaré à l'ensemble des sièges actifs de personnes morales : c'est un ordre de grandeur, pas un taux de conformité.</li>
+        <li><strong>Les entrepreneurs individuels sont exclus du dénominateur.</strong> Ils sont 40 % du répertoire SIRENE et presque jamais concernés ; les compter écraserait tous les taux. Le dénominateur est le stock INSEE du <span id="l-sirene"></span>, agrégé par commune et section NAF de l'établissement siège.</li>
+        <li><strong>Une ligne sur dix est sans SIREN</strong> (<span id="l-sans-siren"></span>), donc sans code NAF : ces lignes comptent dans les totaux et les cartes « toutes sections », pas dans les taux par secteur.</li>
+        <li><strong>Les coordonnées des DPO ne sont pas republiées.</strong> E-mails, téléphones et adresses de contact sont des données personnelles (avertissement de la CNIL sur le jeu) ; elles sont supprimées à la transformation et un contrôle bloquant vérifie qu'aucune n'atteint les fichiers publiés. Pour contacter un DPO, voir la <a href="https://www.data.gouv.fr/datasets/organismes-ayant-designe-un-e-delegue-e-a-la-protection-des-donnees-dpd-dpo">fiche data.gouv.fr</a>.</li>
+        <li><strong>Publication irrégulière.</strong> La CNIL annonce une mise à jour mensuelle ; les discussions sur data.gouv.fr documentent des trous de deux à quatre mois depuis 2020.</li>
+      </ul>
+      <h3>Téléchargements</h3>
+      <ul class="fichiers">
+        <li><a href="data/processed/dpo/organismes.csv" download>organismes.csv</a><span>une désignation par ligne, sans coordonnée de contact, communes résolues (24 Mo)</span></li>
+        <li><a href="data/processed/dpo/stats-dpo.json" download>stats-dpo.json</a><span>tous les agrégats de cette page</span></li>
+        <li><a href="data/processed/dpo/dpo-communes.json" download>dpo-communes.json</a><span>désignations et sièges par commune</span></li>
+        <li><a href="data/processed/dpo/flux-mensuels.csv" download>flux-mensuels.csv</a><span>nouvelles, retirées, remplacées entre publications</span></li>
+        <li><a href="data/referentiels-source/sirene-sieges-par-commune.csv" download>sirene-sieges-par-commune.csv</a><span>dénominateur : sièges actifs par commune et section NAF</span></li>
+        <li><a href="data/metadata/manifest-dpo.json" download>manifest-dpo.json</a><span>publications archivées, empreintes, dates</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="page__pied">
+    <p>Réalisation : Thomas Bizet · code sous licence MIT · données CNIL et INSEE (Licence Ouverte 2.0) · fond de carte © contributeurs OpenStreetMap, OpenFreeMap · contours départementaux d'après OpenStreetMap (ODbL)</p>
+  </footer>
+  <script type="module" src="js/page-dpo.js"></script>
+</body>
+</html>

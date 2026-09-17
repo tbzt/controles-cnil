@@ -1,0 +1,56 @@
+/* Page DPO : un document large, sections en cartes de graphiques (mêmes
+   classes que la vue Analyse), deux cartes choroplèthes SVG, une carte
+   MapLibre des communes. */
+
+/* Document long : c'est la page qui défile, pas le body (ancres, restauration
+   du défilement, impression). */
+html:has(body.page--large), body.page--large { height: auto; min-height: 100%; overflow: visible; }
+
+.page--large .page__entete, .page--large .page__corps, .page--large .page__pied { max-width: 1100px; }
+.page--large .page__corps p, .page--large .page__corps li { max-width: none; }
+
+.dpo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--e-4); }
+.dpo .carte-graphique { gap: var(--e-3); }
+.dpo .carte-graphique h2 { font-size: var(--t-4); padding-top: 0; border-top: 0; }
+.dpo .carte-graphique h3 { font-size: var(--t-3); margin-top: var(--e-2); }
+.dpo .message { grid-column: 1 / -1; }
+@media (max-width: 900px) { .dpo { grid-template-columns: 1fr; } .carte-graphique--large { grid-column: auto; } }
+
+.dpo__carte-et-detail { display: grid; grid-template-columns: minmax(0, 3fr) minmax(240px, 2fr); gap: var(--e-4); align-items: start; }
+@media (max-width: 700px) { .dpo__carte-et-detail { grid-template-columns: 1fr; } }
+.dpo__detail { display: flex; flex-direction: column; gap: var(--e-2); padding: var(--e-3) var(--e-4); background: var(--fond); border: 1px solid var(--filet); border-radius: var(--rayon); font-size: var(--t-2); }
+.dpo__detail h3 { margin: 0; }
+.dpo__detail .grand { font-size: var(--t-5); font-weight: 600; line-height: 1.1; }
+.dpo__detail table { border-collapse: collapse; width: 100%; }
+.dpo__detail td { padding: 2px 0; border-bottom: 1px solid var(--filet); vertical-align: top; }
+.dpo__detail td.num { text-align: right; white-space: nowrap; width: 42%; padding-left: var(--e-2); }
+.dpo__detail tr:last-child td { border-bottom: 0; }
+
+/* Bouton qui se présente comme un lien (même règle que dans filtres.css, non chargé ici). */
+.dpo .lien { border: 0; background: none; padding: 0; color: var(--accent); text-decoration: underline; cursor: pointer; font: inherit; text-align: left; }
+.dpo .lien:hover { color: var(--encre); }
+
+.dpo__details summary { cursor: pointer; font-size: var(--t-2); color: var(--encre-2); }
+.dpo__details[open] summary { margin-bottom: var(--e-2); }
+
+.dpo__deux { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--e-4); }
+@media (max-width: 800px) { .dpo__deux { grid-template-columns: 1fr; } }
+
+.dpo__maplibre { height: 520px; border-radius: var(--rayon); overflow: hidden; border: 1px solid var(--filet); }
+@media (max-width: 700px) { .dpo__maplibre { height: 380px; } }
+
+.dpo__limites { padding-left: 20px; margin: 0; display: flex; flex-direction: column; gap: var(--e-2); font-size: var(--t-2); }
+
+.carte-svg__departement--actif { stroke: var(--encre); stroke-width: 1.6; }
+
+/* Couleurs catégorielles des structures mutualisées (carte de la
+   mutualisation) : la palette des familles de secteur, déjà testée sur les
+   deux thèmes. */
+:root { --cat-1: var(--fam-commerce); --cat-2: var(--fam-banque); --cat-3: var(--fam-sante_social); --cat-4: var(--fam-immobilier);
+        --cat-5: var(--fam-telecommunications); --cat-6: var(--fam-education_culture_sport); --cat-7: var(--fam-associatif); --cat-8: var(--fam-transports); }
+
+/* Popup MapLibre sur le thème. */
+.maplibregl-popup-content { background: var(--surface); color: var(--encre); border-radius: var(--rayon); box-shadow: var(--ombre); font-family: var(--police); font-size: var(--t-2); padding: var(--e-3) var(--e-4); }
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip { border-top-color: var(--surface); }
+.maplibregl-popup-anchor-top .maplibregl-popup-tip { border-bottom-color: var(--surface); }
+.maplibregl-popup-close-button { color: var(--encre-2); font-size: 18px; padding: 2px 6px; }

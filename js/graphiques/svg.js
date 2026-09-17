@@ -179,3 +179,44 @@ export function courbes({ series, annees, largeur = 900, hauteur = 260, rupture 
   }
   return s + "</svg>";
 }
+
+/* ---------------------------------------------------- barres mensuelles - */
+
+/* Une barre par mois, empilée par catégorie, avec une graduation par année
+   seulement (les libellés de mois se chevaucheraient). colonnes :
+   [{cle: "2018-05", parts: {code: n}}] ; categories : [{code, libelle, couleur}]. */
+export function barresMensuelles({ colonnes, categories, largeur = 900, hauteur = 240, dataCle = "mois" }) {
+  const marge = { haut: 12, droite: 8, bas: 28, gauche: 44 };
+  const w = largeur - marge.gauche - marge.droite;
+  const h = hauteur - marge.haut - marge.bas;
+  const totaux = colonnes.map((c) => Object.values(c.parts).reduce((a, b) => a + b, 0));
+  const max = Math.max(1, ...totaux);
+  const p = pas(max);
+  const plafond = Math.ceil(max / p) * p;
+  const y = (v) => marge.haut + h - (v / plafond) * h;
+  const bande = w / Math.max(1, colonnes.length);
+  const barre = Math.max(1, bande * 0.8);
+
+  let s = `<svg class="graphique" viewBox="0 0 ${largeur} ${hauteur}" role="img" aria-hidden="true">`;
+  for (let v = 0; v <= plafond + 1e-9; v += p) {
+    s += `<line class="graphique__grille" x1="${marge.gauche}" x2="${largeur - marge.droite}" y1="${y(v)}" y2="${y(v)}"/>`;
+    s += `<text class="graphique__axe" x="${marge.gauche - 6}" y="${y(v)}" text-anchor="end" dominant-baseline="middle">${nombre(v)}</text>`;
+  }
+  colonnes.forEach((c, i) => {
+    const x = marge.gauche + i * bande + (bande - barre) / 2;
+    let cumul = 0;
+    const total = totaux[i];
+    for (const cat of categories) {
+      const v = c.parts[cat.code] || 0;
+      if (!v) continue;
+      s += `<rect class="graphique__segment graphique__cliquable" data-${dataCle}="${echapper(c.cle)}" x="${x.toFixed(1)}" y="${y(cumul + v).toFixed(1)}" width="${barre.toFixed(1)}" height="${Math.max(0, y(cumul) - y(cumul + v)).toFixed(1)}" fill="${cat.couleur}"><title>${echapper(c.libelle || c.cle)} · ${echapper(cat.libelle)} : ${nombre(v)} (total ${nombre(total)})</title></rect>`;
+      cumul += v;
+    }
+    if (c.cle.endsWith("-01") || i === 0) {
+      const x0 = marge.gauche + i * bande;
+      s += `<line class="graphique__grille" x1="${x0.toFixed(1)}" x2="${x0.toFixed(1)}" y1="${marge.haut + h}" y2="${marge.haut + h + 5}"/>`;
+      s += `<text class="graphique__axe" x="${(x0 + 3).toFixed(1)}" y="${hauteur - 8}" text-anchor="start">${echapper(c.cle.slice(0, 4))}</text>`;
+    }
+  });
+  return s + "</svg>";
+}
