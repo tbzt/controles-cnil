@@ -136,5 +136,51 @@ class TestTraitement(unittest.TestCase):
         self.assertTrue((self.raw / manifeste["ressources"]["a"]["versions"][0]["fichier"]).exists())
 
 
+class TestJeuDpo(unittest.TestCase):
+    """Le jeu DPO : une ressource sans année, un dossier fixe, l'horodatage de l'URL conservé."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.raw = Path(self.tmp.name) / "raw"
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_horodatage_url(self):
+        r = ressource("d", "opencnil-organismes-avec-dpo.csv",
+                      "https://static.data.gouv.fr/resources/x/20260706-083730/opencnil-organismes-avec-dpo.csv")
+        self.assertEqual(fetch.horodatage_url(r), "2026-07-06T08:37:30")
+        self.assertEqual(fetch.horodatage_url(ressource("e", "x", "https://x/liste.csv")), "")
+
+    def test_dossier_fixe_et_publie_le(self):
+        url = "https://static.data.gouv.fr/resources/x/20260706-083730/opencnil-organismes-avec-dpo.csv"
+        r = ressource("d", "opencnil-organismes-avec-dpo.csv", url)
+        tel = TelechargeurFictif({url: b"a;b\n1;2\n"})
+        manifeste = {}
+        fetch.traiter(dataset(r), manifeste, tel, "2026-09-17", racine_raw=self.raw, dossier_fixe="dpo")
+        entree = manifeste["ressources"]["d"]
+        self.assertEqual(entree["dossier"], "dpo")
+        self.assertEqual(entree["versions"][0]["publie_le"], "2026-07-06T08:37:30")
+        self.assertTrue((self.raw / "dpo").is_dir())
+
+    def test_remplacement_en_place_conserve_les_deux_snapshots(self):
+        u1 = "https://static.data.gouv.fr/resources/x/20260706-083730/opencnil-organismes-avec-dpo.csv"
+        u2 = "https://static.data.gouv.fr/resources/x/20260803-090000/opencnil-organismes-avec-dpo.csv"
+        r1 = ressource("d", "opencnil-organismes-avec-dpo.csv", u1, last_modified="2026-07-06")
+        r2 = ressource("d", "opencnil-organismes-avec-dpo.csv", u2, last_modified="2026-08-03")
+        tel = TelechargeurFictif({u1: b"juillet", u2: b"aout"})
+        manifeste = {}
+        fetch.traiter(dataset(r1), manifeste, tel, "2026-07-10", racine_raw=self.raw, dossier_fixe="dpo")
+        fetch.traiter(dataset(r2), manifeste, tel, "2026-08-10", racine_raw=self.raw, dossier_fixe="dpo")
+        versions = manifeste["ressources"]["d"]["versions"]
+        self.assertEqual([v["publie_le"] for v in versions], ["2026-07-06T08:37:30", "2026-08-03T09:00:00"])
+        self.assertEqual(sorted(p.read_bytes() for p in (self.raw / "dpo").glob("*.csv")), [b"aout", b"juillet"])
+
+    def test_jeux_connus(self):
+        self.assertEqual(set(fetch.JEUX), {"controles", "dpo"})
+        self.assertEqual(fetch.JEUX["dpo"]["dossier"], "dpo")
+        self.assertIsNone(fetch.JEUX["controles"]["dossier"])
+
+
 if __name__ == "__main__":
     unittest.main()

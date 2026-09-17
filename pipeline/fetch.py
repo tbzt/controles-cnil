@@ -14,8 +14,17 @@ Règles :
   qu'une exécution sans nouveauté laisse le dépôt propre ;
 - seules les ressources CSV sont prises ; les XLSX sont comptés mais ignorés.
 
+Deux jeux de données sont connus (`--jeu`) : `controles` (par défaut, dix
+fichiers annuels, manifeste `manifest.json`) et `dpo` (un seul fichier
+mensuel de 34 Mo, remplacé en place par la CNIL, manifeste
+`manifest-dpo.json`, archive dans `data/raw/dpo/`). Pour le jeu DPO,
+l'horodatage que data.gouv.fr met dans l'URL de la ressource
+(`/20260706-083730/`) est conservé dans le manifeste : c'est la seule date
+de publication fiable, et le seul historique de ce fichier est celui que ce
+dépôt constitue.
+
 Usage :
-    python3 pipeline/fetch.py [--forcer] [--hors-ligne]
+    python3 pipeline/fetch.py [--jeu controles|dpo] [--forcer] [--hors-ligne]
 
 Code de sortie : 0 si tout s'est bien passé (même sans changement), 1 sur
 erreur réseau ou ressource incohérente.
@@ -52,7 +61,29 @@ MANIFESTE = METADATA / "manifest.json"
 USER_AGENT = "controles-cnil (https://github.com/tbzt/controles-cnil)"
 DELAI_SECONDES = 60
 
+# Les jeux de données connus. `dossier` fixe force un seul dossier d'archive
+# (le jeu DPO n'a qu'une ressource, sans année dans son nom).
+JEUX = {
+    "controles": {"dataset_id": DATASET_ID, "manifeste": MANIFESTE, "dossier": None},
+    "dpo": {"dataset_id": "5c926a7a634f410578005c68", "manifeste": METADATA / "manifest-dpo.json", "dossier": "dpo"},
+}
+
 ANNEE = re.compile(r"(20\d\d)")
+HORODATAGE_URL = re.compile(r"/(\d{8}-\d{6})/")
+
+
+def api_dataset(dataset_id: str) -> str:
+    return f"https://www.data.gouv.fr/api/1/datasets/{dataset_id}/"
+
+
+def horodatage_url(ressource: dict) -> str:
+    """« …/20260706-083730/fichier.csv » → « 2026-07-06T08:37:30 » ; vide sinon.
+    data.gouv.fr renouvelle ce segment à chaque remplacement de la ressource."""
+    m = HORODATAGE_URL.search(ressource.get("url") or "")
+    if not m:
+        return ""
+    h = m.group(1)
+    return f"{h[0:4]}-{h[4:6]}-{h[6:8]}T{h[9:11]}:{h[11:13]}:{h[13:15]}"
 
 
 # ---------------------------------------------------------------- réseau ---
@@ -64,10 +95,10 @@ def telecharger(url: str) -> bytes:
         return reponse.read()
 
 
-def lire_dataset(telechargeur=telecharger) -> dict:
+def lire_dataset(telechargeur=telecharger, dataset_id: str = DATASET_ID) -> dict:
     """Métadonnées du jeu de données depuis l'API data.gouv.fr."""
     try:
-        return json.loads(telechargeur(API_DATASET).decode("utf-8"))
+        return json.loads(telechargeur(api_dataset(dataset_id)).decode("utf-8"))
     except (urllib.error.URLError, ValueError) as exc:
         erreur_fatale(f"API data.gouv.fr injoignable ou réponse illisible : {exc}")
 
@@ -136,9 +167,10 @@ def version_connue(entree: dict | None, sha256: str) -> dict | None:
 # ----------------------------------------------------------- traitement ---
 
 def traiter(dataset: dict, manifeste: dict, telechargeur, aujourdhui: str,
-            forcer: bool = False, racine_raw: Path = RAW) -> dict:
+            forcer: bool = False, racine_raw: Path = RAW, dossier_fixe: str | None = None) -> dict:
     """Met à jour le manifeste (en place) et archive les fichiers. Renvoie un
-    résumé : listes de titres par catégorie."""
+    résumé : listes de titres par catégorie. `dossier_fixe` range toutes les
+    ressources dans un même dossier (jeu DPO) au lieu d'un dossier par année."""
     resume = {"nouvelles": [], "modifiees": [], "inchangees": [],
               "identiques_apres_telechargement": [], "ignorees_non_csv": [],
               "disparues": []}
@@ -169,7 +201,7 @@ def traiter(dataset: dict, manifeste: dict, telechargeur, aujourdhui: str,
         entree["titre"] = ressource["title"]
         entree["url"] = ressource["url"]
         entree["format"] = "csv"
-        entree["dossier"] = annee_de(ressource)
+        entree["dossier"] = dossier_fixe or annee_de(ressource)
         entree["signature_source"] = signature_source(ressource)
         entree.pop("disparue_le", None)
 
@@ -183,13 +215,16 @@ def traiter(dataset: dict, manifeste: dict, telechargeur, aujourdhui: str,
         dossier = racine_raw / entree["dossier"]
         dossier.mkdir(parents=True, exist_ok=True)
         (dossier / nom).write_bytes(octets)
-        entree["versions"].append({
+        version = {
             "fichier": f"{entree['dossier']}/{nom}",
             "sha256": sha,
             "taille": len(octets),
             "recupere_le": aujourdhui,
             "last_modified_source": ressource.get("last_modified"),
-        })
+        }
+        if horodatage_url(ressource):
+            version["publie_le"] = horodatage_url(ressource)
+        entree["versions"].append(version)
         (resume["nouvelles"] if len(entree["versions"]) == 1 else resume["modifiees"]).append(ressource["title"])
 
     for rid, entree in ressources.items():
@@ -205,7 +240,7 @@ def traiter(dataset: dict, manifeste: dict, telechargeur, aujourdhui: str,
         "organisation": (dataset.get("organization") or {}).get("name"),
         "last_modified_source": dataset.get("last_modified"),
     }
-    manifeste["source_api"] = API_DATASET
+    manifeste["source_api"] = api_dataset(dataset.get("id") or DATASET_ID)
     return resume
 
 
@@ -226,24 +261,28 @@ def main(argv=None) -> int:
                          help="retélécharger toutes les ressources même si data.gouv.fr ne signale aucun changement")
     parseur.add_argument("--hors-ligne", action="store_true",
                          help="ne rien télécharger ; vérifier seulement que les fichiers du manifeste existent")
+    parseur.add_argument("--jeu", choices=sorted(JEUX), default="controles",
+                         help="jeu de données à récupérer (controles par défaut, ou dpo)")
     args = parseur.parse_args(argv)
 
-    manifeste = lire_json(MANIFESTE, {}) or {}
+    jeu = JEUX[args.jeu]
+    chemin_manifeste: Path = jeu["manifeste"]
+    manifeste = lire_json(chemin_manifeste, {}) or {}
 
     if args.hors_ligne:
         manquants = [v["fichier"] for e in manifeste.get("ressources", {}).values()
                      for v in e.get("versions", []) if not (RAW / v["fichier"]).exists()]
         if manquants:
             erreur_fatale("fichiers du manifeste absents de data/raw/ : " + ", ".join(manquants))
-        journal(f"hors ligne : {sum(len(e.get('versions', [])) for e in manifeste.get('ressources', {}).values())} versions archivées, toutes présentes")
+        journal(f"hors ligne ({args.jeu}) : {sum(len(e.get('versions', [])) for e in manifeste.get('ressources', {}).values())} versions archivées, toutes présentes")
         return 0
 
-    dataset = lire_dataset()
+    dataset = lire_dataset(dataset_id=jeu["dataset_id"])
     aujourdhui = dt.date.today().isoformat()
-    resume = traiter(dataset, manifeste, telecharger, aujourdhui, forcer=args.forcer)
+    resume = traiter(dataset, manifeste, telecharger, aujourdhui, forcer=args.forcer, dossier_fixe=jeu["dossier"])
     afficher_resume(resume)
-    if ecrire_json(MANIFESTE, manifeste):
-        journal(f"manifeste mis à jour : {MANIFESTE.relative_to(MANIFESTE.parents[2])}")
+    if ecrire_json(chemin_manifeste, manifeste):
+        journal(f"manifeste mis à jour : {chemin_manifeste.relative_to(chemin_manifeste.parents[2])}")
     else:
         journal("manifeste inchangé")
     return 0

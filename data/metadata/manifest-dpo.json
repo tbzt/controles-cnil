@@ -1,0 +1,35 @@
+{
+  "dataset": {
+    "id": "5c926a7a634f410578005c68",
+    "last_modified_source": "2026-07-06T08:37:33.645000+00:00",
+    "licence": "lov2",
+    "organisation": "CNIL",
+    "page": "https://www.data.gouv.fr/datasets/organismes-ayant-designe-un-e-delegue-e-a-la-protection-des-donnees-dpd-dpo",
+    "titre": "Organismes ayant désigné un(e) délégué(e) à la protection des données (DPD/DPO)"
+  },
+  "ressources": {
+    "c5d02b42-1008-4406-83f5-3a81c8b936a3": {
+      "dossier": "dpo",
+      "format": "csv",
+      "signature_source": {
+        "checksum_type": "sha1",
+        "checksum_value": "14816c3f45301542e589869172240d4f80576172",
+        "filesize": 33631518,
+        "last_modified": "2026-07-06T08:37:33.644000+00:00"
+      },
+      "titre": "opencnil-organismes-avec-dpo.csv",
+      "url": "https://static.data.gouv.fr/resources/organismes-ayant-designe-un-e-delegue-e-a-la-protection-des-donnees-dpd-dpo/20260706-083730/opencnil-organismes-avec-dpo.csv",
+      "versions": [
+        {
+          "fichier": "dpo/c92b722d__opencnil-organismes-avec-dpo.csv",
+          "last_modified_source": "2026-07-06T08:37:33.644000+00:00",
+          "publie_le": "2026-07-06T08:37:30",
+          "recupere_le": "2026-09-17",
+          "sha256": "c92b722d8971d936a8bd00d984d8aeb2c35107ecc09d560d6f86f3a210814355",
+          "taille": 33631518
+        }
+      ]
+    }
+  },
+  "source_api": "https://www.data.gouv.fr/api/1/datasets/5c926a7a634f410578005c68/"
+}
