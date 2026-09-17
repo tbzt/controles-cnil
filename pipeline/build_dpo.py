@@ -125,7 +125,7 @@ def construire(organismes: list[dict], sirene_commune: dict, sirene_commune_sect
         sirene_dept_section[(departement_du_code(c), s)] += n
 
     # Départements.
-    par_dept: dict = defaultdict(lambda: {"total": 0, "personne_morale": 0, "par_section": Counter(), "structures": Counter()})
+    par_dept: dict = defaultdict(lambda: {"total": 0, "personne_morale": 0, "par_section": Counter(), "par_section_pm": Counter(), "structures": Counter()})
     for o in france:
         d = o["departement"]
         if not d:
@@ -138,6 +138,8 @@ def construire(organismes: list[dict], sirene_commune: dict, sirene_commune_sect
                 e["structures"][o["nom_designe_norm"]] += 1
         if o["section_naf"]:
             e["par_section"][o["section_naf"]] += 1
+            if o["type_dpo"] == "personne_morale":
+                e["par_section_pm"][o["section_naf"]] += 1
 
     # Graphie d'affichage des structures : la plus fréquente.
     graphies: dict = defaultdict(Counter)
@@ -158,7 +160,8 @@ def construire(organismes: list[dict], sirene_commune: dict, sirene_commune_sect
             "sieges_pm": sieges,
             "taux": taux(e["total"], sieges),
             "population": population.get(d),
-            "par_section": {s: {"n": n, "sieges_pm": sirene_dept_section.get((d, s), 0), "taux": taux(n, sirene_dept_section.get((d, s), 0))}
+            "par_section": {s: {"n": n, "personne_morale": e["par_section_pm"][s], "sieges_pm": sirene_dept_section.get((d, s), 0),
+                                "taux": taux(n, sirene_dept_section.get((d, s), 0))}
                             for s, n in sorted(e["par_section"].items())},
             "structure_dominante": {"nom": libelle_structure[dominante[0]], "cle": dominante[0], "n": dominante[1],
                                     "part_externes": round(dominante[1] / e["personne_morale"], 3)} if dominante else None,

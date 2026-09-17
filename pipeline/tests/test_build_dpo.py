@@ -79,7 +79,7 @@ class TestConstruire(unittest.TestCase):
         d75 = stats["departements"]["75"]
         self.assertEqual((d75["total"], d75["personne_morale"], d75["sieges_pm"]), (2, 1, 1000))
         self.assertEqual(d75["taux"], 2.0)
-        self.assertEqual(d75["par_section"]["J"], {"n": 1, "sieges_pm": 300, "taux": round(1000 / 300, 2)})
+        self.assertEqual(d75["par_section"]["J"], {"n": 1, "personne_morale": 1, "sieges_pm": 300, "taux": round(1000 / 300, 2)})
         self.assertEqual(d75["structure_dominante"]["cle"], "CDG 80")
         self.assertEqual(stats["departements"]["80"]["structure_dominante"]["part_externes"], 1.0)
 
