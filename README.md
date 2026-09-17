@@ -50,6 +50,27 @@ téléchargements, versions. Finition faite (mobile, clavier, mouvement
 réduit, libellés français des contrôles de carte, favicon) et migration
 PMTiles documentée. Les 18 étapes du plan initial sont livrées.
 
+Depuis le 17 septembre 2026, le dépôt traite aussi un **second jeu de données
+de la CNIL**, « Organismes ayant désigné un(e) délégué(e) à la protection des
+données » (111 560 désignations, un fichier mensuel remplacé en place), comme
+une cartographie et une analyse à part, sans couplage avec les contrôles :
+`pipeline/fetch.py --jeu dpo` archive chaque publication dans `data/raw/dpo/`
+(la CNIL ne conserve aucun historique de ce fichier ; cette archive est le
+seul moyen de mesurer les désignations retirées ou remplacées) ;
+`pipeline/dpo.py` produit `data/processed/dpo/organismes.csv` **sans les
+huit colonnes de contact** (données personnelles, règle de validation
+bloquante), communes résolues ; `outils/agreger-sirene.py` construit une fois
+par trimestre le dénominateur du taux de désignation (sièges actifs de
+personnes morales par commune et section NAF, depuis les stocks INSEE) ;
+`pipeline/build_dpo.py` et `pipeline/dpo_diff.py` produisent les agrégats
+lus par la page `dpo.html` : taux de désignation par département et section
+(pour 1 000 sièges, pour 100 000 habitants, effectifs), cercles par commune,
+rythme mensuel des désignations, flux entre publications, structures
+mutualisées et leur géographie, couverture des communes, interne/externe par
+secteur, hors de France, limites et téléchargements. Étapes 18 à 24 du plan
+DPO livrées ; la carte de points au zoom local (étape 25) et l'enrichissement
+des contrôles par les adresses DPO (étape 26) ne sont lancés que sur besoin.
+
 ## Ce que contiennent les données source, et ce qu'elles ne contiennent pas
 
 - Une liste par année, de 2014 à 2023, d'environ 350 contrôles chacune :
@@ -101,13 +122,14 @@ dominante : c'est le mode honnête quand la précision est la commune.
 
 ```
 index.html                                                l'application : carte, analyse, évolution (onglets)
+dpo.html                                                  délégués à la protection des données : taux, rythme, mutualisation (second jeu)
 donnees.html                                              sources, licence, méthode, limites, téléchargements, versions
 css/  js/                                                 interface, vanilla, sans build
 vendor/                                                   MapLibre GL JS épinglé, modules ES (voir vendor/VERSIONS.md)
-data/raw/                fichiers CNIL bruts, immuables, ajout seul
-data/processed/          données normalisées, localisations, GeoJSON, statistiques
+data/raw/                fichiers CNIL bruts, immuables, ajout seul (contrôles par année, DPO par publication mensuelle)
+data/processed/          données normalisées, localisations, GeoJSON, statistiques ; dpo/ pour le second jeu
 data/geocoding/          surcouche d'adresses validées, alias, corrections
-data/referentiels-source/ référentiels externes versionnés (communes, contours départementaux et outre-mer)
+data/referentiels-source/ référentiels externes versionnés (communes, contours, agrégat SIRENE des sièges par commune)
 data/metadata/           manifeste, schéma, rapport qualité, versions, journal
 pipeline/                scripts Python (bibliothèque standard uniquement) et tests
 outils/                  scripts d'usage ponctuel
@@ -131,8 +153,9 @@ outils/                  scripts d'usage ponctuel
 
 Le workflow « Actualiser les données » tourne chaque lundi à 06:00 UTC et se
 lance aussi à la main depuis l'onglet Actions (case « forcer » pour tout
-retélécharger). Il exécute les cinq scripts puis les tests, écrit un rapport
-des changements dans le résumé du job, et :
+retélécharger). Il récupère les deux jeux (contrôles, DPO), exécute les
+scripts puis les tests, écrit un rapport des changements dans le résumé du
+job, et :
 
 - si les données ont changé : commit « Données : date — résumé », tag
   `donnees-AAAA-MM-JJ`, Release avec les CSV, le GeoJSON, les statistiques et
@@ -147,6 +170,12 @@ des changements dans le résumé du job, et :
 
 Chaque tag est un instantané complet : `git checkout donnees-2026-09-11`
 reproduit les données et le site de cette date.
+
+Un second workflow, « Agréger le stock SIRENE », tourne le 3 des mois de
+janvier, avril, juillet et octobre (et à la demande) : il lit en flux les
+stocks INSEE des unités légales et des établissements (~4 Go zippés, jamais
+commités) et commite l'agrégat `data/referentiels-source/sirene-sieges-par-commune.csv`,
+dénominateur des taux de désignation de DPO.
 
 Le même workflow se relance aussi à chaque commit qui modifie une table
 éditée à la main (`data/geocoding/`, référentiels, mappings) : valider une

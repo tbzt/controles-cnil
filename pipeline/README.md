@@ -13,6 +13,25 @@ dans cet ordre :
    code de sortie non nul sur règle fatale.
 5. `build.py` : GeoJSON, statistiques, journal des changements.
 
+Second jeu de données (organismes ayant désigné un DPO), traité à part :
+
+6. `fetch.py --jeu dpo` : archive chaque publication mensuelle dans
+   `data/raw/dpo/`, manifeste `data/metadata/manifest-dpo.json` avec
+   l'horodatage de publication.
+7. `dpo.py` : `data/processed/dpo/organismes.csv`, sans colonne de contact,
+   codes postaux et pays normalisés, communes résolues ; rapport
+   `data/metadata/dpo-rapport.json`.
+8. `dpo_diff.py` : `data/processed/dpo/flux-mensuels.csv`, nouvelles,
+   retirées et remplacées entre publications successives (recalculé depuis
+   toute l'archive).
+9. `build_dpo.py` : `stats-dpo.json` et `dpo-communes.json` pour la page
+   `dpo.html` ; le dénominateur vient de
+   `data/referentiels-source/sirene-sieges-par-commune.csv`, produit hors
+   build par `outils/agreger-sirene.py`.
+
+`validate.py` couvre les deux jeux : cinq règles DPO, dont le test bloquant
+« aucune colonne de contact dans processed/ ».
+
 État : les cinq scripts et le workflow GitHub Actions qui les enchaîne
 sont en place. Deux scripts d'accompagnement : `report.py` (rapport des
 changements, journal, `releases.json`) et `verification.py` (trace mensuelle
@@ -29,6 +48,11 @@ python3 pipeline/build.py              # → controles.geojson, stats.json, data
 python3 pipeline/report.py --avant HEAD   # ce qui a changé depuis le dernier commit (CHANGEMENT=oui|non)
 python3 outils/importer-umap.py <export.umap> --adresse-inverse   # ponctuel : surcouche d'adresses depuis uMap
 python3 outils/proposer-adresses.py    # ponctuel : sièges via l'annuaire des entreprises (score haut appliqué, moyen à valider)
+python3 pipeline/fetch.py --jeu dpo    # archive la publication DPO courante si elle a changé
+python3 pipeline/dpo.py                # data/raw/dpo/ → data/processed/dpo/organismes.csv (sans contacts)
+python3 pipeline/dpo_diff.py           # flux entre publications → data/processed/dpo/flux-mensuels.csv
+python3 pipeline/build_dpo.py          # → data/processed/dpo/stats-dpo.json, dpo-communes.json
+python3 outils/agreger-sirene.py       # trimestriel, lourd (4 Go lus en flux) : dénominateur SIRENE par commune × section
 python3 -m unittest discover -s pipeline/tests -t .
 ```
 

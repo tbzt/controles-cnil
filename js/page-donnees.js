@@ -40,6 +40,12 @@ async function demarrer() {
     json("data/metadata/derniere-verification.json"), json("data/metadata/geocodage-rapport.json"), json("data/processed/stats.json"),
     json("data/metadata/propositions-rapport.json"),
   ]);
+  const dpoRapport = await json("data/metadata/dpo-rapport.json");
+  const dpoManifeste = await json("data/metadata/manifest-dpo.json");
+  if (dpoRapport) {
+    const versions = Object.values(dpoManifeste?.ressources || {}).flatMap((r) => r.versions || []);
+    $("dpo-etat").textContent = `Publication analysée : ${date(dpoRapport.snapshot)} · ${nombre(dpoRapport.total)} désignations, dont ${nombre(dpoRapport.sans_siren)} sans SIREN · ${nombre(dpoRapport.france_commune_resolue)} organismes français sur ${nombre(dpoRapport.france)} rattachés à une commune · ${versions.length} publication${versions.length > 1 ? "s" : ""} archivée${versions.length > 1 ? "s" : ""} · colonnes de contact supprimées : ${dpoRapport.colonnes_contact_supprimees.length}.`;
+  }
 
   /* Dates. */
   const versions = Object.values(manifeste?.ressources || {}).flatMap((r) => r.versions || []);

@@ -69,9 +69,20 @@
       <div id="non-resolues"></div>
     </section>
 
+    <section id="dpo">
+      <h2>Second jeu de données : organismes ayant désigné un DPO</h2>
+      <p>La page <a href="dpo.html">Délégués à la protection des données</a> repose sur un second jeu ouvert de la CNIL, <a href="https://www.data.gouv.fr/datasets/organismes-ayant-designe-un-e-delegue-e-a-la-protection-des-donnees-dpd-dpo">« Organismes ayant désigné un(e) délégué(e) à la protection des données »</a> (Licence Ouverte 2.0) : un fichier unique d'environ 110 000 lignes, remplacé en place chaque mois. Il est traité à part des contrôles, sans rapprochement entre les deux dans l'interface : les deux jeux n'ont ni le même rythme, ni le même volume, ni le même niveau de confiance, et un rapprochement par nom d'organisme ne couvrirait qu'un tiers des contrôles.</p>
+      <ol>
+        <li><strong>Archive.</strong> Chaque publication est conservée dans <code>data/raw/dpo/</code> avec son empreinte et l'horodatage de publication de data.gouv.fr. La CNIL ne conserve pas d'historique de ce fichier : cette archive est le seul moyen de mesurer les désignations retirées ou remplacées d'un mois à l'autre.</li>
+        <li><strong>Transformation.</strong> Les 26 colonnes sont reconnues par leur en-tête ; codes postaux, pays, dates et types sont normalisés ; chaque organisme est rattaché à sa commune par le même référentiel que les contrôles. <strong>Les huit colonnes de contact du DPO (e-mail, URL, téléphone, adresse) sont supprimées</strong> et ne sont jamais republiées : ce sont des données personnelles, et une règle bloquante de la validation vérifie qu'aucune n'atteint les fichiers publiés.</li>
+        <li><strong>Dénominateur.</strong> Le taux de désignation rapporte les organismes déclarants aux sièges actifs de personnes morales du répertoire SIRENE (INSEE), agrégés par commune et section NAF une fois par trimestre par <code>outils/agreger-sirene.py</code>. Les entrepreneurs individuels en sont exclus.</li>
+      </ol>
+      <p id="dpo-etat" class="discret"></p>
+    </section>
+
     <section id="qualite">
       <h2>Qualité</h2>
-      <p>À chaque actualisation, quinze règles sont vérifiées. Un constat fatal empêche toute publication ; une alerte est publiée avec les données et affichée ici.</p>
+      <p>À chaque actualisation, vingt règles sont vérifiées (quinze sur les contrôles, cinq sur le jeu DPO). Un constat fatal empêche toute publication ; une alerte est publiée avec les données et affichée ici.</p>
       <div id="constats"></div>
     </section>
 
@@ -86,6 +97,9 @@
         <li><a href="data/processed/stats.json" download>stats.json</a><span>effectifs et croisements précalculés</span></li>
         <li><a href="data/metadata/schema.json" download>schema.json</a><span>description des colonnes (Data Package)</span></li>
         <li><a href="data/processed/referentiels/secteurs.csv" download>secteurs.csv</a><span>libellés CNIL → secteur fin → famille</span></li>
+        <li><a href="data/processed/dpo/organismes.csv" download>dpo/organismes.csv</a><span>organismes ayant désigné un DPO, sans coordonnée de contact, communes résolues</span></li>
+        <li><a href="data/processed/dpo/stats-dpo.json" download>dpo/stats-dpo.json</a><span>agrégats de la page Délégués : taux par département et section, structures, flux</span></li>
+        <li><a href="data/referentiels-source/sirene-sieges-par-commune.csv" download>sirene-sieges-par-commune.csv</a><span>sièges actifs par commune et section NAF (INSEE), dénominateur des taux</span></li>
         <li><a href="https://github.com/tbzt/controles-cnil/releases">Releases GitHub</a><span>chaque publication avec ses fichiers joints</span></li>
       </ul>
     </section>
