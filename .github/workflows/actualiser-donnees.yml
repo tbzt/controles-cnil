@@ -1,7 +1,8 @@
 name: Actualiser les données
 
-# Récupère le jeu de données CNIL sur data.gouv.fr, le transforme, le
-# localise, le vérifie, et ne commite que si quelque chose a changé.
+# Récupère les deux jeux de données CNIL sur data.gouv.fr (contrôles et
+# organismes ayant désigné un DPO), les transforme, localise les contrôles,
+# vérifie le tout, et ne commite que si quelque chose a changé.
 # Chaque lundi à 06:00 UTC, et à la demande.
 
 on:
@@ -16,6 +17,7 @@ on:
       - "data/processed/referentiels/*.csv"
       - "data/processed/referentiels/*.json"
       - "data/referentiels-source/communes.json"
+      - "data/referentiels-source/sirene-sieges-par-commune.csv"
       - "pipeline/mappings/**"
   workflow_dispatch:
     inputs:
@@ -48,15 +50,21 @@ jobs:
       - name: Mémoriser l'état précédent
         run: |
           mkdir -p /tmp/avant
-          for f in data/processed/controles.csv data/processed/localisations.csv data/metadata/manifest.json data/metadata/quality-report.json; do
+          for f in data/processed/controles.csv data/processed/localisations.csv data/metadata/manifest.json data/metadata/quality-report.json data/metadata/manifest-dpo.json data/metadata/dpo-rapport.json; do
             [ -f "$f" ] && cp "$f" /tmp/avant/ || true
           done
 
-      - name: 1. Récupérer les ressources CSV
+      - name: 1. Récupérer les ressources CSV (contrôles)
         run: python3 pipeline/fetch.py ${{ inputs.forcer && '--forcer' || '' }}
+
+      - name: 1b. Récupérer le fichier DPO (archive mensuelle)
+        run: python3 pipeline/fetch.py --jeu dpo ${{ inputs.forcer && '--forcer' || '' }}
 
       - name: 2. Transformer
         run: python3 pipeline/transform.py
+
+      - name: 2b. Transformer le jeu DPO (sans colonne de contact)
+        run: python3 pipeline/dpo.py
 
       - name: 3. Localiser
         run: python3 pipeline/geocode.py
@@ -66,6 +74,11 @@ jobs:
 
       - name: 5. Construire les fichiers publiés
         run: python3 pipeline/build.py
+
+      - name: 5b. Flux entre snapshots DPO et agrégats DPO
+        run: |
+          python3 pipeline/dpo_diff.py
+          python3 pipeline/build_dpo.py
 
       - name: Tests
         run: python3 -m unittest discover -s pipeline/tests -t .
@@ -102,6 +115,7 @@ jobs:
             gh release create "${{ steps.rapport.outputs.tag }}" \
               data/processed/controles.csv data/processed/localisations.csv \
               data/processed/controles.geojson data/processed/stats.json data/metadata/schema.json \
+              data/processed/dpo/organismes.csv data/processed/dpo/stats-dpo.json data/processed/dpo/flux-mensuels.csv \
               --title "Données du $DATE" --notes-file /tmp/notes.md
           else
             git commit -m "Vérification de la source : $DATE, aucun changement"

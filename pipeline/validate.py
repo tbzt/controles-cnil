@@ -28,8 +28,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from pipeline import transform  # noqa: E402
-from pipeline.commun import GEOCODING, METADATA, PROCESSED, RACINE, RAW, ecrire_json, journal, lire_json  # noqa: E402
+from pipeline import dpo, transform  # noqa: E402
+from pipeline.commun import GEOCODING, METADATA, PROCESSED, RACINE, RAW, REFERENTIELS_SOURCE, ecrire_json, journal, lire_json  # noqa: E402
 
 RAPPORT = METADATA / "quality-report.json"
 ID_VALIDE = re.compile(r"^20\d\d-[0-9a-f]{8}-\d+$")
@@ -327,11 +327,108 @@ def regle_manifeste(ctx) -> list[Constat]:
     return [ok("manifeste", "toutes les versions archivées sont présentes")]
 
 
+# ------------------------------------------------------- règles DPO ---
+
+DPO_COLONNES_INTERDITES = ("email", "courriel", "telephone", "téléphone", "contact", "url")
+DPO_SECTIONS = set("ABCDEFGHIJKLMNOPQRSTU")
+DPO_TYPES = {"personne_physique", "personne_morale", ""}
+DPO_ECART_SNAPSHOT = 0.15
+DPO_AGE_SIRENE_MOIS = 12
+
+
+def regle_dpo_contacts(ctx) -> list[Constat]:
+    """Aucune colonne de contact ne doit atteindre processed/ : donnée
+    personnelle, avertissement 2 du jeu. Bloquant."""
+    if not ctx["dpo"]:
+        return []
+    colonnes = list(ctx["dpo"][0].keys())
+    interdites = [c for c in colonnes if any(m in c.lower() for m in DPO_COLONNES_INTERDITES) or c.startswith("_contact")]
+    if interdites:
+        return [fatal("dpo_contacts", f"colonnes de contact présentes dans organismes.csv : {interdites}")]
+    if set(colonnes) != set(ctx["dpo_colonnes_attendues"]):
+        return [fatal("dpo_contacts", f"colonnes inattendues dans organismes.csv : {sorted(set(colonnes) ^ set(ctx['dpo_colonnes_attendues']))}")]
+    return [ok("dpo_contacts", f"{len(colonnes)} colonnes, aucune coordonnée de DPO")]
+
+
+def regle_dpo_structure(ctx) -> list[Constat]:
+    if not ctx["dpo"]:
+        return []
+    constats = []
+    lignes = ctx["dpo"]
+    snapshots = {l["snapshot"] for l in lignes}
+    if len(snapshots) != 1:
+        constats.append(fatal("dpo_structure", f"plusieurs snapshots mélangés : {sorted(snapshots)}"))
+    mal_datees = sum(1 for l in lignes if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", l["date_designation"]))
+    if mal_datees:
+        constats.append(fatal("dpo_structure", f"{mal_datees} dates de désignation non ISO"))
+    sirens = sum(1 for l in lignes if l["siren"] and not re.fullmatch(r"\d{9}", l["siren"]))
+    if sirens:
+        constats.append(fatal("dpo_structure", f"{sirens} SIREN mal formés"))
+    sections = {l["section_naf"] for l in lignes} - DPO_SECTIONS - {""}
+    if sections:
+        constats.append(fatal("dpo_structure", f"sections NAF inconnues : {sorted(sections)}"))
+    types = {l["type_dpo"] for l in lignes} - DPO_TYPES
+    if types:
+        constats.append(fatal("dpo_structure", f"types de DPO inconnus : {sorted(types)}"))
+    sans_type = sum(1 for l in lignes if not l["type_dpo"])
+    if sans_type:
+        constats.append(alerte("dpo_structure", f"{sans_type} lignes sans type de DPO reconnu", sans_type))
+    return constats or [ok("dpo_structure", f"{len(lignes)} désignations, snapshot {next(iter(snapshots))}")]
+
+
+def regle_dpo_volume(ctx) -> list[Constat]:
+    """Une chute ou une hausse brutale d'un snapshot à l'autre est déjà
+    arrivée côté CNIL (2022) : bloquant au-delà de ±15 %."""
+    if not ctx["dpo"]:
+        return []
+    versions = [v for e in ctx["dpo_manifeste"].get("ressources", {}).values() if e.get("format") == "csv" for v in e.get("versions", [])]
+    versions.sort(key=lambda v: v.get("publie_le") or v.get("last_modified_source") or "")
+    n = len(ctx["dpo"])
+    if len(versions) < 2:
+        return [ok("dpo_volume", f"{n} désignations, premier snapshot archivé")]
+    precedent = RAW / versions[-2]["fichier"]
+    if not precedent.exists():
+        return [alerte("dpo_volume", f"snapshot précédent absent de data/raw/ : {versions[-2]['fichier']}")]
+    with open(precedent, "rb") as f:
+        n_prec = sum(1 for _ in f) - 1
+    ecart = (n - n_prec) / n_prec if n_prec else 0
+    if abs(ecart) > DPO_ECART_SNAPSHOT:
+        return [fatal("dpo_volume", f"{n} désignations contre {n_prec} au snapshot précédent ({ecart:+.1%}) : rupture à examiner", {"courant": n, "precedent": n_prec})]
+    return [ok("dpo_volume", f"{n} désignations contre {n_prec} au snapshot précédent ({ecart:+.1%})")]
+
+
+def regle_dpo_resolution(ctx) -> list[Constat]:
+    if not ctx["dpo"]:
+        return []
+    france = [l for l in ctx["dpo"] if l["pays"] == "FR"]
+    if not france:
+        return [fatal("dpo_resolution", "aucune désignation en France")]
+    taux = sum(1 for l in france if l["code_insee"]) / len(france)
+    if taux < 0.95:
+        return [fatal("dpo_resolution", f"seulement {taux:.1%} des organismes français rattachés à une commune", taux)]
+    return [ok("dpo_resolution", f"{taux:.1%} des organismes français rattachés à une commune")]
+
+
+def regle_dpo_sirene(ctx) -> list[Constat]:
+    """Le dénominateur SIRENE doit exister et ne pas dater de plus d'un an."""
+    if not ctx["dpo"]:
+        return []
+    meta = ctx["sirene_meta"]
+    if not meta or not meta.get("date_stock"):
+        return [alerte("dpo_sirene", "agrégat SIRENE absent : taux de désignation non calculés (lancez outils/agreger-sirene.py)")]
+    d = dt.date.fromisoformat(meta["date_stock"])
+    age_mois = (dt.date(ctx["annee_courante"], ctx["mois_courant"], 1) - d).days // 30
+    if age_mois > DPO_AGE_SIRENE_MOIS:
+        return [alerte("dpo_sirene", f"agrégat SIRENE du {meta['date_stock']}, plus de {DPO_AGE_SIRENE_MOIS} mois", meta["date_stock"])]
+    return [ok("dpo_sirene", f"agrégat SIRENE du {meta['date_stock']}, {meta.get('mesures', {}).get('sieges_personnes_morales', '?')} sièges de personnes morales")]
+
+
 REGLES = [
     regle_manifeste, regle_structure_source, regle_couverture_annees, regle_identifiants,
     regle_champs_obligatoires, regle_volume, regle_annees, regle_enumerations, regle_doublons,
     regle_departements, regle_localisations_completes, regle_coordonnees, regle_geocodage,
     regle_coherence_temporelle, regle_surcouche,
+    regle_dpo_contacts, regle_dpo_structure, regle_dpo_volume, regle_dpo_resolution, regle_dpo_sirene,
 ]
 
 
@@ -358,6 +455,12 @@ def charger_contexte(annee_courante: int | None = None) -> dict:
         "propositions": lire_csv(GEOCODING / "propositions.csv"),
         "geocodage_rapport": lire_json(METADATA / "geocodage-rapport.json", {}) or {},
         "totaux_officiels": totaux_officiels(tableau_1990),
+        # Jeu DPO (absent tant que fetch.py --jeu dpo et dpo.py n'ont pas tourné : règles ignorées).
+        "mois_courant": dt.date.today().month,
+        "dpo": lire_csv(PROCESSED / "dpo" / "organismes.csv"),
+        "dpo_colonnes_attendues": dpo.COLONNES,
+        "dpo_manifeste": lire_json(METADATA / "manifest-dpo.json", {}) or {},
+        "sirene_meta": lire_json(REFERENTIELS_SOURCE / "sirene-sieges-par-commune.meta.json"),
     }
 
 

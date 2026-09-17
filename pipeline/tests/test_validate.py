@@ -3,7 +3,7 @@ l'ensemble sur les données réelles (aucun constat fatal attendu)."""
 
 import unittest
 
-from pipeline import validate
+from pipeline import dpo, validate
 
 
 def controle(**c):
@@ -28,9 +28,19 @@ def contexte(**k):
         "secteurs": [{"secteur_source": "Commerce"}], "familles": [{"code": "commerce"}],
         "departements": [{"code": "75"}, {"code": "976"}], "surcouche": [], "propositions": [],
         "geocodage_rapport": {}, "totaux_officiels": {},
+        "mois_courant": 9, "dpo": [], "dpo_colonnes_attendues": list(dpo.COLONNES), "dpo_manifeste": {}, "sirene_meta": None,
     }
     ctx.update(k)
     return ctx
+
+
+def designation(**d):
+    base = {c: "" for c in dpo.COLONNES}
+    base.update({"snapshot": "2026-07-06", "siren": "110000122", "nom": "CNIL", "nom_norm": "CNIL", "section_naf": "O",
+                 "code_postal": "75007", "code_insee": "75056", "departement": "75", "pays": "FR",
+                 "type_dpo": "personne_physique", "date_designation": "2018-05-25"})
+    base.update(d)
+    return base
 
 
 def niveaux(constats):
@@ -120,6 +130,37 @@ class TestRegles(unittest.TestCase):
             p.write_bytes("﻿Année ;2021;2022;2022;2023\r\nContrôles réalisés;384;345;345;342\r\nDont vidéo;;;;13\r\n".encode("utf-8"))
             self.assertEqual(validate.totaux_officiels(p), {2021: 384, 2022: 345, 2023: 342})
         self.assertEqual(validate.totaux_officiels(None), {})
+
+    def test_dpo_contacts_bloquant(self):
+        self.assertEqual(niveaux(validate.regle_dpo_contacts(contexte(dpo=[designation()]))), ["ok"])
+        fuite = designation(); fuite["moyen_contact_email"] = "x@y.fr"
+        self.assertIn("fatal", niveaux(validate.regle_dpo_contacts(contexte(dpo=[fuite]))))
+        fuite = designation(); fuite["_contact_autre"] = "courrier"
+        self.assertIn("fatal", niveaux(validate.regle_dpo_contacts(contexte(dpo=[fuite]))))
+        self.assertEqual(validate.regle_dpo_contacts(contexte(dpo=[])), [], "règle ignorée sans jeu DPO")
+
+    def test_dpo_structure(self):
+        self.assertEqual(niveaux(validate.regle_dpo_structure(contexte(dpo=[designation()]))), ["ok"])
+        self.assertIn("fatal", niveaux(validate.regle_dpo_structure(contexte(dpo=[designation(date_designation="25/05/2018")]))))
+        self.assertIn("fatal", niveaux(validate.regle_dpo_structure(contexte(dpo=[designation(siren="123")]))))
+        self.assertIn("fatal", niveaux(validate.regle_dpo_structure(contexte(dpo=[designation(section_naf="Z")]))))
+        self.assertIn("fatal", niveaux(validate.regle_dpo_structure(contexte(dpo=[designation(), designation(snapshot="2026-08-01")]))))
+        self.assertEqual(niveaux(validate.regle_dpo_structure(contexte(dpo=[designation(type_dpo="")]))), ["alerte"])
+
+    def test_dpo_volume_premier_snapshot(self):
+        self.assertEqual(niveaux(validate.regle_dpo_volume(contexte(dpo=[designation()]))), ["ok"])
+
+    def test_dpo_resolution(self):
+        self.assertEqual(niveaux(validate.regle_dpo_resolution(contexte(dpo=[designation()]))), ["ok"])
+        lignes = [designation(code_insee="") for _ in range(10)] + [designation()]
+        self.assertIn("fatal", niveaux(validate.regle_dpo_resolution(contexte(dpo=lignes))))
+
+    def test_dpo_sirene(self):
+        self.assertEqual(niveaux(validate.regle_dpo_sirene(contexte(dpo=[designation()]))), ["alerte"])
+        recent = {"date_stock": "2026-09-01", "mesures": {"sieges_personnes_morales": 1}}
+        self.assertEqual(niveaux(validate.regle_dpo_sirene(contexte(dpo=[designation()], sirene_meta=recent))), ["ok"])
+        vieux = {"date_stock": "2024-01-01", "mesures": {}}
+        self.assertEqual(niveaux(validate.regle_dpo_sirene(contexte(dpo=[designation()], sirene_meta=vieux))), ["alerte"])
 
     def test_rapport_resultat(self):
         r = validate.rapport([validate.ok("a", "x"), validate.alerte("b", "y")])

@@ -94,10 +94,35 @@
       "message": "surcouche et propositions rattachées à des contrôles existants",
       "niveau": "ok",
       "regle": "surcouche"
+    },
+    {
+      "message": "25 colonnes, aucune coordonnée de DPO",
+      "niveau": "ok",
+      "regle": "dpo_contacts"
+    },
+    {
+      "message": "111560 désignations, snapshot 2026-07-06",
+      "niveau": "ok",
+      "regle": "dpo_structure"
+    },
+    {
+      "message": "111560 désignations, premier snapshot archivé",
+      "niveau": "ok",
+      "regle": "dpo_volume"
+    },
+    {
+      "message": "99.0% des organismes français rattachés à une commune",
+      "niveau": "ok",
+      "regle": "dpo_resolution"
+    },
+    {
+      "message": "agrégat SIRENE du 2026-09-01, 7811168 sièges de personnes morales",
+      "niveau": "ok",
+      "regle": "dpo_sirene"
     }
   ],
   "nb_alerte": 3,
   "nb_fatal": 0,
-  "nb_ok": 12,
+  "nb_ok": 17,
   "resultat": "alerte"
 }
