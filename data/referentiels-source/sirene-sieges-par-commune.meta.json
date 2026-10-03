@@ -1,10 +1,10 @@
 {
   "_commentaire": "Sièges actifs d'unités légales actives, par commune (code INSEE) et section NAF rév. 2 de l'établissement ; personnes_morales exclut la catégorie juridique 1000 (entrepreneurs individuels).",
-  "date_stock": "2026-09-01",
+  "date_stock": "2026-10-01",
   "limite_lignes": null,
   "mesures": {
-    "communes": 35155,
-    "lignes_etablissements": 44064115,
+    "communes": 35158,
+    "lignes_etablissements": 44282364,
     "sections": [
       "A",
       "B",
@@ -28,25 +28,25 @@
       "T",
       "U"
     ],
-    "sieges_actifs": 15050499,
-    "sieges_personnes_morales": 7811168,
-    "sieges_sans_commune": 224838
+    "sieges_actifs": 15134835,
+    "sieges_personnes_morales": 7827096,
+    "sieges_sans_commune": 226619
   },
   "source": {
     "etablissements": {
-      "date_stock": "2026-09-01",
-      "last_modified": "2026-09-01T08:44:01.944000+00:00",
-      "taille": 2867039808,
-      "titre": "Sirene : Fichier StockEtablissement - 01 septembre 2026",
-      "url": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260901-084016/stock-stocketablissement-csv.zip"
+      "date_stock": "2026-10-01",
+      "last_modified": "2026-10-01T07:29:06.035000+00:00",
+      "taille": 2879694907,
+      "titre": "Sirene : Fichier StockEtablissement - 01 octobre 2026",
+      "url": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20261001-072713/stock-stocketablissement-csv.zip"
     },
     "jeu": "https://www.data.gouv.fr/datasets/5b7ffc618b4c4169d30727e0",
     "unites_legales": {
-      "date_stock": "2026-09-01",
-      "last_modified": "2026-09-01T08:34:27.171000+00:00",
-      "taille": 974552426,
-      "titre": "Sirene : Fichier StockUniteLegale - 01 septembre 2026",
-      "url": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20260901-083236/stock-stockunitelegale-csv.zip"
+      "date_stock": "2026-10-01",
+      "last_modified": "2026-10-01T07:22:08.355000+00:00",
+      "taille": 979789073,
+      "titre": "Sirene : Fichier StockUniteLegale - 01 octobre 2026",
+      "url": "https://static.data.gouv.fr/resources/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/20261001-072119/stock-stockunitelegale-csv.zip"
     }
   }
 }
